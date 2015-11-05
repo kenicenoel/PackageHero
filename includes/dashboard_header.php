@@ -29,7 +29,5 @@
 							<a class ="link" href="#" id="newissue" title = "Create a new issue"><i class="fa fa-bug fa-fw"></i> New Issue</a>
 							<a class ="link" href="../includes/allpackages.php"  title = "View a list of all Packages with issues"><i class="fa fa-truck fa-fw"></i> Current issues</a>
 							<a class ="link" href ="?module=search" title = "Search for any package data"><i class="fa fa-search fa-fw"></i> Find a package</a>
-							<!-- <a class ="link" href ="?module=user" title = "Manage users of the system"><i class="fa fa-user fa-fw"></i> Users</a> -->
 							<a class ="link" href ="../includes/logout.php" title = "Logout from Package Issues Manager"><i class="fa fa-sign-out fa-fw"></i> Sign out</a>
-
 						</nav>

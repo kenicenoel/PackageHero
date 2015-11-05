@@ -39,7 +39,6 @@
 			}
 
 
-
 			/* Close statement */
 			$stmt->close();
 			$connection->close();
