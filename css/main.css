@@ -1,0 +1,199 @@
+body, html
+{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	color: #000;
+	background-color: #fff;
+	font-family: 'Source Sans Pro', sans-serif;
+
+}
+
+div#container
+{
+	height: 100%;
+	clear: both;
+
+}
+
+
+
+header
+{
+	font-size: 3em;
+
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 200;
+	padding-bottom:12px;
+
+
+}
+
+
+header.highlight
+{
+	background-color: #fff;
+
+}
+
+div#content
+{
+	margin-left: 0px;
+	margin-top: 0px;
+	background-size: cover;
+	height: 300px;
+}
+
+div#left-sidebar
+{
+	width:40%;
+	height: 100%;
+	float: left;
+	background-color: #fff;
+	background-size: cover;
+	border:0 0 0 0;
+
+}
+
+div#left-sidebar img
+{
+	width: 100%;
+	background-size: auto;
+	height: auto;
+	user-drag: none;
+	-moz-user-select: none;
+	-webkit-user-drag: none;
+}
+
+div#right-sidebar
+{
+	float:right;
+	width:60%;
+	height: 100%;
+	background-color: #fff;
+
+}
+
+div#content header
+{
+	margin-left: 40px;
+	margin-top: 0px;
+	max-width: 600px;
+}
+
+div#right-sidebar header
+{
+	font-size: 3em;
+	color: #2980b9;
+	font-family: 'Source Sans Pro', sans-serif;
+	margin-left: 40px;
+	margin-top:20px;
+	text-align: left;
+	padding-bottom: 15px;
+}
+
+
+
+input[type=submit], button
+{
+	height: 40px;
+	font-size: 20px;
+	width:100px;
+	margin: 20px 170px;
+	color: #fff;
+	border:none;
+	background-color: #f39c12;
+	font-family: 'Source Sans Pro', sans-serif;
+	text-transform: uppercase;
+
+}
+
+
+input[type=submit]:hover, button:hover
+{
+
+	color: #fff;
+	background-color: #3498db;
+	font-weight: bold;
+	font-family: 'Source Sans Pro', sans-serif;
+
+}
+
+input[type=text], input[type=password], input[type=email]
+{
+	font-size: 1.2em;
+	font-family: 'Source Sans Pro', sans-serif;
+	text-align: center;
+	color: #2980b9;
+	padding-left: 2px;
+	padding-bottom: 3px;
+	border: 0;
+	border-top:none;
+	border-left:none;
+	border-right: none;
+	border-bottom: 1px solid #BBBBBB;
+	box-shadow: none;
+	outline: none;
+	height: 30px;
+	width: 220px;
+}
+
+
+
+
+label
+{
+	font-family: 'Source Sans Pro', sans-serif;
+	display: inline-block;
+	width:110px;
+	margin-left:5px;
+	text-align: left;
+
+}
+
+form
+{
+
+	margin-left: 50px;
+	margin-top: 100px;
+
+}
+
+p.text
+{
+
+	margin-left: 50px;
+	color: rgb(18, 124, 201);
+	font-size: 17px;
+	font-family: 'Source Sans Pro', sans-serif;
+	max-width: 700px;
+	text-align: left;
+}
+
+p#msg
+{
+
+
+	color: red;
+
+
+}
+
+/*p.footnote
+{
+	padding-top: 0px;
+	font-family: 'Source Sans Pro', sans-serif;
+	text-align: center;
+}*/
+
+footer
+{
+
+	display: block;
+	clear: both;
+	bottom:5px;
+	top: 5px;
+	font-size: 14px;
+	margin: 100px 0px 0px 50px;
+	text-align:center;
+}
