@@ -19,7 +19,7 @@
 			// $table = $tableName;
 
 			// Build the query
-      	$sql = "SELECT * FROM packages WHERE Resolved = 'No' AND HideFromCountry <> '$country'";
+      	$sql = "SELECT * FROM packages WHERE Resolved = 'No'";
 
 	      //prepare the sql statement
 	      $stmt = $connection->prepare($sql);
@@ -94,7 +94,46 @@
 
 		}
 
+		// Count the total number of package issues not hidden and resolved
+		function countTotalAvailableIssues()
+		{
+			global $connection;
+			$country = $_SESSION['country'];
+			// $table = $tableName;
 
+			// Build the query
+				$sql = "SELECT * FROM packages WHERE Resolved = 'No' AND (HideFromCountry != '$country' OR HideFromCountry IS NULL)";
+
+				//prepare the sql statement
+				$stmt = $connection->prepare($sql);
+
+				//execute the prepared statement
+				$stmt->execute();
+
+			/* store result */
+			$stmt->store_result();
+
+			$total = $stmt->num_rows;
+
+			if($total == 0)
+			{
+				return 0;
+
+			}
+
+			else
+			{
+				return $total;
+			}
+
+
+			/* Close statement */
+			$stmt->close();
+
+			$connection->close();
+
+
+		}
 
 
 		// Get the user whose details were last modified
@@ -135,7 +174,7 @@
 			global $connection;
 
 			$country = $_SESSION['country'];
-			$sql = "SELECT TrackingNumber FROM packages WHERE HideFromCountry <> '$country' ORDER BY PackageID DESC LIMIT 1";
+			$sql = "SELECT TrackingNumber FROM packages WHERE HideFromCountry != '$country' OR HideFromCountry IS NULL ORDER BY PackageID DESC LIMIT 1";
 
 
 			// prepare the sql statement
@@ -178,7 +217,7 @@
 			global $connection;
 			$country = $_SESSION['country'];
 
-			$sql = "SELECT TrackingNumber, CustomerName, MainIssue, Description FROM packages WHERE Resolved = 'No' AND HideFromCountry <> '$country' ORDER BY PackageID DESC LIMIT 10";
+			$sql = "SELECT TrackingNumber, CustomerName, MainIssue, Description FROM packages WHERE Resolved = 'No' AND (HideFromCountry != '$country' OR HideFromCountry IS NULL) ORDER BY PackageID DESC LIMIT 10";
 
 
 			// prepare the sql statement
@@ -291,10 +330,12 @@
 		{
 			// $userTotal = call_user_func('countTotal', 'users');
 			$packageTotal = call_user_func('countTotal');
+			$availableTotal = call_user_func('countTotalAvailableIssues');
 			$hiddenTotal = call_user_func('countTotalHidden');
 			$lastModifiedUser = call_user_func('getLastModifiedUser');
 			$lastAddedPackage = call_user_func('getLastAddedPackage');
 			$generateMostRecentIssues = call_user_func('mostRecentIssues');
+
 
 			// Uncomment the line below to show news feed
 
@@ -308,7 +349,7 @@
 				<!-- The overview of the system -->
 
 				<div id="content">
-
+					<header class="username-welcome">Welcome, '.$_SESSION['username'].'</header>
 				<header class ="modules"> <i class="fa fa-bullhorn fa-fw"></i> News summary </header>
 					<div class="recent-items">
 							'.$generateMostRecentNewsItems.'
@@ -317,7 +358,7 @@
 					<header class ="modules"> <i class="fa fa-eye fa-fw"></i> At a glance </header>
 
 							<section class="card">
-								<p class="card-title">Total number of Issues</p>
+								<p class="card-title">Total Issues</p>
 								<p class="summary">
 									<span>'. $packageTotal .'</span>
 								</p>
@@ -330,6 +371,12 @@
 								</p>
 							</section>
 
+							<section class="card">
+								<p class="card-title">Available Issues</p>
+								<p class="summary">
+									<span>'. $availableTotal .'</span>
+								</p>
+							</section>
 
 
 							<section class="card">

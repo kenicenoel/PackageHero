@@ -120,6 +120,15 @@ header
 
 }
 
+header.username-welcome
+{
+	font-size: 2em;
+	margin-left:5px;
+	font-family: 'Source Sans Pro', sans-serif;
+	text-transform: capitalize;
+	color: rgb(40, 96, 205);
+}
+
 header.subheading, header.titleheading
 {
 	font-size: 18px;
