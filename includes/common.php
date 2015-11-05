@@ -3,10 +3,6 @@
 		require_once dirname(__FILE__) .'/config.php';
 		require_once('classes/PasswordGenerator.php');
 
-
-
-
-
 		/* The countTotal, getLastAddedUser, getLastAddedLandlord functions
 			are all system overview functions that do the job their name implies
 		*/
@@ -16,16 +12,15 @@
 		{
 			global $connection;
 			$country = $_SESSION['country'];
-			// $table = $tableName;
 
 			// Build the query
-      	$sql = "SELECT * FROM packages WHERE Resolved = 'No'";
+      $sql = "SELECT * FROM packages WHERE Resolved = 'No'";
 
-	      //prepare the sql statement
-	      $stmt = $connection->prepare($sql);
+	    //prepare the sql statement
+	    $stmt = $connection->prepare($sql);
 
-	      //execute the prepared statement
-	      $stmt->execute();
+	    //execute the prepared statement
+	    $stmt->execute();
 
 			/* store result */
 	    $stmt->store_result();
@@ -44,13 +39,13 @@
 			}
 
 
+
 			/* Close statement */
 			$stmt->close();
-
 			$connection->close();
 
-
 		}
+
 
 
 		// Count the total number of package issues hidden
@@ -58,15 +53,14 @@
 		{
 			global $connection;
 			$country = $_SESSION['country'];
-			// $table = $tableName;
 
 			// Build the query
-      	$sql = "SELECT * FROM packages WHERE Resolved = 'No' AND HideFromCountry = '$country'";
+      $sql = "SELECT * FROM packages WHERE Resolved = 'No' AND HideFromCountry = '$country'";
 
 	      //prepare the sql statement
 	      $stmt = $connection->prepare($sql);
 
-	      //execute the prepared statement
+	    //execute the prepared statement
 	      $stmt->execute();
 
 			/* store result */
@@ -129,11 +123,11 @@
 
 			/* Close statement */
 			$stmt->close();
-
 			$connection->close();
 
 
 		}
+
 
 
 		// Get the user whose details were last modified
@@ -175,7 +169,6 @@
 
 			$country = $_SESSION['country'];
 			$sql = "SELECT TrackingNumber FROM packages WHERE HideFromCountry != '$country' OR HideFromCountry IS NULL ORDER BY PackageID DESC LIMIT 1";
-
 
 			// prepare the sql statement
 			$stmt = $connection->prepare($sql);
@@ -263,14 +256,11 @@
 			// Close the statement
 			$stmt ->close();
 
-
-
 		}
 
 
 		// Get the  most recent news items that were added
-		////////////////////////////////////////////////////
-		////////////////////////////////////////////////////
+
 		function mostRecentNewsItems()
 		{
 			global $connection;
@@ -320,9 +310,6 @@
 		}
 
 
-
-
-
 		// The overview function creates the data shown in the admin dashboard by calling the various
 		// functions and passing the correct parameter
 
@@ -340,8 +327,6 @@
 			// Uncomment the line below to show news feed
 
 			 $generateMostRecentNewsItems = call_user_func('mostRecentNewsItems');
-
-
 
 			$moduleName = "System Overview";
 
