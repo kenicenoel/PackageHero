@@ -54,7 +54,7 @@
 			$country = $_SESSION['country'];
 
 			// Build the query
-      $sql = "SELECT * FROM packages WHERE Resolved = 'No' AND HideFromCountry = '$country'";
+      $sql = "SELECT * FROM packages WHERE Resolved = 'No' AND PackageID IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = '$country')";
 
 	      //prepare the sql statement
 	      $stmt = $connection->prepare($sql);
@@ -95,7 +95,7 @@
 			// $table = $tableName;
 
 			// Build the query
-				$sql = "SELECT * FROM packages WHERE Resolved = 'No' AND (HideFromCountry != '$country' OR HideFromCountry IS NULL)";
+				$sql = "SELECT * FROM packages WHERE Resolved = 'No' AND (PackageID NOT IN(SELECT PackageID from hiddenissues) OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = '$country'))";
 
 				//prepare the sql statement
 				$stmt = $connection->prepare($sql);
@@ -161,13 +161,13 @@
 
 		}
 
-		// Get the  last new user that was added
+		// Get the  last new package that was added
 		function getLastAddedPackage()
 		{
 			global $connection;
 
 			$country = $_SESSION['country'];
-			$sql = "SELECT TrackingNumber FROM packages WHERE HideFromCountry != '$country' OR HideFromCountry IS NULL ORDER BY PackageID DESC LIMIT 1";
+			$sql = "SELECT TrackingNumber FROM packages WHERE (PackageID NOT IN(SELECT PackageID from hiddenissues)  OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = '$country') ) ORDER BY PackageID DESC LIMIT 1";
 
 			// prepare the sql statement
 			$stmt = $connection->prepare($sql);
@@ -209,7 +209,7 @@
 			global $connection;
 			$country = $_SESSION['country'];
 
-			$sql = "SELECT TrackingNumber, CustomerName, MainIssue, Description FROM packages WHERE Resolved = 'No' AND (HideFromCountry != '$country' OR HideFromCountry IS NULL) ORDER BY PackageID DESC LIMIT 10";
+			$sql = "SELECT TrackingNumber, CustomerName, MainIssue, Description FROM packages WHERE Resolved = 'No' AND (PackageID NOT IN(SELECT PackageID from hiddenissues) OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = '$country')) ORDER BY PackageID DESC LIMIT 10";
 
 
 			// prepare the sql statement

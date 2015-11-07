@@ -24,7 +24,7 @@
 
 
       // Hide the issue
-      $sql = "UPDATE packages SET packages.HideFromCountry = '$country' WHERE packages.PackageID = '$pid'";
+      $sql = "INSERT into hiddenissues (PackageID, HideFromCountry, HiddenBy) VALUES('$pid','$country','$username')";
       $stmt = $connection->prepare($sql);
       $stmt->execute();
 

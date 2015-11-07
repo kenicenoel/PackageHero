@@ -6,7 +6,7 @@
 		$country = $_SESSION['country'];
 
 		// Get the total rows from the database matching criteria
-		$sql = "SELECT * FROM packages WHERE Resolved ='No' AND (HideFromCountry != '$country' OR HideFromCountry IS NULL)";
+		$sql = "SELECT * FROM packages WHERE Resolved ='No' AND (PackageID NOT IN(SELECT PackageID from hiddenissues)  OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = '$country') )";
 
 		$stmt = $connection->prepare($sql);
 
@@ -51,7 +51,7 @@
 		$limit = 'LIMIT ' .($pagenum - 1) * $pageRows . ',' . $pageRows;
 
 		// Grab one row of data
-		$sql = "SELECT TrackingNumber, CustomerName, MainIssue, Description, Photo1, Photo2, Photo3, Photo4, Photo5 FROM packages WHERE Resolved ='No' AND (HideFromCountry != '$country' OR HideFromCountry IS NULL) ORDER BY IssueCreationTime DESC $limit";
+		$sql = "SELECT TrackingNumber, CustomerName, MainIssue, Description, Photo1, Photo2, Photo3, Photo4, Photo5 FROM packages WHERE Resolved ='No' AND (PackageID NOT IN(SELECT PackageID from hiddenissues)  OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = '$country') ) ORDER BY IssueCreationTime DESC $limit";
 
 
 		  // prepare the sql statement
