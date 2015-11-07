@@ -7,7 +7,7 @@ $(document).ready(function()
     $(".fancybox").fancybox();
 
 
-        //Ajax add package
+        // Ajax add package
 
         $('body').on('click', '#upload', function(e)
         {
@@ -215,7 +215,7 @@ $(document).ready(function()
         // Run this code when the "HIDE" button is clicked
         $('#hide').click(function()
         {
-             
+
             // var news = "marked issue"+tnumber+" as RESOLVED.";
               $.ajax
               ({

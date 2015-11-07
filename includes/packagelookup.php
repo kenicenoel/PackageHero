@@ -5,7 +5,7 @@ if(isset($_POST['query']))
 {
       $trackingnumber = $_POST['query'];
 
-      $sql = "SELECT TrackingNumber, CustomerName, Description, Photo1 FROM packages WHERE packages.TrackingNumber = ?";
+      $sql = "SELECT TrackingNumber, CustomerName, MainIssue, Resolved, Description, Photo1 FROM packages WHERE packages.TrackingNumber = ?";
 
 		  // prepare the sql statement
 		  $stmt = $connection->prepare($sql);
@@ -20,20 +20,22 @@ if(isset($_POST['query']))
 		  $stmt->store_result();
 
 		  /* Bind the results to variables */
-		  $stmt->bind_result($trackingnumber, $customername, $desc, $image1);
+		  $stmt->bind_result($trackingnumber, $customername, $issue, $resolved, $desc, $image1);
 
 
 
       while($stmt->fetch())
       {
 
-        $desc_snippet = substr($desc, 0, 30);
+        $desc_snippet = substr($desc, 0, 50);
           echo '
           <div class="card">
-  				    <header class="subheading"><span class="fa fa-truck"> </span> Tracking No: '.$trackingnumber.'</header>
+  				    <header class="subheading"><span class="fa fa-plane"> </span> Tracking Number: '.$trackingnumber.'</header>
   					  <p><img src="../includes/'.$image1.'"alt="packageImage" /></p>
-  				    <p><span class="fa fa-male"> </span>Customer: '.$customername.'</p>
-  					  <p><span class="fa fa-file-text"> </span> '.$desc_snippet.'...</p>
+  				    <p><span class="fa fa-male"> </span> Customer: '.$customername.'</p>
+              <p><span class="fa fa-bug"> </span> Main Issue: '.$issue.'</p>
+              <p><span class="fa fa-check"> </span> Resolved? '.$resolved.'</p>
+  					  <p><span class="fa fa-file-text"> </span> Details: '.$desc_snippet.'...</p>
 
   			  </div>
 

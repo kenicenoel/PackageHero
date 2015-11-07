@@ -60,3 +60,12 @@ CREATE TABLE newsfeed
 	FOREIGN KEY newsfeed(PackageID) references packages(PackageID)
 
 );
+
+CREATE TABLE hiddenissues
+(
+	HiddenIssueNumber int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	PackageID int(11) NOT NULL,
+	HiddenFromCountry varchar(200),
+	HiddenBy varchar(25),
+	FOREIGN KEY hiddenissues(PackageID) references packages(PackageID)
+);

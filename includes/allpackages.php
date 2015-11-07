@@ -170,8 +170,8 @@
 							<div id="data">
 									<div id = "toggle-view">
 										<p>CHANGE VIEW:<p>
-										<p id="list" class="view"><span class="fa fa-list"> List</span><p>
-										<p id="grid" class="view"><span class="fa fa-th"> Grid</span><p>
+										<p id="list" class="view"><span class="fa fa-table"> Table</span><p>
+										<p id="grid" class="view"><span class="fa fa-th"> Cards</span><p>
 									</div>
 									<!--Show the results as a grid (the default view -->
 										<div id="result-cards">
