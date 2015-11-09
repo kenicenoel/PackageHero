@@ -1,6 +1,6 @@
 <?php
 			require_once ("../includes/dashboard_header.php");
-			
+
 			// checks if the url has the module switch
 			if(isset ($_GET['module']))
 			{

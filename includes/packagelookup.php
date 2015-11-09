@@ -3,9 +3,9 @@ include_once("config.php");
 
 if(isset($_POST['query']))
 {
-      $trackingnumber = $_POST['query'];
+      $trackingnumber = "%{$_POST['query']}%";
 
-      $sql = "SELECT TrackingNumber, CustomerName, MainIssue, Resolved, Description, Photo1 FROM packages WHERE packages.TrackingNumber = ?";
+      $sql = "SELECT TrackingNumber, CustomerName, MainIssue, Resolved, Description, Photo1 FROM packages WHERE packages.TrackingNumber Like ?";
 
 		  // prepare the sql statement
 		  $stmt = $connection->prepare($sql);

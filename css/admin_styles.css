@@ -492,11 +492,9 @@ a[data-view="hide"]
 
 thead
 {
-	/*background-color:rgba(139, 15, 158, 0.69);*/
 	color:#3498db;
 	font-size: 20px;
 	font-family: 'Source Sans Pro', sans-serif;
-/*	padding: 0px 10px;*/
 	text-align:left;
 
 }
@@ -504,7 +502,7 @@ thead
 
 div#toggle-view
 {
-/*	float: right;*/
+
 	display: block;
 	padding-bottom: 70px;
 	margin-left: 60%;
@@ -530,7 +528,6 @@ div#table-results
 {
 	height:auto;
 	width:auto;
-	/*margin-left:210px;*/
 	display: block;
 
 }
@@ -552,7 +549,6 @@ div#recent-items td
 
 div#result-cards
 {
-	/*margin-left:150px;*/
 	display: none;
 	overflow: hidden;
 	box-sizing: border-box;
@@ -574,7 +570,6 @@ div.card a.full-details:hover, td a.full-details:hover
 	float: right;
 	display: block;
 }
-
 
 #result-container
 {
@@ -623,10 +618,6 @@ td
 	padding: 10px 5px;
 	font-size: 18px;
 	text-align: left;
-	/*font-weight: bold;*/
-
-
-
 }
 
 
@@ -695,10 +686,9 @@ div.card, form.card, section.card
 
 	display:inline-block;
 	margin:0px 9px;
-	padding: 0px 20px;
+	padding: 5px 20px 20px 5px;
 	font-family: 'Source Sans Pro', sans-serif;
 	width:auto;
-/*	height: 400px;*/
 	border-width: 1px 1px 3px 1px;
 	border-color: #c7c7c7;
 	border-style: solid ;

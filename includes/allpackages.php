@@ -60,9 +60,6 @@
 		  // prepare the sql statement
 		  $stmt = $connection->prepare($sql);
 
-		  // bind variables to the paramenters ? present in sql
-		  // $stmt->bind_param('s',$trackingnumber);
-
 		  // execute the prepared statement
 		  $stmt->execute();
 
@@ -141,6 +138,7 @@
 			  </div>
 
 			  ';
+
 			  // Generate the list view
 			  $list.= '
 			  <tr>
@@ -155,16 +153,10 @@
 			  ';
 			}
 
-
-
 		 // end if isset
 
 
 ?>
-
-
-
-
 
 						<div id = "container">
 

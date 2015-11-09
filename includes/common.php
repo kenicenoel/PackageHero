@@ -171,7 +171,7 @@
 			global $connection;
 
 			$country = $_SESSION['country'];
-			$sql = "SELECT TrackingNumber FROM packages WHERE (PackageID NOT IN(SELECT PackageID from hiddenissues)  OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = '$country') ) ORDER BY PackageID DESC LIMIT 1";
+			$sql = "SELECT TrackingNumber FROM packages WHERE (PackageID NOT IN(SELECT PackageID from hiddenissues)  OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = '$country')) ORDER BY PackageID DESC LIMIT 1";
 
 			// prepare the sql statement
 			$stmt = $connection->prepare($sql);
@@ -464,7 +464,7 @@
 
 				<form class="card">
 					<header class = "subheading"><span class=" fa fa-search"></span>Package Finder</header>
-					<p>Enter a tracking number to find the package it belongs to.</p><br>
+					<p>Enter all or part of a tracking number to find packages<br> it may belong to.</p><br>
 
 					<input id="queryField" type = "text" name="query" placeholder = "Enter tracking number" /><br>
 					<input id="lookupButton" type="submit" value="Find">

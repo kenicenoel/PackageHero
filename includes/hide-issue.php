@@ -11,7 +11,6 @@
 
 
 
-
       // Get the user country
       $sql = "SELECT Country FROM users WHERE Username = '$username'";
       $stmt = $connection->prepare($sql);
@@ -35,7 +34,6 @@
       $stmt->bind_param('sss', $pid, $news, $username);
       $stmt->execute();
       $stmt->close();
-
       echo "Done";
 
 
