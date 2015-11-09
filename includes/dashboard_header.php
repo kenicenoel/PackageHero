@@ -26,10 +26,10 @@
 					<body>
 						<nav id ="navigation">
 							<p id="start">Package Hero&reg;</p>
-							<a class ="link" href ="?module=overview" title = "View an overview of the system"><i class="fa fa-dashboard fa-fw"></i>Overview</a>
+							<a class ="link" href ="?module=overview" title = "View an overview of the system"><i class="fa fa-tasks fa-fw"></i> Overview</a>
 							<a class ="link" href="#" id="newissue" title = "Create a new issue"><i class="fa fa-bug fa-fw"></i> New Issue</a>
-							<a class ="link" href="../includes/allpackages.php"  title = "View a list of all Packages with issues"><i class="fa fa-truck fa-fw"></i> Current issues</a>
+							<a class ="link" href="../includes/allpackages.php"  title = "View a list of all Packages with issues"><i class="fa fa-plane fa-fw"></i> Current issues</a>
 							<a class ="link" href ="?module=search" title = "Search for any package data"><i class="fa fa-search fa-fw"></i> Find a package</a>
 							<a class ="link" href ="#" id="help" title = "Get help with using the system"><i class="fa fa-question-circle fa-fw"></i> Help</a>
-							<a class ="link" href ="../includes/logout.php" title = "Logout from Package Issues Manager"><i class="fa fa-sign-out fa-fw"></i> Sign out</a>
+							<a class ="link" href ="../includes/logout.php" title = "Logout from Package Issues Manager"><i class="fa fa-close fa-fw"></i> Sign out</a>
 						</nav>

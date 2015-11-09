@@ -506,8 +506,9 @@ div#toggle-view
 {
 /*	float: right;*/
 	display: block;
-	padding-bottom: 20px;
-	margin-left: 80%;
+	padding-bottom: 70px;
+	margin-left: 60%;
+
 
 }
 
@@ -516,6 +517,7 @@ div#toggle-view p
 	display: inline;
 	padding:5px;
 	margin: 2px;
+	font-weight: bold;
 }
 
 div#toggle-view p.view:hover

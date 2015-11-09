@@ -54,7 +54,7 @@
 		$limit = 'LIMIT ' .($pagenum - 1) * $pageRows . ',' . $pageRows;
 
 		// Grab one row of data
-		$sql = "SELECT TrackingNumber, CustomerName, MainIssue, Description FROM packages WHERE Resolved = 'No' AND (PackageID NOT IN(SELECT PackageID from hiddenissues) OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = '$country')) ORDER BY PackageID DESC $limit";
+		$sql = "SELECT TrackingNumber, CustomerName, MainIssue, Description, photo1 FROM packages WHERE Resolved = 'No' AND (PackageID NOT IN(SELECT PackageID from hiddenissues) OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = '$country')) ORDER BY PackageID DESC $limit";
 
 
 		  // prepare the sql statement
@@ -70,7 +70,7 @@
 		  $stmt->store_result();
 
 		  /* Bind the results to variables */
-		  $stmt->bind_result($tnumber, $customername, $mainissue, $description);
+		  $stmt->bind_result($tnumber, $customername, $mainissue, $description, $photo1);
 			$i = 0;
 
 			$textline = "There are $total packages with issues in the system. You are on page $pagenum of $lastPage.";
@@ -131,11 +131,11 @@
 			  // Generate the grid view
 			  $grid.= '
 			  <div class="card">
-				    <header class="subheading"><span class="fa fa-truck"> </span> '.$tnumber.'</header>
+				    <header class="subheading"><span class="fa fa-truck"> </span> Tracking #: '.$tnumber.'</header>
 						<p><img src="../includes/'.$photo1.'"alt="packageImage" /></p>
-				    <p><span class="fa fa-male"> </span> '.$customername.'</p>
-						<p><span class="fa fa-warning"> </span> '.$mainissue.'</p>
-				  	<p>'.$desc_snippet.'...</p>
+				    <p><span class="fa fa-male"> </span> Customer: '.$customername.'</p>
+						<p><span class="fa fa-warning"> </span> Main Issue: '.$mainissue.'</p>
+				  	<p> Description: '.$desc_snippet.'...</p>
 
 				    <p><a id="view-full" class="full-details" href="fulldetails.php?trackingnumber='.$tnumber.'" title="View full package details"><span class="fa fa-legal fa-fw"></span>Take action</a></p>
 			  </div>

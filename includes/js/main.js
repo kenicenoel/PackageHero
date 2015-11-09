@@ -138,8 +138,6 @@ $(document).ready(function()
               // datatype: 'text',
               success: function (response)
               {
-                console.log(response);
-                console.log(data);
                 $('#lookupResults').html(response);
                 $('#loader').replaceWith('<input id="lookupButton" type = "submit" value="lookup">');
 
@@ -167,7 +165,7 @@ $(document).ready(function()
                   data: "note="+note,
                   success: function(response)
                   {
-                      console.log(response+"/"+note);
+
                       if(response == 'Done')
                       {
                         location.reload();
@@ -195,7 +193,7 @@ $(document).ready(function()
                   // data: "news="+news,
                   success: function(response)
                   {
-                      console.log(response);
+
                       if(response == 'Done')
                       {
                         window.open('allpackages.php', '_self');
@@ -228,7 +226,7 @@ $(document).ready(function()
                   // data: "news="+news,
                   success: function(response)
                   {
-                      console.log(response);
+
                       if(response == 'Done')
                       {
                         window.open('allpackages.php', '_self');
@@ -250,18 +248,18 @@ $(document).ready(function()
               $.ajax
               ({
 
-                  url: 'support/help.php',
+                  url: '../support/help.php',
                   type: 'POST',
 
                   success: function(response)
                   {
-                      console.log(response);
+
                       if(response == 'Done')
                       {
                         $('#data').html(response);
 
                       }
-                      
+
                   }
 
                 });
