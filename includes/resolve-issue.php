@@ -3,7 +3,7 @@
   session_start();
 
 
-      global $connection;
+      // global $connection;
 
 
 
@@ -12,18 +12,40 @@
       $tnumber = $_SESSION['trackingnumber'];
       $news = $username." marked issue ".$tnumber." as Resolved.";
 
+      $resolved = "Yes";
+      $timestamp = "now()";
+
+
       // Set the issue as resolved
-      $sql = "UPDATE packages SET Resolved ='Yes', ResolvedTimestamp = now(), ResolvedBy ='$username' WHERE PackageID = $pid";
+      $sql = "UPDATE packages SET Resolved = ?, ResolvedTimestamp = ?, ResolvedBy = ? WHERE PackageID = ?";
       $stmt = $connection->prepare($sql);
-      $stmt->execute();
+      $stmt->bind_param('sssi', $resolved, $timestamp, $username, $pid);
 
-      // Insert the newsfeed item into table
-      $sql = "INSERT INTO newsfeed (PackageID, News, Username) VALUES(?,?,?)";
-      $stmt = $connection->prepare($sql);
-      $stmt->bind_param('sss', $pid, $news, $username);
-      $stmt->execute();
-      $stmt->close();
+        if($stmt->execute())
+        {
+          // Insert the newsfeed item into table
+          $query = "INSERT INTO newsfeed (PackageID, News, Username) VALUES(?,?,?)";
+          $stmt = $connection->prepare($query);
+          $stmt->bind_param('iss', $pid, $news, $username);
+          $stmt->execute();
 
-      echo "Done";
+
+          echo "Done";
+        }
+
+
+
+        else
+        {
+          echo "Failed to mark the issue as resolved";
+        }
+
+        $stmt->close();
+
+
+
+
+
+
 
 ?>

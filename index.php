@@ -30,7 +30,7 @@
 
 				</div>
 
-						<footer id = "footer">&copy;2015 Websource</footer>
+						<footer id = "footer">&copy;2015 Web Source company LTD. Package Hero&reg;.</footer>
 
 			</div>
 

@@ -3,6 +3,7 @@
 		require_once ('config.php');
 		include_once('dashboard_header_2.php');
 
+	
 		if(isset($_GET['trackingnumber'])  )
 		{
 
@@ -76,7 +77,7 @@
 												<!-- The action buttons goes below here -->
 												<button class="task-actions" id="resolve"><span class="fa fa-check fa-fw"></span>Resolve</button>
 												<button class="task-actions" id="hide"><span class="fa fa-eye-slash fa-fw"></span>Hide</button>
-
+												<p id="errorMessage"></p>
 											<div id="actions">
 												<header class="subheading">Enter an update for this issue</header>
 												<input id="note" type="text" placeholder="e.g. Received invoice from Customer" name="note">

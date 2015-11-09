@@ -1,6 +1,6 @@
 <?php
 			require_once ("../includes/dashboard_header.php");
-
+			
 			// checks if the url has the module switch
 			if(isset ($_GET['module']))
 			{
@@ -45,7 +45,7 @@
 					<header><span class="fa fa-area-chart fa-fw"></span> Dashboard > <?php echo $moduleName ?></header>
 					<div id="data">
 						<?php call_user_func($setmodule) ?> <!-- calls the appropriate function  based on the set module -->
-							
+
 
 					</div>
 

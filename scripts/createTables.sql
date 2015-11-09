@@ -2,7 +2,7 @@
 CREATE DATABASE IF NOT EXISTS websource_package_data;
 USE websource_package_data;
 
-CREATE TABLE users
+CREATE TABLE IF NOT EXISTS users
 (
 	userId  int(5) AUTO_INCREMENT NOT NULL PRIMARY KEY,
 	Username varchar(25) NOT NULL,
@@ -14,17 +14,16 @@ CREATE TABLE users
 	Country varchar(30),
 	LastLoginTime timestamp NULL DEFAULT NULL,
   LastModifiedOn timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-
 );
 
 
-CREATE TABLE packages
+CREATE TABLE IF NOT EXISTS packages
 (
 	PackageID int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	TrackingNumber varchar(50) NOT NULL,
 	HAWB varchar(50),
 	CustomerName varchar(50),
-	MainIssue varchar(50) DEFAULT Not entered,
+	MainIssue varchar(50) DEFAULT 'Not entered',
 	Description varchar(300) NOT NULL,
 	HideFromCountry varchar(30),
 	Photo1 varchar(50),
@@ -32,13 +31,13 @@ CREATE TABLE packages
 	Photo3 varchar(50),
 	Photo4 varchar(50),
 	Photo5 varchar(50),
-	Resolved varchar(3) DEFAULT No,
+	Resolved varchar(3) DEFAULT 'No',
 	ResolvedBy varchar(25),
 	IssueCreationTime timestamp DEFAULT CURRENT_TIMESTAMP
 
 );
 
-CREATE TABLE updates
+CREATE TABLE IF NOT EXISTS updates
 (
 	UpdateNumber int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	PackageID int(11) NOT NULL,
@@ -50,7 +49,7 @@ CREATE TABLE updates
 );
 
 
-CREATE TABLE newsfeed
+CREATE TABLE IF NOT EXISTS newsfeed
 (
 	NewsfeedNumber int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	PackageID int(11) NOT NULL,
@@ -61,7 +60,7 @@ CREATE TABLE newsfeed
 
 );
 
-CREATE TABLE hiddenissues
+CREATE TABLE IF NOT EXISTS hiddenissues
 (
 	HiddenIssueNumber int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	PackageID int(11) NOT NULL,

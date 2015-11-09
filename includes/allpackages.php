@@ -3,10 +3,13 @@
 		require_once ('config.php');
 		include_once('dashboard_header_2.php');
 
+
+
 		$country = $_SESSION['country'];
 
+
 		// Get the total rows from the database matching criteria
-		$sql = "SELECT * FROM packages WHERE Resolved ='No' AND (PackageID NOT IN(SELECT PackageID from hiddenissues)  OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = '$country') )";
+		$sql = "SELECT * FROM packages WHERE Resolved ='No' AND (PackageID NOT IN(SELECT PackageID from hiddenissues)  OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = '$country'))";
 
 		$stmt = $connection->prepare($sql);
 
@@ -51,7 +54,7 @@
 		$limit = 'LIMIT ' .($pagenum - 1) * $pageRows . ',' . $pageRows;
 
 		// Grab one row of data
-		$sql = "SELECT TrackingNumber, CustomerName, MainIssue, Description, Photo1, Photo2, Photo3, Photo4, Photo5 FROM packages WHERE Resolved ='No' AND (PackageID NOT IN(SELECT PackageID from hiddenissues)  OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = '$country') ) ORDER BY IssueCreationTime DESC $limit";
+		$sql = "SELECT TrackingNumber, CustomerName, MainIssue, Description FROM packages WHERE Resolved = 'No' AND (PackageID NOT IN(SELECT PackageID from hiddenissues) OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = '$country')) ORDER BY PackageID DESC $limit";
 
 
 		  // prepare the sql statement
@@ -67,7 +70,7 @@
 		  $stmt->store_result();
 
 		  /* Bind the results to variables */
-		  $stmt->bind_result($tnumber, $customername, $mainissue, $description, $photo1, $photo2, $photo3, $photo4, $photo5);
+		  $stmt->bind_result($tnumber, $customername, $mainissue, $description);
 			$i = 0;
 
 			$textline = "There are $total packages with issues in the system. You are on page $pagenum of $lastPage.";

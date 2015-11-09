@@ -7,6 +7,7 @@ $(document).ready(function()
       var username = $('#username').val();
       var password = $('#password').val();
 
+
         $.ajax
         ({
 
@@ -19,12 +20,13 @@ $(document).ready(function()
                 if(response == 'true')
                 {
                   console.log("good Login");
+                  // window.open('admin/test.php', '_self');
                   window.open('admin/dashboard.php', '_self');
                 }
                 else
                 {
                   $('#msg').text(" You've entered an incorrect username address or password.");
-                  console.log("Bad login");
+                  console.log("Bad login" + response);
 
                 }
 

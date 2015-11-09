@@ -6,6 +6,9 @@
 		/* The countTotal, getLastAddedUser, getLastAddedLandlord functions
 			are all system overview functions that do the job their name implies
 		*/
+		session_start();
+
+
 
 		// Count the total number of package issues
 		function countTotal()
@@ -50,6 +53,7 @@
 		// Count the total number of package issues hidden
 		function countTotalHidden()
 		{
+
 			global $connection;
 			$country = $_SESSION['country'];
 
@@ -65,7 +69,7 @@
 			/* store result */
 	    $stmt->store_result();
 
-			$total = $stmt->num_rows;
+		$total = $stmt->num_rows;
 
 			if($total == 0)
 			{
@@ -209,7 +213,7 @@
 			global $connection;
 			$country = $_SESSION['country'];
 
-			$sql = "SELECT TrackingNumber, CustomerName, MainIssue, Description FROM packages WHERE Resolved = 'No' AND (PackageID NOT IN(SELECT PackageID from hiddenissues) OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = '$country')) ORDER BY PackageID DESC LIMIT 10";
+			$sql = "SELECT TrackingNumber, CustomerName, MainIssue, Description FROM packages WHERE Resolved = 'No' AND (PackageID NOT IN(SELECT PackageID from hiddenissues) OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = '$country')) ORDER BY PackageID DESC LIMIT 5";
 
 
 			// prepare the sql statement
@@ -354,6 +358,7 @@
 									<span>'. $hiddenTotal .'</span>
 								</p>
 							</section>
+
 
 							<section class="card">
 								<p class="card-title">Available Issues</p>

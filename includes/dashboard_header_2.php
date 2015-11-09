@@ -3,7 +3,7 @@
 	require_once ("../includes/common.php");
 	session_start();
 
-	if(!isset($_SESSION['userID']) && !isset($_SESSION['username']))
+	if(!isset($_SESSION['id']) && !isset($_SESSION['username']))
 	{
 		header("Location:../index.php");
 	}

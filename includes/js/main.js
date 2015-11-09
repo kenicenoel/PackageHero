@@ -184,9 +184,8 @@ $(document).ready(function()
         // Run this code when the "RESOLVE" button is clicked
         $('#resolve').click(function()
         {
-            // var user = "<?php echo $_SESSION['username'] ?>";
-            // var tnumber = "<?php echo $_SESSION['trackingnumber'] ?>";
-            // console.log(tnumber);
+
+
             // var news = "marked issue"+tnumber+" as RESOLVED.";
               $.ajax
               ({
@@ -196,11 +195,15 @@ $(document).ready(function()
                   // data: "news="+news,
                   success: function(response)
                   {
-                      // console.log(response+"/"+note);
+                      console.log(response);
                       if(response == 'Done')
                       {
                         window.open('allpackages.php', '_self');
 
+                      }
+                      else
+                      {
+                          $('#errorMessage').text(response);
                       }
 
                   }
@@ -237,6 +240,36 @@ $(document).ready(function()
                 });
               return false;
         });
+
+
+
+        // Generate the help content
+        $('#help').click(function()
+        {
+
+              $.ajax
+              ({
+
+                  url: 'support/help.php',
+                  type: 'POST',
+
+                  success: function(response)
+                  {
+                      console.log(response);
+                      if(response == 'Done')
+                      {
+                        $('#data').html(response);
+
+                      }
+                      
+                  }
+
+                });
+              return false;
+        });
+
+
+
 
 
 
