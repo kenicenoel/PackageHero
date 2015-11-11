@@ -123,7 +123,7 @@
 			{
 			  $i++;
 
-				$desc_snippet = substr($description, 0, 30); // a 30 character substring of the description
+				$desc_snippet = substr($description, 0, 25); // a 30 character substring of the description
 
 			  // Generate the grid view
 			  $grid.= '
@@ -204,7 +204,8 @@
 					<script src="../includes/js/jquery.js"></script>
 					<script src="../fancybox/source/jquery.fancybox.js"></script>
 					<script src="../includes/js/main.js"></script>
-					<script src="../includes/js/custom.js"></script>
+					<script src="../includes/js/jquery.circliful.min.js"></script>
+
 
 			</body>
 </html>

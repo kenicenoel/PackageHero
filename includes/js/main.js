@@ -17,7 +17,7 @@ $(document).ready(function()
               $('#upload').val("Adding package...");
 
               $.ajax({
-                  url: '../includes/addpackage.php',
+                  url: '../includes/add_issue.php',
                   type: 'POST',
                   xhr: function()
                   {
@@ -266,6 +266,12 @@ $(document).ready(function()
               return false;
         });
 
+
+          // Create the graphs
+          $('#total-issues').circliful();
+          $('#hidden-issues').circliful();
+          $('#available-issues').circliful();
+          $('#last-issue').circliful();
 
 
 

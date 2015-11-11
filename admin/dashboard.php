@@ -39,14 +39,12 @@
 ?>
 
 
-	<div class = "container">
+	<div id = "container">
 
 			<div id ="content2">
-					<header><span class="fa fa-area-chart fa-fw"></span> Dashboard > <?php echo $moduleName ?></header>
+					<header></header>
 					<div id="data">
-						<?php call_user_func($setmodule) ?> <!-- calls the appropriate function  based on the set module -->
-
-
+							<?php echo call_user_func($setmodule) ?>
 					</div>
 
 			</div>
@@ -55,12 +53,10 @@
 	</div>
 
 
-<script src="../includes/js/jquery.js"></script>
-<script src="../fancybox/source/jquery.fancybox.js"></script>
-<script src="../includes/js/main.js"></script>
-<script src="../includes/js/custom.js"></script>
-
-
+	<script src="../includes/js/jquery.js"></script>
+	<script src="../fancybox/source/jquery.fancybox.js"></script>
+	<script src="../includes/js/main.js"></script>
+	<script src="../includes/js/jquery.circliful.min.js"></script>
 
 
 </body>

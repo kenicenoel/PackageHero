@@ -110,7 +110,9 @@
 			/* store result */
 			$stmt->store_result();
 
+
 			$total = $stmt->num_rows;
+			$_SESSION['availableIssuesCount'] = $total;
 
 			if($total == 0)
 			{
@@ -313,6 +315,33 @@
 		}
 
 
+		function showDate()
+		{
+			/*
+			h - 12-hour format of an hour with leading zeros (01 to 12)
+			i - Minutes with leading zeros (00 to 59)
+			s - Seconds with leading zeros (00 to 59)
+			a - Lowercase Ante meridiem and Post meridiem (am or pm)
+			l - Full day of week
+			F - Full month
+			m - Day of the month
+			Y - Year
+
+			*/
+
+
+
+			$day = date("l");
+			$dayOfMonth = date("m") ;
+			$month = date("F");
+			$year = date("Y");
+			$time = date("h:i A");
+
+			return $dashboardTime = $day.", ".$month." ".$dayOfMonth.", ".$year;
+
+		}
+
+
 		// The overview function creates the data shown in the admin dashboard by calling the various
 		// functions and passing the correct parameter
 
@@ -326,58 +355,66 @@
 			$lastAddedPackage = call_user_func('getLastAddedPackage');
 			$generateMostRecentIssues = call_user_func('mostRecentIssues');
 
+			// Uncomment or comment out the line below to show/hide news feed
+			//  $generateMostRecentNewsItems = call_user_func('mostRecentNewsItems');
+			 $date = showDate();
 
-			// Uncomment the line below to show news feed
-
-			 $generateMostRecentNewsItems = call_user_func('mostRecentNewsItems');
-
-			$moduleName = "System Overview";
 
 				echo '
 				<!-- The overview of the system -->
 
 				<div id="content">
-					<header class="username-welcome">Welcome, '.$_SESSION['username'].'</header>
-				<header class ="modules"> <i class="fa fa-bullhorn fa-fw"></i> News summary </header>
-					<div class="recent-items">
-							'.$generateMostRecentNewsItems.'
+
+					<div id="time-date">
+						<header class="time"><i class="fa fa-calendar fa-fw"></i>'.$date.'</header>
 					</div>
 
-					<header class ="modules"> <i class="fa fa-eye fa-fw"></i> At a glance </header>
+					<!-- Uncomment to show news feed
+					<div class="recent-items">
+						<header class ="modules"> <i class="fa fa-bullhorn fa-fw"></i> News summary </header>
+							'.$generateMostRecentNewsItems.'
+					</div> -->
+					<br><br>
 
-							<section class="card">
-								<p class="card-title">Total Issues</p>
-								<p class="summary">
-									<span>'. $packageTotal .'</span>
-								</p>
-							</section>
+					<div class="at-a-glance">
+							<header class ="modules"> <i class="fa fa-pie-chart fa-fw"></i> Summary </header>
 
-							<section class="card">
-								<p class="card-title">Hidden Issues</p>
-								<p class="summary">
-									<span>'. $hiddenTotal .'</span>
-								</p>
-							</section>
+									<section class="card">
+										<p class="card-title">Total Issues</p>
+										<p class="summary">
+											<span id="total-issues" data-fgcolor="#FF6B6B" data-fontsize="30" data-dimension="200" data-text="'.$packageTotal.'" data-width="30" data-total="'.$packageTotal.'" data-part="'.$packageTotal.'"></span>
+										</p>
+									</section>
 
-
-							<section class="card">
-								<p class="card-title">Available Issues</p>
-								<p class="summary">
-									<span>'. $availableTotal .'</span>
-								</p>
-							</section>
+									<section class="card">
+										<p class="card-title">Hidden Issues</p>
+										<p class="summary">
+											<span id="hidden-issues" data-fgcolor="#A48AD4" data-fontsize="30" data-dimension="200" data-text="'.$hiddenTotal.'" data-width="30" data-total="'.$packageTotal.'" data-part="'.$hiddenTotal.'"></span>
+										</p>
+									</section>
 
 
-							<section class="card">
-								<p class="card-title">Most recent issue</p>
-								<p class="summary">
-							 			<span> '. $lastAddedPackage .'</span>
-							 	</p>
-							</section>
+									<section class="card">
+										<p class="card-title">Available Issues</p>
+										<p class="summary">
+											<span id="available-issues" data-fgcolor="#65C3DF" data-fontsize="30" data-dimension="200" data-text="'.$availableTotal.'" data-width="30" data-total="'.$packageTotal.'" data-part="'.$availableTotal.'"></span>
+										</p>
+									</section>
+
+
+									<section class="card">
+										<p class="card-title">Latest issue</p>
+										<p class="summary">
+									 			<span id="last-issue" data-fgcolor="#F8CB00" data-fontsize="20" data-dimension="200" data-text="'.$lastAddedPackage.'" data-width="30"></span>
+									 	</p>
+									</section>
+						</div>
 
 							<br><br>
-							<header class ="modules"> <i class="fa fa-history fa-fw"></i> Most recent issues </header>
-							<div id="recent-items">
+
+							<! -- This div shows the 5 most recent package issues that are not hidden and are unresolved -->
+							<div class="recent-items">
+								<header class ="modules"> <i class="fa fa-history fa-fw"></i> Most recent issues </header>
 										<table id="results">
 											<thead>
 												<tr>
@@ -395,8 +432,6 @@
 										</table>
 							</div>
 
-
-
 				</div>
 
 
@@ -404,57 +439,11 @@
 				';
 
 
-
-
-
-
-
-		}
-
-
-		// Shows the package management options
-		function package()
-		{
-
-			echo '
-			<!-- The listings div containing tiles -->
-			<div id="content">
-
-
-					<section id="cards" class="card" data-function="addPackage">
-						<p class="card-title">
-							Add new package
-						</p>
-
-						<p>
-							<span class="fa fa-plus fa-fw"></span>
-						</p>
-
-
-					</section>
-
-
-					<section id="cards" class="card" data-function="viewPackages">
-						<p class="card-title">
-							View all packages
-						</p>
-
-						<p>
-							<span class="fa fa-eye fa-fw"></span>
-						</p>
-
-
-					</section>
-
-			</div>';
-
-
 		}
 
 
 
-
-		// Shows the lookup management options
+		// Responsible for showing the search options
 		function search()
 		{
 
@@ -519,7 +508,9 @@
 
 
 
-			</div>';
+			</div>
+
+			';
 
 		}
 
@@ -533,9 +524,9 @@
 				}
 
 
-
-
-
-
-
 ?>
+
+<script src="../includes/js/jquery.js"></script>
+<script src="../fancybox/source/jquery.fancybox.js"></script>
+<script src="../includes/js/main.js"></script>
+<script src="../includes/js/jquery.circliful.min.js"></script>
