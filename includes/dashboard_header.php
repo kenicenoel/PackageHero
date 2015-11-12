@@ -34,6 +34,6 @@
 							<a class ="link" href="#" id="newissue" title = "Create a new issue"><i class="fa fa-bug fa-fw"></i> New Issue</a>
 							<a class ="link" href="../includes/allpackages.php"  title = "View a list of all Packages with issues"><i class="fa fa-eye fa-fw"></i> View issues <span><?php echo $_SESSION['availableIssuesCount'] ?></span></a>
 							<a class ="link" href ="?module=search" id="searchNav" title = "Search for any package data"><i class="fa fa-search fa-fw"></i> Find a package</a>
-							<a class ="link" href ="#" id="help" title = "Get help with using the system"><i class="fa fa-question-circle fa-fw"></i> Help</a>
+							<!-- <a class ="link" href ="#" id="help" title = "Get help with using the system"><i class="fa fa-question-circle fa-fw"></i> Help</a> -->
 							<a class ="link" href ="../includes/logout.php" title = "Logout from Package Issues Manager"><i class="fa fa-close fa-fw"></i> Sign out</a>
 						</nav>

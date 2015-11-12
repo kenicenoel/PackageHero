@@ -18,12 +18,12 @@
 					$area = $_GET['module'];
 					if($area == "search")
 					{
-						$title = "<i class='fa fa-search fa-fw'></i>Package search. Enter all or part of a tracking number then 'FIND'";
+						$title = "<button class='back-button'><i class='fa fa-chevron-left fa-fw'></i></button><i class='fa fa-search fa-fw'></i>Package search. Enter all or part of a tracking number then 'FIND'";
 					}
 
 					else
 					{
-						$title = "<span class='fa fa-dashboard fa-fw'></span>Dashboard > <span id='date'>".$date = showDate()."</span>";
+						// $title = "<button class='back-button'><i class='fa fa-chevron-left fa-fw'></i></button><span class='fa fa-dashboard fa-fw'><span class='fa fa-dashboard fa-fw'></span>Dashboard > <span id='date'>".$date = showDate()."</span>";
 					}
 				}
 

@@ -7,6 +7,14 @@ $(document).ready(function()
     $(".fancybox").fancybox();
 
 
+    $('.back-button').click(function()
+    {
+        window.history.back();
+    });
+
+
+
+
         // Ajax add package
 
         $('body').on('click', '#upload', function(e)

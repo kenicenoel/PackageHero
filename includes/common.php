@@ -324,20 +324,20 @@
 			a - Lowercase Ante meridiem and Post meridiem (am or pm)
 			l - Full day of week
 			F - Full month
-			m - Day of the month
+			d - Day of the month
 			Y - Year
 
 			*/
 
 
-
+			date_default_timezone_set("America/Grenada");
 			$day = date("l");
-			$dayOfMonth = date("m") ;
+			$dayOfMonth = date("d");
 			$month = date("F");
 			$year = date("Y");
 			$time = date("h:i A");
 
-			return $dashboardTime = $day." ".$month." ".$dayOfMonth.", ".$year;
+			return $dashboardTime = $day." ".$month." ".$dayOfMonth.", ".$year." at ".$time;
 
 		}
 
@@ -366,7 +366,7 @@
 				<div id="content">
 
 					<div class="news-feed">
-						<header class ="modules"> <i class="fa fa-bullhorn fa-fw"></i> News summary </header>
+						<header class ="modules"> <i class="fa fa-bullhorn fa-fw"></i> News </header>
 							'.$generateMostRecentNewsItems.'
 					</div>
 					<br><br>
@@ -409,7 +409,7 @@
 
 							<! -- This div shows the 5 most recent package issues that are not hidden and are unresolved -->
 							<div class="recent-items">
-								<header class ="modules"> <i class="fa fa-history fa-fw"></i> Most recent issues </header>
+								<header class ="modules"> <i class="fa fa-history fa-fw"></i> Recent </header>
 										<table id="results">
 											<thead>
 												<tr>

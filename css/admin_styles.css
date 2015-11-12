@@ -145,6 +145,7 @@ header.modules
 	color:#5c6866;
 	display:block;
 	clear:left;
+	text-transform: uppercase;
 	padding-top:25px;
 	text-align:left;
 	margin: 0px 0px 10px 0px;
@@ -160,14 +161,12 @@ header.modulename
 
 }
 
-hr
+button.back-button
 {
-	width: 400px;
-	padding-bottom:20px;
-	border-left:none;
-	border-right:none;
-	border-bottom:none;
-
+		width: 50px;
+		margin: 0px 10px;
+		padding: 0px 10px;
+		cursor: pointer;
 }
 
 p.summary
@@ -564,10 +563,22 @@ div.recent-items, div.at-a-glance, div#time-date, div.news-feed
 
 }
 
+div.at-a-glance
+{
+	border-right: 5px solid #45B7AF;
+}
+
+
 div.news-feed
 {
 	padding-top: 10px;
 	margin-top: 20px;
+	border-right: 5px solid #FF6B6B;
+}
+
+div.recent-items
+{
+	border-right: 5px solid #A48AD4;
 }
 
 
@@ -771,6 +782,10 @@ form.card
 	width: auto;
 	height: auto;
 	margin: 50px 25%;
+}
+div.card
+{
+	height: 415px;
 }
 
 div.card > p

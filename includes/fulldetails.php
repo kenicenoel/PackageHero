@@ -72,7 +72,7 @@
 
 								<div id ="content2">
 									<div id="page-title">
-										<header class="titleheading"> <span class="fa fa-legal fa-fw"></span>You are now taking action on issue <?php echo $trackingnumber ?></header>
+										<header class="titleheading"><button class='back-button'><i class='fa fa-chevron-left fa-fw'></i></button> <span class="fa fa-legal fa-fw"></span>You are now taking action on issue <?php echo $trackingnumber ?></header>
 									</div>
 
 									<div id='data'>
