@@ -337,7 +337,7 @@
 			$year = date("Y");
 			$time = date("h:i A");
 
-			return $dashboardTime = $day.", ".$month." ".$dayOfMonth.", ".$year;
+			return $dashboardTime = $day." ".$month." ".$dayOfMonth.", ".$year;
 
 		}
 
@@ -356,8 +356,8 @@
 			$generateMostRecentIssues = call_user_func('mostRecentIssues');
 
 			// Uncomment or comment out the line below to show/hide news feed
-			//  $generateMostRecentNewsItems = call_user_func('mostRecentNewsItems');
-			 $date = showDate();
+				$generateMostRecentNewsItems = call_user_func('mostRecentNewsItems');
+
 
 
 				echo '
@@ -365,15 +365,10 @@
 
 				<div id="content">
 
-					<div id="time-date">
-						<header class="time"><i class="fa fa-calendar fa-fw"></i>'.$date.'</header>
-					</div>
-
-					<!-- Uncomment to show news feed
-					<div class="recent-items">
+					<div class="news-feed">
 						<header class ="modules"> <i class="fa fa-bullhorn fa-fw"></i> News summary </header>
 							'.$generateMostRecentNewsItems.'
-					</div> -->
+					</div>
 					<br><br>
 
 					<div class="at-a-glance">
@@ -455,7 +450,7 @@
 					<header class = "subheading"><span class=" fa fa-search"></span>Package Finder</header>
 					<p>Enter all or part of a tracking number to find packages<br> it may belong to.</p><br>
 
-					<input id="queryField" type = "text" name="query" placeholder = "Enter tracking number" /><br>
+					<input id="queryField" type = "text" name="query" placeholder = "Enter tracking number" />
 					<input id="lookupButton" type="submit" value="Find">
 				</form>
 

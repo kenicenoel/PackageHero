@@ -70,7 +70,7 @@
 		  $stmt->bind_result($tnumber, $customername, $mainissue, $description, $photo1);
 			$i = 0;
 
-			$textline = "There are $total packages with issues in the system. You are on page $pagenum of $lastPage.";
+			$textline = "<p>There are <span>$total</span> packages with issues in the system and you are currently on page <span>$pagenum</span> of $lastPage.</p>";
 
 			// Establish the paginationCtrls variable
 			$navigation = '';
@@ -161,7 +161,10 @@
 						<div id = "container">
 
 						<div id ="content2">
-									<header class="titleheading"> These are all the issues currently needing attention. To resolve an issue or add details, choose "<span class="fa fa-legal fa-fw"></span>Take action" </header>
+							<div id="page-title">
+							<header class="titleheading"> <span class-"fa fa-eye"></span>These are all the issues currently needing attention. To resolve an issue or add details, choose "<span class="fa fa-legal fa-fw"></span>Take action" </header>
+							</div>
+
 							<div id="data">
 									<div id = "toggle-view">
 										<p>CHANGE VIEW:<p>
@@ -201,10 +204,10 @@
 						</div>
 
 
-					<script src="../includes/js/jquery.js"></script>
+					<!-- <script src="../includes/js/jquery.js"></script>
 					<script src="../fancybox/source/jquery.fancybox.js"></script>
 					<script src="../includes/js/main.js"></script>
-					<script src="../includes/js/jquery.circliful.min.js"></script>
+					<script src="../includes/js/jquery.circliful.min.js"></script> -->
 
 
 			</body>

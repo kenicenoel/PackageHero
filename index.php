@@ -4,25 +4,24 @@
 
 				<div id ="left-sidebar">
 
-							<img src = 'images/package_hero.png' alt = "PIM banner" />
+							<img src = 'images/package_hero_new.png' alt = "PIM banner" />
 				</div>
 
 				<div id ="right-sidebar">
-					<header id="welcome">Welcome</header>
+					<header id="welcome">Ready to get started?</header>
 
 
-							<p class="text">To start, enter your username and password.</p>
+							<p class="text">Enter your username and password to begin.</p>
 
 							<form id="form" action= "" method ="post" class ="ajax">
 									<p id = "msg"></p>
 									<span class="fa fa-male fa-fw"> </span><label for="username"> Username</label>
-									<input type = "text" id = "username" name="username" required autofocus placeholder = "e.g packageKing" /> <br><br>
+									<input type = "text" id = "username" name="username" required autofocus placeholder = "e.g Brendon" /> <br><br>
 
 									<span class="fa fa-keyboard-o fa-fw"> </span><label for="password"> Password</label>
-									<input type = "password" id = "password" name="password" required placeholder="@25MneuTy7d3" /> <br>
+									<input type = "password" id = "password" name="password" required placeholder="kingCh@rl3s" /> <br>
 
 									<input id ="login-button" type = "submit" value="Login" />
-
 							</form>
 
 
@@ -30,11 +29,11 @@
 
 				</div>
 
-						<footer id = "footer">&copy;2015 Web Source company LTD. Package Hero&reg;.</footer>
+
 
 			</div>
 
-
+				<footer id = "footer">&copy;<?php echo date("Y"); ?> Web Source.Package Hero&reg;: Package Issue Management made simple.</footer>
 
 	</body>
 	<script type= "text/javascript" src="includes/js/jquery.js"></script>

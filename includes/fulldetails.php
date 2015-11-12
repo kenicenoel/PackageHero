@@ -3,7 +3,7 @@
 		require_once ('config.php');
 		include_once('dashboard_header_2.php');
 
-	
+
 		if(isset($_GET['trackingnumber'])  )
 		{
 
@@ -71,7 +71,10 @@
 						<div id = "container">
 
 								<div id ="content2">
-									<header class="titleheading"> <span class="fa fa-legal fa-fw"></span>You are now taking action on issue <?php echo $trackingnumber ?></header>
+									<div id="page-title">
+										<header class="titleheading"> <span class="fa fa-legal fa-fw"></span>You are now taking action on issue <?php echo $trackingnumber ?></header>
+									</div>
+
 									<div id='data'>
 										<div id="result-container">
 												<!-- The action buttons goes below here -->
@@ -81,7 +84,7 @@
 											<div id="actions">
 												<header class="subheading">Enter an update for this issue</header>
 												<input id="note" type="text" placeholder="e.g. Received invoice from Customer" name="note">
-												<button id="saveNote"><span class="fa fa-chevron-circle-right fa-fw"></span></button>
+												<button id="saveNote"><span class="fa fa-arrow-right fa-fw"></span></button>
 											</div> <!-- End actions div -->
 
 										<?php
@@ -132,7 +135,7 @@
 			<script type="text/javascript" src="../fancybox/source/helpers/jquery.fancybox-buttons.js"></script>
 			<script type="text/javascript" src="../fancybox/source/helpers/jquery.fancybox-media.js"></script>
 			<script type="text/javascript" src="../fancybox/source/helpers/jquery.fancybox-thumbs.js"></script>
-			<script type= "text/javascript" src="../includes/js/main.js"></script>
+			<!-- <script type= "text/javascript" src="../includes/js/main.js"></script> -->
 
 			<!-- DataTables -->
 			<script type="text/javascript" charset="utf8" src="../datatables/media/js/jquery.dataTables.js"></script>

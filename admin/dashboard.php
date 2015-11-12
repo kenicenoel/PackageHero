@@ -4,12 +4,12 @@
 			// checks if the url has the module switch
 			if(isset ($_GET['module']))
 			{
-				$moduleNameSpanOpen = "<span class='highlight'>";
-				$moduleNameSpanClose = "</span>";
+
 				if($_GET['module'] != 'package' && $_GET['module'] != 'search')
 				{
 					$setmodule= "overview";  // Default to overview
-					$moduleName = $moduleNameSpanOpen."Overview".$moduleNameSpanClose;
+					$title = "<span class='fa fa-dashboard fa-fw'></span>Dashboard > <span id='date'>".$date = showDate()."</span>";
+
 				}
 				else
 				{
@@ -18,12 +18,12 @@
 					$area = $_GET['module'];
 					if($area == "search")
 					{
-						$moduleName = $moduleNameSpanOpen."Package finder".$moduleNameSpanClose;
+						$title = "<i class='fa fa-search fa-fw'></i>Package search. Enter all or part of a tracking number then 'FIND'";
 					}
 
 					else
 					{
-						$moduleName = "";
+						$title = "<span class='fa fa-dashboard fa-fw'></span>Dashboard > <span id='date'>".$date = showDate()."</span>";
 					}
 				}
 
@@ -32,7 +32,8 @@
 			else if(!isset ($_GET['module']))
 			{
 				$setmodule= "overview";  // Default to overview
-				$moduleName = "System Overview";
+				$title = "<span class='fa fa-dashboard fa-fw'></span>Dashboard > <span id='date'>".$date = showDate()."</span>";
+
 			}
 
 
@@ -42,7 +43,9 @@
 	<div id = "container">
 
 			<div id ="content2">
-					<header></header>
+				<div id="page-title">
+					<header class="titleheading"><?php echo $title; ?> </header>
+				</div>
 					<div id="data">
 							<?php echo call_user_func($setmodule) ?>
 					</div>
@@ -53,10 +56,10 @@
 	</div>
 
 
-	<script src="../includes/js/jquery.js"></script>
-	<script src="../fancybox/source/jquery.fancybox.js"></script>
-	<script src="../includes/js/main.js"></script>
-	<script src="../includes/js/jquery.circliful.min.js"></script>
+<script src="../includes/js/jquery.js"></script>
+<script src="../fancybox/source/jquery.fancybox.js"></script>
+<script src="../includes/js/main.js"></script>
+<script src="../includes/js/jquery.circliful.min.js"></script>
 
 
 </body>

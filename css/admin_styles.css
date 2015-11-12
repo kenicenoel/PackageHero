@@ -9,11 +9,6 @@ body
 
 }
 
-div#container, div#content2
-{
-	/*background-color: #cfcaca;*/
-}
-
 img
 {
 	user-drag: none;
@@ -67,13 +62,13 @@ nav > span > p#user-name
 
 nav > a.link
 {
-	font-family: 'Roboto', sans-serif;
+	font-family: 'PT Sans Narrow', sans-serif;
 	color:#fff;
 	padding: 15px 0px 30px 15px;
-	/*font-weight: 400;*/
+	font-size: 23px;
 	display: block;
 	text-decoration: none;
-	text-transform:none;
+	text-transform:uppercase;
 	visibility: visible;
 
 }
@@ -90,7 +85,7 @@ nav > a.link:hover
 {
 	text-decoration: none;
 	font-weight: 600;
-	background-color: #F8CB00;
+	background-color: #FDE3A7;
 	color: #333645;
 }
 
@@ -122,7 +117,7 @@ header.subheading, header.titleheading
 	font-family: 'Source Sans Pro', sans-serif;
 	padding: 8px 0px 0px 0px;
 	font-weight: bold;
-	color: #3f4141;
+	color: #5c6866;
 	text-transform: uppercase;
 }
 
@@ -184,8 +179,14 @@ p.summary
 
 p#errorMessage
 {
-	color:#EA555B;
-	font-size:12pt;
+	/*background-color: #F8CB00;*/
+	color: #FF6B6B;
+	font-family: 'Source Sans Pro', sans-serif;
+	/*padding: 5px;*/
+	margin-left: 5px;
+	font-size: 1.2em;
+	font-weight: 600;
+	/*width: 350px;*/
 }
 
 div#content2
@@ -307,7 +308,7 @@ input[type=submit], button
 	margin: 20px 170px;
 	color: #fff;
 	border:none;
-	background-color: #f39c12;
+	background-color: #A48AD4;
 	font-family: 'Source Sans Pro', sans-serif;
 	text-transform: uppercase;
 
@@ -316,14 +317,14 @@ input[type=submit], button
 button#saveNote
 {
 	height: 40px;
-	background-color: #2ECC71;
+	background-color: #A48AD4;
 	width: 40px;
 	margin: 5px 0px;
 }
 
 button#saveNote:hover
 {
-	background-color: #0aaf6d;
+	background-color: #8373a1;
 
 }
 
@@ -332,17 +333,17 @@ button.task-actions
 	height: 40px;
 
 	width: 150px;
-	margin: 5px 0px;
+	margin: 25px 0px;
 }
 
 button#hide
 {
-	background-color: #CF000F;
+	background-color: #EA555B;
 }
 
 button#resolve
 {
-	background-color: #2ECC71;
+	background-color: #45B7AF;
 }
 
 
@@ -350,10 +351,15 @@ input[type=submit]:hover, button:hover
 {
 
 	color: #fff;
-	background-color: #3498db;
+	background-color: #8373a1;
 	font-weight: bold;
 	font-family: 'Source Sans Pro', sans-serif;
 
+}
+
+#lookupButton
+{
+	margin:0px 5px;
 }
 
 
@@ -394,7 +400,7 @@ form
 {
 	margin: 0px 0px 0px 50px;
 	height: 100%;
-	overflow:hidden;
+	/*overflow:hidden;*/
 	width:auto;
 
 }
@@ -455,6 +461,7 @@ table
 	width: 90%;
 	color: #000;
 	font-family: 'Source Sans Pro', sans-serif;
+	padding-left: 10px;
 	padding-bottom: 50px;
 }
 
@@ -485,8 +492,9 @@ div#toggle-view
 {
 
 	display: block;
-	padding-bottom: 70px;
-	margin-left: 60%;
+	float: right;
+	padding: 50px 190px;
+	/*margin-left: 60%;*/
 
 
 }
@@ -516,8 +524,11 @@ div#toggle-view p.view:hover
 div#table-results
 {
 	height:auto;
-	width:auto;
+	width:90%;
 	display: block;
+	margin-top: 50px;
+	margin-left: 15px;
+	background-color: #ffffff;
 
 }
 
@@ -527,13 +538,38 @@ div#time-date
 	margin: 0px;
 }
 
-div.recent-items, div.at-a-glance, div#time-date
+div#page-title
+{
+	background-color: #ffffff;
+	width: 100%;
+	height: 96px;
+	margin-left: 20px;
+	width: 90%;
+
+}
+
+div#page-title > header
+{
+	font-size: 1.5em;
+	padding-top: 25px;
+	margin-left: 15px;
+
+}
+
+div.recent-items, div.at-a-glance, div#time-date, div.news-feed
 {
 	background-color: #ffffff;
 	padding-bottom: 20px;
 	width: 90%;
 
 }
+
+div.news-feed
+{
+	padding-top: 10px;
+	margin-top: 20px;
+}
+
 
 div.recent-items > table
 {
@@ -669,6 +705,18 @@ tbody img
 
 }
 
+div#pagination-holder > p
+{
+	font-size: 1.3em;
+
+}
+
+div#pagination-holder > p > span
+{
+	font-weight: 600;
+	color: #FF6B6B;
+}
+
 a.paginate
 {
 	text-transform: uppercase;
@@ -702,8 +750,8 @@ div.card, form.card
 {
 
 	display:inline-block;
-	margin:0px 9px;
-	padding: 5px 20px 20px 5px;
+	margin:10px 9px;
+	padding: 5px 20px 20px 10px;
 	font-family: 'Source Sans Pro', sans-serif;
 	background-color: #ffffff;
 	width:300px;

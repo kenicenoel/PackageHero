@@ -27,7 +27,7 @@
           <textarea rows="10" cols="70" form="package" id = "description" name="description"></textarea> <br>
 
           <label for="images">Images (MAX: 5)</label>
-          <input type = "file" id = "images" name="images[]" accept=".jpg" multiple=""> <br>
+          <input type = "file" id = "images" name="images[]" accept=".jpg" multiple="" required> <br>
           <input id="upload" type = "submit" value="Add" />
 
       </form>

@@ -19,14 +19,13 @@ $(document).ready(function()
                 console.log(response);
                 if(response == 'true')
                 {
-                  console.log("good Login");
-                  // window.open('admin/test.php', '_self');
+
                   window.open('admin/dashboard.php', '_self');
                 }
                 else
                 {
-                  $('#msg').text(" You've entered an incorrect username address or password.");
-                  console.log("Bad login" + response);
+                  $('#msg').html("<span class='fa fa-exclamation-triangle fa-fw'></span>Whoops! Either your username or password is incorrect");
+
 
                 }
 

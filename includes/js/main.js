@@ -26,10 +26,11 @@ $(document).ready(function()
                   },
                   success: function (response)
                   {
-                    console.log(response);
+
                     var p = document.getElementById('errorMessage');
                     p.innerHTML = response;
                     $('#upload').val("Add");
+                    $('#package').trigger("reset");
                   },
                   data: formData,
                   cache: false,
@@ -56,6 +57,7 @@ $(document).ready(function()
                   success: function(response)
                   {
                     $('#data').html(response);
+                    $('.titleheading').html("<i class='fa fa-bug fa-fw'></i>New issue creation. Enter as much details as possible then click 'ADD'");
 
                   }
                 });
@@ -102,6 +104,13 @@ $(document).ready(function()
                       }
                     });
 
+                  });
+
+
+
+                  $('#searchNav').click(function()
+                  {
+                      $('.titleheading').html("<i class='fa fa-search fa-fw'></i>Package search. Enter all or part of a tracking number then 'FIND'");
                   });
 
         // This function allows one to switch from Grid layout to List Layout and vice versa
@@ -156,13 +165,14 @@ $(document).ready(function()
         $('#saveNote').click(function()
         {
             var note = $('#note').val();
-
+            console.log(note);
               $.ajax
               ({
 
                   url: 'save-note.php',
                   type: 'POST',
                   data: "note="+note,
+
                   success: function(response)
                   {
 
