@@ -23,7 +23,7 @@
               <option value = "Delivery address not known">Delivery address not known</option>
             </select><br>
 
-
+          <label for="description">Details</label>
           <textarea rows="10" cols="70" form="package" id = "description" name="description"></textarea> <br>
 
           <label for="images">Images (MAX: 5)</label>

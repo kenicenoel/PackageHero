@@ -237,7 +237,6 @@ $(document).ready(function()
         $('#saveNote').click(function()
         {
             var note = $('#note').val();
-            console.log(note);
               $.ajax
               ({
 

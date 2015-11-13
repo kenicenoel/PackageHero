@@ -1,6 +1,6 @@
 
-CREATE DATABASE IF NOT EXISTS websource_package_data;
-USE websource_package_data;
+CREATE DATABASE IF packagehero_db;
+USE packagehero_db;
 
 CREATE TABLE IF NOT EXISTS users
 (
@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS users
 	EmailAddress varchar(50),
 	PhoneNumber varchar(11),
 	Country varchar(30),
+	Role varchar(14) DEFAULT 'Standard',
 	LastLoginTime timestamp NULL DEFAULT NULL,
   LastModifiedOn timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
@@ -25,7 +26,6 @@ CREATE TABLE IF NOT EXISTS packages
 	CustomerName varchar(50),
 	MainIssue varchar(50) DEFAULT 'Not entered',
 	Description varchar(300) NOT NULL,
-	HideFromCountry varchar(30),
 	Photo1 varchar(50),
 	Photo2 varchar(50),
 	Photo3 varchar(50),
@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS packages
 	Photo5 varchar(50),
 	Resolved varchar(3) DEFAULT 'No',
 	ResolvedBy varchar(25),
+	ResolvedTimestamp timestamp NULL,
 	IssueCreationTime timestamp DEFAULT CURRENT_TIMESTAMP
 
 );

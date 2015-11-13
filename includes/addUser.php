@@ -25,7 +25,7 @@
 
     }
 
-    
+
 
     else
     {
@@ -33,6 +33,9 @@
 			  <div id ="content">
 			      <form class="card">
 								<header class="subheading"><span class=" fa fa-user-plus"></span> Grant access to a new user</header>
+                <p>Enter a username, a password, Pick the country and account type.<br> We recommend that you fill in the
+                  First and Last name field and<br> enter an email address and or phone number to keep things<br> organised.
+                </p><br>
 								<p id="errorMessage"></p>
 			          <label for="username">Username</label>
 								<input type = "text" id = "username" name="username" required /><br>

@@ -1,5 +1,5 @@
 <?php
-
+		echo "<!DOCTYPE html>";
 	require_once ("../includes/common.php");
 	session_start();
 
@@ -13,13 +13,13 @@
 ?>
 
 
-<!Doctype html>
 			<html>
 				<head>
 					<title>Package Hero&reg;</title>
 					<link rel = "stylesheet" href = "../css/admin_styles.css" type ="text/css">
 					<link type="text/css" rel="stylesheet" href="../css/overlaypopup.css" />
 					<link href='https://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css'>
+					<link rel="shortcut icon" href="../images/favicon.ico"/>
 					<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,600,700" rel="stylesheet" type="text/css">
 					<link rel="stylesheet" href="../fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
 					<link rel="stylesheet" href="../fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
@@ -41,7 +41,7 @@
 							<a class ="link" href ="../admin/dashboard.php?module=search" title = "Search for any package data"><i class="fa fa-search fa-fw"></i> Find a package</a>
 							<?php if($role == "Administrator")
 							{
-								echo '<a class ="link" href ="../admin/dashboard.php?module=addUser" id="adduser" title = "Create a new user"><i class="fa fa-user-plus fa-fw"></i> Add User</a>';
+								echo '<a class ="link" href ="#" id="adduser" title = "Create a new user"><i class="fa fa-user-plus fa-fw"></i> Add User</a>';
 							} ?>
 							<a class ="link" href ="logout.php" title = "Logout from Package Issues Manager"><i class="fa fa-close fa-fw"></i> Sign out</a>
 						</nav>

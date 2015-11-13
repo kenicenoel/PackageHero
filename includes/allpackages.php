@@ -204,11 +204,5 @@
 						</div>
 
 
-					<!-- <script src="../includes/js/jquery.js"></script>
-					<script src="../fancybox/source/jquery.fancybox.js"></script>
-					<script src="../includes/js/main.js"></script>
-					<script src="../includes/js/jquery.circliful.min.js"></script> -->
-
-
 			</body>
 </html>

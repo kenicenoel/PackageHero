@@ -759,7 +759,7 @@ div.card, form.card
 	font-family: 'Source Sans Pro', sans-serif;
 	background-color: #ffffff;
 	width:300px;
-	height: 400px;
+	height: 415px;
 	border-width: 1px 1px 3px 1px;
 	border-color: #c7c7c7;
 	border-style: solid ;
@@ -775,15 +775,21 @@ form.card
 	margin: 50px 25%;
 }
 
-div.card
+div.card > div.card-details
 {
-	height: 415px;
+	background-color: #65C3DF;
+	margin-left: 0px;
+	width: 300px;
+	color: #ffffff;
+
 }
 
 div.card > p
 {
 	margin-left: 15px;
 }
+
+
 
 
 section.card
@@ -831,7 +837,7 @@ div.card header.subheading, form.card header.subheading
 div.card img
 {
 	width: 200px;
-	height: 200px;
+	height: 150px;
 }
 
 div.card a.listing

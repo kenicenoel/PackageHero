@@ -16,7 +16,7 @@ $(document).ready(function()
             data: "username="+username+"&password="+password,
             success: function(response)
             {
-                console.log(response);
+                
                 if(response == 'true')
                 {
 

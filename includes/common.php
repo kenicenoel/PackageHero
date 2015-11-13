@@ -7,7 +7,7 @@
 			are all system overview functions that do the job their name implies
 		*/
 		session_start();
-
+		
 
 
 		// Count the total number of package issues
@@ -530,65 +530,65 @@
 
 
 
-		function addUser()
-		{
-
-			echo '
-			  <div id ="content">
-			      <form class="card">
-								<header class="subheading"><span class=" fa fa-user-plus"></span> Grant access to a new user</header>
-								<p id="errorMessage"></p>
-			          <label for="username">Username</label>
-								<input type = "text" id = "username" name="username" required /><br>
-
-								<label for="password">Password</label>
-								<input type = "text" id = "password" name="password" required /><br>
-
-								<label for="firstname">First Name</label>
-			          <input type = "text" id = "firstname" name="firstname" /><br>
-
-								<label for="lastname">Last Name</label>
-			          <input type = "text" id = "lastname" name="lastname" /><br>
-
-								<label for="emailaddress">Email Address</label>
-			          <input type = "email" id = "emailaddress" name="emailaddress" required /><br>
-
-								<label for="phonenumber">Phone Number</label>
-			          <input type = "text" id = "phonenumber" name="phonenumber" /><br>
-
-								<label for="country">Country</label>
-								<select name="country" required>
-									<option selected disabled>Pick a country</option>
-									<option value="Antigua &amp; Barbuda">Antigua &amp; Barbuda</option>
-									<option value="Barbados">Barbados</option>
-									<option value="Canada">Canada</option>
-									<option value="Dominica">Dominica</option>
-									<option value="Grenada">Grenada</option>
-									<option value="Guyana">Guyana</option>
-									<option value="Jamaica">Jamaica</option>
-									<option value="St Lucia">St Lucia</option>
-									<option value="St Vincent &amp; Grenadines">St Vincent &amp; Grenadines</option>
-									<option value="Trinidad">Trinidad</option>
-									<option value="United Kingdom">United Kingdom</option>
-									<option value="United States">United States</option>
-
-								</select><br>
-
-								<label for="role">Account type</label>
-								<input type="checkbox" name="role" value="Administrator"> Administrator<br>
-  							<input type="checkbox" name="role" value="Standard" checked> Standard user<br><br>
-
-								<input id="createuser" type = "submit" value="Done" />
-
-			      </form>
-
-
-
-			</div>
-
-			';
-
-		}
+		// function addUser()
+		// {
+		//
+		// 	echo '
+		// 	  <div id ="content">
+		// 	      <form class="card">
+		// 						<header class="subheading"><span class=" fa fa-user-plus"></span> Grant access to a new user</header>
+		// 						<p id="errorMessage"></p>
+		// 	          <label for="username">Username</label>
+		// 						<input type = "text" id = "username" name="username" required /><br>
+		//
+		// 						<label for="password">Password</label>
+		// 						<input type = "text" id = "password" name="password" required /><br>
+		//
+		// 						<label for="firstname">First Name</label>
+		// 	          <input type = "text" id = "firstname" name="firstname" /><br>
+		//
+		// 						<label for="lastname">Last Name</label>
+		// 	          <input type = "text" id = "lastname" name="lastname" /><br>
+		//
+		// 						<label for="emailaddress">Email Address</label>
+		// 	          <input type = "email" id = "emailaddress" name="emailaddress" required /><br>
+		//
+		// 						<label for="phonenumber">Phone Number</label>
+		// 	          <input type = "text" id = "phonenumber" name="phonenumber" /><br>
+		//
+		// 						<label for="country">Country</label>
+		// 						<select name="country" required>
+		// 							<option selected disabled>Pick a country</option>
+		// 							<option value="Antigua &amp; Barbuda">Antigua &amp; Barbuda</option>
+		// 							<option value="Barbados">Barbados</option>
+		// 							<option value="Canada">Canada</option>
+		// 							<option value="Dominica">Dominica</option>
+		// 							<option value="Grenada">Grenada</option>
+		// 							<option value="Guyana">Guyana</option>
+		// 							<option value="Jamaica">Jamaica</option>
+		// 							<option value="St Lucia">St Lucia</option>
+		// 							<option value="St Vincent &amp; Grenadines">St Vincent &amp; Grenadines</option>
+		// 							<option value="Trinidad">Trinidad</option>
+		// 							<option value="United Kingdom">United Kingdom</option>
+		// 							<option value="United States">United States</option>
+		//
+		// 						</select><br>
+		//
+		// 						<label for="role">Account type</label>
+		// 						<input type="checkbox" name="role" value="Administrator"> Administrator<br>
+  	// 						<input type="checkbox" name="role" value="Standard" checked> Standard user<br><br>
+		//
+		// 						<input id="createuser" type = "submit" value="Done" />
+		//
+		// 	      </form>
+		//
+		//
+		//
+		// 	</div>
+		//
+		// 	';
+		//
+		// }
 
 
 		// Calls the password generator class to create secure password

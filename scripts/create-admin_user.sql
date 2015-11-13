@@ -1,0 +1,1 @@
+INSERT INTO `packagehero_db`.`users` (`userId`, `Username`, `Password`, `FirstName`, `LastName`, `EmailAddress`, `PhoneNumber`, `Country`, `Role`, `LastLoginTime`, `LastModifiedOn`) VALUES (NULL, 'Websource', 'w3bs0urc3', 'Websource', 'Trinidad', 'info@shipwebsource.com', NULL, 'Trinidad', 'Administrator', NULL, CURRENT_TIMESTAMP);
