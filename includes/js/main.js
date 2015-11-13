@@ -46,8 +46,42 @@ $(document).ready(function()
                   processData: false
               });
               return false;
-      });
+        });
 
+
+
+        // Ajax create new user
+
+        $('body').on('click', '#createuser', function(e)
+        {
+              e.preventDefault();
+              var formData = new FormData($(this).parents('form')[0]);
+
+              $('#createuser').val("Creating user...");
+
+              $.ajax({
+                  url: '../includes/addUser.php',
+                  type: 'POST',
+                  xhr: function()
+                  {
+                      var myXhr = $.ajaxSettings.xhr();
+                      return myXhr;
+                  },
+                  success: function (response)
+                  {
+
+                    var p = document.getElementById('errorMessage');
+                    p.innerHTML = response;
+                    $('#createuser').val("Done");
+                    $('#createuserform').trigger("reset");
+                  },
+                  data: formData,
+                  cache: false,
+                  contentType: false,
+                  processData: false
+              });
+              return false;
+        });
 
 
       // When user clicks on the link that says "New Issue in the navigation, run this task
@@ -71,6 +105,31 @@ $(document).ready(function()
                 });
 
               });
+
+
+
+              // When user clicks on the link that says "Add user in the navigation, run this task
+
+                    $('#adduser').click(function()
+                    {
+
+                        var url='../includes/addUser.php';
+
+                      $.ajax
+                      (
+                        {
+
+                          url:url,
+                          success: function(response)
+                          {
+                            $('#data').html(response);
+                            $('.titleheading').html("<button class='back-button'><i class='fa fa-chevron-left fa-fw'></i></button><i class='fa fa-user-plus fa-fw'></i>Create a new user. Note that most fields are required.");
+
+                          }
+                        });
+
+                      });
+
 
 
 
@@ -120,6 +179,11 @@ $(document).ready(function()
                   {
                       $('.titleheading').html("<i class='fa fa-search fa-fw'></i>Package search. Enter all or part of a tracking number then 'FIND'");
                   });
+
+
+
+
+
 
         // This function allows one to switch from Grid layout to List Layout and vice versa
 
@@ -259,33 +323,8 @@ $(document).ready(function()
 
 
 
-        // Generate the help content
-        $('#help').click(function()
-        {
 
-              $.ajax
-              ({
-
-                  url: '../support/help.php',
-                  type: 'POST',
-
-                  success: function(response)
-                  {
-
-                      if(response == 'Done')
-                      {
-                        $('#data').html(response);
-
-                      }
-
-                  }
-
-                });
-              return false;
-        });
-
-
-          // Create the graphs
+          // Create the circular graphs
           $('#total-issues').circliful();
           $('#hidden-issues').circliful();
           $('#available-issues').circliful();

@@ -162,7 +162,7 @@
 
 						<div id ="content2">
 							<div id="page-title">
-							<header class="titleheading"><button class='back-button'><i class='fa fa-chevron-left fa-fw'></i></button> <span class-"fa fa-eye"></span>These are all the issues currently needing attention.</header>
+								<header class="titleheading"><button class='back-button'><i class='fa fa-chevron-left fa-fw'></i></button> <span class-"fa fa-eye"></span>These are all the issues currently needing attention.</header>
 							</div>
 
 							<div id="data">

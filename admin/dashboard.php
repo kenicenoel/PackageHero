@@ -5,7 +5,7 @@
 			if(isset ($_GET['module']))
 			{
 
-				if($_GET['module'] != 'package' && $_GET['module'] != 'search')
+				if($_GET['module'] != 'package' && $_GET['module'] != 'search' && $_GET['module'] != 'user')
 				{
 					$setmodule= "overview";  // Default to overview
 					$title = "<span class='fa fa-dashboard fa-fw'></span>Dashboard > <span id='date'>".$date = showDate()."</span>";
@@ -19,6 +19,11 @@
 					if($area == "search")
 					{
 						$title = "<button class='back-button'><i class='fa fa-chevron-left fa-fw'></i></button><i class='fa fa-search fa-fw'></i>Package search. Enter all or part of a tracking number then 'FIND'";
+					}
+
+					elseif ($area == "addUser")
+					{
+						$title = "<button class='back-button'><i class='fa fa-chevron-left fa-fw'></i></button><i class='fa fa-user-plus fa-fw'></i>Create a new user. Note that most fields are required.";
 					}
 
 					else
@@ -63,3 +68,4 @@
 
 
 </body>
+</html>

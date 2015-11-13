@@ -8,13 +8,13 @@
       $u = $_POST['username'];
       $p = $_POST['password'];
 
-    
 
-    $sql = "SELECT userId, Country FROM users WHERE Username = ? AND Password = ?";
+
+    $sql = "SELECT userId, Country, Role FROM users WHERE Username = ? AND Password = ?";
     $stmt = $connection->prepare($sql);
     $stmt->bind_param('ss', $u, $p);
     $stmt->execute();
-    $stmt->bind_result($id, $country);
+    $stmt->bind_result($id, $country, $role);
     if($stmt->fetch())
     {
       echo 'true';
@@ -22,6 +22,7 @@
       $_SESSION['id'] = $id;
       $_SESSION['username'] = $u;
       $_SESSION['country'] = $country;
+      $_SESSION['role'] = $role;
 
     }
 

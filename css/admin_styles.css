@@ -694,12 +694,6 @@ tr:nth-of-type(even)
 
 
 
-/*tr:hover
-{
-	font-weight: bold;
-
-}*/
-
 
 tbody img
 {
@@ -731,7 +725,6 @@ div#pagination-holder > p > span
 a.paginate
 {
 	text-transform: uppercase;
-
 	border:2px solid;
 	background-color:#3498DB;
 	font-family: 'Source Sans Pro', sans-serif;
@@ -773,8 +766,6 @@ div.card, form.card
 	vertical-align: top;
 	position: relative;
 
-
-
 }
 
 form.card
@@ -783,6 +774,7 @@ form.card
 	height: auto;
 	margin: 50px 25%;
 }
+
 div.card
 {
 	height: 415px;
@@ -809,7 +801,6 @@ section.card p
 {
 		font-size:27px;
 		text-align:center;
-
 }
 
 
@@ -819,7 +810,6 @@ section.card  > p.card-title
 	padding: 0;
 	color: #787878;
 	text-transform: uppercase;
-	/*color: #fff;*/
 	text-align:center;
 	font-weight: bold;
 	/*border-bottom: 1px solid #b9b8b1;*/
@@ -841,8 +831,7 @@ div.card header.subheading, form.card header.subheading
 div.card img
 {
 	width: 200px;
-	height: 150px;
-
+	height: 200px;
 }
 
 div.card a.listing
@@ -852,13 +841,13 @@ div.card a.listing
 	display: block;
 }
 
-div.card a.full-listing:hover
+/*div.card > a.full-listing:hover
 {
 	color:#5f81ea;
 	text-decoration: underline;
 	float: right;
 	display: block;
-}
+}*/
 
 #data
 {
@@ -868,8 +857,6 @@ div.card a.full-listing:hover
 
 footer
 {
-
-
 	bottom:0px;
 	clear:both;
 	margin: 0px 0px 0px 250px;
