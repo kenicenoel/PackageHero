@@ -50,13 +50,13 @@
 			          <input type = "text" id = "lastname" name="lastname" /><br>
 
 								<label for="emailaddress">Email Address</label>
-			          <input type = "email" id = "emailaddress" name="emailaddress" required /><br>
+			          <input type = "email" id = "emailaddress" name="emailaddress" /><br>
 
 								<label for="phonenumber">Phone Number</label>
 			          <input type = "text" id = "phonenumber" name="phonenumber" /><br>
 
 								<label for="country">Country</label>
-								<select name="country" required>
+								<select id="country" name="country" required>
 									<option selected disabled>Pick a country</option>
 									<option value="Antigua">Antigua</option>
 									<option value="Barbados">Barbados</option>
@@ -74,7 +74,7 @@
 								</select><br>
 
 								<label for="role">Account type</label>
-                <select name="role" required>
+                <select id="role" name="role" required>
 									<option selected disabled>Pick Priviledge</option>
                   <option value="Administrator">Administrator</option>
 									<option value="Standard">Standard</option>

@@ -66,20 +66,44 @@
 
 		 $stmt->close();
 
+
+
 ?>
 
 						<div id = "container">
 
 								<div id ="content2">
 									<div id="page-title">
-										<header class="titleheading"><button class='back-button'><i class='fa fa-chevron-left fa-fw'></i></button> <span class="fa fa-legal fa-fw"></span>You are now taking action on issue <?php echo $trackingnumber ?></header>
+										<header class="titleheading"><button class='back-button'><i class='fa fa-chevron-left fa-fw'></i></button> <span class="fa fa-eye fa-fw"></span>You are now taking action on issue <?php echo $trackingnumber ?></header>
 									</div>
 
 									<div id='data'>
+
 										<div id="result-container">
+
 												<!-- The action buttons goes below here -->
-												<button class="task-actions" id="resolve"><span class="fa fa-check fa-fw"></span>Resolve</button>
-												<button class="task-actions" id="hide"><span class="fa fa-eye-slash fa-fw"></span>Hide</button>
+													<?php
+
+														if(isset($_GET['res']) && $_GET['res'] == 'No')
+														{
+															echo '<p> You can mark the issue as resolved or hide irrelevant issues from your dashboard. Hiding an issue will also hide it from other users in your country.</p>';
+															echo '<button class="task-actions" id="resolve"><span class="fa fa-check fa-fw"></span>Resolve</button>';
+															echo '<button class="task-actions" id="hide"><span class="fa fa-eye-slash fa-fw"></span>Hide</button>';
+														}
+
+														if (!isset($_GET['res']))
+														{
+															echo '<p> You can mark the issue as resolved or hide irrelevant issues from your dashboard. Hiding an issue will also hide it from other users in your country.</p>';
+															echo '<button class="task-actions" id="resolve"><span class="fa fa-check fa-fw"></span>Resolve</button>';
+															echo '<button class="task-actions" id="hide"><span class="fa fa-eye-slash fa-fw"></span>Hide</button>';
+														}
+																													
+														else if(isset($_GET['res']) && $_GET['res'] == 'Yes')
+														{
+															echo '<p> This issue was marked resolved. You can still view the issue but can no longer hide or resolve it.</p>';
+														}
+														 ?>
+
 												<p id="errorMessage"></p>
 											<div id="actions">
 												<header class="subheading">Enter an update for this issue</header>

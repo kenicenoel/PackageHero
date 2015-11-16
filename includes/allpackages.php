@@ -19,7 +19,7 @@
 		$total = $stmt->num_rows;
 
 		// The number of results per page
-		$pageRows=5;
+		$pageRows=15;
 
 		//Page number of the last page
 		$lastPage = ceil($total/$pageRows);
@@ -128,13 +128,21 @@
 			  // Generate the grid view
 			  $grid.= '
 			  <div class="card">
-				    <header class="subheading"><span class="fa fa-truck"> </span> Tracking #: '.$tnumber.'</header>
-						<p><img src="../includes/'.$photo1.'"alt="packageImage" /></p>
-				    <p><span class="fa fa-male"> </span> Customer: '.$customername.'</p>
-						<p><span class="fa fa-warning"> </span> Main Issue: '.$mainissue.'</p>
-				  	<p> Description: '.$desc_snippet.'...</p>
+						<div class="card-image">
+							<p><img src="../includes/'.$photo1.'"alt="packageImage" /></p>
+						</div>
 
-				    <p><a id="view-full" class="full-details" href="fulldetails.php?trackingnumber='.$tnumber.'" title="View full package details"><span class="fa fa-legal fa-fw"></span>Take action</a></p>
+						<div class="card-details">
+							<p class="customer">'.$customername.'</p>
+							<p class="issue"><span class="fa fa-bug"> </span> '.$mainissue.'</p>
+							<p class="description">'.$desc_snippet.'...</p>
+						</div>
+
+						<div class="card-footer">
+					    <p class="trackingnumber"><span class="fa fa-truck"> </span> '.$tnumber.'</header>
+					    <p class="url"><a id="view-full" class="full-details" href="fulldetails.php?trackingnumber='.urlencode($tnumber).'" title="View full package details"><span class="fa fa-eye fa-fw"></span>View</a></p>
+						</div>
+
 			  </div>
 
 			  ';
@@ -147,7 +155,7 @@
 						<td>'.$mainissue.'</td>
 						<td>'.$desc_snippet.'...</td>
 
-				    <td><a id="view-full" class="full-details"  href="fulldetails.php?trackingnumber='.$tnumber.'" title="View full package details"><span class="fa fa-legal fa-fw"></span>Take action</a></td>
+				    <td><a id="view-full" class="full-details"  href="fulldetails.php?trackingnumber='.$tnumber.'" title="View full package details"><span class="fa fa-eye fa-fw"></span>View</a></td>
 			  </tr>
 
 			  ';
@@ -189,7 +197,7 @@
 															</tr>
 														</thead>
 
-														<tbody id="info">
+														<tbody>
 															<?php echo $list ?>
 														</tbody>
 													</table>

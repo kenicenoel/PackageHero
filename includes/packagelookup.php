@@ -27,17 +27,29 @@ if(isset($_POST['query']))
       while($stmt->fetch())
       {
 
-        $desc_snippet = substr($desc, 0, 50);
+        $desc_snippet = substr($desc, 0, 30);
           echo '
           <div class="card">
-  				    <header class="subheading"><span class="fa fa-plane"> </span> Tracking Number: '.$trackingnumber.'</header>
-  					  <p><img src="../includes/'.$image1.'"alt="packageImage" /></p>
-  				    <p><span class="fa fa-male"> </span> Customer: '.$customername.'</p>
-              <p><span class="fa fa-bug"> </span> Main Issue: '.$issue.'</p>
-              <p><span class="fa fa-check"> </span> Resolved? '.$resolved.'</p>
-  					  <p><span class="fa fa-file-text"> </span> Details: '.$desc_snippet.'...</p>
+  						<div class="card-image">
+  							<p><img src="../includes/'.$image1.'"alt="packageImage" /></p>
+  						</div>
+
+  						<div class="card-details">
+  							<p class="customer">'.$customername.'</p>
+  							<p class="issue"><span class="fa fa-bug"> </span> '.$issue.'</p>
+  							<p class="description">'.$desc_snippet.'...</p>
+                <p><span class="fa fa-check"> </span> Resolved? '.$resolved.'</p>
+  						</div>
+
+  						<div class="card-footer">
+  					    <p class="trackingnumber"><span class="fa fa-truck"> </span> '.$trackingnumber.'</header>
+  					    <p class="url"><a id="view-full" class="full-details" href="../includes/fulldetails.php?trackingnumber='.urlencode($trackingnumber).'&res='.urlencode($resolved).'" title="View full package details"><span class="fa fa-eye fa-fw"></span>View</a></p>
+  						</div>
 
   			  </div>
+
+
+
 
           ';
 

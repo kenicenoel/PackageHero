@@ -16,7 +16,7 @@
 
           <label for="type">Main Issue</label>
             <select form="package" name="MainIssue"> <br>
-              <option disabled selected>Select an issue</option>
+              <option value="" disabled selected>Select an issue</option>
               <option value = "Broken">Received broken</option>
               <option value = "Cannot identify customer">Cannot identify customer</option>
               <option value = "Invoice required">Invoice required</option>
@@ -28,6 +28,6 @@
 
           <label for="images">Images (MAX: 5)</label>
           <input type = "file" id = "images" name="images[]" accept=".jpg" multiple="" required> <br>
-          <input id="upload" type = "submit" value="Add" />
+          <input id="addIssue" type = "submit" value="Add" />
 
       </form>

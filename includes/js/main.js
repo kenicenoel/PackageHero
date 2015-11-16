@@ -15,37 +15,52 @@ $(document).ready(function()
 
 
 
-        // Ajax add package
+        // Ajax add new issue
 
-        $('body').on('click', '#upload', function(e)
+        $('body').on('click', '#addIssue', function(e)
         {
-              e.preventDefault();
-              var formData = new FormData($(this).parents('form')[0]);
+              // Get the trackingnumber and image
+              var tnum = $('#trackingnumber').val();
+              var imgs = $('#images').val();
 
-              $('#upload').val("Adding package...");
+              if(tnum == "" || imgs == "")
+              {
+                $('#errorMessage').html("<i class='fa fa-exclamation-triangle'></i> You must enter a tracking number and select at least one image.");
+              }
 
-              $.ajax({
-                  url: '../includes/add_issue.php',
-                  type: 'POST',
-                  xhr: function()
-                  {
-                      var myXhr = $.ajaxSettings.xhr();
-                      return myXhr;
-                  },
-                  success: function (response)
-                  {
+              else
+              {
+                e.preventDefault();
+                var formData = new FormData($(this).parents('form')[0]);
 
-                    var p = document.getElementById('errorMessage');
-                    p.innerHTML = response;
-                    $('#upload').val("Add");
-                    $('#package').trigger("reset");
-                  },
-                  data: formData,
-                  cache: false,
-                  contentType: false,
-                  processData: false
-              });
-              return false;
+                $('#addIssue').val("Adding package...");
+
+                $.ajax({
+                    url: '../includes/add_issue.php',
+                    type: 'POST',
+                    xhr: function()
+                    {
+                        var myXhr = $.ajaxSettings.xhr();
+                        return myXhr;
+                    },
+                    success: function (response)
+                    {
+
+                      var p = document.getElementById('errorMessage');
+                      p.innerHTML = response;
+                      $('#addIssue').val("Add");
+
+                    },
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false
+                });
+                return false;
+
+
+              }
+
         });
 
 
@@ -54,33 +69,50 @@ $(document).ready(function()
 
         $('body').on('click', '#createuser', function(e)
         {
-              e.preventDefault();
-              var formData = new FormData($(this).parents('form')[0]);
 
-              $('#createuser').val("Creating user...");
+          // Get the username, password, country and Account type
+          var u = $('#username').val();
+          var p = $('#password').val();
+          var c = $('#country').val();
+          var r = $('#role').val();
 
-              $.ajax({
-                  url: '../includes/addUser.php',
-                  type: 'POST',
-                  xhr: function()
-                  {
-                      var myXhr = $.ajaxSettings.xhr();
-                      return myXhr;
-                  },
-                  success: function (response)
-                  {
+          if(u == "" || p == "" || c == null || r == null)
+          {
+            console.log(c+"/"+r);
+            $('#errorMessage').html("<i class='fa fa-exclamation-triangle'></i> A username, password, country and user role is required.</br>");
+          }
 
-                    var p = document.getElementById('errorMessage');
-                    p.innerHTML = response;
-                    $('#createuser').val("Done");
-                    $('#createuserform').trigger("reset");
-                  },
-                  data: formData,
-                  cache: false,
-                  contentType: false,
-                  processData: false
-              });
-              return false;
+          else
+          {
+            e.preventDefault();
+            var formData = new FormData($(this).parents('form')[0]);
+
+            $('#createuser').val("Creating user...");
+
+            $.ajax({
+                url: '../includes/adduser.php',
+                type: 'POST',
+                xhr: function()
+                {
+                    var myXhr = $.ajaxSettings.xhr();
+                    return myXhr;
+                },
+                success: function (response)
+                {
+
+                  var p = document.getElementById('errorMessage');
+                  p.innerHTML = response;
+                  $('#createuser').val("Done");
+                  $('#createuserform').trigger("reset");
+                },
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+            return false;
+          }
+
         });
 
 
@@ -177,7 +209,7 @@ $(document).ready(function()
 
                   $('#searchNav').click(function()
                   {
-                      $('.titleheading').html("<i class='fa fa-search fa-fw'></i>Package search. Enter all or part of a tracking number then 'FIND'");
+                      $('.titleheading').html("<i class='fa fa-search fa-fw'></i>Package Finder.");
                   });
 
 
@@ -220,7 +252,7 @@ $(document).ready(function()
               success: function (response)
               {
                 $('#lookupResults').html(response);
-                $('#loader').replaceWith('<input id="lookupButton" type = "submit" value="lookup">');
+                $('#loader').replaceWith('<input id="lookupButton" type = "submit" value="Find">');
 
 
 

@@ -7,7 +7,7 @@
 			are all system overview functions that do the job their name implies
 		*/
 		session_start();
-		
+
 
 
 		// Count the total number of package issues
@@ -243,6 +243,7 @@
 				    <td>'.$cust.'</td>
 						<td>'.$mainissue.'</td>
 						<td>'.$desc_snippet.'...</td>
+						<td><a href="../includes/fulldetails.php?trackingnumber='.urlencode($tnum).'" title="View full package details"><span class="fa fa-eye fa-fw"></span>View</a></td>
 
 
 			  </tr>
@@ -375,7 +376,7 @@
 			$generateMostRecentIssues = call_user_func('mostRecentIssues');
 
 			// Uncomment or comment out the line below to show/hide news feed
-				$generateMostRecentNewsItems = call_user_func('mostRecentNewsItems');
+				//$generateMostRecentNewsItems = call_user_func('mostRecentNewsItems');
 
 
 
@@ -383,11 +384,11 @@
 				<!-- The overview of the system -->
 
 				<div id="content">
-
+					<!--
 					<div class="news-feed">
 						<header class ="modules"> <i class="fa fa-bullhorn fa-fw"></i> News </header>
 							'.$generateMostRecentNewsItems.'
-					</div>
+					</div> -->
 					<br><br>
 
 					<div class="at-a-glance">
