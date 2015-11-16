@@ -73,7 +73,7 @@
 
 								</select><br>
 
-								<label for="role">Account type</label>
+								<label for="role">Role</label>
                 <select id="role" name="role" required>
 									<option selected disabled>Pick Priviledge</option>
                   <option value="Administrator">Administrator</option>

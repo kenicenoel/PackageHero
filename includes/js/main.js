@@ -207,15 +207,6 @@ $(document).ready(function()
 
 
 
-                  $('#searchNav').click(function()
-                  {
-                      $('.titleheading').html("<i class='fa fa-search fa-fw'></i>Package Finder.");
-                  });
-
-
-
-
-
 
         // This function allows one to switch from Grid layout to List Layout and vice versa
 

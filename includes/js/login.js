@@ -16,7 +16,7 @@ $(document).ready(function()
             data: "username="+username+"&password="+password,
             success: function(response)
             {
-                
+
                 if(response == 'true')
                 {
 
@@ -24,7 +24,7 @@ $(document).ready(function()
                 }
                 else
                 {
-                  $('#msg').html("<span class='fa fa-exclamation-triangle fa-fw'></span>Whoops! Either your username or password is incorrect");
+                  $('#msg').html("<span class='fa fa-exclamation-triangle fa-fw'></span>Whoops! Your username or password is incorrect");
 
 
                 }

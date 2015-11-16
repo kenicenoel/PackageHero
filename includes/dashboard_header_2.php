@@ -33,7 +33,7 @@
 						<nav id ="navigation">
 							<span>
 								<p id="app-name">PACKAGE HERO&REG;</p>
-								<p id="user-name"> <?php echo $_SESSION['username'] ?></p>
+								<p id="user-name"> <?php echo $_SESSION['username']; if($role == 'Administrator') { echo ' <i class="fa fa-bolt"></i>';}?></p>
 							</span>
 							<a class ="link" id="first-link" href ="../admin/dashboard.php?module=overview" title = "View an overview of the system"><i class="fa fa-line-chart fa-fw"></i> Overview</a>
 							<!-- <a class ="link" href ="#"id="newsfeed" title = "View all newsfeed udpates"><i class="fa fa-bullhorn fa-fw"></i> Newsfeed</a> -->

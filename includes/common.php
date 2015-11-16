@@ -48,7 +48,43 @@
 
 		}
 
+		// Count the number of users in the system
+		function countTotalUsers()
+		{
+			global $connection;
 
+
+			// Build the query
+      $sql = "SELECT * FROM users";
+
+	    //prepare the sql statement
+	    $stmt = $connection->prepare($sql);
+
+	    //execute the prepared statement
+	    $stmt->execute();
+
+			/* store result */
+	    $stmt->store_result();
+
+			$total = $stmt->num_rows;
+
+			if($total == 0)
+			{
+				return 0;
+
+			}
+
+			else
+			{
+				return $total;
+			}
+
+
+			/* Close statement */
+			$stmt->close();
+			$connection->close();
+
+		}
 
 		// Count the total number of package issues hidden
 		function countTotalHidden()
@@ -303,7 +339,7 @@
 			}
 			if($list == "")
 			{
-				return "<p class='newsitem'> Dang! We could not find any news to show you. Sorry about that.</p>";
+				return "<p class='newsitem'> We could not find any news to show you. Sorry about that.</p>";
 			}
 
 			return $list;
@@ -371,26 +407,33 @@
 			$packageTotal = call_user_func('countTotal');
 			$availableTotal = call_user_func('countTotalAvailableIssues');
 			$hiddenTotal = call_user_func('countTotalHidden');
+			$usersTotal = call_user_func('countTotalUsers');
 			$lastModifiedUser = call_user_func('getLastModifiedUser');
 			$lastAddedPackage = call_user_func('getLastAddedPackage');
 			$generateMostRecentIssues = call_user_func('mostRecentIssues');
 
 			// Uncomment or comment out the line below to show/hide news feed
-				//$generateMostRecentNewsItems = call_user_func('mostRecentNewsItems');
+				$generateMostRecentNewsItems = call_user_func('mostRecentNewsItems');
 
-
+				$role = $_SESSION['role'];
 
 				echo '
 				<!-- The overview of the system -->
 
-				<div id="content">
-					<!--
-					<div class="news-feed">
-						<header class ="modules"> <i class="fa fa-bullhorn fa-fw"></i> News </header>
-							'.$generateMostRecentNewsItems.'
-					</div> -->
-					<br><br>
+				<div id="content">';
+					if($role == "Administrator")
+					{
+						echo
+						'
+						<div class="news-feed">
+							<header class ="modules"> <i class="fa fa-bullhorn fa-fw"></i> News </header>
+								'.$generateMostRecentNewsItems.'
+						</div>
+						<br><br>
+						';
+					}
 
+					echo '
 					<div class="at-a-glance">
 							<header class ="modules"> <i class="fa fa-pie-chart fa-fw"></i> Summary </header>
 
@@ -414,20 +457,27 @@
 										<p class="summary">
 											<span id="available-issues" data-fgcolor="#65C3DF" data-fontsize="30" data-dimension="200" data-text="'.$availableTotal.'" data-width="30" data-total="'.$packageTotal.'" data-part="'.$availableTotal.'"></span>
 										</p>
-									</section>
+									</section>';
+									$role = $_SESSION['role'];
+									if($role == "Administrator")
+									{
+										echo '
+										<section class="card">
+											<p class="card-title">Total users</p>
+											<p class="summary">
+													<span id="last-issue" data-fgcolor="#73C682" data-fontsize="30" data-dimension="200" data-text="'.$usersTotal.'" data-total="'.$usersTotal.'" data-part="'.$usersTotal.'" data-width="30"></span>
+											</p>
+										</section>
 
 
-									<section class="card">
-										<p class="card-title">Latest issue</p>
-										<p class="summary">
-									 			<span id="last-issue" data-fgcolor="#F8CB00" data-fontsize="20" data-dimension="200" data-text="'.$lastAddedPackage.'" data-width="30"></span>
-									 	</p>
-									</section>
+										';
+									}
+echo '
 						</div>
 
 							<br><br>
 
-							<! -- This div shows the 5 most recent package issues that are not hidden and are unresolved -->
+							<!-- This div shows the 5 most recent package issues that are not hidden and are unresolved -->
 							<div class="recent-items">
 								<header class ="modules"> <i class="fa fa-history fa-fw"></i> Recent </header>
 										<table id="results">

@@ -185,7 +185,7 @@ p#errorMessage
 	font-family: 'Source Sans Pro', sans-serif;
 	/*padding: 5px;*/
 	margin-left: 5px;
-	font-size: 1.2em;
+	font-size: 1em;
 	font-weight: 600;
 	/*width: 350px;*/
 }
@@ -218,12 +218,13 @@ p.footnote
 label
 {
 	font-size:13pt;
-	font-weight: bold;
+	display: block;
+	font-weight: 600;
 	color: #3498DB;
-	text-align: center;
-	padding-right: 2px;
-	float: left;
-	vertical-align: middle;
+	text-align: left;
+	/*padding-right: 2px;*/
+	margin-left: 5px;
+	/*float: left;*/
 	width:150px;
 	font-family: 'Source Sans Pro', sans-serif;
 
@@ -239,7 +240,12 @@ input[type=text], input[type=password], input[type=email]
 	color: #34495E;
 	padding-left: 2px;
 	padding-bottom: 3px;
-	margin:5px 15px;
+	margin: 0px 0px 15px 5px;
+	border: 0;
+	border-top:none;
+	border-left:none;
+	border-right: none;
+	border-bottom: 1px solid #BBBBBB;
 	box-shadow: none;
 	outline: none;
 	height: 40px;
@@ -280,7 +286,6 @@ select
 {
 	font-size:1.2em;
 	font-family: 'Source Sans Pro', sans-serif;
-
 	color: #34495E;
 	font-weight: bold;
 	background-color:#fff;
@@ -290,7 +295,7 @@ select
 	outline: none;
 	height: 40px;
 	width: auto;
-	margin: 5px 0px 5px 0px;
+	margin: 0px 0px 15px 5px;
 	border: 0;
 	border-top: 1px solid #e2e3e4;
 	border-bottom: 1px solid #e2e3e4;
@@ -309,7 +314,7 @@ input[type=submit], button
 	margin: 20px 170px;
 	color: #fff;
 	border:none;
-	background-color: #A48AD4;
+	background-color: #0EB4CA;
 	font-family: 'Source Sans Pro', sans-serif;
 	text-transform: uppercase;
 
@@ -352,7 +357,7 @@ input[type=submit]:hover, button:hover
 {
 
 	color: #fff;
-	background-color: #8373a1;
+	background-color: #1EC8D8;
 	font-weight: bold;
 	font-family: 'Source Sans Pro', sans-serif;
 
@@ -373,10 +378,10 @@ textarea
 	font-family: 'Source Sans Pro', sans-serif;
 	margin: 5px 0px 5px 0px;
 	border: 0;
-	border-top: 1px solid #e2e3e4;
-	border-bottom: 1px solid #e2e3e4;
-	border-left: 1px solid #e2e3e4;
-	border-right: 1px solid #e2e3e4;
+	border-top:none;
+	border-left:none;
+	border-right: none;
+	border-bottom: 1px solid #BBBBBB;
 
 }
 
@@ -799,7 +804,7 @@ div.card > div.card-details > p
 
 div.card > div.card-details > p.customer
 {
-	color: #65C3DF;
+	color: #333645;
 	font-family: 'Roboto', sans-serif;
 	text-transform: none;
 	font-size: 1.5em;
