@@ -142,7 +142,7 @@ $(document).ready(function()
                   success: function(response)
                   {
                     $('#data').html(response);
-                    $('.titleheading').html("<i class='fa fa-bug fa-fw'></i>New issue creation. Enter as much details as possible then click 'ADD'");
+                    $('.titleheading').html("<i class='fa fa-bug fa-fw'></i>New issue creation.");
 
                   }
                 });

@@ -516,9 +516,9 @@ echo '
 			<!-- The search div -->
 			<div id="content">
 
-				<form class="card">
+				<form class="card" id="search">
 					<header class = "subheading"><span class=" fa fa-search"></span>Package Finder</header>
-					<p>Enter all or part of a tracking number to find packages<br> it may belong to.</p><br>
+					<p>Enter all or part of a tracking number to find packages it may belong to.</p><br>
 
 					<input id="queryField" type = "text" name="query" placeholder = "Enter tracking number" />
 					<input id="lookupButton" type="submit" value="Find">

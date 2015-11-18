@@ -418,13 +418,12 @@ form
 }
 
 
-#data p
+/*#data p
 {
-	padding: 20px 0px 0px 0px;
-	/*font-size:14pt;*/
-	/*font-family: 'Source Sans Pro', sans-serif;*/
+	padding: 5px 0px 0px 0px;
 
-}
+
+}*/
 
 
 #content section
@@ -966,3 +965,344 @@ footer
 	height:40px;
 	text-align:center;
 }
+
+
+
+
+
+/*//////////////////////////////////////////////////*/
+/* STYLES FOR DEVICE WITH SMALLER SCREENS GO HERE*/
+/* ////////////////////////////////////////////////*/
+
+@media screen and (max-width:480px)
+{
+			*
+			{
+				margin: 0px;
+				padding: 0px;
+			}
+
+			nav
+			{
+				width: 75px;
+				height: 100%;
+				/*position: absolute;*/
+			}
+
+			nav > span > p#app-name, nav > span > p#user-name
+			{
+				margin-left: 8px;
+				font-size: 18px;
+			}
+
+			nav > span > p#app-name
+			{
+				visibility: hidden;
+			}
+			nav > span > p#app-name:before
+			{
+				visibility: visible;
+				top: 0;
+				left: 0;
+				content: "PH\00ae";
+				text-align: center;
+				margin-left: 10px;
+			}
+
+			nav >  a.link, nav > a.link:hover
+			{
+				padding: 12px 0px 15px 17px;
+
+				/*line-height: 1;*/
+				font-size: 0;
+				color: transparent;
+			}
+
+			nav > a.link > i
+			{
+				color: #ffffff;
+				font-size: 23px;
+			}
+
+			nav > a.link > i:hover
+			{
+				color: #333645;
+			}
+
+			nav > a.link > span
+			{
+				/*font-size: 12px;*/
+				margin-left: 3px;
+				color: #ffffff;
+				padding: 3px 5px;
+				border-radius: 3px;
+
+			}
+
+			div#content2
+			{
+				margin-left: 73px;
+				width: 75%;
+			}
+
+			div#page-title
+			{
+				height: 75px;
+				margin-left: 15px;
+				width: 93%;
+			}
+
+			div#page-title > header
+			{
+				font-size: 18px;
+				text-align: center;
+				margin-left: 8px;
+				padding-top: 15px;
+			}
+
+			div#content
+			{
+				margin-left: 0px;
+				width: 95%;
+			}
+
+			div.recent-items, div.at-a-glance, div.news-feed
+			{
+				width: 100%;
+				margin-left: 10px;
+			}
+
+			div.recent-items > header, div.at-a-glance > header, div.news-feed > header
+			{
+				padding: 5px 5px 5px 5px;
+				margin: 5px 0px;
+				font-size: 15pt;
+			}
+
+			div.news-feed > p.newsitem
+			{
+				padding: 8px 5px 0px 5px;
+				font-size: 14px;
+				margin: 0px 0px 0px 5px;
+
+			}
+
+			#data > p
+			{
+				padding: 0px;
+			}
+
+			div#at-a-glance > section.card
+			{
+				padding: 10px 0px 0px 0px;
+			}
+
+			table, thead, tbody, th, td, tr
+			{
+				display: block;
+			}
+
+			/* Hide table headers (but not display: none;, for accessibility) */
+			thead tr
+			{
+				position: absolute;
+				top: -9999px;
+				left: -9999px;
+			}
+
+
+			td
+			{
+				/* Behave  like a "row" */
+				border: none;
+				border-bottom: 1px solid #eee;
+				position: relative;
+				padding-left: 50%;
+			}
+
+			td:nth-of-type(1)
+			{
+				padding-left: 5px;
+				font-size: 15px;
+				text-align: right;
+			}
+
+			td:before
+			{
+				/* Now like a table header */
+				position: absolute;
+
+				/* Top/left values mimic padding */
+				top: 3px;
+				left: 3px;
+				padding-right: 0px;
+				font-weight: 600;
+				white-space: nowrap;
+			}
+
+			/* Label the data */
+			td:nth-of-type(1):before { content: ""; }
+			td:nth-of-type(2):before { content: "Customer"; }
+			td:nth-of-type(3):before { content: "Main Issue"; }
+			td:nth-of-type(4):before { content: "Description"; }
+			td:nth-of-type(5):before { content: ""; }
+
+
+
+		/*}*/
+
+		button.back-button
+		{
+			/*width: 25px;
+			font-size: 15px;
+			padding: 0px 3px;
+			margin: 0px 3px;
+			height: 25px;*/
+			display: none;
+
+		}
+
+		div#toggle-view
+		{
+			padding: 20px 0px;
+			margin-left: 5px;
+		}
+
+		div.card
+		{
+			width: 250px;
+			margin-left: 50px;
+		}
+
+		div.card > div.card-image
+		{
+			padding-top: 8px;
+			width: 250px;
+		}
+
+		div.card > div.card-image > p > img
+		{
+			height: 100px;
+			width: 120px;
+		}
+
+		div.card > div.card-details > p.customer, div.card > div.card-details > p.issue, div.card > div.card-details > p.description
+		{
+			font-size: 1em;
+
+		}
+
+		div.card > div.card-footer > p.trackingnumber
+		{
+			font-size: 12px;
+		}
+
+		div.card > div.card-footer > p.url > a
+		{
+			font-size: 13px;
+		}
+
+		div#pagination-holder
+		{
+			margin-left: 50px;
+			max-width: 80%
+
+		}
+
+		div#pagination-holder > p
+		{
+			font-size:15px;
+		}
+
+		form#package, form#user
+		{
+			width: 330px;
+			margin: 20px 5px;
+		}
+
+
+		form#package > p, form#user > p
+		{
+			font-size: 1em;
+		}
+
+		form#package > input[type=text], form#package > input[type=password], form#package > input[type=email], form#package > select
+		{
+			width: 300px;
+		}
+
+		form#package > textarea
+		{
+			width: 300px;
+			height: 100px;
+		}
+
+		input[type=submit], button
+		{
+			width: 75px;
+			margin: 10px 100px;
+
+		}
+
+		form#search
+		{
+			width: 330px;
+			margin: 50px 10px;
+			height: 275px;
+		}
+
+		form#search > p, form#user > p
+		{
+			margin: 10px;
+			padding: 10px;
+
+		}
+
+		form#search > input[type=text]
+		{
+			margin-left: 40px;
+		}
+
+		form#search > input[type=submit], button
+		{
+			margin-left: 90px;
+		}
+
+		form#user > input[type=text], form#user > input[type=password], form#user > input[type=email], form#user > select
+		{
+			width: 300px;
+		}
+
+		div#result-container
+		{
+			margin:0px 0px 0px 10px;
+		}
+		div#result-container > p
+		{
+			margin-top: 15px;
+			font-size: 17px;
+			font-weight: normal;
+		}
+
+		div#result-container > p#errorMessage
+		{
+			display: none;
+		}
+
+		div#result-container > div#actions > input[type="text"]
+		{
+			width: 275px;
+			font-size: 18px;
+			font-weight: normal;
+		}
+
+		table#update-history > tbody > tr > td
+		{
+			font-size: 18px;
+		}
+		table#update-history > tbody > tr > td:nth-of-type(1):before { content: "Timestamp"; }
+		table#update-history > tbody > tr > td:nth-of-type(2):before { content: "Update"; }
+		table#update-history > tbody > tr > td:nth-of-type(3):before { content: "User/Agent"; }
+
+
+} /* End of styles for mobile devices */

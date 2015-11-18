@@ -15,7 +15,7 @@
 			$stmt->bind_param('s', $trackingnumber);
 			$stmt->execute();
 			$stmt->bind_result($pid, $trackingnumber, $customername, $issue, $description, $photo1);
-			// $stmt->fetch();
+			$stmt->fetch();
 			$stmt->close();
 
 
@@ -43,12 +43,13 @@
 
 		} // end if isset
 
+
 		 $_SESSION['pid'] = $pid;
 		 $_SESSION['trackingnumber'] = $trackingnumber;
 
+
 		 // Get the details for the note
 		 $sql = "SELECT updates.Note, updates.TimeCreated, updates.Username, updates.Agent FROM updates WHERE updates.PackageID = $pid";
-
 		 $stmt = $connection->prepare($sql);
 		 $stmt->execute();
 		 $stmt->bind_result($note, $timestamp, $user, $agent);
@@ -67,12 +68,9 @@
 
 		 $stmt->close();
 
-
-
 ?>
 
 						<div id = "container">
-
 								<div id ="content2">
 									<div id="page-title">
 										<header class="titleheading"><button class='back-button'><i class='fa fa-chevron-left fa-fw'></i></button> <span class="fa fa-eye fa-fw"></span>You are now taking action on issue <?php echo $trackingnumber ?></header>

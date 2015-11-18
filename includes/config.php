@@ -13,6 +13,7 @@ $database = "websource_package_data";
 // $pass = "PackageH3r0";
 // $database = "packagehero_db";
 
+
 // Create connection
 $connection = new mysqli($host, $user, $pass, $database);
 
@@ -21,13 +22,6 @@ if ($connection->connect_error)
 {
     die("Whoops! Could not connect to the Package Hero database. Here's the error -> " . $connection->connect_error);
 }
-
-
-
-
-
-
-
 
 
 
