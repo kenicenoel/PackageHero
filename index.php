@@ -15,7 +15,7 @@
 									<input id ="login-button" type = "submit" value="Login" />
 									<p id="forgot-password">Forgot your password?</p>
 							</form>
-							<footer id = "footer">&copy;<?php echo date("Y"); ?> Web Source.</footer>
+							<!-- <footer id = "footer">&copy;<?php echo date("Y"); ?> Web Source.</footer> -->
 				</div>
 
 		</div>

@@ -27,6 +27,7 @@
 						<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,600,700" rel="stylesheet" type="text/css">
 						<link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
 						<link href="../css/jquery.circliful.css" rel="stylesheet" type="text/css" />
+						<meta name="viewport" content="width=device-width, initial-scale=1">
 					</head>
 
 					<body>
@@ -43,5 +44,5 @@
 							{
 								echo '<a class ="link" href ="#" id="adduser" title = "Create a new user"><i class="fa fa-user-plus fa-fw"></i> Add User</a>';
 							} ?>
-							<a class ="link" href ="../includes/logout.php" title = "Logout from Package Issues Manager"><i class="fa fa-close fa-fw"></i> Sign out</a>
+							<a class ="link" href ="../includes/logout.php" title = "Logout from Package Hero"><i class="fa fa-close fa-fw"></i> Sign out</a>
 						</nav>

@@ -16,5 +16,6 @@
 		 		<link href="http://fonts.googleapis.com/css?family=Roboto:400,300" rel="stylesheet" type="text/css">
 				<link rel="shortcut icon" href="images/favicon.ico"/>
 		 		<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,600" rel="stylesheet" type="text/css">
+				<meta name="viewport" content="width=device-width, initial-scale=1">
 			</head>
 			<body>

@@ -27,6 +27,7 @@
 					<link rel="stylesheet" href="../fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
 					<link href="../css/jquery.circliful.css" rel="stylesheet" type="text/css" />
 					<link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+					<meta name="viewport" content="width=device-width, initial-scale=1">
 				</head>
 
 				<body>
@@ -44,5 +45,5 @@
 							{
 								echo '<a class ="link" href ="#" id="adduser" title = "Create a new user"><i class="fa fa-user-plus fa-fw"></i> Add User</a>';
 							} ?>
-							<a class ="link" href ="logout.php" title = "Logout from Package Issues Manager"><i class="fa fa-close fa-fw"></i> Sign out</a>
+							<a class ="link" href ="logout.php" title = "Logout from Package Hero"><i class="fa fa-close fa-fw"></i> Sign out</a>
 						</nav>
