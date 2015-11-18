@@ -989,10 +989,16 @@ footer
 				/*position: absolute;*/
 			}
 
+			nav > span
+			{
+				height: 70px;
+			}
+
 			nav > span > p#app-name, nav > span > p#user-name
 			{
 				margin-left: 8px;
 				font-size: 18px;
+				/*display: none;*/
 			}
 
 			nav > span > p#app-name
@@ -1007,6 +1013,11 @@ footer
 				content: "PH\00ae";
 				text-align: center;
 				margin-left: 10px;
+			}
+
+			nav > span > p#user-name
+			{
+				display: none;
 			}
 
 			nav >  a.link, nav > a.link:hover
