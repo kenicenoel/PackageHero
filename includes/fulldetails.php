@@ -15,7 +15,7 @@
 			$stmt->bind_param('s', $trackingnumber);
 			$stmt->execute();
 			$stmt->bind_result($pid, $trackingnumber, $customername, $issue, $description, $photo1);
-			$stmt->fetch();
+			// $stmt->fetch();
 			$stmt->close();
 
 
@@ -47,11 +47,11 @@
 		 $_SESSION['trackingnumber'] = $trackingnumber;
 
 		 // Get the details for the note
-		 $sql = "SELECT updates.Note, updates.TimeCreated, updates.Username FROM updates WHERE updates.PackageID = $pid";
+		 $sql = "SELECT updates.Note, updates.TimeCreated, updates.Username, updates.Agent FROM updates WHERE updates.PackageID = $pid";
 
 		 $stmt = $connection->prepare($sql);
 		 $stmt->execute();
-		 $stmt->bind_result($note, $timestamp, $user);
+		 $stmt->bind_result($note, $timestamp, $user, $agent);
 		 $notes="";
 		 while($stmt->fetch())
 		 {
@@ -60,7 +60,8 @@
 			 <tr>
 					 <td>'.$timestamp.'</td>
 					 <td>'.$note.'</td>
-					 <td>'.$user.'</td>
+					 <td>'.$user.' ('.$agent.')</td>
+
 			</tr>';
 		 }
 
@@ -97,7 +98,7 @@
 															echo '<button class="task-actions" id="resolve"><span class="fa fa-check fa-fw"></span>Resolve</button>';
 															echo '<button class="task-actions" id="hide"><span class="fa fa-eye-slash fa-fw"></span>Hide</button>';
 														}
-																													
+
 														else if(isset($_GET['res']) && $_GET['res'] == 'Yes')
 														{
 															echo '<p> This issue was marked resolved. You can still view the issue but can no longer hide or resolve it.</p>';

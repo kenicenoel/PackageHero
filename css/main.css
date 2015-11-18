@@ -4,7 +4,6 @@ body
 	padding: 0;
 	width: 100%;
 	color: #000;
-	/*background-color: #ECF6F8;*/
 	background-image: url('../images/new_ph_banner.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -21,39 +20,21 @@ div#container
 }
 
 
-
-header
-{
-	font-size: 3em;
-	font-family: 'Source Sans Pro', sans-serif;
-	padding-bottom:12px;
-
-
-}
-
-
-div#content
-{
-	margin-left: 0px;
-	margin-top: 0px;
-	background-size: cover;
-	height: 100%;
-}
-
 div#bottom
 {
 
 	width:100%;
 	height: 50%;
-	/*background-color: #fff;*/
-
 }
 
-div#content header
+form > header
 {
 	margin-left: 0px;
-	margin-top: 0px;
+	margin-top: 5px;
 	max-width: 600px;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 2.3em;
+	padding-bottom:12px;
 }
 
 div#bottom > header
@@ -75,7 +56,21 @@ form
 	float: right;
 	padding: 0px 50px;
 	margin: 5% 50px 0px 0px;
-	/*margin-top: 5%;*/
+
+}
+
+form#password
+{
+	height: 400px;
+}
+
+p#result
+{
+	background-color:#C31D4F;
+	color: #ffffff;
+	font-family: 'Roboto', sans-serif;
+	font-size: 2em;
+	padding: 30px;
 }
 
 
@@ -91,6 +86,12 @@ input[type=submit], button
 	font-family: 'Source Sans Pro', sans-serif;
 	text-transform: uppercase;
 
+}
+
+#relogin
+{
+	width: 200px;
+	margin: 20px 18%;
 }
 
 
@@ -141,11 +142,9 @@ label
 p.text
 {
 
-	/*margin-left: 50px;*/
 	color: rgb(18, 124, 201);
-	font-size: 1.6em;
+	font-size: 1.2em;
 	font-family: 'Source Sans Pro', sans-serif;
-	/*max-width: 700px;*/
 	text-align: left;
 }
 
@@ -153,15 +152,26 @@ p#msg
 {
 
 
-	/*background-color: #F8CB00;*/
 	color: #FF6B6B;
 	font-family: 'Source Sans Pro', sans-serif;
-	/*padding: 5px;*/
 	margin-left: 5px;
 	font-size: 1em;
 	font-weight: 600;
-	/*width: 350px;*/
 
+
+
+}
+
+form > p#forgot-password
+{
+	cursor: pointer;
+	font-weight: 600;
+}
+
+form > p#forgot-password:hover
+{
+	color: #2fa0d0;
+	text-decoration: underline;
 
 }
 
@@ -170,13 +180,13 @@ p#msg
 footer
 {
 
-	display: block;
-	width: auto;
+
+	width: 100%;
 	bottom:5px;
 	font-size: 1em;
-	margin: 0px 35%;
+	/*margin: 0px 35%;*/
 	text-align:center;
-	position: absolute;
+	position: fixed;
 	font-family: 'Roboto', sans-serif;
 
 }

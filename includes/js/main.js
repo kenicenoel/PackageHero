@@ -46,9 +46,20 @@ $(document).ready(function()
                     success: function (response)
                     {
 
-                      var p = document.getElementById('errorMessage');
-                      p.innerHTML = response;
-                      $('#addIssue').val("Add");
+                      if(response == "Error")
+                      {
+                        $('#errorMessage').append("<p style='font-size:1.1em; background-color:#f1c40f; color:#000000; padding-bottom:10px'><i class='fa fa-close'></i> There was an error.</p>")
+                      }
+
+                      else if(response == "Done")
+                      {
+                        $('#errorMessage').append("<p style='font-size:1.1em; background-color:#27ae60; color:#ffffff;'><i class='fa fa-check-circle'></i>Added new issue. You may add another or move on.</p>");
+                        $('#package')[0].reset();
+                        $('#addIssue').val("Add");
+
+                      }
+
+
 
                     },
                     data: formData,
@@ -66,7 +77,6 @@ $(document).ready(function()
 
 
         // Ajax create new user
-
         $('body').on('click', '#createuser', function(e)
         {
 
@@ -78,7 +88,7 @@ $(document).ready(function()
 
           if(u == "" || p == "" || c == null || r == null)
           {
-            console.log(c+"/"+r);
+
             $('#errorMessage').html("<i class='fa fa-exclamation-triangle'></i> A username, password, country and user role is required.</br>");
           }
 
@@ -100,10 +110,12 @@ $(document).ready(function()
                 success: function (response)
                 {
 
-                  var p = document.getElementById('errorMessage');
-                  p.innerHTML = response;
+
+                  $('#errorMessage').html("<p style='font-size:1.1em; background-color:#27ae60; color:#ffffff; margin:5px 0px 5px 5px'><i class='fa fa-check-circle'></i> User was created. You may create another user or move on.</p>");
+                  $('#user')[0].reset();
+                  $('#agent').empty();
                   $('#createuser').val("Done");
-                  $('#createuserform').trigger("reset");
+
                 },
                 data: formData,
                 cache: false,
@@ -117,7 +129,6 @@ $(document).ready(function()
 
 
       // When user clicks on the link that says "New Issue in the navigation, run this task
-
             $('#newissue').click(function()
             {
 
@@ -141,11 +152,10 @@ $(document).ready(function()
 
 
               // When user clicks on the link that says "Add user in the navigation, run this task
-
                     $('#adduser').click(function()
                     {
 
-                        var url='../includes/addUser.php';
+                        var url='../includes/adduser.php';
 
                       $.ajax
                       (
@@ -154,7 +164,7 @@ $(document).ready(function()
                           url:url,
                           success: function(response)
                           {
-                            $('#data').html(response);
+                            $('#data').html(response); // use the returned html to replace the contents of the div with id 'data'
                             $('.titleheading').html("<button class='back-button'><i class='fa fa-chevron-left fa-fw'></i></button><i class='fa fa-user-plus fa-fw'></i>Create a new user. Note that most fields are required.");
 
                           }
@@ -164,7 +174,7 @@ $(document).ready(function()
 
 
 
-
+              // When clicked. Load viewAllPackages
               $('#viewAllPackages').click(function()
               {
 
@@ -351,6 +361,7 @@ $(document).ready(function()
           $('#hidden-issues').circliful();
           $('#available-issues').circliful();
           $('#last-issue').circliful();
+
 
 
 

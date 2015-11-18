@@ -107,7 +107,7 @@ include_once "config.php";
 
                     //execute the prepared statement
                     $stmt->execute();
-                    echo "<span class='fa fa-exclamation-triangle fa-fw'></span> Sorry. There were one or more issues. Please try again.";
+                    echo "Error";
 
                     goto end;
 
@@ -157,7 +157,7 @@ include_once "config.php";
 
 
             }
-            echo '<span class="fa fa-exclamation-triangle fa-fw"></span> Successfully created issue!';
+            echo 'Done';
           }
 
           end:

@@ -4,8 +4,8 @@
           <header class="subheading"><span class="fa fa-bug"> </span> Add a new package with issues to the system </header>
           <p id="errorMessage"></p>
           <p>
-            Enter the tracking number, customer name (if known) and pick a main issue. <br>Enter a description if additional information is known or
-            the issue is not listed<br> in the main issue dropdown.
+            Enter the tracking number, customer name (if known) and pick a main issue. Enter a description if additional information is known or
+            the issue is not listed in the main issue dropdown.
           </p>
           <br><br>
           <label for="trackingnumber">Tracking Number</label>

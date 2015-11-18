@@ -180,14 +180,14 @@ p.summary
 
 p#errorMessage
 {
-	/*background-color: #F8CB00;*/
 	color: #FF6B6B;
 	font-family: 'Source Sans Pro', sans-serif;
-	/*padding: 5px;*/
-	margin-left: 5px;
+	padding-bottom: 10px;
+	padding-left:5px;
+	margin: 5px 0px 15px 0px;
 	font-size: 1em;
 	font-weight: 600;
-	/*width: 350px;*/
+
 }
 
 div#content2
@@ -763,6 +763,28 @@ form.card
 	padding: 5px 20px 20px 10px;
 }
 
+
+form#package, form#user
+{
+	width: 600px;
+	margin:20px 20%;
+}
+
+form#package > p
+{
+	font-size: 1.2em;
+}
+
+form#package > input[type=text], form#package > input[type=password], form#package > input[type=email], form#package > select
+{
+	width: 520px;
+}
+
+form#user > input[type=text], form#user > input[type=password], form#user > input[type=email], form#user > select
+{
+	width: 520px;
+}
+
 div.card
 {
 	display:inline-block;
@@ -837,7 +859,7 @@ div.card > div.card-footer
 div.card > div.card-footer > p
 {
 	display: inline-block;
-	margin: 10px auto;
+	margin: 5px 5px auto auto;
 
 }
 
@@ -846,14 +868,14 @@ div.card > div.card-footer > p.trackingnumber
 	font-family: 'Roboto', sans-serif;
 	font-weight: 500;
 	color: #272727;
-	width: 150px;
+	display: block;
 	margin-left: 5px;
 }
 
 
 div.card > div.card-footer > p.url
 {
-	padding: 0px 43px;
+	text-align: center;
 }
 
 

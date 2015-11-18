@@ -642,7 +642,7 @@ echo '
 		// }
 
 
-		// Calls the password generator class to create secure password
+				// Calls the password generator class to create secure password
 		   	function generateSecurePassword($length)
 				{
 					$ascii = PasswordGenerator::getASCIIPassword($length);
