@@ -184,7 +184,7 @@ footer
 	width: 100%;
 	bottom:5px;
 	font-size: 1em;
-	
+
 	text-align:center;
 	position: fixed;
 	font-family: 'Roboto', sans-serif;
@@ -193,7 +193,7 @@ footer
 
 
 /* STYLES FOR DEVICE WITH SMALLER SCREENS GO HERE*/
-@media screen and (max-width:480px)
+@media (max-width:641px)
 {
 			*
 			{
@@ -208,17 +208,17 @@ footer
 
 			form
 			{
-				margin-left: 70px;
+				margin-left: 40px;
 				padding: 10px 50px;
 				float: none;
-				width: 250px;
+				width: 200px;
 
 
 			}
 
 			form > p#forgot-password
 			{
-				margin-left: 50px;
+				margin-left: 20px;
 				padding: 0px;
 			}
 
@@ -230,6 +230,49 @@ footer
 
 
 
+
+
+
+}
+
+/* //////////////////////////////*/
+	/* FOR TABLET DEVICES */
+/* //////////////////////////////*/
+@media (min-width:642px) and (max-width: 961px)
+{
+
+	*
+	{
+		margin: 0;
+		padding: 0;
+	}
+
+	body
+	{
+		background-size: cover;
+	}
+
+	form
+	{
+		margin-left: 150px;
+		padding: 10px 50px;
+		float: none;
+		width: 400px;
+
+
+	}
+
+	form > p#forgot-password
+	{
+		margin-left: 50px;
+		padding: 0px;
+	}
+
+	form > p.text
+	{
+		padding: 15px;
+		font-size: 1.1em;
+	}
 
 
 

@@ -32,7 +32,7 @@
       echo '
 			  <div id ="content">
 			      <form class="card" id="user">
-								<header class="subheading"><span class=" fa fa-user-plus"></span> Grant access to a new user</header>
+								<header class="subheading"><span class=" fa fa-user-plus"></span> Add a new user</header>
                 <p>Enter a username, a password, choose the country and the user priviledge.
                 </p><br>
 								<p id="errorMessage"></p>

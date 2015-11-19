@@ -165,7 +165,7 @@ $(document).ready(function()
                           success: function(response)
                           {
                             $('#data').html(response); // use the returned html to replace the contents of the div with id 'data'
-                            $('.titleheading').html("<button class='back-button'><i class='fa fa-chevron-left fa-fw'></i></button><i class='fa fa-user-plus fa-fw'></i>Create a new user. Note that most fields are required.");
+                            $('.titleheading').html("<button class='back-button'><i class='fa fa-chevron-left fa-fw'></i></button><i class='fa fa-user-plus fa-fw'></i>Create a new user.");
 
                           }
                         });

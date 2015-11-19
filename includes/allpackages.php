@@ -170,12 +170,12 @@
 
 						<div id ="content2">
 							<div id="page-title">
-								<header class="titleheading"><button class='back-button'><i class='fa fa-chevron-left fa-fw'></i></button> <span class-"fa fa-eye"></span>These are all the issues currently needing attention.</header>
+								<header class="titleheading"><button class='back-button'><i class='fa fa-chevron-left fa-fw'></i></button> <span class-"fa fa-eye"></span>Issues that require attention</header>
 							</div>
 
 							<div id="data">
 									<div id = "toggle-view">
-										<p>CHANGE VIEW:<p>
+										<p>VIEW AS:<p>
 										<p id="list" class="view"><span class="fa fa-table"> Table</span><p>
 										<p id="grid" class="view"><span class="fa fa-th"> Cards</span><p>
 									</div>

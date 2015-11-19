@@ -18,7 +18,7 @@
 					$area = $_GET['module'];
 					if($area == "search")
 					{
-						$title = "<button class='back-button'><i class='fa fa-chevron-left fa-fw'></i></button><i class='fa fa-search fa-fw'></i>Package finder. Find info on every issue in the system";
+						$title = "<button class='back-button'><i class='fa fa-chevron-left fa-fw'></i></button><i class='fa fa-search fa-fw'></i>Package finder.";
 					}
 
 
