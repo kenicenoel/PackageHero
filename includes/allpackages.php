@@ -147,7 +147,7 @@
 
 			  ';
 
-			  // Generate the list view
+			  // Generate the table view
 			  $list.= '
 			  <tr>
 				    <td>'.$tnumber.'</td>
@@ -170,7 +170,7 @@
 
 						<div id ="content2">
 							<div id="page-title">
-								<header class="titleheading"><button class='back-button'><i class='fa fa-chevron-left fa-fw'></i></button> <span class-"fa fa-eye"></span>Issues that require attention</header>
+								<header class="titleheading"><span class-"fa fa-eye"></span>Issues that require attention</header>
 							</div>
 
 							<div id="data">

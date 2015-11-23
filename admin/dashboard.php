@@ -8,7 +8,7 @@
 				if($_GET['module'] != 'package' && $_GET['module'] != 'search' && $_GET['module'] != 'user')
 				{
 					$setmodule= "overview";  // Default to overview
-					$title = "<span class='fa fa-dashboard fa-fw'></span>Dashboard : <span id='date'>".$date = showDate()."</span>";
+					$title = "<span class='fa fa-calendar fa-fw'></span><span id='date'>".$date = showDate()."</span>";
 
 				}
 				else
@@ -18,7 +18,7 @@
 					$area = $_GET['module'];
 					if($area == "search")
 					{
-						$title = "<button class='back-button'><i class='fa fa-chevron-left fa-fw'></i></button><i class='fa fa-search fa-fw'></i>Package finder.";
+						$title = "<i class='fa fa-search fa-fw'></i>Package finder";
 					}
 
 
@@ -33,7 +33,7 @@
 			else if(!isset ($_GET['module']))
 			{
 				$setmodule= "overview";  // Default to overview
-				$title = "<span class='fa fa-dashboard fa-fw'></span>Dashboard : <span id='date'>".$date = showDate()."</span>";
+				$title = "<span class='fa fa-calendar fa-fw'></span><span id='date'>".$date = showDate()."</span>";
 
 			}
 

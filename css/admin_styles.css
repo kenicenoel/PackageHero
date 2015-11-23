@@ -17,6 +17,13 @@ img
 
 }
 
+#navigation-holder
+{
+  /*width: 600px;*/
+  margin: 15px auto;
+  position: relative;
+}
+
 
 nav
 {
@@ -42,7 +49,7 @@ nav > span
 	display: block;
 }
 
-nav > span >p#app-name
+nav > span > p#app-name
 {
 	color: #F6F6F6;
 	margin-left:20px;
@@ -93,6 +100,7 @@ nav > a#first-link
 {
 	padding-top: 25px;
 }
+
 
 
 header
@@ -554,6 +562,7 @@ div#page-title
 div#page-title > header
 {
 	font-size: 1.5em;
+	text-align: center;
 	padding-top: 25px;
 	margin-left: 15px;
 
@@ -787,18 +796,19 @@ form#user > input[type=text], form#user > input[type=password], form#user > inpu
 div.card
 {
 	display:inline-block;
+	height: 330px;
 	background-color:#ffffff ;
 	margin: 20px 10px;
-	width: 300px;
+	width: 270px;
 
 
 }
 
 div.card > div.card-image
 {
-	margin: 0px;
+	margin: 15px 0px;
 	padding: 0px;
-	width: 300px;
+	width: 270px;
 	background-color: #ffffff;
 }
 
@@ -806,7 +816,7 @@ div.card > div.card-image > p > img
 {
 	height: 150px;
 	width: 175px;
-	margin: 0px 60px;
+	margin: 0px 40px;
 }
 
 
@@ -828,13 +838,13 @@ div.card > div.card-details > p.customer
 	color: #333645;
 	font-family: 'Roboto', sans-serif;
 	text-transform: none;
-	font-size: 1.5em;
+	font-size: 1.3em;
 	font-weight: 500;
 }
 
 div.card > div.card-details > p.issue
 {
-	font-size: 1.1em;
+	font-size: 1em;
 	text-transform: uppercase;
 	color: #333645;
 	font-weight: 600;
@@ -842,7 +852,7 @@ div.card > div.card-details > p.issue
 
 div.card > div.card-details > p.description
 {
-	font-size: 1.2em;
+	font-size: 1em;
 	font-family: 'Roboto', sans-serif;
 	color: #333645;
 	text-transform: none;
@@ -865,7 +875,8 @@ div.card > div.card-footer > p
 div.card > div.card-footer > p.trackingnumber
 {
 	font-family: 'Roboto', sans-serif;
-	font-weight: 500;
+	/*font-weight: 500;*/
+	font-size: 12px;
 	color: #272727;
 	display: block;
 	margin-left: 5px;
@@ -1063,13 +1074,6 @@ footer
 				width: 93%;
 			}
 
-			div#page-title > header
-			{
-				font-size: 15px;
-				text-align: left;
-				margin-left: 8px;
-				padding-top: 15px;
-			}
 
 			div#content
 			{

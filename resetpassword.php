@@ -1,6 +1,6 @@
 
       <form id="password" action= "" method ="post">
-        <header><i class = "fa fa-exclamation-circle"></i> Password Reset</header>
+        <header class="reset"><i class = "fa fa-exclamation-circle"></i> Password Reset</header>
           <p class="text">You are about to reset your password</p>
           <p id = "msg"></p>
            <label for="username"><span class="fa fa-male fa-fw"></span> Username</label>

@@ -4,7 +4,7 @@ body
 	padding: 0;
 	width: 100%;
 	color: #000;
-	background-image: url('../images/new_ph_banner.jpg');
+	background-image: url('../images/package_hero_new.svg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	font-family: 'Source Sans Pro', sans-serif;
@@ -16,7 +16,6 @@ div#container
 	height: 100%;
 	width: 100%;
 	clear: both;
-
 }
 
 
@@ -32,9 +31,15 @@ form > header
 	margin-left: 0px;
 	margin-top: 5px;
 	max-width: 600px;
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: 'Roboto', sans-serif;
 	font-size: 2.3em;
 	padding-bottom:12px;
+	color: #3993D0;
+}
+
+form > header.reset
+{
+	color: #FF6B6B;
 }
 
 div#bottom > header
@@ -56,6 +61,7 @@ form
 	float: right;
 	padding: 0px 50px;
 	margin: 5% 50px 0px 0px;
+	border-radius: 3px;
 
 }
 
@@ -129,12 +135,13 @@ input[type=text], input[type=password], input[type=email]
 
 label
 {
-	font-family: 'Source Sans Pro', sans-serif;
-	font-size: 1.4em;
+	font-family: 'Roboto', sans-serif;
+	font-size: 1em;
 	display: block;
 	width:150px;
 	margin-left:5px;
 	text-align: left;
+	text-transform: uppercase;
 
 }
 
@@ -150,16 +157,11 @@ p.text
 
 p#msg
 {
-
-
 	color: #FF6B6B;
 	font-family: 'Source Sans Pro', sans-serif;
 	margin-left: 5px;
 	font-size: 1em;
 	font-weight: 600;
-
-
-
 }
 
 form > p#forgot-password
@@ -172,10 +174,7 @@ form > p#forgot-password:hover
 {
 	color: #2fa0d0;
 	text-decoration: underline;
-
 }
-
-
 
 footer
 {
@@ -192,7 +191,7 @@ footer
 }
 
 
-/* STYLES FOR DEVICE WITH SMALLER SCREENS GO HERE*/
+/* STYLES FOR DEVICE WITH SMALLER SCREENS GO HERE */
 @media (max-width:641px)
 {
 			*
@@ -203,7 +202,11 @@ footer
 
 			body
 			{
+				background-repeat: no-repeat;
+				background-attachment: fixed;
+				background-position: left 10%;
 				background-size: cover;
+
 			}
 
 			form
@@ -236,7 +239,7 @@ footer
 }
 
 /* //////////////////////////////*/
-	/* FOR TABLET DEVICES */
+/* FOR TABLET DEVICES            */
 /* //////////////////////////////*/
 @media (min-width:642px) and (max-width: 961px)
 {
@@ -249,6 +252,8 @@ footer
 
 	body
 	{
+		background-repeat: no-repeat;
+		background-attachment: fixed;
 		background-size: cover;
 	}
 

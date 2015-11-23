@@ -73,7 +73,7 @@
 						<div id = "container">
 								<div id ="content2">
 									<div id="page-title">
-										<header class="titleheading"><button class='back-button'><i class='fa fa-chevron-left fa-fw'></i></button> <span class="fa fa-eye fa-fw"></span>You are viewing issue <?php echo $trackingnumber ?></header>
+										<header class="titleheading"><span class="fa fa-eye fa-fw"></span>You are viewing issue <?php echo $trackingnumber ?></header>
 									</div>
 
 									<div id='data'>
