@@ -4,19 +4,21 @@ include_once "config.php";
           if(isset($_FILES['images']) && isset($_POST['trackingnumber']))
           {
 
-            $sql = "INSERT INTO packages(TrackingNumber, CustomerName, MainIssue, Description) VALUES(?,?,?,?)";
+            $sql = "INSERT INTO packages(TrackingNumber, CustomerName, MainIssue, Description, ItemType, ShippingCarrier ) VALUES(?,?,?,?,?,?)";
 
                 //prepare the sql statement
                 $stmt = $connection->prepare($sql);
 
                 // bind variables to the paramenters ? present in sql
-                $stmt->bind_param('ssss', $trackingnumber,$customername, $mainissue, $description);
+                $stmt->bind_param('ssss', $trackingnumber,$customername, $mainissue, $description, $itemtype, $shippingcarrier);
 
                 //set the variables from form values
                 $trackingnumber= $_POST['trackingnumber'];
                 $customername = $_POST['customername'];
                 $mainissue = $_POST['MainIssue'];
                 $description = $_POST['description'];
+                $itemtype = $_POST['itemtype'];
+                $shippingcarrier = $_POST['shippingcarrier'];
 
                 //execute the prepared statement
                 $stmt->execute();

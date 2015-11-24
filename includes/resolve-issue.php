@@ -3,49 +3,59 @@
   session_start();
 
 
-      // global $connection;
-
-
-
+    if(isset($_POST['accountNumber']))
+    {
       $username = $_SESSION['username'];
       $pid = $_SESSION['pid'];
       $tnumber = $_SESSION['trackingnumber'];
-      $news = $username." marked issue ".$tnumber." as Resolved.";
+      $accnumber = $_POST['accountNumber'];
+      $news = $username." marked issue ".$tnumber." as Resolved. Customer = ".$accnumber;
 
       $resolved = "Yes";
-      $timestamp = "now()";
+      $timestamp = "CURRENT_TIMESTAMP";
 
 
       // Set the issue as resolved
-      $sql = "UPDATE packages SET Resolved = ?, ResolvedTimestamp = ?, ResolvedBy = ? WHERE PackageID = ?";
+      $sql = "UPDATE packages SET Resolved = ?, ResolvedTimestamp = ?, ResolvedBy = ?, AccountNumber = ? WHERE PackageID = ?";
       $stmt = $connection->prepare($sql);
-      $stmt->bind_param('sssi', $resolved, $timestamp, $username, $pid);
+      $stmt->bind_param('ssssi', $resolved, $timestamp, $username, $accnumber, $pid);
 
         if($stmt->execute())
         {
+
           // Insert the newsfeed item into table
           $query = "INSERT INTO newsfeed (PackageID, News, Username) VALUES(?,?,?)";
           $stmt = $connection->prepare($query);
           $stmt->bind_param('iss', $pid, $news, $username);
           $stmt->execute();
 
-
           echo "Done";
         }
 
 
-
-        else
-        {
-          echo "Failed to mark the issue as resolved";
-        }
-
         $stmt->close();
+    }
 
 
 
+    else
+    {
+      echo '
+        <div id ="content">
+            <form class="card" id="resolve-issue">
+                <header class="subheading"><span class=" fa fa-check"></span> You are about to resolve this issue</header>
+                <p>To resolve this issue, enter the Account Number for this package. E.g: WEB1234 or GUY1234</p>
+                <br>
+                <p id="errorMessage"></p>
+                <label for="accountNumber">Account Number</label>
+                <input type = "text" id = "accountNumber" name="accountNumber" required autofocus /><br>
+                <input id="resolveissue" type = "submit" value="Resolve" />
+
+            </form>
 
 
 
+      </div>
 
-?>
+      ';
+    } ?>

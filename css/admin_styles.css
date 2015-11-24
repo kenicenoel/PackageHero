@@ -35,7 +35,7 @@ nav
 	width: 220px;
 	height:100%;
 	border:none;
-	background-color: #333645;
+	background-color: #05ABE0;
 
 }
 
@@ -43,7 +43,7 @@ nav
 
 nav > span
 {
-	background-color: #65C3DF;
+	background-color: #333645;
 	padding-top:30px;
 	padding-bottom:20px;
 	display: block;
@@ -92,8 +92,8 @@ nav > a.link:hover
 {
 	text-decoration: none;
 	font-weight: 600;
-	background-color: #FDE3A7;
-	color: #333645;
+	background-color: #1ec8d8;
+	color: #272727;
 }
 
 nav > a#first-link
@@ -125,8 +125,8 @@ header.subheading, header.titleheading
 	font-family: 'Source Sans Pro', sans-serif;
 	padding: 8px 0px 0px 0px;
 	font-weight: bold;
-	color: #5c6866;
-	text-transform: uppercase;
+	color: #05ABE0;
+	/*text-transform: uppercase;*/
 }
 
 header.titleheading
@@ -150,6 +150,7 @@ header.modules
 {
 
 	font-size:18pt;
+	font-family: 'Roboto', sans-serif;
 	color:#5c6866;
 	display:block;
 	clear:left;
@@ -228,13 +229,11 @@ label
 	font-size:13pt;
 	display: block;
 	font-weight: 600;
-	color: #3498DB;
+	color: #777777;
 	text-align: left;
-	/*padding-right: 2px;*/
 	margin-left: 5px;
-	/*float: left;*/
 	width:150px;
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: 'Roboto', sans-serif;
 
 }
 
@@ -245,7 +244,7 @@ input[type=text], input[type=password], input[type=email]
 	font-size: 1.2em;
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: bold;
-	color: #34495E;
+	color: #05ABE0;
 	padding-left: 2px;
 	padding-bottom: 3px;
 	margin: 0px 0px 15px 5px;
@@ -273,7 +272,10 @@ input[type=radio]
 	margin:5px 15px 15px 5px;
 }
 
-
+input[type=text]#queryField
+{
+	width: 300px;
+}
 
 
 input[type=file]
@@ -292,9 +294,9 @@ input[type=file]
 
 select
 {
-	font-size:1.2em;
-	font-family: 'Source Sans Pro', sans-serif;
-	color: #34495E;
+	font-size:1.1em;
+	font-family: 'Roboto', sans-serif;
+	color: #05ABE0;
 	font-weight: bold;
 	background-color:#fff;
 	padding: 0px 17px 3px 2px;
@@ -380,10 +382,10 @@ input[type=submit]:hover, button:hover
 textarea
 {
 	font-size:13pt;
-	color:#2980b9;
+	color:#05ABE0;
 	text-align:left;
 	padding: 0;
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: 'Roboto', sans-serif;
 	margin: 5px 0px 5px 0px;
 	border: 0;
 	border-top:none;
@@ -395,10 +397,11 @@ textarea
 
 p.newsitem
 {
-		font-family: 'Source Sans Pro', sans-serif;
-		font-size: 17px;
-		color: #064d7c;
+		font-family: 'Roboto', sans-serif;
+		font-size: 15px;
+		color: #000;
 		margin-left:25px;
+		padding-bottom: 10px;
 }
 
 form
@@ -412,9 +415,8 @@ form
 
 #content
 {
-	margin: 0px 0px 0px 50px;
+
 	height: 100%;
-	/*overflow:hidden;*/
 	width:auto;
 
 }
@@ -476,6 +478,7 @@ table
 	font-family: 'Source Sans Pro', sans-serif;
 	padding-left: 10px;
 	padding-bottom: 50px;
+	margin:0 auto;
 }
 
 table#update-history
@@ -537,22 +540,16 @@ div#table-results
 	height:auto;
 	width:90%;
 	display: block;
-	margin-top: 50px;
-	margin-left: 15px;
+	margin: 15px;
+	padding: 20px;
 	background-color: #ffffff;
 
 }
 
-/*div#time-date
-{
-	padding-top:0px;
-	margin: 0px;
-}*/
 
 div#page-title
 {
 	background-color: #ffffff;
-	width: 100%;
 	height: 96px;
 	margin-left: 20px;
 	width: 90%;
@@ -572,6 +569,7 @@ div.recent-items, div.at-a-glance, div.news-feed
 {
 	background-color: #ffffff;
 	padding-bottom: 20px;
+	margin-left:20px;
 	width: 90%;
 
 }
@@ -624,22 +622,6 @@ div#result-cards
 	box-sizing: border-box;
 }
 
-/*
-div.card a.full-details, td a.full-details
-{
-	color:#049372;
-	padding-bottom: 10px;
-	float: right;
-	display: block;
-}
-
-div.card a.full-details:hover, td a.full-details:hover
-{
-	color:#06503f;
-	text-decoration: underline;
-	float: right;
-	display: block;
-}*/
 
 #result-container
 {
@@ -778,9 +760,20 @@ form#package, form#user
 	margin:20px 20%;
 }
 
-form#package > p
+form > p
 {
-	font-size: 1.2em;
+	font-size: 1.1em;
+	font-family: 'Roboto', sans-serif;
+}
+
+form#search > p.searchKey
+{
+	font-size: 1em;
+}
+
+form#search > p.searchKey > span
+{
+	color: #333645;
 }
 
 form#package > input[type=text], form#package > input[type=password], form#package > input[type=email], form#package > select
@@ -793,10 +786,15 @@ form#user > input[type=text], form#user > input[type=password], form#user > inpu
 	width: 520px;
 }
 
+div#search-card
+{
+	height: 390px;
+}
+
 div.card
 {
 	display:inline-block;
-	height: 330px;
+	height: 320px;
 	background-color:#ffffff ;
 	margin: 20px 10px;
 	width: 270px;
@@ -814,9 +812,10 @@ div.card > div.card-image
 
 div.card > div.card-image > p > img
 {
-	height: 150px;
-	width: 175px;
-	margin: 0px 40px;
+	display: block;
+	height: 100px;
+	width: 125px;
+	margin: 0 auto;
 }
 
 
@@ -835,19 +834,22 @@ div.card > div.card-details > p
 
 div.card > div.card-details > p.customer
 {
-	color: #333645;
+	color: #05ABE0;
 	font-family: 'Roboto', sans-serif;
 	text-transform: none;
 	font-size: 1.3em;
-	font-weight: 500;
+	padding-bottom: 5px;
+	text-align: center;
 }
 
 div.card > div.card-details > p.issue
 {
 	font-size: 1em;
-	text-transform: uppercase;
-	color: #333645;
-	font-weight: 600;
+	font-family: 'Roboto', sans-serif;
+	/*text-transform: uppercase;*/
+	padding-bottom: 5px;
+	color: #000;
+	font-weight: 500;
 }
 
 div.card > div.card-details > p.description
@@ -860,9 +862,8 @@ div.card > div.card-details > p.description
 
 div.card > div.card-footer
 {
-	margin-top: 5px;
-	/*background-color: #3498db;*/
-	border-top: 1px solid #777777;
+	margin-top: 15px;
+	/*border-top: 1px solid #777777;*/
 }
 
 div.card > div.card-footer > p
@@ -875,7 +876,6 @@ div.card > div.card-footer > p
 div.card > div.card-footer > p.trackingnumber
 {
 	font-family: 'Roboto', sans-serif;
-	/*font-weight: 500;*/
 	font-size: 12px;
 	color: #272727;
 	display: block;
@@ -893,9 +893,14 @@ div.card > div.card-footer > p.url > a, td > a
 {
 	font-family: 'Roboto', sans-serif;
 	font-weight: 500;
-	color: #45B7AF;
+	color: #05ABE0;
 	text-transform: uppercase;
 	text-decoration: none;
+}
+
+div.card > div.card-footer > p.url > a:hover, td > a:hover
+{
+	text-decoration: underline;
 }
 
 
@@ -929,15 +934,15 @@ section.card  > p.card-title
 }
 
 
-div.card header.subheading, form.card header.subheading
+div.card > header.subheading, form.card > header.subheading
 {
 	font-size: 18px;
 	margin:0;
 	text-align: left;
 	font-family: 'Source Sans Pro', sans-serif;
-	padding: 8px 0px 0px 0px;
+	padding: 8px 0px 15px 0px;
 	font-weight: bold;
-	color: #3f4141;
+	color: #05ABE0;
 	text-transform: uppercase;
 }
 
@@ -952,19 +957,6 @@ div.card a.listing
 	color:#5f81ea;
 	float: right;
 	display: block;
-}
-
-/*div.card > a.full-listing:hover
-{
-	color:#5f81ea;
-	text-decoration: underline;
-	float: right;
-	display: block;
-}*/
-
-#data
-{
-		margin-left: 10px;
 }
 
 
@@ -1266,6 +1258,8 @@ footer
 			margin: 50px 5px;
 			height: 275px;
 		}
+
+		form#search
 
 		form#search > p, form#user > p
 		{

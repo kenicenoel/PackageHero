@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS packages
 	PackageID int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	TrackingNumber varchar(50) NOT NULL,
 	HAWB varchar(50),
+	AccountNumber varchar(20) NULL,
 	CustomerName varchar(50),
 	MainIssue varchar(50) DEFAULT 'Not entered',
 	Description varchar(300) NOT NULL,
@@ -68,4 +69,14 @@ CREATE TABLE IF NOT EXISTS hiddenissues
 	HideFromCountry varchar(200),
 	HiddenBy varchar(25),
 	FOREIGN KEY hiddenissues(PackageID) references packages(PackageID)
+);
+
+CREATE TABLE IF NOT EXISTS initialpackagescans
+(
+	ScanNumber int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	TrackingNumber varchar(60) NOT NULL,
+	ShippingCarrier varchar(60),
+	TimeScanned timestamp ON UPDATE CURRENT_TIMESTAMP,
+	ScannedBy varchar(30)
+
 );

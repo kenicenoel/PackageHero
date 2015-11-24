@@ -46,6 +46,13 @@
 							{
 								echo '<a class ="link" href ="#" id="adduser" title = "Create a new user"><i class="fa fa-user-plus fa-fw"></i> Add User</a>';
 							} ?>
+
+							<?php if($role == "Administrator" || $role == "Miami")
+							{
+								echo '<a class ="link" href ="#" id="initialPackageScan" title = "Perform an initial package scan"><i class="fa fa-barcode fa-fw"></i> Scan a Package</a>';
+								// Uncomment the line below to allow viewing of scanned package data from Package Hero.
+								//echo '<a class ="link" href="../includes/allpackagescans.php"  title = "A list of all scanned packages"><i class="fa fa-eye fa-fw"></i> View Package scans</a>';
+							} ?>
 							<a class ="link" href ="logout.php" title = "Logout from Package Hero"><i class="fa fa-close fa-fw"></i> Sign out</a>
 						</nav>
 				</div>

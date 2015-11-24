@@ -5,7 +5,7 @@
           <p id = "msg"></p>
            <label for="username"><span class="fa fa-male fa-fw"></span> Username</label>
           <input type = "text" id = "username" name="username" required autofocus placeholder = "e.g Brendon" /> <br><br>
-          <label for="password"><span class="fa fa-envelope-o fa-fw"> </span> Email</label>
+          <label for="password"><span class="fa fa-at fa-fw"> </span> Email</label>
           <input type = "email" id = "emailaddress" name="emailaddress" required placeholder="you@websource.com" /> <br>
           <input id ="reset-button" type = "submit" value="Reset" />
 

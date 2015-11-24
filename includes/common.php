@@ -3,9 +3,8 @@
 		require_once dirname(__FILE__) .'/config.php';
 		require_once('classes/PasswordGenerator.php');
 
-		/* The countTotal, getLastAddedUser, getLastAddedLandlord functions
-			are all system overview functions that do the job their name implies
-		*/
+		/* The count functions create the summary for the dashboard summary category */
+
 		session_start();
 
 
@@ -168,7 +167,6 @@
 
 
 		}
-
 
 
 		// Get the user whose details were last modified
@@ -351,7 +349,7 @@
 
 		}
 
-
+		// Returns the current date and time
 		function showDate()
 		{
 			/* Here is a list of potential values for the date/time
@@ -395,6 +393,44 @@
 
 			return $dashboardTime = $day." ".$month." ".$dayOfMonth.", ".$year." at ".$time;
 
+		}
+
+		// Responsible for showing the search options
+		function search()
+		{
+
+			echo '
+			<!-- The search div -->
+			<div id="content">
+
+				<form class="card" id="search">
+					<header class = "subheading"><span class="fa fa-search"></span> Package Finder</header>
+					<p>Search by tracking number, customer, shipping provider or item description</p><br>
+					<input id="queryField" type = "text" name="query" placeholder = "e.g christine or 9401596... " autofocus/>
+					<input id="lookupButton" type="submit" value="Find">
+
+					<header class="subheading">Results key</header>
+					<p class="searchKey"><span><i class="fa fa-bug"></i></span> : Package Issue</p>
+					<p class="searchKey"><span><i class="fa fa-shopping-bag"></i></span> : Item description</p>
+					<p class="searchKey"><span><i class="fa fa-ship"></i></span> : Shipping carrier e.g UPS</p>
+					<p class="searchKey"><span><i class="fa fa-truck"></i></span> : Tracking number</p>
+					<p class="searchKey"><span><i class="fa fa-hashtag"></i></span> : Account number e.g WEB720 </p>
+				</form>
+
+
+				<section id = "lookupResults">
+
+				</section>
+
+			</div>';
+		}
+
+
+		// Calls the password generator class to create secure password
+		function generateSecurePassword($length)
+		{
+			$ascii = PasswordGenerator::getASCIIPassword($length);
+			return $ascii;
 		}
 
 
@@ -455,7 +491,7 @@
 									<section class="card">
 										<p class="card-title">Available Issues</p>
 										<p class="summary">
-											<span id="available-issues" data-fgcolor="#65C3DF" data-fontsize="30" data-dimension="200" data-text="'.$availableTotal.'" data-width="30" data-total="'.$packageTotal.'" data-part="'.$availableTotal.'"></span>
+											<span id="available-issues" data-fgcolor="#F0F465" data-fontsize="30" data-dimension="200" data-text="'.$availableTotal.'" data-width="30" data-total="'.$packageTotal.'" data-part="'.$availableTotal.'"></span>
 										</p>
 									</section>';
 									$role = $_SESSION['role'];
@@ -472,7 +508,7 @@
 
 										';
 									}
-echo '
+						echo '
 						</div>
 
 							<br><br>
@@ -505,149 +541,6 @@ echo '
 
 
 		}
-
-
-
-		// Responsible for showing the search options
-		function search()
-		{
-
-			echo '
-			<!-- The search div -->
-			<div id="content">
-
-				<form class="card" id="search">
-					<header class = "subheading"><span class=" fa fa-search"></span>Package Finder</header>
-					<p>Enter all or part of a tracking number to find packages it may belong to.</p><br>
-
-					<input id="queryField" type = "text" name="query" placeholder = "Enter tracking number" />
-					<input id="lookupButton" type="submit" value="Find">
-				</form>
-
-				<section id = "lookupResults">
-
-				</section>
-
-
-
-			</div>';
-		}
-
-
-		/* The following functions are responsible for
-			generating the content that are shown
-			when clicking the tiles on the dashboard for each module */
-
-
-		function addpackage()
-		{
-
-			global $connection;
-
-			echo '
-			<div class="overlay-content popup4">
-			  <section id ="content2 class=left">
-			    <header>Add a new package with issues to the system </header>
-
-			    <form class="card" id="package" enctype="multipart/form-data" method = "post" action = "includes/tasks/addPackage.php">
-								<br>
-								<p id="errorMessage"></p>
-			          <label for="trackingnumber">Tracking Number</label>
-								<input type = "text" id = "trackingnumber" name="trackingnumber" /><br>
-
-								<label for="customername">Customer Name</label>
-								<input type = "text" id = "customername" name="customername" /><br>
-
-								<label for="address">Address</label>
-			          <input type = "text" id = "address" name="address" /><br>
-
-								<textarea rows="10" cols="70" form="package" id = "description" name="description"
-								required placeholder = "Enter issues for this package" wrap="hard">
-								</textarea> <br>
-
-			          <label for="images">Images (up to 5)</label>
-			          <input type = "file" id = "images" name="images[]" accept=".jpg" multiple> <br>
-								<input id="upload" type = "submit" value="Add" />
-
-			      </form>
-
-
-
-			</div>
-
-			';
-
-		}
-
-
-
-		// function addUser()
-		// {
-		//
-		// 	echo '
-		// 	  <div id ="content">
-		// 	      <form class="card">
-		// 						<header class="subheading"><span class=" fa fa-user-plus"></span> Grant access to a new user</header>
-		// 						<p id="errorMessage"></p>
-		// 	          <label for="username">Username</label>
-		// 						<input type = "text" id = "username" name="username" required /><br>
-		//
-		// 						<label for="password">Password</label>
-		// 						<input type = "text" id = "password" name="password" required /><br>
-		//
-		// 						<label for="firstname">First Name</label>
-		// 	          <input type = "text" id = "firstname" name="firstname" /><br>
-		//
-		// 						<label for="lastname">Last Name</label>
-		// 	          <input type = "text" id = "lastname" name="lastname" /><br>
-		//
-		// 						<label for="emailaddress">Email Address</label>
-		// 	          <input type = "email" id = "emailaddress" name="emailaddress" required /><br>
-		//
-		// 						<label for="phonenumber">Phone Number</label>
-		// 	          <input type = "text" id = "phonenumber" name="phonenumber" /><br>
-		//
-		// 						<label for="country">Country</label>
-		// 						<select name="country" required>
-		// 							<option selected disabled>Pick a country</option>
-		// 							<option value="Antigua &amp; Barbuda">Antigua &amp; Barbuda</option>
-		// 							<option value="Barbados">Barbados</option>
-		// 							<option value="Canada">Canada</option>
-		// 							<option value="Dominica">Dominica</option>
-		// 							<option value="Grenada">Grenada</option>
-		// 							<option value="Guyana">Guyana</option>
-		// 							<option value="Jamaica">Jamaica</option>
-		// 							<option value="St Lucia">St Lucia</option>
-		// 							<option value="St Vincent &amp; Grenadines">St Vincent &amp; Grenadines</option>
-		// 							<option value="Trinidad">Trinidad</option>
-		// 							<option value="United Kingdom">United Kingdom</option>
-		// 							<option value="United States">United States</option>
-		//
-		// 						</select><br>
-		//
-		// 						<label for="role">Account type</label>
-		// 						<input type="checkbox" name="role" value="Administrator"> Administrator<br>
-  	// 						<input type="checkbox" name="role" value="Standard" checked> Standard user<br><br>
-		//
-		// 						<input id="createuser" type = "submit" value="Done" />
-		//
-		// 	      </form>
-		//
-		//
-		//
-		// 	</div>
-		//
-		// 	';
-		//
-		// }
-
-
-				// Calls the password generator class to create secure password
-		   	function generateSecurePassword($length)
-				{
-					$ascii = PasswordGenerator::getASCIIPassword($length);
-					return $ascii;
-				}
 
 
 ?>

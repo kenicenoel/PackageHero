@@ -3,15 +3,15 @@ include_once("config.php");
 
 if(isset($_POST['query']))
 {
-      $trackingnumber = "%{$_POST['query']}%";
+      $query = "%{$_POST['query']}%";
 
-      $sql = "SELECT TrackingNumber, CustomerName, MainIssue, Resolved, Description, Photo1 FROM packages WHERE packages.TrackingNumber Like ?";
+      $sql = "SELECT TrackingNumber, AccountNumber, CustomerName, MainIssue, Resolved, Description, Photo1, ItemType, ShippingCarrier FROM packages WHERE packages.TrackingNumber Like ? OR packages.CustomerName Like ? OR packages.ItemType LIKE ? OR packages.ShippingCarrier LIKE ?";
 
 		  // prepare the sql statement
 		  $stmt = $connection->prepare($sql);
 
 		  // bind variables to the paramenters ? present in sql
-		  $stmt->bind_param('s',$trackingnumber);
+		  $stmt->bind_param('ssss', $query ,$query, $query, $query);
 
 		  // execute the prepared statement
 		  $stmt->execute();
@@ -20,7 +20,7 @@ if(isset($_POST['query']))
 		  $stmt->store_result();
 
 		  /* Bind the results to variables */
-		  $stmt->bind_result($trackingnumber, $customername, $issue, $resolved, $desc, $image1);
+		  $stmt->bind_result($trackingnumber, $accountnumber, $customername, $issue, $resolved, $desc, $image1, $itemtype, $shippingcarrier);
 
 
 
@@ -29,16 +29,19 @@ if(isset($_POST['query']))
 
         $desc_snippet = substr($desc, 0, 30);
           echo '
-          <div class="card">
+          <div id="search-card" class="card">
   						<div class="card-image">
   							<p><img src="../includes/'.$image1.'"alt="packageImage" /></p>
   						</div>
 
   						<div class="card-details">
   							<p class="customer">'.$customername.'</p>
-  							<p class="issue"><span class="fa fa-bug"> </span> '.$issue.'</p>
-  							<p class="description">'.$desc_snippet.'...</p>
-                <p><span class="fa fa-check"> </span> Resolved? '.$resolved.'</p>
+  							<p class="issue"><span class="fa fa-bug"></span> '.$issue.'</p>
+                <p class="issue"><span class="fa fa-shopping-bag"></span> '.$itemtype.'</p>
+                <p class="issue"><span class="fa fa-ship"></span> '.$shippingcarrier.'</p>
+  							<p class="issue"><span class="fa fa-check"> </span> Resolved: '.$resolved.'</p>
+                <p class="issue"><span class="fa fa-hashtag"> </span> Account #: '.$accountnumber.'</p>
+                <p class="description">'.$desc_snippet.'...</p>
   						</div>
 
   						<div class="card-footer">

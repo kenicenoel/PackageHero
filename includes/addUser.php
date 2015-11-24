@@ -56,7 +56,7 @@
 
 								<label for="country">Country</label>
 								<select width="100px" style="width:200px" id="country" name="country" required>
-									<option selected disabled>Pick a country</option>
+									<option selected disabled>Choose country</option>
 									<option value="Antigua">Antigua</option>
 									<!-- <option value="Barbados">Barbados</option> -->
 									<!-- <option value="Canada">Canada</option> -->
@@ -73,13 +73,13 @@
 								</select>
 
                 <select readonly id="agent" name="agent" style="width:200px">
-
 								</select>
 
 								<label for="role">Role</label>
                 <select id="role" name="role" required>
-									<option selected disabled>Pick Priviledge</option>
+									<option selected disabled>Account Type</option>
                   <option value="Administrator">Administrator</option>
+                  <option value="Miami">Miami</option>
 									<option value="Standard">Standard</option>
                 </select> <br><br>
 

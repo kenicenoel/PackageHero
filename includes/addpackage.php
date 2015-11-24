@@ -1,11 +1,10 @@
 
     <form class="card" id="package" enctype="multipart/form-data" method = "post" action = "includes/addpackage.php">
           <br>
-          <header class="subheading"><span class="fa fa-bug"> </span> Add a new package with issues to the system </header>
+          <header class="subheading"><span class="fa fa-bug"> </span> Create a new issue </header>
           <p id="errorMessage"></p>
           <p>
-            Enter the tracking number, customer name (if known) and pick a main issue. Enter a description if additional information is known or
-            the issue is not listed in the main issue dropdown.
+            Enter the tracking number, customer name (if known) and pick a main issue. Enter a description and pick the shipping carrier.
           </p>
           <br><br>
           <label for="trackingnumber">Tracking Number</label>
@@ -24,7 +23,23 @@
             </select><br>
 
           <label for="description">Details</label>
-          <textarea rows="10" cols="70" form="package" id = "description" name="description"></textarea> <br>
+          <textarea rows="10" cols="60" form="package" id = "description" name="description"></textarea> <br>
+
+          <label for="itemtype">Item Description</label>
+          <input type = "text" id = "itemtype" name="itemtype" /><br>
+          <label for="shippingcarrier">Shipping Carrier</label>
+            <select form="package" name="shipper" required> <br>
+              <option value="" disabled selected>Pick the shipping agent</option>
+              <option value = "USPS">USPS</option>
+              <option value = "FedEX">FedEx</option>
+              <option value = "UPS">UPS</option>
+              <option value = "Canada Post">Canada Post</option>
+              <option value = "Express Mail">EMS(Express Mail)</option>
+              <option value = "DHL">DHL</option>
+              <option value = "Lasership">Lasership</option>
+              <option value = "Amazon">Amazon</option>
+              <option value = "Warehouse drop-off">Warehouse drop-off</option>
+            </select><br>
 
           <label for="images">Images (MAX: 5)</label>
           <input type = "file" id = "images" name="images[]" accept=".jpg" multiple="" required> <br>
