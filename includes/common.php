@@ -391,7 +391,7 @@
 			$year = date("Y");
 			$time = date("h:i A");
 
-			return $dashboardTime = $day." ".$month." ".$dayOfMonth.", ".$year." at ".$time;
+			return $dashboardTime = $day.", ".$month." ".$dayOfMonth." ".$year." - ".$time;
 
 		}
 
@@ -491,7 +491,7 @@
 									<section class="card">
 										<p class="card-title">Available Issues</p>
 										<p class="summary">
-											<span id="available-issues" data-fgcolor="#F0F465" data-fontsize="30" data-dimension="200" data-text="'.$availableTotal.'" data-width="30" data-total="'.$packageTotal.'" data-part="'.$availableTotal.'"></span>
+											<span id="available-issues" data-fgcolor="#73C682" data-fontsize="30" data-dimension="200" data-text="'.$availableTotal.'" data-width="30" data-total="'.$packageTotal.'" data-part="'.$availableTotal.'"></span>
 										</p>
 									</section>';
 									$role = $_SESSION['role'];
@@ -501,7 +501,7 @@
 										<section class="card">
 											<p class="card-title">Total users</p>
 											<p class="summary">
-													<span id="last-issue" data-fgcolor="#73C682" data-fontsize="30" data-dimension="200" data-text="'.$usersTotal.'" data-total="'.$usersTotal.'" data-part="'.$usersTotal.'" data-width="30"></span>
+													<span id="last-issue" data-fgcolor="#F0F465" data-fontsize="30" data-dimension="200" data-text="'.$usersTotal.'" data-total="'.$usersTotal.'" data-part="'.$usersTotal.'" data-width="30"></span>
 											</p>
 										</section>
 

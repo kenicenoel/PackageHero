@@ -10,3 +10,4 @@
           <input id ="reset-button" type = "submit" value="Reset" />
 
       </form>
+      <?php include_once 'includes/footer.php'; ?>

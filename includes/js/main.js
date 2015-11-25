@@ -388,13 +388,11 @@ $(document).ready(function()
         });
 
         // When the user clicks on the Resolve button on the Resolve issue page do this
-        $('body').on('click', '#resolve-issue', function(e)
+        $('body').on('click', '#resolveissue', function(e)
         {
 
           // Get the account number
           var number = $('#accountNumber').val();
-          console.log(number);
-
           if(number == "")
           {
 
@@ -414,7 +412,7 @@ $(document).ready(function()
                 data: 'accountNumber='+num,
                 success: function (response)
                 {
-                  console.log(response);
+                  
                   window.open('allpackages.php', '_self');
 
                 }

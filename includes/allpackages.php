@@ -54,7 +54,7 @@
 		$limit = 'LIMIT ' .($pagenum - 1) * $pageRows . ',' . $pageRows;
 
 		// Grab one row of data
-		$sql = "SELECT TrackingNumber, CustomerName, MainIssue, Description, photo1 FROM packages WHERE Resolved = 'No' AND (PackageID NOT IN(SELECT PackageID from hiddenissues) OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = '$country')) ORDER BY PackageID DESC $limit";
+		$sql = "SELECT TrackingNumber, CustomerName, MainIssue, Description, ShippingCarrier, ItemType, photo1 FROM packages WHERE Resolved = 'No' AND (PackageID NOT IN(SELECT PackageID from hiddenissues) OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = '$country')) ORDER BY PackageID DESC $limit";
 
 
 		  // prepare the sql statement
@@ -67,7 +67,7 @@
 		  $stmt->store_result();
 
 		  /* Bind the results to variables */
-		  $stmt->bind_result($tnumber, $customername, $mainissue, $description, $photo1);
+		  $stmt->bind_result($tnumber, $customername, $mainissue, $description, $shippingcarrier, $itemtype, $photo1);
 			$i = 0;
 
 			$textline = "<p>There are <span>$total</span> packages with issues in the system and you are currently on page <span>$pagenum</span> of $lastPage.</p>";
@@ -135,6 +135,8 @@
 						<div class="card-details">
 							<p class="customer">'.$customername.'</p>
 							<p class="issue"><span class="fa fa-bug"> </span> '.$mainissue.'</p>
+							<p class="issue"><span class="fa fa-shopping-bag"></span> '.$itemtype.'</p>
+							<p class="issue"><span class="fa fa-ship"></span> '.$shippingcarrier.'</p>
 							<p class="description">'.$desc_snippet.'...</p>
 						</div>
 
@@ -153,7 +155,10 @@
 				    <td>'.$tnumber.'</td>
 				    <td>'.$customername.'</td>
 						<td>'.$mainissue.'</td>
+						<td>'.$itemtype.'</p>
+						<td>'.$shippingcarrier.'</p>
 						<td>'.$desc_snippet.'...</td>
+
 
 				    <td><a id="view-full" class="full-details"  href="fulldetails.php?trackingnumber='.$tnumber.'" title="View full package details"><span class="fa fa-eye fa-fw"></span>View</a></td>
 			  </tr>
@@ -192,6 +197,8 @@
 																<th>Tracking Number</th>
 																<th>Customer Name</th>
 																<th>Main Issue</th>
+																<th>Item</th>
+																<th>Shipper</th>
 																<th>Description</th>
 
 															</tr>

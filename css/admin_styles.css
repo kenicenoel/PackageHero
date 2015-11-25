@@ -347,9 +347,8 @@ button#saveNote:hover
 button.task-actions
 {
 	height: 40px;
-
 	width: 150px;
-	margin: 25px 0px;
+	margin: 25px 5px;
 }
 
 button#hide
@@ -636,7 +635,9 @@ div#result-cards
 
 #result-container p
 {
-	font-size:20px;
+	font-size:1em;
+	margin-top: 10px;
+	padding: 8px;
 }
 
 #result-container header.subheading
@@ -1062,8 +1063,16 @@ footer
 			div#page-title
 			{
 				height: 75px;
-				margin-left: 15px;
+				/*margin-left: 15px;*/
 				width: 93%;
+			}
+
+			div#page-title > header
+			{
+				font-size: 18px;
+				text-align: center;
+				margin-left: 8px;
+				padding-top: 15px;
 			}
 
 
@@ -1076,7 +1085,7 @@ footer
 			div.recent-items, div.at-a-glance, div.news-feed
 			{
 				width: 100%;
-				margin-left: 10px;
+				/*margin-left: 10px;*/
 			}
 
 			div.recent-items > header, div.at-a-glance > header, div.news-feed > header
@@ -1168,7 +1177,7 @@ footer
 		div#toggle-view
 		{
 			padding: 20px 0px;
-			margin-left: 5px;
+			margin-left: 25px;
 		}
 
 		div#toggle-view > p
@@ -1179,7 +1188,7 @@ footer
 		div.card
 		{
 			width: 250px;
-			margin-left: 20px;
+			margin-left: 50px;
 		}
 
 		div.card > div.card-image
@@ -1224,8 +1233,14 @@ footer
 
 		form#package, form#user
 		{
-			width: 275px;
-			margin: 20px 5px;
+			width: 325px;
+			margin: 20px 20px;
+		}
+
+		form#initialscan
+		{
+			width: 340px;
+			margin: 20px 20px;
 		}
 
 
@@ -1254,9 +1269,9 @@ footer
 
 		form#search
 		{
-			width: 280px;
-			margin: 50px 5px;
-			height: 275px;
+			width: 330px;
+			margin: 50px 25px;
+			height: 400px;
 		}
 
 		form#search
@@ -1270,7 +1285,7 @@ footer
 
 		form#search > input[type=text]
 		{
-			margin-left: 40px;
+			width: 250px;
 		}
 
 		form#search > input[type=submit], button
@@ -1290,7 +1305,8 @@ footer
 		div#result-container > p
 		{
 			margin-top: 15px;
-			font-size: 17px;
+			margin-left: 15px;
+			font-size: 15px;
 			font-weight: normal;
 		}
 
@@ -1299,22 +1315,53 @@ footer
 			display: none;
 		}
 
+		div#result-container > button.task-actions
+		{
+
+			margin: 15px 30px;
+		}
+
+		div#result-container > div#actions
+		{
+			margin: 0px 30px;
+		}
+
+		div#result-container > div#actions > button#saveNote
+		{
+			margin: 0 0 0 10px;
+		}
+
 		div#result-container > div#actions > input[type="text"]
 		{
-			width: 175px;
+			width: 220px;
 			font-size: 18px;
 			margin-right: 2px;
 			font-weight: normal;
+		}
+
+		div#result-container > header.subheading, header.titleheading, div#image-container > header.subheading, header.titleheading
+		{
+			margin: 0 15px;
+		}
+
+		#image-container p
+		{
+			padding: 0 0 20px 15px;
 		}
 
 		table#update-history > tbody > tr > td
 		{
 			font-size: 18px;
 		}
+
 		table#update-history > tbody > tr > td:nth-of-type(1):before { content: ""; }
 		table#update-history > tbody > tr > td:nth-of-type(2):before { content: "Update"; }
 		table#update-history > tbody > tr > td:nth-of-type(3):before { content: "User/Agent"; }
 
+		table#results > tbody > tr
+		{
+			padding: 10px;
+		}
 
 } /* End of styles for mobile devices */
 
@@ -1328,7 +1375,6 @@ footer
 	{
 		width: 170px;
 		height: 100%;
-		position: absolute;
 	}
 
 
@@ -1481,11 +1527,7 @@ footer
 
 button.back-button
 {
-	/*width: 25px;
-	font-size: 15px;
-	padding: 0px 3px;
-	margin: 0px 3px;
-	height: 25px;*/
+
 	display: none;
 
 }

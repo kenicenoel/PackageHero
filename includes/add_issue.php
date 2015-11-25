@@ -1,6 +1,6 @@
 <?php
 include_once "config.php";
-
+          
           if(isset($_FILES['images']) && isset($_POST['trackingnumber']))
           {
 
@@ -10,7 +10,7 @@ include_once "config.php";
                 $stmt = $connection->prepare($sql);
 
                 // bind variables to the paramenters ? present in sql
-                $stmt->bind_param('ssss', $trackingnumber,$customername, $mainissue, $description, $itemtype, $shippingcarrier);
+                $stmt->bind_param('ssssss', $trackingnumber,$customername, $mainissue, $description, $itemtype, $shippingcarrier);
 
                 //set the variables from form values
                 $trackingnumber= $_POST['trackingnumber'];

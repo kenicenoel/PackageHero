@@ -28,7 +28,7 @@
           <label for="itemtype">Item Description</label>
           <input type = "text" id = "itemtype" name="itemtype" /><br>
           <label for="shippingcarrier">Shipping Carrier</label>
-            <select form="package" name="shipper" required> <br>
+            <select form="package" name="shippingcarrier" required> <br>
               <option value="" disabled selected>Pick the shipping agent</option>
               <option value = "USPS">USPS</option>
               <option value = "FedEX">FedEx</option>

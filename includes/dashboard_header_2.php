@@ -31,7 +31,7 @@
 				</head>
 
 				<body>
-					<div id="navigation-holder">
+
 						<nav id ="navigation">
 							<span>
 								<p id="app-name">PACKAGE HERO&REG;</p>
@@ -44,7 +44,7 @@
 							<a class ="link" href ="../admin/dashboard.php?module=search" title = "Search for any package data"><i class="fa fa-search fa-fw"></i> Find a package</a>
 							<?php if($role == "Administrator")
 							{
-								echo '<a class ="link" href ="#" id="adduser" title = "Create a new user"><i class="fa fa-user-plus fa-fw"></i> Add User</a>';
+								echo '<a class ="link" href ="#" id="adduser" title = "Create a new user"><i class="fa fa-plus fa-fw"></i> Create User</a>';
 							} ?>
 
 							<?php if($role == "Administrator" || $role == "Miami")
@@ -55,4 +55,3 @@
 							} ?>
 							<a class ="link" href ="logout.php" title = "Logout from Package Hero"><i class="fa fa-close fa-fw"></i> Sign out</a>
 						</nav>
-				</div>

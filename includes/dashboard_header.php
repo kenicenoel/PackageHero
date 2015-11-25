@@ -31,9 +31,7 @@
 					</head>
 
 					<body>
-						<div id="navigation-holder">
-
-							<nav id ="navigation">
+								<nav id ="navigation">
 								<span>
 									<p id="app-name">PACKAGE HERO&REG;</p>
 									<p id="user-name"> <?php echo $_SESSION['username']; ?></p>
@@ -47,17 +45,16 @@
 								<!-- Admins can create new user accounts -->
 								<?php if($role == "Administrator")
 								{
-									echo '<a class ="link" href ="#" id="adduser" title = "Create a new user"><i class="fa fa-plus fa-fw"></i> Add User</a>';
+									echo '<a class ="link" href ="#" id="adduser" title = "Create a new user"><i class="fa fa-plus fa-fw"></i> Create User</a>';
 								} ?>
 
 								<!-- Admins and Miami accounts can do Initial Package Scanning  -->
 								<?php if($role == "Administrator" || $role == "Miami")
 								{
 									echo '<a class ="link" href ="#" id="initialPackageScan" title = "Perform an initial package scan"><i class="fa fa-barcode fa-fw"></i> Scan a Package</a>';
-									
+
 									// Uncomment the line below to allow viewing of scanned package data from Package Hero.
 									// echo '<a class ="link" href="../includes/allpackagescans.php"  title = "A list of all scanned packages"><i class="fa fa-eye fa-fw"></i> View Package scans</a>';
 								} ?>
 								<a class ="link" href ="../includes/logout.php" title = "Logout from Package Hero"><i class="fa fa-close fa-fw"></i> Sign out</a>
 							</nav>
-					</div>
