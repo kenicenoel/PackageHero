@@ -1,6 +1,7 @@
 <?php
 
 		require_once dirname(__FILE__) .'/config.php';
+		require_once ("../includes/sessions/sessionvariables.php");
 		require_once('classes/PasswordGenerator.php');
 
 		/* The count functions create the summary for the dashboard summary category */
@@ -13,7 +14,7 @@
 		function countTotal()
 		{
 			global $connection;
-			$country = $_SESSION['country'];
+
 
 			// Build the query
       $sql = "SELECT * FROM packages WHERE Resolved = 'No'";

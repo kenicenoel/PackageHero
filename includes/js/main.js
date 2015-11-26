@@ -12,7 +12,7 @@ $(document).ready(function()
         window.history.back();
     });
 
-
+    alert("I am in the process of overhauling the UI to make it much cleaner, user friendly among other things. As a result, some things may break or not work. Please be patient.");
 
 
         // Ajax add new issue
@@ -412,7 +412,7 @@ $(document).ready(function()
                 data: 'accountNumber='+num,
                 success: function (response)
                 {
-                  
+
                   window.open('allpackages.php', '_self');
 
                 }
