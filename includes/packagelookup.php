@@ -27,7 +27,7 @@ if(isset($_POST['query']))
       while($stmt->fetch())
       {
 
-        $desc_snippet = substr($desc, 0, 30);
+        $desc_snippet = substr($desc, 0, 25);
           echo '
           <div id="search-card" class="card">
   						<div class="card-image">

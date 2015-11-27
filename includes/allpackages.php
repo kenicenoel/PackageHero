@@ -174,11 +174,7 @@
 						<div id = "container">
 
 						<div id ="content2">
-							<div id="page-title">
-								<header class="titleheading"><span class-"fa fa-eye"></span>Issues that require attention</header>
-							</div>
-
-							<div id="data">
+								<div id="data">
 									<div id = "toggle-view">
 										<p>VIEW AS:<p>
 										<p id="list" class="view"><span class="fa fa-table"> Table</span><p>

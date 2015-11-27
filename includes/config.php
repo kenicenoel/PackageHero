@@ -2,10 +2,12 @@
 
 
 // Connect to the local mySQL server
-$host = "localhost";
-$user = "admin";
-$pass = "admin";
-$database = "websource_package_data";
+// $host = "localhost";
+// $user = "admin";
+// $pass = "admin";
+// $database = "websource_package_data";
+//
+
 
 // The production MySql server
 // $host = "websource-caribbean.com";
@@ -13,6 +15,12 @@ $database = "websource_package_data";
 // $pass = "PackageH3r0";
 // $database = "packagehero_db";
 
+
+// Connect to the Azure mySQL server
+$host = "br-cdbr-azure-south-a.cloudapp.net";
+$user = "b80dca2c05801a";
+$pass = "349729b5";
+$database = "DefaultMySQL";
 
 // Create connection
 $connection = new mysqli($host, $user, $pass, $database);

@@ -1,6 +1,7 @@
 <?php
 
 		require_once dirname(__FILE__) .'/config.php';
+		require_once ("../includes/sessions/sessionvariables.php");
 		require_once('classes/PasswordGenerator.php');
 
 		/* The count functions create the summary for the dashboard summary category */
@@ -13,7 +14,7 @@
 		function countTotal()
 		{
 			global $connection;
-			$country = $_SESSION['country'];
+
 
 			// Build the query
       $sql = "SELECT * FROM packages WHERE Resolved = 'No'";
@@ -457,53 +458,54 @@
 				<!-- The overview of the system -->
 
 				<div id="content">';
-					if($role == "Administrator")
+					if($role == "Administrator") // If an administrator is logged in, show news-feed
 					{
 						echo
 						'
 						<div class="news-feed">
-							<header class ="modules"> <i class="fa fa-bullhorn fa-fw"></i> News </header>
+							<header class ="modules newsModule"> <i class="fa fa-bullhorn fa-fw"></i> News <i class="fa fa-caret-down"></i></header>
 								'.$generateMostRecentNewsItems.'
 						</div>
 						<br><br>
 						';
 					}
 
-					echo '
-					<div class="at-a-glance">
-							<header class ="modules"> <i class="fa fa-pie-chart fa-fw"></i> Summary </header>
 
-									<section class="card">
+					echo '
+					<div class="summary">
+							<header class ="modules summaryModule"> <i class="fa fa-pie-chart fa-fw"></i> Summary <i class="fa fa-caret-down"></i></header>
+
+									<div class="card">
 										<p class="card-title">Total Issues</p>
 										<p class="summary">
 											<span id="total-issues" data-fgcolor="#FF6B6B" data-fontsize="30" data-dimension="200" data-text="'.$packageTotal.'" data-width="30" data-total="'.$packageTotal.'" data-part="'.$packageTotal.'"></span>
 										</p>
-									</section>
+									</div>
 
-									<section class="card">
+									<div class="card">
 										<p class="card-title">Hidden Issues</p>
 										<p class="summary">
 											<span id="hidden-issues" data-fgcolor="#A48AD4" data-fontsize="30" data-dimension="200" data-text="'.$hiddenTotal.'" data-width="30" data-total="'.$packageTotal.'" data-part="'.$hiddenTotal.'"></span>
 										</p>
-									</section>
+									</div>
 
 
-									<section class="card">
+									<div class="card">
 										<p class="card-title">Available Issues</p>
 										<p class="summary">
 											<span id="available-issues" data-fgcolor="#73C682" data-fontsize="30" data-dimension="200" data-text="'.$availableTotal.'" data-width="30" data-total="'.$packageTotal.'" data-part="'.$availableTotal.'"></span>
 										</p>
-									</section>';
+									</div>';
 									$role = $_SESSION['role'];
 									if($role == "Administrator")
 									{
 										echo '
-										<section class="card">
+										<div class="card">
 											<p class="card-title">Total users</p>
 											<p class="summary">
 													<span id="last-issue" data-fgcolor="#F0F465" data-fontsize="30" data-dimension="200" data-text="'.$usersTotal.'" data-total="'.$usersTotal.'" data-part="'.$usersTotal.'" data-width="30"></span>
 											</p>
-										</section>
+										</div>
 
 
 										';
@@ -515,7 +517,7 @@
 
 							<!-- This div shows the 5 most recent package issues that are not hidden and are unresolved -->
 							<div class="recent-items">
-								<header class ="modules"> <i class="fa fa-history fa-fw"></i> Recent </header>
+								<header class ="modules recentModule"> <i class="fa fa-history fa-fw"></i> Recent <i class="fa fa-caret-down"></i></header>
 										<table id="results">
 											<thead>
 												<tr>
