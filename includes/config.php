@@ -2,11 +2,11 @@
 
 
 // Connect to the local mySQL server
-$host = "localhost";
-$user = "admin";
-$pass = "admin";
-$database = "websource_package_data";
-
+// $host = "localhost";
+// $user = "admin";
+// $pass = "admin";
+// $database = "websource_package_data";
+//
 
 
 // The production MySql server
