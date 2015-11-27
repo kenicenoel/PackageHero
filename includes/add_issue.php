@@ -1,6 +1,6 @@
 <?php
 include_once "config.php";
-          
+
           if(isset($_FILES['images']) && isset($_POST['trackingnumber']))
           {
 
@@ -82,8 +82,8 @@ include_once "config.php";
                   //
                   // }
 
-                // Check file size to ensure it is not larger than 50MB
-                if ($images["size"][$position] > 50000000)
+                // Check file size to ensure it is not larger than 6MB
+                if ($images["size"][$position] > 6000000)
                 {
                     echo "One or more images are larger than 50MB. Try again.";
                     $uploadOk = 0;

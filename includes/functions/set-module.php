@@ -13,8 +13,13 @@ if(isset ($_GET['module']))
   {
     $setmodule = $_GET['module']; // sets the module switch using the url
 
-    $area = $_GET['module'];
-    
+    $module = $_GET['module'];
+    if($module =='search')
+    {
+      $title = "Lookup any package";
+    }
+
+
   }
 
 }
@@ -25,6 +30,12 @@ else if(!isset ($_GET['module']))
   $title = "<span class='fa fa-calendar fa-fw'></span><span id='date'>".$date = showDate()."</span>";
 
 }
+
+if(isset ($_GET['trackingnumber']))
+{
+  $title = "Viewing issue ". $_GET['trackingnumber'];
+}
+
 
 
 

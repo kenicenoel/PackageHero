@@ -143,11 +143,7 @@
 						<div id = "container">
 
 						<div id ="content2">
-							<div id="page-title">
-								<header class="titleheading"><span class-"fa fa-eye"></span>These are all initially scanned packages</header>
-							</div>
-
-							<div id="data">
+								<div id="data">
 									<!--	Show the results as a list (table)-->
 										<div id="table-results">
 													<table id="results">

@@ -72,9 +72,6 @@
 
 						<div id = "container">
 								<div id ="content2">
-									<div id="page-title">
-										<header class="titleheading"><span class="fa fa-eye fa-fw"></span>You are viewing issue <?php echo $trackingnumber ?></header>
-									</div>
 
 									<div id='data'>
 

@@ -1,18 +1,9 @@
-/* global $ */
 
 //Load FancyBox
 
 $(document).ready(function()
   {
     $(".fancybox").fancybox();
-
-
-    $('.back-button').click(function()
-    {
-        window.history.back();
-    });
-
-    alert("I am in the process of overhauling the UI to make it much cleaner, user friendly among other things. As a result, some things may break or not work. Please be patient.");
 
 
         // Ajax add new issue
@@ -193,7 +184,7 @@ $(document).ready(function()
                   success: function(response)
                   {
                     $('#data').html(response);
-                    $('.titleheading').html("<i class='fa fa-bug fa-fw'></i>New issue creation ");
+                    $('.pageTitle').text("New issue creation");
 
                   }
                 });
@@ -216,7 +207,7 @@ $(document).ready(function()
                           success: function(response)
                           {
                             $('#data').html(response); // use the returned html to replace the contents of the div with id 'data'
-                            $('.titleheading').html("<i class='fa fa-user-plus fa-fw'></i>Create a new user");
+                            $('.pageTitle').text("Create a new user");
 
                           }
                         });
@@ -238,7 +229,7 @@ $(document).ready(function()
                                   success: function(response)
                                   {
                                     $('#data').html(response);
-                                    $('.titleheading').html("<i class='fa fa-barcode fa-fw'></i>Scan packages into the system ");
+                                    $('.pageTitle').text("Scan packages into the system");
                                     $('#tnum').focus();
                                   }
                                 });
@@ -248,7 +239,7 @@ $(document).ready(function()
 
 
 
-              // When clicked. Load viewAllPackages
+              // When user clicks on the link that says "View Issues" in the navigation do this
               $('#viewAllPackages').click(function()
               {
 
@@ -262,6 +253,8 @@ $(document).ready(function()
                     success: function(response)
                     {
                       $('#data').html(response);
+                      $('.pageTitle').text("View a list of all current issues");
+
 
                     }
                   });
@@ -310,7 +303,6 @@ $(document).ready(function()
 
         // The jquery/ajax function below is responsible for the tracking number search function
         $('body').on('click', '#lookupButton', function(e)
-
         {
 
           e.preventDefault();
@@ -328,9 +320,6 @@ $(document).ready(function()
               {
                 $('#lookupResults').html(response);
                 $('#loader').replaceWith('<input id="lookupButton" type = "submit" value="Find">');
-
-
-
 
               },
 
@@ -462,7 +451,44 @@ $(document).ready(function()
           $('#last-issue').circliful();
 
 
+          // Hide the links when they are clicked
+          $('.navIssues').click(function()
+          {
+            $('.issues').toggle();
+          });
 
+          $('.navPackages').click(function()
+          {
+            $('.packages').toggle();
+          });
+
+          $('.navUsers').click(function()
+          {
+            $('.usr').toggle();
+          });
+
+          // Hide the menu
+          $('.fa-bars').click(function()
+          {
+              $('#navigation').toggle();
+          });
+
+          // Hide the dashboard sections
+          $('.newsModule').click(function()
+          {
+            $('p.newsitem').toggle();
+          });
+
+
+          $('.summaryModule').click(function()
+          {
+            $('div.card').toggle();
+          });
+
+          $('.recentModule').click(function()
+          {
+            $('table#results').toggle();
+          });
 
 
 
