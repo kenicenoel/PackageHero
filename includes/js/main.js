@@ -240,7 +240,7 @@ $(document).ready(function()
 
 
               // When user clicks on the link that says "View Issues" in the navigation do this
-              $('#viewAllPackages').click(function()
+              $('#viewIssues').click(function()
               {
 
                   var url='../includes/allpackages.php';

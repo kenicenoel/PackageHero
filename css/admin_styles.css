@@ -27,7 +27,7 @@ header.top
 	font-family: 'Roboto', sans-serif;
 	font-size: 1.2em;
 	color: #fff;
-	vertical-align: middle;
+	
 
 }
 
@@ -51,7 +51,7 @@ header > p.user, header > p.pageTitle, header > p.userCountry
 	display: inline-block;
 }
 
-
+/* Show the down caret after the user name*/
 /*header > p.user:after
 {
 	content:"\25BE";
@@ -729,13 +729,13 @@ form.card
 
 form#package, form#user
 {
-	width: 600px;
+	width: 700px;
 	margin:20px 20%;
 }
 
 form > p
 {
-	font-size: 1.1em;
+	font-size: 1em;
 	font-family: 'Roboto', sans-serif;
 }
 

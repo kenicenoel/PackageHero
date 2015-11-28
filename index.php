@@ -3,6 +3,7 @@
 			<div id = "container">
 				<header class="top"><img src="images/packagehero_logo.svg" /></header>
 
+			
 				<div id ="bottom">
 							<form id="form" action= "" method ="post">
 								<header id="welcome">Hello!</header>

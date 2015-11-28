@@ -17,13 +17,14 @@
             <select form="package" name="MainIssue"> <br>
               <option value="" disabled selected>Select an issue</option>
               <option value = "Broken">Received broken</option>
-              <option value = "Cannot identify customer">Cannot identify customer</option>
+              <option value = "Missing customer details">Missing customer details</option>
               <option value = "Invoice required">Invoice required</option>
+              <option value = "No account number found">No account number found</option>
               <option value = "Delivery address not known">Delivery address not known</option>
             </select><br>
 
           <label for="description">Details</label>
-          <textarea rows="10" cols="60" form="package" id = "description" name="description"></textarea> <br>
+          <textarea rows="7" cols="55" form="package" id = "description" name="description"></textarea> <br>
 
           <label for="itemtype">Item Description</label>
           <input type = "text" id = "itemtype" name="itemtype" /><br>
@@ -34,7 +35,7 @@
               <option value = "FedEX">FedEx</option>
               <option value = "UPS">UPS</option>
               <option value = "Canada Post">Canada Post</option>
-              <option value = "Express Mail">EMS(Express Mail)</option>
+              <option value = "Express Mail">EMS(Express Mail Service)</option>
               <option value = "DHL">DHL</option>
               <option value = "Lasership">Lasership</option>
               <option value = "Amazon">Amazon</option>

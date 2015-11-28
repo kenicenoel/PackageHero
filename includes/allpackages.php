@@ -191,7 +191,7 @@
 														<thead>
 															<tr>
 																<th>Tracking Number</th>
-																<th>Customer Name</th>
+																<th>Customer</th>
 																<th>Main Issue</th>
 																<th>Item</th>
 																<th>Shipper</th>
@@ -207,7 +207,7 @@
 										</div>
 									<!--Display the Pagination links and information-->
 										<div id="pagination-holder"> <?php echo $textline."<br><br>".$navigation ?> </div>
-
+									<!--<?php echo $_SERVER['REQUEST_URI']; ?>-->
 								</div>
 							</div>
 
