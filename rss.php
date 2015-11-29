@@ -3,10 +3,11 @@
 
 
 echo '<?xml version="1.0" encoding="ISO-8859-1"?>';
+echo '<?xml-stylesheet type="text/css" href="css/rss.css"?>';
 echo "<rss version='2.0'>";
 echo "<channel>";
 
-	   include_once ('../config.php');
+	   include_once ('includes/config.php');
 
 	    $sql = " SELECT PackageID, TrackingNumber, CustomerName, MainIssue, Description, Photo1, IssueCreationTime FROM packages ORDER BY IssueCreationTime DESC";
 		  // prepare the sql statement
@@ -26,15 +27,18 @@ echo "<channel>";
 
 		  	$pubdate = date('D j F Y g:i A', strtotime($issuedate));
 			  $title = "A new issue has been created for a package with Tracking Number ".$tnumber.".";
-			  $desc = "<header>Hello,</header><br>A new issue has been added to Package Hero.<br>Here are the details of the issue:";
-        $desc.= "<br><img src='../".$photo."' />";
-        $desc.= "<br>Tracking Number: ".$tnumber;
-        $desc.= "<br>Main Issue: ".$mainissue;
-        $desc.= "<br>Customer: ".$customername;
+			  $desc = "<header>Hello,</header>
+              <p>A new issue has been added to Package Hero.</p>
+              <p>Here are the details of the issue:</p>";
+        $desc.= "<img src='../".$photo."' />";
+        $desc.= "<p>Tracking Number: ".$tnumber."</p>";
+        $desc.= "<p>Main Issue: ".$mainissue."</p>";
+        $desc.= "<p>Customer: ".$customername."</p>";
 
         $items .=
 			'
-			<item>
+
+      <item>
 				<title>'.$title.'</title>
 				<link>'.$link.'</link>
 				<guid>'.$packageid.'</guid>
