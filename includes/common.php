@@ -407,7 +407,7 @@
 				<form class="card" id="search">
 					<header class = "subheading"><span class="fa fa-search"></span> Package Finder</header>
 					<p>Search by tracking number, customer, shipping provider or item description</p><br>
-					<input id="queryField" type = "text" name="query" placeholder = "e.g christine or 9401596... " autofocus/>
+					<input id="queryField" type = "text" name="query" placeholder = "e.g enter a tracking number, name, courier or item description to search " autofocus/>
 					<input id="lookupButton" type="submit" value="Find">
 
 					<header class="subheading">Results key</header>

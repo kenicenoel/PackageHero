@@ -1,12 +1,29 @@
-header
-{
-	font-size: 2em;
-	color: rgb(41, 126, 238);
-	margin-left: 20px;
+	*
+	{
+		display: block;
+	}
 
-}
+	:root
+	{
+		margin: 50px;
+	}
 
-description
-{
-	font-size: 1.2em;
-}
+	channel > title
+	{
+		font-size: x-large;
+		text-align: center;
+	}
+
+
+	header
+	{
+		font-size: 2em;
+		color: rgb(41, 126, 238);
+		margin-left: 20px;
+
+	}
+
+	description
+	{
+		font-size: 1.2em;
+	}

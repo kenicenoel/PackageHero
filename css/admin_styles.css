@@ -27,7 +27,7 @@ header.top
 	font-family: 'Roboto', sans-serif;
 	font-size: 1.2em;
 	color: #fff;
-	
+
 
 }
 
@@ -251,7 +251,7 @@ label
 	font-weight: 600;
 	color: #777777;
 	text-align: left;
-	margin-left: 5px;
+	margin-left: 10%;
 	width:150px;
 	font-family: 'Roboto', sans-serif;
 
@@ -262,12 +262,12 @@ label
 input[type=text], input[type=password], input[type=email]
 {
 	font-size: 1.2em;
-	font-family: 'Source Sans Pro', sans-serif;
-	font-weight: bold;
+	font-family: 'Roboto', sans-serif;
+	/*font-weight: bold;*/
 	color: #05ABE0;
-	padding-left: 2px;
+	padding-left: 30px;
 	padding-bottom: 3px;
-	margin: 0px 0px 15px 5px;
+	margin: 0px 0px 15px 10%;
 	border: 0;
 	border-top:none;
 	border-left:none;
@@ -276,28 +276,16 @@ input[type=text], input[type=password], input[type=email]
 	box-shadow: none;
 	outline: none;
 	height: 40px;
-	width: 220px;
+	width: 70%;
 }
 
-input[type=text]#note
-{
-	margin: 0px;
-	width: 600px;
-	background: none;
-}
-
-
-input[type=text]#queryField
-{
-	width: 300px;
-}
 
 
 input[type=file]
 {
 
 	border:none;
-	margin: 10px 0px 5px 0px;
+	margin: 10px 0px 5px 10%;
 	border: 0;
 	border-top: 1px solid #e2e3e4;
 	border-bottom: 1px solid #e2e3e4;
@@ -320,7 +308,7 @@ select
 	outline: none;
 	height: 40px;
 	width: auto;
-	margin: 0px 0px 15px 5px;
+	margin: 0px 0px 15px 10%;
 	border: 0;
 	border-top: 1px solid #e2e3e4;
 	border-bottom: 1px solid #e2e3e4;
@@ -330,13 +318,129 @@ select
 
 }
 
+textarea
+{
+	font-size:13pt;
+	width: 75%;
+	color:#05ABE0;
+	text-align:left;
+	padding-left: 5px;
+	font-family: 'Roboto', sans-serif;
+	margin: 5px 0px 5px 10%;
+	border: 0;
+	border-top:1px solid #BBBBBB;
+	border-left:1px solid #BBBBBB;
+	border-right: 1px solid #BBBBBB;
+	border-bottom: 1px solid #BBBBBB;
+
+}
+
+
+
+
+
+input[type=text]#trackingnumber, input[type=text]#tnum
+{
+	background-image: url('../images/icons/qrcode.png');
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: 5px center;
+}
+
+input[type=text]#customername
+{
+	background-image: url('../images/icons/contacts.png');
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: 5px center;
+}
+
+input[type=text]#carrier
+{
+	background-image: url('../images/icons/courier.png');
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: 5px center;
+}
+
+input[type=text]#username
+{
+	background-image: url('../images/icons/circledcontact.png');
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: 5px center;
+}
+
+input[type=text]#password
+{
+	background-image: url('../images/icons/asterisk.png');
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: 5px center;
+}
+
+input[type=text]#firstname, input[type=text]#lastname
+{
+	background-image: url('../images/icons/text.png');
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: 5px center;
+}
+
+input[type=email]#emailaddress
+{
+	background-image: url('../images/icons/email.png');
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: 5px center;
+}
+
+input[type=text]#itemtype
+{
+	background-image: url('../images/icons/pricetag.png');
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: 5px center;
+}
+
+input[type=text]#phonenumber
+{
+	background-image: url('../images/icons/phone.png');
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: 5px center;
+}
+
+
+
+
+
+input[type=text]#note
+{
+	margin: 0px;
+	width: 600px;
+	background: none;
+}
+
+
+input[type=text]#queryField
+{
+	/*width: 300px;*/
+	padding-left: 5px;
+	background-image: url('../images/icons/search.png');
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: 99% center;
+}
+
+
 
 input[type=submit], button
 {
 	height: 40px;
 	font-size: 20px;
 	width:100px;
-	margin: 20px 170px;
+	margin: 0 50%;
 	color: #fff;
 	border:none;
 	background-color: #0EB4CA;
@@ -393,21 +497,6 @@ input[type=submit]:hover, button:hover
 }
 
 
-textarea
-{
-	font-size:13pt;
-	color:#05ABE0;
-	text-align:left;
-	padding: 0;
-	font-family: 'Roboto', sans-serif;
-	margin: 5px 0px 5px 0px;
-	border: 0;
-	border-top:none;
-	border-left:none;
-	border-right: none;
-	border-bottom: 1px solid #BBBBBB;
-
-}
 
 
 form
@@ -717,25 +806,31 @@ form.card
 {
 	font-family: 'Source Sans Pro', sans-serif;
 	background-color: #ffffff;
-	width:auto;
+	width:75%;
 	height: auto;
 	vertical-align: top;
 	position: relative;
 	display:inline-block;
-	margin:50px 30%;
+	margin:20px 5%;
 	padding: 5px 20px 20px 10px;
 }
 
 
-form#package, form#user
+/*form#package, form#user
 {
-	width: 700px;
-	margin:20px 20%;
+	width: 75%;
+	margin:20px 5%;
+}*/
+
+form#package > section
+{
+	margin:0 auto;
 }
 
 form > p
 {
 	font-size: 1em;
+	text-align: center;
 	font-family: 'Roboto', sans-serif;
 }
 
@@ -748,7 +843,7 @@ form#search > p.searchKey > span
 {
 	color: #333645;
 }
-
+/*
 form#package > input[type=text], form#package > input[type=password], form#package > input[type=email], form#package > select
 {
 	width: 520px;
@@ -757,7 +852,7 @@ form#package > input[type=text], form#package > input[type=password], form#packa
 form#user > input[type=text], form#user > input[type=password], form#user > input[type=email], form#user > select
 {
 	width: 520px;
-}
+}*/
 
 div#search-card
 {
@@ -911,7 +1006,7 @@ div.card > header.subheading, form.card > header.subheading
 {
 	font-size: 18px;
 	margin:0;
-	text-align: left;
+	text-align: center;
 	font-family: 'Source Sans Pro', sans-serif;
 	padding: 8px 0px 15px 0px;
 	font-weight: bold;

@@ -1,4 +1,3 @@
-
 <?php
 	echo "<!DOCTYPE html>";
 	require_once ("../includes/common.php");
@@ -26,6 +25,7 @@
 						<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,600,700" rel="stylesheet" type="text/css">
 						<link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
 						<link href="../css/jquery.circliful.css" rel="stylesheet" type="text/css" />
+						<link rel="alternate" type="application/rss+xml" title="Package Hero RSS feed" href="../rss.php" />
 						<meta name="viewport" content="width=device-width, initial-scale=1">
 					</head>
 

@@ -7,6 +7,7 @@
             Enter the tracking number, customer name (if known) and pick a main issue. Enter a description and pick the shipping carrier.
           </p>
           <br><br>
+        <section>
           <label for="trackingnumber">Tracking Number</label>
           <input type = "text" id = "trackingnumber" name="trackingnumber" required /><br>
 
@@ -14,7 +15,7 @@
           <input type = "text" id = "customername" name="customername" /><br>
 
           <label for="type">Main Issue</label>
-            <select form="package" name="MainIssue"> <br>
+            <select form = "package" name="MainIssue"> <br>
               <option value="" disabled selected>Select an issue</option>
               <option value = "Broken">Received broken</option>
               <option value = "Missing customer details">Missing customer details</option>
@@ -28,6 +29,7 @@
 
           <label for="itemtype">Item Description</label>
           <input type = "text" id = "itemtype" name="itemtype" /><br>
+
           <label for="shippingcarrier">Shipping Carrier</label>
             <select form="package" name="shippingcarrier" required> <br>
               <option value="" disabled selected>Pick the shipping agent</option>
@@ -45,5 +47,6 @@
           <label for="images">Images (MAX: 5)</label>
           <input type = "file" id = "images" name="images[]" accept=".jpg" multiple="" required> <br>
           <input id="addIssue" type = "submit" value="Add" />
+        </section>
 
       </form>

@@ -30,6 +30,7 @@
 					<link rel="stylesheet" href="../fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
 					<link href="../css/jquery.circliful.css" rel="stylesheet" type="text/css" />
 					<link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+					<link rel="alternate" type="application/rss+xml" title="Package Hero RSS feed" href="../rss.php" />
 					<meta name="viewport" content="width=device-width, initial-scale=1">
 				</head>
 

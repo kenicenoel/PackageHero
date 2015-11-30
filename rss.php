@@ -2,14 +2,14 @@
     header("Content-Type: application/rss+xml; charset=ISO-8859-1");
 
 
-echo '<?xml version="1.0" encoding="ISO-8859-1"?>';
-echo '<?xml-stylesheet type="text/css" href="css/rss.css"?>';
-echo "<rss version='2.0'>";
-echo "<channel>";
+    echo '<?xml version="1.0" encoding="ISO-8859-1"?>';
+    echo '<?xml-stylesheet type="text/css" href="css/rss.css"?>';
+    echo "<rss version='2.0'>";
+    echo "<channel>";
 
 	   include_once ('includes/config.php');
 
-	    $sql = " SELECT PackageID, TrackingNumber, CustomerName, MainIssue, Description, Photo1, IssueCreationTime FROM packages ORDER BY IssueCreationTime DESC";
+	    $sql = " SELECT PackageID, TrackingNumber, CustomerName, MainIssue, Description, Photo1, IssueCreationTime FROM packages ORDER BY IssueCreationTime DESC LIMIT 10";
 		  // prepare the sql statement
 		  $stmt = $connection->prepare($sql);
 
@@ -30,7 +30,7 @@ echo "<channel>";
 			  $desc = "<header>Hello,</header>
               <p>A new issue has been added to Package Hero.</p>
               <p>Here are the details of the issue:</p>";
-        $desc.= "<img src='../".$photo."' />";
+        $desc.= "<img src='../includes/".$photo."' />";
         $desc.= "<p>Tracking Number: ".$tnumber."</p>";
         $desc.= "<p>Main Issue: ".$mainissue."</p>";
         $desc.= "<p>Customer: ".$customername."</p>";

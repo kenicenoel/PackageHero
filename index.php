@@ -1,18 +1,19 @@
 <?php include_once("includes/header.php"); ?>
 
 			<div id = "container">
-				<header class="top"><img src="images/packagehero_logo.svg" /></header>
+				<header class="top"><img src="images/logo.svg" /></header>
 
-			
+
 				<div id ="bottom">
 							<form id="form" action= "" method ="post">
+								<img src="images/icons/id.svg" />
 								<header id="welcome">Hello!</header>
-									<p class="text">Please enter your username and password</p>
+									<p class="text">Before we can let you in, we need to know who you are</p>
 									<p id = "msg"></p>
-									 <label for="username"><span class="fa fa-male fa-fw"></span> Username</label>
-									<input type = "text" id = "username" name="username" required autofocus placeholder = "e.g Brendon" /> <br><br>
-									<label for="password"><span class="fa fa-keyboard-o fa-fw"> </span> Password</label>
-									<input type = "password" id = "password" name="password" required placeholder="kingCh@rl3s" /> <br>
+									 <label for="username">Username</label>
+									<input type = "text" id = "username" name="username" required autofocus placeholder = "e.g brendon.charles" /> <br><br>
+									<label for="password">Password</label>
+									<input type = "password" id = "password" name="password" required placeholder="itgurus" /> <br>
 									<input id ="login-button" type = "submit" value="Login" />
 									<p id="forgot-password">Forgot your password?</p>
 							</form>
