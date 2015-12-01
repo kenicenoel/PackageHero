@@ -415,14 +415,13 @@
 					<p class="searchKey"><span><i class="fa fa-shopping-bag"></i></span> : Item description</p>
 					<p class="searchKey"><span><i class="fa fa-ship"></i></span> : Shipping carrier e.g UPS</p>
 					<p class="searchKey"><span><i class="fa fa-truck"></i></span> : Tracking number</p>
-					<p class="searchKey"><span><i class="fa fa-hashtag"></i></span> : Account number e.g WEB720 </p>
+					<p class="searchKey"><span><i class="fa fa-hashtag"></i></span> : Account number e.g WEB720</p>
 				</form>
 
 
 				<section id = "lookupResults">
 
 				</section>
-
 			</div>';
 		}
 

@@ -36,8 +36,9 @@
 							<header class="top">
 								<p class="user"><i class="fa fa-bars fa-fw"></i><?php echo $user; ?></p>
 								<p class="pageTitle"><?php echo $title; ?></p>
-								<input type ='text' placeholder="find a package" name="headerSearchBox" />
-								<p class="userCountry"><?php echo '<img src="../images/flags/'.$country.'.png" />'; ?></p>
+								<input type ='text' id="headerSearch" placeholder="find a package" name="query" />
+								<button id="headerSearchButton" type="submit"><i class="fa fa-search"></i></button>
+
 							</header>
 
 							<!-- The left navigation -->

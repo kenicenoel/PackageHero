@@ -318,8 +318,17 @@ $(document).ready(function()
               // datatype: 'text',
               success: function (response)
               {
-                $('#lookupResults').html(response);
-                $('#loader').replaceWith('<input id="lookupButton" type = "submit" value="Find">');
+                if(response =="")
+                {
+                  $('#lookupResults').html("<img class='nothing' src='../images/icons/box2.png' alt='' />");
+                  $('#loader').replaceWith('<input id="lookupButton" type = "submit" value="Find">');
+                }
+                else
+                {
+                  $('#lookupResults').html(response);
+                  $('#loader').replaceWith('<input id="lookupButton" type = "submit" value="Find">');
+                }
+
 
               },
 
@@ -441,7 +450,7 @@ $(document).ready(function()
               return false;
         });
 
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
           // Create the circular graphs
@@ -489,6 +498,38 @@ $(document).ready(function()
           {
             $('table#results').toggle();
           });
+
+          $('#headerSearchButton').click(function()
+            {
+              var keyword = $('#headerSearch').val();
+              // window.open("www.youraddress.com","_self");
+
+              $.ajax
+              ({
+                  url: '../includes/packagelookup.php',
+                  type: 'POST',
+                  data: "query="+keyword,
+                  // datatype: 'text',
+                  success: function (response)
+                  {
+                    if(response =="")
+                    {
+                      $('#data').html("<img class='nothing' src='../images/icons/box2.png' alt='' />");
+                    }
+                    else
+                    {
+                      $('#data').html(response);
+
+                    }
+
+
+                  },
+
+              });
+
+                  return false;
+            }
+          );
 
 
 

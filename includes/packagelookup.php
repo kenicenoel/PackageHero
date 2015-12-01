@@ -1,9 +1,11 @@
 <?php
 include_once("config.php");
 
-if(isset($_POST['query']))
+if(isset($_POST['query']) || isset($_GET['query']) )
 {
-      $query = "%{$_POST['query']}%";
+      if(isset($_POST['query'])) { $query = "%{$_POST['query']}%"; }
+      if(isset($_GET['query'])) { $query = "%{$_GET['query']}%"; }
+
 
       $sql = "SELECT TrackingNumber, AccountNumber, CustomerName, MainIssue, Resolved, Description, Photo1, ItemType, ShippingCarrier FROM packages WHERE packages.TrackingNumber Like ? OR packages.CustomerName Like ? OR packages.ItemType LIKE ? OR packages.ShippingCarrier LIKE ?";
 

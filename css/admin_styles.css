@@ -27,9 +27,18 @@ header.top
 	font-family: 'Roboto', sans-serif;
 	font-size: 1.2em;
 	color: #fff;
-
-
 }
+
+header.top > button
+{
+	width: 30px;
+	height: 30px;
+	font-size: 12pt;
+	padding: 0;
+	margin: 0 auto;
+}
+
+
 
 nav
 {
@@ -92,10 +101,10 @@ header > input[type=text]
 	margin: 0 0 0 400px;
 	font-size: 17px;
 	font-family: 'Roboto', sans-serif;
-	background-image: url('../images/icons/search.png');
+	/*background-image: url('../images/icons/search.png');
 	background-repeat: no-repeat;
 	background-size: 20px 20px;
-	background-position: 270px center;
+	background-position: 270px center;*/
 	clear: left;
 }
 
@@ -335,8 +344,26 @@ textarea
 
 }
 
+div#data > p.nothing
+{
+	font-size: 1.2em;
+	font-family:'Roboto', sans-serif;
+	margin: 25% auto;
+	display: block;
 
+}
 
+div#data > img.nothing
+{
+	display: block;
+	margin: 25% auto;
+}
+
+#lookupResults > img.nothing
+{
+	display: block;
+	margin: 5% auto;
+}
 
 
 input[type=text]#trackingnumber, input[type=text]#tnum
@@ -410,9 +437,6 @@ input[type=text]#phonenumber
 	background-size: 20px 20px;
 	background-position: 5px center;
 }
-
-
-
 
 
 input[type=text]#note
