@@ -8,22 +8,14 @@
 		margin: 50px;
 	}
 
-	channel > title
+	channel > item > title
 	{
-		font-size: x-large;
+		font-size: 2 em;
 		text-align: center;
+		color: rgb(41, 126, 238);
 	}
 
-
-	header
+	channel > item > description
 	{
 		font-size: 2em;
-		color: rgb(41, 126, 238);
-		margin-left: 20px;
-
-	}
-
-	description
-	{
-		font-size: 1.2em;
 	}

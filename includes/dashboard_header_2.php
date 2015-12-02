@@ -5,14 +5,6 @@
 	require_once ("../includes/sessions/sessionvariables.php");
 
 
-
-	if(!isset($_SESSION['id']) && !isset($_SESSION['username']))
-	{
-		header("Location:../index.php");
-	}
-
-	$role = $_SESSION['role'];
-
 ?>
 
 
@@ -20,6 +12,7 @@
 				<head>
 					<title>Package Hero&reg;</title>
 					<link rel = "stylesheet" href = "../css/admin_styles.css" type ="text/css">
+					<link rel = "stylesheet" href = "../css/messaging.css" type ="text/css">
 					<link type="text/css" rel="stylesheet" href="../css/overlaypopup.css" />
 					<link href='https://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css'>
 					<link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
@@ -39,6 +32,7 @@
 						<!-- The main header at the top of the screen  -->
 						<header class="top">
 							<p class="user"><i class="fa fa-bars fa-fw"></i><?php echo $user; ?></p>
+							<!-- <p class="messaging"><i class="fa fa-envelope fa-fw"></i> </p> -->
 							<p class="pageTitle"><?php echo $title; ?></p>
 							<input type ='text' id="headerSearch" placeholder="find a package" name="query" />
 							<button id="headerSearchButton" type="submit"><i class="fa fa-search"></i></button>

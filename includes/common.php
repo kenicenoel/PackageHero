@@ -407,10 +407,13 @@
 				<form class="card" id="search">
 					<header class = "subheading"><span class="fa fa-search"></span> Package Finder</header>
 					<p>Search by tracking number, customer, shipping provider or item description</p><br>
-					<input id="queryField" type = "text" name="query" placeholder = "e.g enter a tracking number, name, courier or item description to search " autofocus/>
+					<input id="queryField" type = "text" name="query" placeholder = "e.g enter a tracking number, name, courier or item description to search " autofocus/><br>
+					<header class="subheading searchOptions">Show results </header>
+					<label for="beforeDate"> Between</label> <input type="date" id="before"  name="beforeDate" />
+					<label for="afterDate"> And</label><input type="date"  id="after" name="afterDate" />
 					<input id="lookupButton" type="submit" value="Find">
 
-					<header class="subheading">Results key</header>
+					<header class="subheading searchOptions">Results key</header>
 					<p class="searchKey"><span><i class="fa fa-bug"></i></span> : Package Issue</p>
 					<p class="searchKey"><span><i class="fa fa-shopping-bag"></i></span> : Item description</p>
 					<p class="searchKey"><span><i class="fa fa-ship"></i></span> : Shipping carrier e.g UPS</p>
@@ -547,6 +550,7 @@
 ?>
 
 <script src="../includes/js/jquery.js"></script>
+<script src="../includes/js/jquery-ui.min.js"></script>
 <script src="../fancybox/source/jquery.fancybox.js"></script>
 <script src="../includes/js/main.js"></script>
 <script src="../includes/js/jquery.circliful.min.js"></script>

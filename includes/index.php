@@ -11,7 +11,7 @@
 									<p class="text">Before we can let you in, we need to know who you are</p>
 									<p id = "msg"></p>
 									 <label for="username">Username</label>
-									<input type = "text" id = "username" name="username" required autofocus placeholder = "e.g bob.frank" /> <br><br>
+									<input type = "text" id = "username" name="username" required autofocus placeholder = "e.g brendon.charles" /> <br><br>
 									<label for="password">Password</label>
 									<input type = "password" id = "password" name="password" required placeholder="itgurus" /> <br>
 									<input id ="login-button" type = "submit" value="Login" />

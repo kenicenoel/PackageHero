@@ -3,17 +3,36 @@ include_once("config.php");
 
 if(isset($_POST['query']) || isset($_GET['query']) )
 {
-      if(isset($_POST['query'])) { $query = "%{$_POST['query']}%"; }
-      if(isset($_GET['query'])) { $query = "%{$_GET['query']}%"; }
 
+      if(isset($_POST['query']) && ($_POST['query'] !=''))
+      {
+        $query = "%{$_POST['query']}%";
+      }
 
-      $sql = "SELECT TrackingNumber, AccountNumber, CustomerName, MainIssue, Resolved, Description, Photo1, ItemType, ShippingCarrier FROM packages WHERE packages.TrackingNumber Like ? OR packages.CustomerName Like ? OR packages.ItemType LIKE ? OR packages.ShippingCarrier LIKE ?";
+      else if(isset($_GET['query']) && ($_GET['query'] !=''))
+      {
+        $query = "%{$_GET['query']}%";
+      }
+
+      else
+      {
+        $query='';
+      }
+        $before = "";
+        $after = "";
+        if(isset($_POST['beforeDate'])) { $before = $_POST['beforeDate']; }
+        if(isset($_POST['afterDate'])) { $after = $_POST['afterDate']; }
+        $sql = "SELECT TrackingNumber, AccountNumber, CustomerName, MainIssue, Resolved, Description, Photo1, ItemType, ShippingCarrier FROM packages WHERE (packages.IssueCreationTime BETWEEN ? AND ?)  OR packages.TrackingNumber Like ? OR packages.CustomerName Like ? OR packages.ItemType LIKE ? OR packages.ShippingCarrier LIKE ?";
+
+        // echo $before;
+        // echo $after;
+        // echo "Search Term=".$query;
 
 		  // prepare the sql statement
 		  $stmt = $connection->prepare($sql);
 
 		  // bind variables to the paramenters ? present in sql
-		  $stmt->bind_param('ssss', $query ,$query, $query, $query);
+		  $stmt->bind_param('ssssss', $before, $after, $query ,$query, $query, $query);
 
 		  // execute the prepared statement
 		  $stmt->execute();

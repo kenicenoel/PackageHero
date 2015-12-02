@@ -2,7 +2,11 @@
 
 		require_once ('config.php');
 		include_once('dashboard_header_2.php');
-
+		if(!isset($_SESSION['id']) && !isset($_SESSION['username']))
+		{
+			header('Location: http://packagehero.websource-caribbean.com/index.php');
+			exit();
+		}
 
 
 		$country = $_SESSION['country'];

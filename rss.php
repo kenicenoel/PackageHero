@@ -27,24 +27,22 @@
 
 		  	$pubdate = date('D j F Y g:i A', strtotime($issuedate));
 			  $title = "A new issue has been created for a package with Tracking Number ".$tnumber.".";
-			  $desc = "<header>Hello,</header>
-              <p>A new issue has been added to Package Hero.</p>
-              <p>Here are the details of the issue:</p>";
+			  $desc = "<header>Hello,</header>";
+        $desc.= "<p>A new issue has been added to Package Hero.</p>";
+        $desc.= "<p>Here are the details of the issue:</p>";
         $desc.= "<img src='../includes/".$photo."' />";
         $desc.= "<p>Tracking Number: ".$tnumber."</p>";
         $desc.= "<p>Main Issue: ".$mainissue."</p>";
         $desc.= "<p>Customer: ".$customername."</p>";
 
         $items .=
-			'
-
-      <item>
-				<title>'.$title.'</title>
-				<link>'.$link.'</link>
-				<guid>'.$packageid.'</guid>
-				<pubDate>'.$pubdate.'</pubDate>
-				<description><![CDATA['.$desc.']]></description>
-			</item>';
+			  '<item>
+  				<title>'.$title.'</title>
+  				<link>'.$link.'</link>
+  				<guid>'.$packageid.'</guid>
+  				<pubDate>'.$pubdate.'</pubDate>
+  				<description><![CDATA['.$desc.']]></description>
+  			</item>';
       }
 
     	echo '
