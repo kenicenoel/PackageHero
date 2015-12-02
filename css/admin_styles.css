@@ -27,9 +27,18 @@ header.top
 	font-family: 'Roboto', sans-serif;
 	font-size: 1.2em;
 	color: #fff;
-	vertical-align: middle;
-
 }
+
+header.top > button
+{
+	width: 30px;
+	height: 30px;
+	font-size: 12pt;
+	padding: 0;
+	margin: 0 auto;
+}
+
+
 
 nav
 {
@@ -46,23 +55,17 @@ nav
 
 }
 
-header > p.user, header > p.pageTitle, header > p.userCountry
+header > p.user, header > p.pageTitle, header > p.userCountry, header > p.messaging
 {
 	display: inline-block;
 }
 
 
-/*header > p.user:after
-{
-	content:"\25BE";
-	font-size: 1em;
-	margin-left: 3px;
-}*/
-
 header > p.pageTitle
 {
 	margin-left: 450px;
-	max-width: 400px;
+	padding: 0 4px;
+	width: 400px;
 	height: 30px;
 	text-align: center;
 
@@ -70,18 +73,23 @@ header > p.pageTitle
 
 header > p.pageTitle:hover
 {
-	background-color: #05ABE0;
+	background-color:rgba(67, 158, 221, 0.58);
 }
 
-header > p.user > i.fa-bars
+header > p.user > i.fa-bars, header > p.messaging > i.fa-envelope
 {
 	padding: 5px 5px 5px 5px;
 	margin-right: 5px;
 }
 
-header > p.user > i.fa-bars:hover
+header > p.user > i.fa-bars:hover, header > p.messaging > i.fa-envelope:hover
 {
-	background-color: #05ABE0;
+	background-color: rgba(67, 158, 221, 0.58);
+}
+
+header > p.messaging
+{
+	padding: 0 4%;
 }
 
 header > input[type=text]
@@ -89,13 +97,13 @@ header > input[type=text]
 	width: 300px;
 	height: 30px;
 	padding: 0px 10px;
-	margin: 0 0 0 400px;
+	margin: 0 0 0 350px;
 	font-size: 17px;
 	font-family: 'Roboto', sans-serif;
-	background-image: url('../images/icons/search.png');
+	/*background-image: url('../images/icons/search.png');
 	background-repeat: no-repeat;
 	background-size: 20px 20px;
-	background-position: 270px center;
+	background-position: 270px center;*/
 	clear: left;
 }
 
@@ -251,7 +259,7 @@ label
 	font-weight: 600;
 	color: #777777;
 	text-align: left;
-	margin-left: 5px;
+	margin-left: 10%;
 	width:150px;
 	font-family: 'Roboto', sans-serif;
 
@@ -259,15 +267,15 @@ label
 
 
 
-input[type=text], input[type=password], input[type=email]
+input[type=text], input[type=password], input[type=email], input[type=date]
 {
 	font-size: 1.2em;
-	font-family: 'Source Sans Pro', sans-serif;
-	font-weight: bold;
+	font-family: 'Roboto', sans-serif;
+	/*font-weight: bold;*/
 	color: #05ABE0;
-	padding-left: 2px;
+	padding-left: 30px;
 	padding-bottom: 3px;
-	margin: 0px 0px 15px 5px;
+	margin: 0px 0px 15px 10%;
 	border: 0;
 	border-top:none;
 	border-left:none;
@@ -276,28 +284,16 @@ input[type=text], input[type=password], input[type=email]
 	box-shadow: none;
 	outline: none;
 	height: 40px;
-	width: 220px;
+	width: 70%;
 }
 
-input[type=text]#note
-{
-	margin: 0px;
-	width: 600px;
-	background: none;
-}
-
-
-input[type=text]#queryField
-{
-	width: 300px;
-}
 
 
 input[type=file]
 {
 
 	border:none;
-	margin: 10px 0px 5px 0px;
+	margin: 10px 0px 5px 10%;
 	border: 0;
 	border-top: 1px solid #e2e3e4;
 	border-bottom: 1px solid #e2e3e4;
@@ -320,7 +316,7 @@ select
 	outline: none;
 	height: 40px;
 	width: auto;
-	margin: 0px 0px 15px 5px;
+	margin: 0px 0px 15px 10%;
 	border: 0;
 	border-top: 1px solid #e2e3e4;
 	border-bottom: 1px solid #e2e3e4;
@@ -330,13 +326,144 @@ select
 
 }
 
+textarea
+{
+	font-size:13pt;
+	width: 75%;
+	color:#05ABE0;
+	text-align:left;
+	padding-left: 5px;
+	font-family: 'Roboto', sans-serif;
+	margin: 5px 0px 5px 10%;
+	border: 0;
+	border-top:1px solid #BBBBBB;
+	border-left:1px solid #BBBBBB;
+	border-right: 1px solid #BBBBBB;
+	border-bottom: 1px solid #BBBBBB;
+
+}
+
+div#data > p.nothing
+{
+	font-size: 1.2em;
+	font-family:'Roboto', sans-serif;
+	margin: 25% auto;
+	display: block;
+
+}
+
+div#data > img.nothing
+{
+	display: block;
+	margin: 25% auto;
+}
+
+#lookupResults > img.nothing
+{
+	display: block;
+	margin: 5% auto;
+}
+
+
+input[type=text]#trackingnumber, input[type=text]#tnum
+{
+	background-image: url('../images/icons/qrcode.png');
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: 5px center;
+}
+
+input[type=text]#customername
+{
+	background-image: url('../images/icons/contacts.png');
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: 5px center;
+}
+
+input[type=text]#carrier
+{
+	background-image: url('../images/icons/courier.png');
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: 5px center;
+}
+
+input[type=text]#username
+{
+	background-image: url('../images/icons/circledcontact.png');
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: 5px center;
+}
+
+input[type=text]#password
+{
+	background-image: url('../images/icons/asterisk.png');
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: 5px center;
+}
+
+input[type=text]#firstname, input[type=text]#lastname
+{
+	background-image: url('../images/icons/text.png');
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: 5px center;
+}
+
+input[type=email]#emailaddress
+{
+	background-image: url('../images/icons/email.png');
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: 5px center;
+}
+
+input[type=text]#itemtype
+{
+	background-image: url('../images/icons/pricetag.png');
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: 5px center;
+}
+
+input[type=text]#phonenumber
+{
+	background-image: url('../images/icons/phone.png');
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: 5px center;
+}
+
+
+input[type=text]#note
+{
+	margin: 0px;
+	width: 600px;
+	background: none;
+}
+
+
+input[type=text]#queryField
+{
+	/*width: 300px;*/
+	padding-left: 5px;
+	background-image: url('../images/icons/search.png');
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: 99% center;
+}
+
+
 
 input[type=submit], button
 {
 	height: 40px;
 	font-size: 20px;
 	width:100px;
-	margin: 20px 170px;
+	margin: 0 50%;
 	color: #fff;
 	border:none;
 	background-color: #0EB4CA;
@@ -393,21 +520,6 @@ input[type=submit]:hover, button:hover
 }
 
 
-textarea
-{
-	font-size:13pt;
-	color:#05ABE0;
-	text-align:left;
-	padding: 0;
-	font-family: 'Roboto', sans-serif;
-	margin: 5px 0px 5px 0px;
-	border: 0;
-	border-top:none;
-	border-left:none;
-	border-right: none;
-	border-bottom: 1px solid #BBBBBB;
-
-}
 
 
 form
@@ -717,38 +829,61 @@ form.card
 {
 	font-family: 'Source Sans Pro', sans-serif;
 	background-color: #ffffff;
-	width:auto;
+	width:75%;
 	height: auto;
 	vertical-align: top;
 	position: relative;
 	display:inline-block;
-	margin:50px 30%;
+	margin:20px 5%;
 	padding: 5px 20px 20px 10px;
 }
 
 
-form#package, form#user
+/*form#package, form#user
 {
-	width: 600px;
-	margin:20px 20%;
+	width: 75%;
+	margin:20px 5%;
+}*/
+
+form#package > section
+{
+	margin:0 auto;
 }
 
 form > p
 {
-	font-size: 1.1em;
+	font-size: 1em;
+	text-align: center;
 	font-family: 'Roboto', sans-serif;
 }
 
 form#search > p.searchKey
 {
 	font-size: 1em;
+	text-align: left;margin-left: 10%;
+}
+
+form#search > header.searchOptions
+{
+	text-align: left;
+	margin-left: 10%;
+}
+
+form#search > input[type=text]#datepicker
+{
+	/*margin-left: 10px;*/
+	width: 200px;
+	background-image: url('../images/icons/date.png');
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: 5px center;
 }
 
 form#search > p.searchKey > span
 {
 	color: #333645;
 }
-
+/*
 form#package > input[type=text], form#package > input[type=password], form#package > input[type=email], form#package > select
 {
 	width: 520px;
@@ -757,7 +892,7 @@ form#package > input[type=text], form#package > input[type=password], form#packa
 form#user > input[type=text], form#user > input[type=password], form#user > input[type=email], form#user > select
 {
 	width: 520px;
-}
+}*/
 
 div#search-card
 {
@@ -911,7 +1046,7 @@ div.card > header.subheading, form.card > header.subheading
 {
 	font-size: 18px;
 	margin:0;
-	text-align: left;
+	text-align: center;
 	font-family: 'Source Sans Pro', sans-serif;
 	padding: 8px 0px 15px 0px;
 	font-weight: bold;

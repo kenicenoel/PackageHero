@@ -1,0 +1,23 @@
+div#userList
+{
+  height: 75%;
+  background-color: #fff;
+  width: 20%;
+  margin-top: 50px;
+  margin-left: 50px;
+  border: 1px solid #000;
+  display: inline-block;
+
+}
+
+div#chat
+{
+  height: 75%;
+  background-color: #fff;
+  width: 20%;
+  margin-top: 50px;
+  margin-left: 50px;
+  border: 1px solid #000;
+  display: inline-block;
+
+}

@@ -4,8 +4,8 @@ body
 	padding: 0;
 	width: 100%;
 	color: #000;
-	background-image: url('../images/index_banner_2.svg');
-	background-color: #fff;
+	/*background-image: url('../images/blur-bg.jpg');*/
+	background-color: #05ABE0;
 	background-repeat: no-repeat;
 	/*background-position: top 2%;*/
 	background-size: cover;
@@ -17,7 +17,7 @@ header.top
 {
 	width: 100%;
 	height: 60px;
-	box-shadow: rgba(0,0,0,0.09) 0 1px;
+border-bottom: 3px solid #d29318;
 	background-color: rgba(255, 255, 255, 1.0);
 	font-family: 'Roboto', sans-serif;
 	font-size: 1em;
@@ -47,6 +47,14 @@ div#bottom
 
 	width:100%;
 	height: 50%;
+}
+
+form > img
+{
+	height: 200px;
+	width: 200px;
+	display: block;
+	margin: 0 auto;
 }
 
 form > header
@@ -79,19 +87,17 @@ div#bottom > header
 
 form
 {
-	background-color: rgba(247, 247, 247, 0.90);
+	background-color: #fff;
 	width: 400px;
-	/*float: right;*/
-	padding: 0px 50px;
-	margin: 5% 50px 10px 65%;
-	border: 1px solid rgba(119, 119, 119, 0.26);
-
+	padding: 10px 50px;
+	margin: 50px auto;
+	border-bottom: 4px solid #d29318;
 
 }
 
 form#password
 {
-	height: 400px;
+	/*height: 600px;*/
 }
 
 p#result
@@ -101,6 +107,31 @@ p#result
 	font-family: 'Roboto', sans-serif;
 	font-size: 2em;
 	padding: 30px;
+}
+
+input[type=text]#username
+{
+	background-image: url('../images/icons/circledcontact.png');
+
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: 5px center;
+}
+
+input[type=password]#password
+{
+	background-image: url('../images/icons/asterisk.png');
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: 5px center;
+}
+
+input[type=email]#emailaddress
+{
+	background-image: url('../images/icons/email.png');
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: 5px center;
 }
 
 
@@ -139,10 +170,10 @@ input[type=text], input[type=password], input[type=email]
 {
 	font-size: 1.2em;
 	font-family: 'Roboto', sans-serif;
-	text-align: center;
+	/*text-align: center;*/
 	background: none;
 	color: #3993D0;
-	padding-left: 2px;
+	padding-left: 30px;
 	padding-bottom: 3px;
 	border: 0;
 	border-top:none;
@@ -152,7 +183,7 @@ input[type=text], input[type=password], input[type=email]
 	box-shadow: none;
 	outline: none;
 	height: 30px;
-	width: 220px;
+	width: 250px;
 }
 
 
@@ -167,7 +198,7 @@ label
 	width:150px;
 	margin-left:5px;
 	text-align: left;
-	text-transform: uppercase;
+	text-transform: none;
 
 }
 
@@ -209,7 +240,7 @@ footer
 	width: 100%;
 	bottom:5px;
 	font-size: 1em;
-	color: #000;
+	color: #fff;
 	text-align:center;
 	position: fixed;
 	font-family: 'Roboto', sans-serif;

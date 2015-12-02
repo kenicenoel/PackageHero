@@ -1,0 +1,21 @@
+	*
+	{
+		display: block;
+	}
+
+	:root
+	{
+		margin: 50px;
+	}
+
+	channel > item > title
+	{
+		font-size: 2 em;
+		text-align: center;
+		color: rgb(41, 126, 238);
+	}
+
+	channel > item > description
+	{
+		font-size: 2em;
+	}

@@ -77,6 +77,7 @@ $(document).ready(function()
                         if(response == "Try again")
                         {
                           $('#msg').text("Sorry. Could not find a user with these details.");
+                          $('form#password').effect("shake");
                         }
 
                         else

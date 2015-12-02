@@ -5,14 +5,6 @@
 	require_once ("../includes/sessions/sessionvariables.php");
 
 
-
-	if(!isset($_SESSION['id']) && !isset($_SESSION['username']))
-	{
-		header("Location:../index.php");
-	}
-
-	$role = $_SESSION['role'];
-
 ?>
 
 
@@ -20,6 +12,7 @@
 				<head>
 					<title>Package Hero&reg;</title>
 					<link rel = "stylesheet" href = "../css/admin_styles.css" type ="text/css">
+					<link rel = "stylesheet" href = "../css/messaging.css" type ="text/css">
 					<link type="text/css" rel="stylesheet" href="../css/overlaypopup.css" />
 					<link href='https://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css'>
 					<link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
@@ -30,6 +23,7 @@
 					<link rel="stylesheet" href="../fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
 					<link href="../css/jquery.circliful.css" rel="stylesheet" type="text/css" />
 					<link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+					<link rel="alternate" type="application/rss+xml" title="Package Hero RSS feed" href="../rss.php" />
 					<meta name="viewport" content="width=device-width, initial-scale=1">
 				</head>
 
@@ -38,9 +32,10 @@
 						<!-- The main header at the top of the screen  -->
 						<header class="top">
 							<p class="user"><i class="fa fa-bars fa-fw"></i><?php echo $user; ?></p>
+							<!-- <p class="messaging"><i class="fa fa-envelope fa-fw"></i> </p> -->
 							<p class="pageTitle"><?php echo $title; ?></p>
-							<input type ='text' placeholder="find a package" name="headerSearchBox" />
-							<p class="userCountry"><?php echo '<img src="../images/flags/'.$country.'.png" />'; ?></p>
+							<input type ='text' id="headerSearch" placeholder="find a package" name="query" />
+							<button id="headerSearchButton" type="submit"><i class="fa fa-search"></i></button>
 						</header>
 
 						<!-- The left navigation -->
@@ -53,7 +48,7 @@
 									echo '<span class="issues"><a class ="link" href="#" id="newissue" title = "Create a new issue"><i class="fa fa-bug fa-fw"></i> New Issue</a></span>';
 								}
 							?>
-							<span class="issues"><a class ="link" href="../includes/allpackages.php"  title = "View a list of all Packages with issues"><i class="fa fa-eye fa-fw"></i> View issues <span><?php echo $issueCount; ?></span></a></span>
+							<span class="issues"><a class ="link" id="viewIssues" href="../includes/allpackages.php"  title = "View a list of all Packages with issues"><i class="fa fa-eye fa-fw"></i> View issues <span><?php echo $issueCount; ?></span></a></span>
 
 
 							<header class="navCategory navPackages">Packages<i class="fa fa-caret-down"></i></header>

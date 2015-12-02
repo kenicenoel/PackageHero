@@ -6,7 +6,7 @@ $(document).ready(function()
   {
       var username = $('#username').val();
       var password = $('#password').val();
-      
+
 
         $.ajax
         ({
@@ -25,6 +25,7 @@ $(document).ready(function()
                 else
                 {
                   $('#msg').html("<span class='fa fa-exclamation-triangle fa-fw'></span>Whoops! Your username or password is incorrect");
+                  $("#form").effect( "shake" );
 
 
                 }

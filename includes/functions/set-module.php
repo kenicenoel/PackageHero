@@ -28,12 +28,17 @@ else if(!isset ($_GET['module']))
 {
   $setmodule= "overview";  // Default to overview
   $title = "<span class='fa fa-calendar fa-fw'></span><span id='date'>".$date = showDate()."</span>";
-
+  
 }
 
 if(isset ($_GET['trackingnumber']))
 {
   $title = "Viewing issue ". $_GET['trackingnumber'];
+}
+
+if($_SERVER['REQUEST_URI'] =="/packagehero/includes/allpackages.php")
+{
+  $title = "View a list of all current issues";
 }
 
 

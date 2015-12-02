@@ -240,7 +240,7 @@ $(document).ready(function()
 
 
               // When user clicks on the link that says "View Issues" in the navigation do this
-              $('#viewAllPackages').click(function()
+              $('#viewIssues').click(function()
               {
 
                   var url='../includes/allpackages.php';
@@ -307,19 +307,30 @@ $(document).ready(function()
 
           e.preventDefault();
 
-
-          $('#lookupButton').replaceWith("<span id='loader' class='fa fa-refresh fa-spin'></span>");
-
+            var query = $('#queryField').val();
+            var before = $('#before').val();
+            var after = $('#after').val();
+            console.log(before +"TO"+ after+"--->"+query);
+            $('#lookupButton').replaceWith("<span id='loader' class='fa fa-refresh fa-spin'></span>");
           $.ajax
           ({
               url: '../includes/packagelookup.php',
               type: 'POST',
-              data: $('form').serialize(),
+              data: "query="+query+"&beforeDate="+before+"+&afterDate="+after,
               // datatype: 'text',
               success: function (response)
               {
-                $('#lookupResults').html(response);
-                $('#loader').replaceWith('<input id="lookupButton" type = "submit" value="Find">');
+                if(response =="")
+                {
+                  $('#lookupResults').html("<img class='nothing' src='../images/icons/box2.png' alt='' />");
+                  $('#loader').replaceWith('<input id="lookupButton" type = "submit" value="Find">');
+                }
+                else
+                {
+                  $('#lookupResults').html(response);
+                  $('#loader').replaceWith('<input id="lookupButton" type = "submit" value="Find">');
+                }
+
 
               },
 
@@ -441,7 +452,7 @@ $(document).ready(function()
               return false;
         });
 
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
           // Create the circular graphs
@@ -470,24 +481,66 @@ $(document).ready(function()
           // Hide the menu
           $('.fa-bars').click(function()
           {
-              $('#navigation').toggle();
+              $('#navigation').toggle("puff");
           });
 
           // Hide the dashboard sections
           $('.newsModule').click(function()
           {
-            $('p.newsitem').toggle();
+            $('p.newsitem').toggle("fade");
           });
 
 
           $('.summaryModule').click(function()
           {
-            $('div.card').toggle();
+            $('div.card').toggle("fade");
           });
 
           $('.recentModule').click(function()
           {
-            $('table#results').toggle();
+            $('table#results').toggle("fade");
+            // $( "#toggle" ).toggle( "pulsate" );
+          });
+
+          $('#headerSearchButton').click(function()
+            {
+              var keyword = $('#headerSearch').val();
+              // window.open("www.youraddress.com","_self");
+
+              $.ajax
+              ({
+                  url: '../includes/packagelookup.php',
+                  type: 'POST',
+                  data: "query="+keyword,
+                  // datatype: 'text',
+                  success: function (response)
+                  {
+                    if(response =="")
+                    {
+                      $('#data').html("<img class='nothing' src='../images/icons/box2.png' alt='' />");
+                    }
+                    else
+                    {
+                      $('#data').html(response);
+
+                    }
+
+
+                  },
+
+              });
+
+                  return false;
+            }
+          );
+
+
+          // Load the messaging page
+          $('body').on('click', '.messaging', function(e)
+          {
+
+            window.open('../messaging/messages.php', '_self');
+
           });
 
 
