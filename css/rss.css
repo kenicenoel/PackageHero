@@ -19,3 +19,8 @@
 	{
 		font-size: 2em;
 	}
+
+	channel > item > link
+	{
+		font-size: 15px;
+	}

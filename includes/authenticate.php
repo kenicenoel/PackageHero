@@ -1,6 +1,8 @@
 <?php
   require_once("config.php");
+  include_once("functions/countavailableissues.php");
   session_start();
+
 
 
 
@@ -18,19 +20,20 @@
     if($stmt->fetch())
     {
 
-        echo 'true';
+        echo 'success';
         // create a new session
         $_SESSION['id'] = $id;
         $_SESSION['username'] = $u;
         $_SESSION['country'] = $country;
         $_SESSION['role'] = $role;
         $_SESSION['agent'] = $agent;
+        
 
     }
 
       else
       {
-        echo 'false';
+        echo 'failure';
       }
 
 

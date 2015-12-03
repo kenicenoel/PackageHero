@@ -7,10 +7,10 @@
     {
       $username = $_SESSION['username'];
       $pid = $_SESSION['pid'];
+      $agent = $_SESSION['agent'];
       $tnumber = $_SESSION['trackingnumber'];
       $accnumber = $_POST['accountNumber'];
-      $news = $username." marked issue ".$tnumber." as Resolved for customer ".$accnumber;
-
+      $news = $username." (".$agent.") marked issue ".$tnumber." as resolved for customer ".$accnumber;
       $resolved = "Yes";
 
 
@@ -48,12 +48,9 @@
                 <br>
                 <p id="errorMessage"></p>
                 <label for="accountNumber">Account Number</label>
-                <input type = "text" id = "accountNumber" name="accountNumber" placeholder="e.g GRE123" required autofocus /><br>
+                <input type = "text" id = "accountNumber" name="accountNumber" placeholder="e.g GRE123 or WEB720 or ANU1212 or BSL800 " required autofocus /><br>
                 <input id="resolveissue" type = "submit" value="Resolve" />
-
             </form>
-
-
 
       </div>
 

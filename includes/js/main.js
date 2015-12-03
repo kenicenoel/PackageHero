@@ -44,8 +44,9 @@ $(document).ready(function()
 
                       else if(response == "Done")
                       {
-                        $('#errorMessage').append("<p style='font-size:1.1em; background-color:#27ae60; color:#ffffff;'><i class='fa fa-check-circle'></i>Added new issue. You may add another or move on.</p>");
+                        $('#errorMessage').append("<p style='font-size:1.1em; background-color:#27ae60; color:#ffffff;'><i class='fa fa-check-circle'></i> Added Successfully! You may add another or move on.</p>");
                         $('#package')[0].reset();
+
                         $('#addIssue').val("Add");
 
                       }
@@ -239,48 +240,25 @@ $(document).ready(function()
 
 
 
-              // When user clicks on the link that says "View Issues" in the navigation do this
-              $('#viewIssues').click(function()
-              {
-
-                  var url='../includes/allpackages.php';
-
-                $.ajax
-                (
-                  {
-
-                    url:url,
-                    success: function(response)
-                    {
-                      $('#data').html(response);
-                      $('.pageTitle').text("View a list of all current issues");
-
-
-                    }
-                  });
-
-                });
-
-
-
-
-                $('.full-details').click(function()
-                {
-                    var link = $(this).data('url');
-
-                  $.ajax
-                  (
-                    {
-
-                      url:link,
-                      success: function(response)
-                      {
-                        $('#data').html(response);
-
-                      }
-                    });
-
-                  });
+                //
+                //
+                // $('.full-details').click(function()
+                // {
+                //     var link = $(this).data('url');
+                //
+                //   $.ajax
+                //   (
+                //     {
+                //
+                //       url:link,
+                //       success: function(response)
+                //       {
+                //         $('#data').html(response);
+                //
+                //       }
+                //     });
+                //
+                //   });
 
 
 
@@ -301,7 +279,7 @@ $(document).ready(function()
 
 
 
-        // The jquery/ajax function below is responsible for the tracking number search function
+        // The jquery/ajax function below is responsible for the search function
         $('body').on('click', '#lookupButton', function(e)
         {
 
@@ -310,7 +288,12 @@ $(document).ready(function()
             var query = $('#queryField').val();
             var before = $('#before').val();
             var after = $('#after').val();
-            console.log(before +"TO"+ after+"--->"+query);
+
+            if(query == '' && before =='' && after == '')
+            {
+              $('#lookupResults').html("<p id='errorMessage' style='margin:0 30%; font-size:1.5em;'> - You searched for nothing... and got nothing - </p>");
+            }
+
             $('#lookupButton').replaceWith("<span id='loader' class='fa fa-refresh fa-spin'></span>");
           $.ajax
           ({
@@ -322,7 +305,7 @@ $(document).ready(function()
               {
                 if(response =="")
                 {
-                  $('#lookupResults').html("<img class='nothing' src='../images/icons/box2.png' alt='' />");
+                  // $('#lookupResults').html("<img class='nothing' src='../images/icons/no-matches.png' alt='' />");
                   $('#loader').replaceWith('<input id="lookupButton" type = "submit" value="Find">');
                 }
                 else
@@ -330,7 +313,6 @@ $(document).ready(function()
                   $('#lookupResults').html(response);
                   $('#loader').replaceWith('<input id="lookupButton" type = "submit" value="Find">');
                 }
-
 
               },
 
@@ -423,9 +405,6 @@ $(document).ready(function()
 
         });
 
-
-
-
         // Run this code when the "HIDE" button is clicked
         $('#hide').click(function()
         {
@@ -452,7 +431,8 @@ $(document).ready(function()
               return false;
         });
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
           // Create the circular graphs
@@ -478,13 +458,13 @@ $(document).ready(function()
             $('.usr').toggle();
           });
 
-          // Hide the menu
+          // Hide the navigation menu
           $('.fa-bars').click(function()
           {
               $('#navigation').toggle("puff");
           });
 
-          // Hide the dashboard sections
+          // Hide the dashboard sections //
           $('.newsModule').click(function()
           {
             $('p.newsitem').toggle("fade");
@@ -502,10 +482,10 @@ $(document).ready(function()
             // $( "#toggle" ).toggle( "pulsate" );
           });
 
+          // when the search button on the header is clicked
           $('#headerSearchButton').click(function()
             {
               var keyword = $('#headerSearch').val();
-              // window.open("www.youraddress.com","_self");
 
               $.ajax
               ({
@@ -515,14 +495,13 @@ $(document).ready(function()
                   // datatype: 'text',
                   success: function (response)
                   {
-                    if(response =="")
+                    if(response == "")
                     {
                       $('#data').html("<img class='nothing' src='../images/icons/box2.png' alt='' />");
                     }
                     else
                     {
                       $('#data').html(response);
-
                     }
 
 
@@ -533,16 +512,5 @@ $(document).ready(function()
                   return false;
             }
           );
-
-
-          // Load the messaging page
-          $('body').on('click', '.messaging', function(e)
-          {
-
-            window.open('../messaging/messages.php', '_self');
-
-          });
-
-
 
 });

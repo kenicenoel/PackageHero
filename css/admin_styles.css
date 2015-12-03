@@ -29,15 +29,6 @@ header.top
 	color: #fff;
 }
 
-header.top > button
-{
-	width: 30px;
-	height: 30px;
-	font-size: 12pt;
-	padding: 0;
-	margin: 0 auto;
-}
-
 
 
 nav
@@ -63,9 +54,13 @@ header > p.user, header > p.pageTitle, header > p.userCountry, header > p.messag
 
 header > p.pageTitle
 {
-	margin-left: 450px;
+	/*margin-left: 200px;*/
 	padding: 0 4px;
-	width: 400px;
+	/*width: auto;*/
+	position: absolute;
+	top: 13px;
+	left: 40%;
+	/*font-size: 16px;*/
 	height: 30px;
 	text-align: center;
 
@@ -85,6 +80,7 @@ header > p.user > i.fa-bars, header > p.messaging > i.fa-envelope
 header > p.user > i.fa-bars:hover, header > p.messaging > i.fa-envelope:hover
 {
 	background-color: rgba(67, 158, 221, 0.58);
+
 }
 
 header > p.messaging
@@ -96,16 +92,35 @@ header > input[type=text]
 {
 	width: 300px;
 	height: 30px;
-	padding: 0px 10px;
-	margin: 0 0 0 350px;
+	/*padding: 0px 10px;*/
+	/*margin: 0 0 0 350px;*/
+	position: absolute;
+	left:65%;
 	font-size: 17px;
 	font-family: 'Roboto', sans-serif;
-	/*background-image: url('../images/icons/search.png');
-	background-repeat: no-repeat;
-	background-size: 20px 20px;
-	background-position: 270px center;*/
-	clear: left;
+
 }
+
+
+header.top > button
+{
+	width: 30px;
+	height: 30px;
+	font-size: 12pt;
+	background:none;
+	position: absolute;
+	left: 89%;
+	padding: 0;
+	margin: 0 auto;
+}
+
+header.top > button > i.fa-search
+{
+	color: rgba(134, 137, 138, 0.62);
+	border: none;
+	cursor: pointer;
+}
+
 
 header > p.userCountry > img
 {

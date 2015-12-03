@@ -15,17 +15,14 @@ if(isset($_POST['query']) || isset($_GET['query']) )
       {
         $query = "%{$_GET['query']}%";
       }
-      //
-      // else
-      // {
-      //   $query='';
-      // }
+
         $before = "";
         $after = "";
         if(isset($_POST['beforeDate']))
         {
           $before = $_POST['beforeDate'];
         }
+
         if(isset($_POST['afterDate']))
         {
           $after = $_POST['afterDate'];

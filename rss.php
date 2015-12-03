@@ -24,9 +24,9 @@
 
       while($stmt->fetch())
       {
-
+        $link = "http://packagehero.websource-caribbean.com/index.php?page=includes/fulldetails.php?trackingnumber=".$tnumber;
 		  	$pubdate = date('D j F Y g:i A', strtotime($issuedate));
-			  $title = "A new issue has been created for a package with Tracking Number ".$tnumber.".";
+			  $title = "A new issue has been created with Tracking Number ".$tnumber.".";
 			  $desc = "<header>Hello,</header>";
         $desc.= "<p>A new issue has been added to Package Hero.</p>";
         $desc.= "<p>Here are the details of the issue:</p>";
@@ -34,11 +34,12 @@
         $desc.= "<p>Tracking Number: ".$tnumber."</p>";
         $desc.= "<p>Main Issue: ".$mainissue."</p>";
         $desc.= "<p>Customer: ".$customername."</p>";
+        $desc.= "<p><br><br>To view this issue click <a href='".$link."' title='Go'>here</a></p>";
 
         $items .=
 			  '<item>
   				<title>'.$title.'</title>
-  				<link>'.$link.'</link>
+  				<link><![CDATA['.$link.']]></link>
   				<guid>'.$packageid.'</guid>
   				<pubDate>'.$pubdate.'</pubDate>
   				<description><![CDATA['.$desc.']]></description>
@@ -52,7 +53,7 @@
     echo $items;
 
 
-echo "</channel>";
-echo "</rss>";
+    echo "</channel>";
+    echo "</rss>";
 
   ?>

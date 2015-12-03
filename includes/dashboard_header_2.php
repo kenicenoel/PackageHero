@@ -48,7 +48,7 @@
 									echo '<span class="issues"><a class ="link" href="#" id="newissue" title = "Create a new issue"><i class="fa fa-bug fa-fw"></i> New Issue</a></span>';
 								}
 							?>
-							<span class="issues"><a class ="link" id="viewIssues" href="../includes/allpackages.php"  title = "View a list of all Packages with issues"><i class="fa fa-eye fa-fw"></i> View issues <span><?php echo $issueCount; ?></span></a></span>
+							<span class="issues"><a class ="link" id="viewIssues" href="../includes/allpackages.php"  title = "View a list of all Packages with issues"><i class="fa fa-eye fa-fw"></i> View issues <span><?php echo countTotalAvailableIssues(); ?></span></a></span>
 
 
 							<header class="navCategory navPackages">Packages<i class="fa fa-caret-down"></i></header>

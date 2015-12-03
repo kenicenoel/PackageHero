@@ -1,10 +1,17 @@
 <?php
 		session_start();
-		if(isset($_SESSION['id']) && isset($_SESSION['username']))
+		if(isset($_SESSION['id']) && isset($_SESSION['username']) && isset($_GET['page']))
 		{
-			header("Location:admin/dashboard.php");
+			header("Location:".$_GET['page']);
 			exit();
 		}
+
+		else if(isset($_SESSION['id']) && isset($_SESSION['username']))
+		{
+			header("Location: admin/dashboard.php");
+			exit();
+		}
+
 
 ?>
 	<!Doctype html>

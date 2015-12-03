@@ -2,6 +2,7 @@
 
 		require_once dirname(__FILE__) .'/config.php';
 		require_once ("../includes/sessions/sessionvariables.php");
+		require_once('functions/countavailableissues.php');
 		require_once('classes/PasswordGenerator.php');
 
 		/* The count functions create the summary for the dashboard summary category */
@@ -127,47 +128,6 @@
 
 		}
 
-		// Count the total number of package issues not hidden and resolved
-		function countTotalAvailableIssues()
-		{
-			global $connection;
-			$country = $_SESSION['country'];
-			// $table = $tableName;
-
-			// Build the query
-				$sql = "SELECT * FROM packages WHERE Resolved = 'No' AND (PackageID NOT IN(SELECT PackageID from hiddenissues) OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = '$country'))";
-
-				//prepare the sql statement
-				$stmt = $connection->prepare($sql);
-
-				//execute the prepared statement
-				$stmt->execute();
-
-			/* store result */
-			$stmt->store_result();
-
-
-			$total = $stmt->num_rows;
-			$_SESSION['availableIssuesCount'] = $total;
-
-			if($total == 0)
-			{
-				return 0;
-
-			}
-
-			else
-			{
-				return $total;
-			}
-
-
-			/* Close statement */
-			$stmt->close();
-			$connection->close();
-
-
-		}
 
 
 		// Get the user whose details were last modified
@@ -392,7 +352,7 @@
 			$year = date("Y");
 			$time = date("h:i A");
 
-			return $dashboardTime = $day.", ".$month." ".$dayOfMonth." ".$year." - ".$time;
+			return $dashboardTime = $day.", ".$month." ".$dayOfMonth.", ".$year." : ".$time;
 
 		}
 
@@ -444,7 +404,7 @@
 		{
 			// $userTotal = call_user_func('countTotal', 'users');
 			$packageTotal = call_user_func('countTotal');
-			$availableTotal = call_user_func('countTotalAvailableIssues');
+			$totalAvailable = call_user_func('countTotalAvailableIssues');
 			$hiddenTotal = call_user_func('countTotalHidden');
 			$usersTotal = call_user_func('countTotalUsers');
 			$lastModifiedUser = call_user_func('getLastModifiedUser');
@@ -495,7 +455,7 @@
 									<div class="card">
 										<p class="card-title">Available Issues</p>
 										<p class="summary">
-											<span id="available-issues" data-fgcolor="#73C682" data-fontsize="30" data-dimension="200" data-text="'.$availableTotal.'" data-width="30" data-total="'.$packageTotal.'" data-part="'.$availableTotal.'"></span>
+											<span id="available-issues" data-fgcolor="#73C682" data-fontsize="30" data-dimension="200" data-text="'.$totalAvailable.'" data-width="30" data-total="'.$packageTotal.'" data-part="'.$totalAvailable.'"></span>
 										</p>
 									</div>';
 									$role = $_SESSION['role'];

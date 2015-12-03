@@ -1,6 +1,7 @@
 
 <!-- This field is responsible for loading all the session varibales to allow for cleaner code -->
 <?php
+  include_once ('../includes/functions/countavailableissues.php');
   session_start();
   $role = $_SESSION['role'];
   $issueCount = $_SESSION['availableIssuesCount'];
@@ -8,6 +9,7 @@
   $id = $_SESSION['id'];
   $user = $_SESSION['username'];
   $agent = $_SESSION['agent'];
+  $totalAvailable = countTotalAvailableIssues();
 
 
  ?>
