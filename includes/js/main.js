@@ -289,10 +289,6 @@ $(document).ready(function()
             var before = $('#before').val();
             var after = $('#after').val();
 
-            if(query == '' && before =='' && after == '')
-            {
-              $('#lookupResults').html("<p id='errorMessage' style='margin:0 30%; font-size:1.5em;'> - You searched for nothing... and got nothing - </p>");
-            }
 
             $('#lookupButton').replaceWith("<span id='loader' class='fa fa-refresh fa-spin'></span>");
           $.ajax
@@ -305,7 +301,7 @@ $(document).ready(function()
               {
                 if(response =="")
                 {
-                  // $('#lookupResults').html("<img class='nothing' src='../images/icons/no-matches.png' alt='' />");
+                  $('#lookupResults').html("<img class='nothing' src='../images/icons/no-packages.png' alt='' />");
                   $('#loader').replaceWith('<input id="lookupButton" type = "submit" value="Find">');
                 }
                 else
@@ -431,6 +427,61 @@ $(document).ready(function()
               return false;
         });
 
+
+        // Run this code when the "profile" link is clicked
+        $('.profile').click(function()
+        {
+
+              $.ajax
+              ({
+
+                  url: '../includes/profile.php',
+                  type: 'POST',
+                  success: function(response)
+                  {
+
+                    $('#data').html(response);
+                    $('.pageTitle').text("Update your profile");
+
+                  }
+
+                });
+              return false;
+        });
+
+        // Ajax update user profile
+
+    $('body').on('click', '#save_profile', function(e)
+
+    {
+
+      e.preventDefault();
+
+
+      $('#save_profile').replaceWith("<span id='loader' class='fa fa-refresh fa-spin'></span>");
+
+      $.ajax
+      ({
+          url: '../includes/profile.php',
+          type: 'POST',
+          data: $('form').serialize(),
+          // datatype: 'text',
+          success: function (response)
+          {
+            $('#profile').html("Updated profile successfully");
+            $('#loader').replaceWith('<button id="save_profile" type = "submit">Updated</button>');
+
+          },
+
+      });
+
+          return false;
+    });
+
+
+
+
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -441,8 +492,15 @@ $(document).ready(function()
           $('#available-issues').circliful();
           $('#last-issue').circliful();
 
-
           // Hide the links when they are clicked
+          $(".user").click(function()
+          {
+            $(".submenu").toggle('slow');
+
+          });
+
+          
+
           $('.navIssues').click(function()
           {
             $('.issues').toggle();
@@ -459,7 +517,7 @@ $(document).ready(function()
           });
 
           // Hide the navigation menu
-          $('.fa-bars').click(function()
+          $('.menu').click(function()
           {
               $('#navigation').toggle("puff");
           });
@@ -479,7 +537,7 @@ $(document).ready(function()
           $('.recentModule').click(function()
           {
             $('table#results').toggle("fade");
-            // $( "#toggle" ).toggle( "pulsate" );
+
           });
 
           // when the search button on the header is clicked
@@ -497,7 +555,7 @@ $(document).ready(function()
                   {
                     if(response == "")
                     {
-                      $('#data').html("<img class='nothing' src='../images/icons/box2.png' alt='' />");
+                      $('#data').html("<img class='nothing' src='../images/icons/no-packages.png' alt='' />");
                     }
                     else
                     {
@@ -512,5 +570,26 @@ $(document).ready(function()
                   return false;
             }
           );
+
+
+          // The Notifications code
+          $(".notification_li").click(function()
+            {
+              $("#notificationContainer").fadeToggle(300);
+              $("#notification_count").fadeOut("slow");
+              return false;
+            });
+
+            // Document Click hiding the popup
+            $(document).click(function()
+            {
+              $("#notificationContainer").hide();
+            });
+
+            //Popup on click
+            $("#notificationContainer").click(function()
+            {
+              return false;
+            });
 
 });

@@ -77,9 +77,6 @@ if(isset($_POST['query']) || isset($_GET['query']) )
 
   			  </div>
 
-
-
-
           ';
 
       } // end while

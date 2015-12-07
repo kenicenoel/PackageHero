@@ -25,15 +25,33 @@
 					<body>
 						<div id = "container">
 
-							<!-- The main header at the top of the screen  -->
-							<header class="top">
-								<p class="user"><i class="fa fa-bars fa-fw"></i><?php echo $user; ?></p>
-								<!-- <p class="messaging"><i class="fa fa-envelope fa-fw"></i> </p> -->
-								<p class="pageTitle"><?php echo $title; ?></p>
-								<input type ='text' id="headerSearch" placeholder="find a package" name="query" />
-								<button id="headerSearchButton" type="submit"><i class="fa fa-search"></i></button>
+							<!-- The main nav at the top of the screen  -->
+							<ul id="top">
+								<li class="menu"><i class="fa fa-bars fa-fw"></i></li>
+								<li class="user"><a href="#" title="Update your profile"><?php echo $user; ?></a>
+									<ul class="submenu">
+										<li class="profile"><a href="#" title="Update your user profile"><i class="fa fa-pencil fa-fw"></i>update profile</a></li>
+										<li><a href ="../includes/logout.php" title = "Logout from Package Hero"><i class="fa fa-close fa-fw"></i>Sign out</a></li>
+									</ul>
+								</li>
 
-							</header>
+
+									<div id="notificationContainer">
+											<div id="notificationTitle">Notifications</div>
+											<div id="notificationsBody" class="notifications"></div>
+											<div id="notificationFooter"><a href="#">See All</a></div>
+									</div>
+								</li>
+								<li class="pageTitle"><?php echo $title; ?></li>
+								<li>
+									<ul class="right-align">
+										<li class="notification_li"><i class="fa fa-bullhorn"></i></li>
+										<li><input type ='text' id="headerSearch" placeholder="find a package" name="query" /></li>
+										<li><button id="headerSearchButton" type="submit"><i class="fa fa-search"></i></button></li>
+									</ul>
+
+								</li>
+							</ul>
 
 							<!-- The left navigation -->
 							<nav id ="navigation">

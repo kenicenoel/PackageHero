@@ -7,6 +7,9 @@ body
 	color: #000;
 }
 
+
+
+
 img
 {
 	user-drag: none;
@@ -15,119 +18,249 @@ img
 }
 
 
-header.top
+ul#top
 {
 
 	position:fixed;
+	top: 0;
 	padding: 10px 25px;
-	display: block;
 	width: 100%;
 	height: 50px;
 	background-color: #354052;
+	/*background-color: #4CAF50;*/
 	font-family: 'Roboto', sans-serif;
 	font-size: 1.2em;
 	color: #fff;
+	margin: 0px;
+	padding: 10px 0px;
+	list-style-type: none;
+	z-index: 3;
 }
 
 
+
+ul#top > li, ul#top > li > ul > li
+{
+	display: inline;
+
+}
+
+ul#top > li > a
+{
+	color:#333333;
+	text-decoration:none;
+}
+
+ul#top > li a:hover
+{
+	color:#006699;
+	text-decoration:none;
+}
+
+ul#top > li > ul > li > input[type=text]
+{
+	border: none;
+	width: 300px;
+	height: 30px;
+	padding: 0 10px;
+	margin: 0 150px;
+	font-size: 15px;
+	font-family: 'Roboto', sans-serif;
+	/*float: right;*/
+}
+
+ul#top > li > ul > li > button
+{
+	background: none;
+	color: rgb(163, 162, 171);
+	height: 30px;
+	width: 30px;
+	font-family: 'Roboto',sans-serif;
+	font-size: 14px;
+	/*float: right;*/
+
+}
+
+ul#top > li > ul > li > i.fa-bullhorn
+{
+	cursor: pointer;
+}
+
+ul#top > li > ul.submenu
+{
+	list-style-type: none;
+	width: 170px;
+	background-color: #fff;
+	display: none;
+	position: absolute;
+	margin: 15px 40px;
+	padding:10px 10px;
+	border-top: 3px solid rgb(82, 209, 44);
+	z-index: 2;
+}
+
+ul#top > li > ul.submenu > li
+{
+	/*display: inline;*/
+	padding: 10px 0px;
+	position: relative;
+
+}
+
+ul#top > li > ul.submenu > li > a
+{
+	color: #444241;
+	text-decoration: none;
+	text-transform: lowercase;
+}
+
+ul#top > li
+{
+	padding: 10px 0px;
+	/*margin: 10px 0px;*/
+}
+
+ul#top > li > ul.submenu > li:hover
+{
+	color: #fff;
+	/*border-bottom: 2px solid rgb(156, 162, 155);*/
+}
+
+ul#top > li > ul.right-align
+{
+	float: right;
+}
+
+#notification_li
+{
+	position:relative;
+
+}
+
+#notificationContainer
+{
+	background-color: #fff;
+	border: 1px solid rgba(100, 100, 100, .4);
+	-webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .25);
+	overflow: visible;
+	position: absolute;
+	top: 50px;
+	margin-left: 1050px;
+	width: 400px;
+	z-index: 1000;
+	display: none; // Enable this after jquery implementation
+}
+
+// Popup Arrow
+#notificationContainer:before
+{
+	content: '';
+	display: block;
+	position: absolute;
+	width: 0;
+	height: 0;
+	color: transparent;
+	border: 10px solid black;
+	border-color: transparent transparent white;
+	margin-top: -20px;
+	margin-left: 188px;
+}
+
+#notificationTitle
+{
+	font-weight: bold;
+	padding: 8px;
+	font-size: 13px;
+	background-color: #ffffff;
+	color: #444241;
+	position: fixed;
+	z-index: 1000;
+	width: 397px;
+	border-top: 3px solid rgb(82, 209, 44);
+	border-bottom: 1px solid #dddddd;
+}
+#notificationsBody
+{
+	padding: 33px 0px 0px 0px !important;
+	min-height:300px;
+}
+
+#notificationFooter
+{
+	background-color: #e9eaed;
+	text-align: center;
+	font-weight: bold;
+	padding: 8px;
+	font-size: 12px;
+	border-top: 1px solid #dddddd;
+}
+
+#notificationFooter > a
+{
+	text-decoration: none;
+	font-size: 1.2em;
+	color: rgb(57, 55, 57);
+}
+
+
+ul#top > li.pageTitle
+{
+	padding: 0 4px;
+	position: absolute;
+	top: 13px;
+	left: 40%;
+	/*height: 30px;*/
+	text-align: center;
+
+}
+
+ul#top > li.menu
+{
+	padding: 10px 10px 10px 10px;
+	margin-right: 5px;
+	height: 50px;
+	cursor: pointer;
+}
+
+ul#top > li.user
+{
+	text-transform: capitalize;
+}
+
+ul#top > li.user > a
+{
+	color: #fff;
+	text-decoration: none;
+}
+
+ul#top > li.user:hover
+{
+	cursor: pointer;
+}
+
+ul#top > li.user > a::after
+{
+	content: '\25bc';
+	font-size: 10px;
+	top:5px;
+	padding: 0 3px;
+}
 
 nav
 {
 	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 15pt;
-	display: inline-block;
-	margin-top:50px;
+	display: block;
+	/*margin-top:50px;*/
 	color:#ffffff;
 	position:fixed;
 	width: 220px;
 	height:100%;
 	border:none;
-	background-color:#218380;
+	background-color:#1C94C4;
+	/*z-index: 1;*/
+	overflow: auto;
 
-}
-
-header > p.user, header > p.pageTitle, header > p.userCountry, header > p.messaging
-{
-	display: inline-block;
-}
-
-
-header > p.pageTitle
-{
-	/*margin-left: 200px;*/
-	padding: 0 4px;
-	/*width: auto;*/
-	position: absolute;
-	top: 13px;
-	left: 40%;
-	/*font-size: 16px;*/
-	height: 30px;
-	text-align: center;
-
-}
-
-header > p.pageTitle:hover
-{
-	background-color:rgba(67, 158, 221, 0.58);
-}
-
-header > p.user > i.fa-bars, header > p.messaging > i.fa-envelope
-{
-	padding: 5px 5px 5px 5px;
-	margin-right: 5px;
-}
-
-header > p.user > i.fa-bars:hover, header > p.messaging > i.fa-envelope:hover
-{
-	background-color: rgba(67, 158, 221, 0.58);
-
-}
-
-header > p.messaging
-{
-	padding: 0 4%;
-}
-
-header > input[type=text]
-{
-	width: 300px;
-	height: 30px;
-	/*padding: 0px 10px;*/
-	/*margin: 0 0 0 350px;*/
-	position: absolute;
-	left:65%;
-	font-size: 17px;
-	font-family: 'Roboto', sans-serif;
-
-}
-
-
-header.top > button
-{
-	width: 30px;
-	height: 30px;
-	font-size: 12pt;
-	background:none;
-	position: absolute;
-	left: 89%;
-	padding: 0;
-	margin: 0 auto;
-}
-
-header.top > button > i.fa-search
-{
-	color: rgba(134, 137, 138, 0.62);
-	border: none;
-	cursor: pointer;
-}
-
-
-header > p.userCountry > img
-{
-	vertical-align: middle;
-	padding-left: 10px;
-	max-width: 40px;
-	max-height: 40px;
 }
 
 nav > header.navCategory
@@ -139,6 +272,11 @@ nav > header.navCategory
 	margin: 40px 5px 20px 15px;
 	padding-left: 5px;
 
+}
+
+nav > header.navIssues
+{
+	margin-top: 70px;
 }
 
 nav > header.navCategory:hover
@@ -166,6 +304,11 @@ nav > span > a.link
 	visibility: visible;
 }
 
+nav > span > a.link:active
+{
+	background-color: #FFEB3B;
+}
+
 a.link > i.fa-sign-out
 {
 	font-size: 1.3em;
@@ -173,11 +316,12 @@ a.link > i.fa-sign-out
 	color: #fff;
 }
 
-nav > span > a.link > span
+nav > span > a.link > span.numberOfIssues
 {
 	font-size: 15px;
-	padding:6px 9px;
-	background-color: #05abe0;
+	padding:3px 7px 3px 7px;
+	background-color: #cc0000;
+	color: #fff;
 	width: 25px;
 	height: 25px;
 	border-radius: 50%;
@@ -187,7 +331,7 @@ nav > span > a.link:hover
 {
 	text-decoration: none;
 	font-weight: 600;
-	background-color: #1ec8d8;
+	background-color: #FFEB3B;
 	color: #272727;
 }
 
@@ -217,7 +361,7 @@ header.modules
 
 	font-size:18pt;
 	font-family: 'Roboto', sans-serif;
-	color:#218380;
+	color:#1C94C4;
 	display:block;
 	clear:left;
 	text-transform: uppercase;
