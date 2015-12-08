@@ -3,6 +3,7 @@
 		require_once dirname(__FILE__) .'/config.php';
 		require_once ("../includes/sessions/sessionvariables.php");
 		require_once('functions/countavailableissues.php');
+		// require_once('functions/weeklyreport.php');
 		require_once('classes/PasswordGenerator.php');
 
 		/* The count functions create the summary for the dashboard summary category */
@@ -433,6 +434,7 @@
 					}
 
 
+
 					echo '
 					<div class="summary">
 							<header class ="modules summaryModule"> <i class="fa fa-pie-chart fa-fw"></i> Summary <i class="fa fa-caret-down"></i></header>
@@ -441,7 +443,7 @@
 										<p class="card-title">Total Issues</p>
 										<p class="summary">
 											<span id="total-issues" data-fgcolor="#FF6B6B" data-fontsize="30" data-dimension="200" data-text="'.$packageTotal.'" data-width="30" data-total="'.$packageTotal.'" data-part="'.$packageTotal.'"></span>
-										</p>
+										</p><script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 									</div>
 
 									<div class="card">
@@ -457,22 +459,12 @@
 										<p class="summary">
 											<span id="available-issues" data-fgcolor="#73C682" data-fontsize="30" data-dimension="200" data-text="'.$totalAvailable.'" data-width="30" data-total="'.$packageTotal.'" data-part="'.$totalAvailable.'"></span>
 										</p>
-									</div>';
-									$role = $_SESSION['role'];
-									if($role == "Administrator")
-									{
-										echo '
-										<div class="card">
-											<p class="card-title">Total users</p>
-											<p class="summary">
-													<span id="last-issue" data-fgcolor="#F0F465" data-fontsize="30" data-dimension="200" data-text="'.$usersTotal.'" data-total="'.$usersTotal.'" data-part="'.$usersTotal.'" data-width="30"></span>
-											</p>
-										</div>
+									</div>
+
+						</div>
+						<div id="weekly-report">
 
 
-										';
-									}
-						echo '
 						</div>
 
 							<br><br>
@@ -514,3 +506,7 @@
 <script src="../fancybox/source/jquery.fancybox.js"></script>
 <script src="../includes/js/main.js"></script>
 <script src="../includes/js/jquery.circliful.min.js"></script>
+
+<!--Load the AJAX API-->
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script src="../includes/js/weeklyReportGraph.js"></script>
