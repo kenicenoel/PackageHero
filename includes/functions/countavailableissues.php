@@ -1,5 +1,6 @@
 <?php
     require_once('../includes/config.php');
+    
   // Count the total number of package issues not hidden and resolved
   function countTotalAvailableIssues()
   {

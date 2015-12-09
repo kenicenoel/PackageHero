@@ -237,32 +237,6 @@ $(document).ready(function()
 
                               });
 
-
-
-
-                //
-                //
-                // $('.full-details').click(function()
-                // {
-                //     var link = $(this).data('url');
-                //
-                //   $.ajax
-                //   (
-                //     {
-                //
-                //       url:link,
-                //       success: function(response)
-                //       {
-                //         $('#data').html(response);
-                //
-                //       }
-                //     });
-                //
-                //   });
-
-
-
-
         // This function allows one to switch from Grid layout to List Layout and vice versa
 
         $('#list').click(function()
@@ -452,11 +426,8 @@ $(document).ready(function()
         // Ajax update user profile
 
     $('body').on('click', '#save_profile', function(e)
-
     {
-
       e.preventDefault();
-
 
       $('#save_profile').replaceWith("<span id='loader' class='fa fa-refresh fa-spin'></span>");
 
@@ -487,14 +458,15 @@ $(document).ready(function()
 
 
           // Create the circular graphs
-          $('#total-issues').circliful();
-          $('#hidden-issues').circliful();
-          $('#available-issues').circliful();
-          $('#last-issue').circliful();
+          // $('#total-issues').circliful();
+          // $('#hidden-issues').circliful();
+          // $('#available-issues').circliful();
+          // $('#last-issue').circliful();
 
 
 
-                  
+          // Hide the news section when loaded
+          $('p.newsitem').hide();
 
           // Hide the links when they are clicked
           $(".user").click(function()
@@ -502,8 +474,6 @@ $(document).ready(function()
             $(".submenu").toggle('slow');
 
           });
-
-
 
           $('.navIssues').click(function()
           {
@@ -535,7 +505,12 @@ $(document).ready(function()
 
           $('.summaryModule').click(function()
           {
-            $('div.card').toggle("fade");
+            $('p#summary-graph').toggle("fade");
+          });
+
+          $('.trendsModule').click(function()
+          {
+            $('p#weekly-report').toggle("fade");
           });
 
           $('.recentModule').click(function()
@@ -545,35 +520,34 @@ $(document).ready(function()
           });
 
           // when the search button on the header is clicked
-          $('#headerSearchButton').click(function()
-            {
-              var keyword = $('#headerSearch').val();
-
-              $.ajax
-              ({
-                  url: '../includes/packagelookup.php',
-                  type: 'POST',
-                  data: "query="+keyword,
-                  // datatype: 'text',
-                  success: function (response)
-                  {
-                    if(response == "")
-                    {
-                      $('#data').html("<img class='nothing' src='../images/icons/no-packages.png' alt='' />");
-                    }
-                    else
-                    {
-                      $('#data').html(response);
-                    }
-
-
-                  },
-
-              });
-
-                  return false;
-            }
-          );
+          // $('#headerSearchButton').click(function()
+          //   {
+          //     var keyword = $('#headerSearch').val();
+          //
+          //     $.ajax
+          //     ({
+          //         url: '../includes/packagelookup.php',
+          //         type: 'POST',
+          //         data: "query="+keyword,
+          //         success: function (response)
+          //         {
+          //           if(response == "")
+          //           {
+          //             $('#data').html("<img class='nothing' src='../images/icons/no-packages.png' alt='' />");
+          //           }
+          //           else
+          //           {
+          //             $('#data').html(response);
+          //           }
+          //
+          //
+          //         },
+          //
+          //     });
+          //
+          //         return false;
+          //   }
+          // );
 
 
           // The Notifications code
@@ -584,13 +558,13 @@ $(document).ready(function()
               return false;
             });
 
-            // Document Click hiding the popup
+            // Document click hiding the popup
             $(document).click(function()
             {
               $("#notificationContainer").hide();
             });
 
-            //Popup on click
+            // Popup on click
             $("#notificationContainer").click(function()
             {
               return false;

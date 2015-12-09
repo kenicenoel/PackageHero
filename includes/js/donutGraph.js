@@ -8,38 +8,30 @@
       // Create the weekly report graph
       var jsonData = $.ajax(
         {
-          url: "../includes/functions/weeklyreport.php",
+          url: "../includes/functions/donutgraph.php",
           dataType:"json",
           async: false
         }).responseText;
 
         var options =
         {
-          title:'Number of recent issues for the last 7 days',
-          // width:850,
+          // title:'Number of available and hidden issues',
+          // width:600,
           // height:300,
-          pointSize:4,
-          legend: { position: "none" },
-          hAxis:
-          {
-            title: "Last 7 days",
-            fontSize:10
+          pieHole:0.2,
+          pieSliceText:'value',
+          fontSize:15,
+          legend: { position: "left" },
+          colors:['#FF6B6B','#05ABE0']
 
-          },
-          vAxis:
-          {
-            title: "Number of issues",
-
-
-            // logscale:"true"
-          }
         };
 
+        console.log(jsonData);
 
       // Create our data table out of JSON data loaded from server.
       var data = new google.visualization.DataTable(jsonData);
 
       // Instantiate and draw our chart, passing in some options.
-      var chart = new google.visualization.LineChart(document.getElementById('weekly-report'));
+      var chart = new google.visualization.PieChart(document.getElementById('summary-graph'));
       chart.draw(data, options);
     }
