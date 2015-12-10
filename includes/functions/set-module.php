@@ -6,7 +6,7 @@ if(isset ($_GET['module']))
   if($_GET['module'] != 'package' && $_GET['module'] != 'search' && $_GET['module'] != 'user')
   {
     $setmodule= "overview";  // Default to overview
-    $title = "<span class='fa fa-calendar fa-fw'></span><span id='date'>".$date = showDate()."</span>";
+    $title = "<i class='icons8-calendar'></i><span id='date'>".$date = showDate()."</span>";
 
   }
   else
@@ -27,8 +27,8 @@ if(isset ($_GET['module']))
 else if(!isset ($_GET['module']))
 {
   $setmodule= "overview";  // Default to overview
-  $title = "<span class='fa fa-calendar fa-fw'></span><span id='date'>".$date = showDate()."</span>";
-  
+  $title = "<i class='icons8-calendar'></i><span id='date'>".$date = showDate()."</span>";
+
 }
 
 if(isset ($_GET['trackingnumber']))

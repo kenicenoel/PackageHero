@@ -12,14 +12,28 @@
 						<title>Package Hero&reg;</title>
 						<link rel = "stylesheet" href = "../css/admin_styles.css" type ="text/css">
 						<link type="text/css" rel="stylesheet" href="../css/overlaypopup.css" />
+
+						<!-- Load the Icon files and graph stuff  -->
+						<link type="text/css" rel="stylesheet" href="../css/styles.css" />
 						<link type="text/css" rel="stylesheet" href="../css/jquery-ui.min.css" />
-						<link href='https://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css'>
-						<link rel="shortcut icon" href="../images/favicon.ico"/>
-						<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,600,700" rel="stylesheet" type="text/css">
-						<link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
 						<link href="../css/jquery.circliful.css" rel="stylesheet" type="text/css" />
+						<link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+
+						<!-- Lets browsers know to there is a favicon and to use it  -->
+						<link rel="shortcut icon" href="../images/favicon.ico"/>
+
+						<!-- Load the Google Web fonts  -->
+						<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,600,700" rel="stylesheet" type="text/css">
+						<link href='https://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css'>
+
+
+
+						<!-- Lets browsers know that there is a rss feed to discover on the site  -->
 						<link rel="alternate" type="application/rss+xml" title="Package Hero RSS feed" href="../rss.php" />
+						'
 						<meta name="viewport" content="width=device-width, initial-scale=1">
+						
+
 					</head>
 
 					<body>
@@ -45,7 +59,7 @@
 								<li class="pageTitle"><?php echo $title; ?></li>
 								<li>
 									<ul class="right-align">
-										<li class="notification_li"><i class="fa fa-bullhorn"></i></li>
+										<li class="notification_li"><i class="icons8-comments"></i></li>
 										<li><input type ='text' id="headerSearch" placeholder="find a package" name="query" /></li>
 										<li><button id="headerSearchButton" type="submit"><i class="fa fa-search"></i></button></li>
 									</ul>
