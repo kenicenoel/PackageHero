@@ -30,7 +30,6 @@
 
 						<!-- Lets browsers know that there is a rss feed to discover on the site  -->
 						<link rel="alternate" type="application/rss+xml" title="Package Hero RSS feed" href="../rss.php" />
-						'
 						<meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -57,14 +56,7 @@
 									</div>
 								</li>
 								<li class="pageTitle"><?php echo $title; ?></li>
-								<li>
-									<ul class="right-align">
-										<li class="notification_li"><i class="icons8-comments"></i></li>
-										<li><input type ='text' id="headerSearch" placeholder="find a package" name="query" /></li>
-										<li><button id="headerSearchButton" type="submit"><i class="fa fa-search"></i></button></li>
-									</ul>
-
-								</li>
+							
 							</ul>
 							<!-- The left navigation -->
 

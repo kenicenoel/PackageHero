@@ -4,7 +4,7 @@
 		include_once('dashboard_header_2.php');
 		if(!isset($_SESSION['id']) && !isset($_SESSION['username']))
 		{
-			header('Location: http://packagehero.websource-caribbean.com/index.php');
+			header('Location: ../index.php');
 			exit();
 		}
 
@@ -211,7 +211,7 @@
 										</div>
 									<!--Display the Pagination links and information-->
 										<div id="pagination-holder"> <?php echo $textline."<br><br>".$navigation ?> </div>
-									<!--<?php echo $_SERVER['REQUEST_URI']; ?>-->
+
 								</div>
 							</div>
 
@@ -220,4 +220,12 @@
 
 
 			</body>
+			<script type= "text/javascript" src="../includes/js/jquery.js"></script>
+			<script type="text/javascript" src="../fancybox/source/jquery.fancybox.js"></script>
+			<script type="text/javascript" src="../fancybox/source/helpers/jquery.fancybox-buttons.js"></script>
+			<script type="text/javascript" src="../fancybox/source/helpers/jquery.fancybox-media.js"></script>
+			<script type="text/javascript" src="../fancybox/source/helpers/jquery.fancybox-thumbs.js"></script>
+			<script type= "text/javascript" src="../includes/js/main.js"></script>
+
+
 </html>

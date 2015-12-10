@@ -12,7 +12,6 @@
 				<head>
 					<title>Package Hero&reg;</title>
 					<link rel = "stylesheet" href = "../css/admin_styles.css" type ="text/css">
-					<link rel = "stylesheet" href = "../css/messaging.css" type ="text/css">
 					<link type="text/css" rel="stylesheet" href="../css/overlaypopup.css" />
 					<link type="text/css" rel="stylesheet" href="../css/styles.css" />
 					<link href='https://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css'>
@@ -22,7 +21,7 @@
 					<link rel="stylesheet" href="../fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
 					<link rel="stylesheet" href="../fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
 					<link rel="stylesheet" href="../fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
-					<link href="../css/jquery.circliful.css" rel="stylesheet" type="text/css" />
+
 					<link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
 					<link rel="alternate" type="application/rss+xml" title="Package Hero RSS feed" href="../rss.php" />
 					<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -48,14 +47,7 @@
 								</div>
 							</li>
 							<li class="pageTitle"><?php echo $title; ?></li>
-							<li>
-								<ul class="right-align">
-									<li class="notification_li"><i class="icons8-comments"></i></li>
-									<li><input type ='text' id="headerSearch" placeholder="find a package" name="query" /></li>
-									<li><button id="headerSearchButton" type="submit"><i class="fa fa-search"></i></button></li>
-								</ul>
-
-							</li>
+							
 						</ul>
 
 						<!-- The left navigation -->

@@ -1,0 +1,234 @@
+
+form.card
+{
+	font-family: 'Source Sans Pro', sans-serif;
+	background-color: #ffffff;
+	width:75%;
+	height: auto;
+	vertical-align: top;
+	position: relative;
+	display:inline-block;
+	margin:20px 5%;
+	padding: 5px 20px 20px 10px;
+}
+
+
+/*form#package, form#user
+{
+	width: 75%;
+	margin:20px 5%;
+}*/
+
+form#package > section
+{
+	margin:0 auto;
+}
+
+form > p
+{
+	font-size: 1em;
+	text-align: center;
+	font-family: 'Roboto', sans-serif;
+}
+
+form#search > p.searchKey
+{
+	font-size: 1em;
+	text-align: left;margin-left: 10%;
+}
+
+form#search > header.searchOptions
+{
+	text-align: left;
+	margin-left: 10%;
+}
+
+form#search > input[type=text]#datepicker
+{
+	/*margin-left: 10px;*/
+	width: 200px;
+	background-image: url('../images/icons/date.png');
+	background-repeat: no-repeat;
+	background-size: 20px 20px;
+	background-position: 5px center;
+}
+
+form#search > p.searchKey > span
+{
+	color: #333645;
+}
+
+
+
+div#search-card
+{
+	height: 390px;
+}
+
+div.card
+{
+	display:inline-block;
+	height: 320px;
+	background-color:#ffffff ;
+	margin: 20px 10px;
+	width: 270px;
+
+
+}
+
+div.card > div.card-image
+{
+	margin: 15px 0px;
+	padding: 0px;
+	width: 270px;
+	background-color: #ffffff;
+}
+
+div.card > div.card-image > p > img
+{
+	display: block;
+	height: 100px;
+	width: 125px;
+	margin: 0 auto;
+}
+
+
+div.card > div.card-details
+{
+
+	margin-left: 0px;
+	padding: 0px 10px;
+
+}
+
+div.card > div.card-details > p
+{
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+div.card > div.card-details > p.customer
+{
+	color: #05ABE0;
+	font-family: 'Roboto', sans-serif;
+	text-transform: none;
+	font-size: 1.3em;
+	padding-bottom: 5px;
+	text-align: center;
+}
+
+div.card > div.card-details > p.issue
+{
+	font-size: 1em;
+	font-family: 'Roboto', sans-serif;
+	/*text-transform: uppercase;*/
+	padding-bottom: 5px;
+	color: #000;
+	font-weight: 500;
+}
+
+div.card > div.card-details > p.description
+{
+	font-size: 1em;
+	font-family: 'Roboto', sans-serif;
+	color: #333645;
+	text-transform: none;
+}
+
+div.card > div.card-footer
+{
+	margin-top: 15px;
+	/*border-top: 1px solid #777777;*/
+}
+
+div.card > div.card-footer > p
+{
+	display: inline-block;
+	margin: 5px 5px auto auto;
+
+}
+
+div.card > div.card-footer > p.trackingnumber
+{
+	font-family: 'Roboto', sans-serif;
+	font-size: 12px;
+	color: #272727;
+	display: block;
+	margin-left: 5px;
+}
+
+
+div.card > div.card-footer > p.url
+{
+	text-align: center;
+}
+
+
+div.card > div.card-footer > p.url > a, td > a
+{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 500;
+	color: #05ABE0;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+
+div.card > div.card-footer > p.url > a:hover, td > a:hover
+{
+	text-decoration: underline;
+}
+
+
+section.card
+{
+	background-color: #fff;
+	display:inline-block;
+	color: #333647;
+	width:200px;
+	margin-left: 25px;
+	cursor:select;
+}
+
+
+section.card p
+{
+		font-size:27px;
+		text-align:center;
+}
+
+
+section.card  > p.card-title
+{
+	font-size: 18px;
+	padding: 0;
+	color: #787878;
+	text-transform: uppercase;
+	text-align:center;
+	font-weight: bold;
+	/*border-bottom: 1px solid #b9b8b1;*/
+}
+
+
+div.card > header.subheading, form.card > header.subheading
+{
+	font-size: 18px;
+	margin:0;
+	text-align: center;
+	font-family: 'Source Sans Pro', sans-serif;
+	padding: 8px 0px 15px 0px;
+	font-weight: bold;
+	color: #05ABE0;
+	text-transform: uppercase;
+}
+
+div.card img
+{
+	width: 200px;
+	height: 150px;
+}
+
+div.card a.listing
+{
+	color:#5f81ea;
+	float: right;
+	display: block;
+}

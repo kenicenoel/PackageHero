@@ -237,19 +237,6 @@ $(document).ready(function()
 
                               });
 
-        // This function allows one to switch from Grid layout to List Layout and vice versa
-
-        $('#list').click(function()
-        {
-          $('#result-cards').css('display', 'none');
-          $('#table-results').css('display', 'block');
-        });
-
-        $('#grid').click(function()
-        {
-          $('#result-cards').css('display', 'block');
-          $('#table-results').css('display', 'none');
-        });
 
 
 
@@ -569,5 +556,22 @@ $(document).ready(function()
             {
               return false;
             });
+
+            // This function allows one to switch from Grid layout to List Layout and vice versa
+
+            $('#list').click(function()
+            {
+              console.log("You clicked list");
+              $('#result-cards').css('display', 'none');
+              $('#table-results').css('display', 'block');
+            });
+
+            $('#grid').click(function()
+            {
+              console.log("You clicked grid");
+              $('#result-cards').css('display', 'block');
+              $('#table-results').css('display', 'none');
+            });
+
 
 });
