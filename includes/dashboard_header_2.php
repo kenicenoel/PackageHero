@@ -61,7 +61,7 @@
 						<!-- The left navigation -->
 						<nav id ="navigation">
 							<header class="navCategory navIssues">Issues<i class="fa fa-caret-down"></i></header>
-							<span class="issues"><a class ="link" id="first-link" href ="../admin/dashboard.php?module=overview" title = "View an overview of the system"><i class="fa fa-binoculars fa-fw"></i> Overview</a></span>
+							<span class="issues"><a class ="link" id="first-link" href ="../admin/dashboard.php?module=overview" title = "View an overview of the system"><i class="fa fa-line-chart fa-fw"></i> Overview</a></span>
 							<?php
 								if($role == "Administrator" || $role == "Miami") // Show the new issue menu if the user is an admin or has a miami account
 								{

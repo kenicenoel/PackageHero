@@ -217,10 +217,10 @@ i.icons8-comments
 
 ul#top > li.pageTitle
 {
-	/*padding: 0 4px;*/
-	/*position: absolute;*/
-	/*top: 13px;*/
-	margin-left: 30%;
+	padding: 0 4px;
+	position: absolute;
+	top: 13px;
+	left: 40%;
 	/*height: 30px;*/
 	text-align: center;
 
@@ -807,10 +807,10 @@ div#table-results
 
 
 
-div.recent-items, div.summary,  div.news-feed, div.trends
+div.recent-items, div.summary,  div.news-feed, div#weekly-report
 {
 	background-color: #ffffff;
-	padding-bottom: 15px;
+	padding-bottom: 20px;
 	margin-left:20px;
 	width: 90%;
 }
@@ -818,11 +818,6 @@ div.recent-items, div.summary,  div.news-feed, div.trends
 div.summary
 {
 	border-right: 5px solid #78C932;
-	width: 39%;
-	display: inline-block;
-	float: left;
-	clear: both;
-	/*height: 410px;*/
 }
 
 div.summary > header.modules
@@ -866,33 +861,23 @@ div.news-feed > p.newsitem
 }
 
 
-div.news-feed > header.modules, div.trends > header.modules
+div.news-feed > header.modules
 {
 	margin-left: 20px;
 	padding-bottom: 15px;
 	cursor: pointer;
 }
 
-div.trends
+div#weekly-report
 {
 	border-right: 5px solid rgb(232, 218, 35);
-	padding-bottom: 15px;
-	width: 50%;
-	display: inline-block;
-	clear: both;
+	padding: 20px 20px;
+	margin-top: 20px;
 }
-
-div.trends > header.modules
-{
-	margin-left: 20px;
-	/*padding-bottom: 15px;*/
-	cursor: pointer;
-
 
 div.recent-items
 {
 	border-right: 5px solid #A48AD4;
-	clear: both;
 	/*height: 350px;*/
 }
 

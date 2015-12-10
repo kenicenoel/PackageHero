@@ -19,13 +19,15 @@
         die("Whoops! Could not connect to the Package Hero database. Here's the error -> " . $connection->connect_error);
     }
 
-  
+
+
+    // Count the total number of package issues not hidden and resolved
 
     // global $connection;
     $country = $_SESSION['country'];
 
     // Build the query
-    $sql = "SELECT DATE_FORMAT(IssueCreationTime,'%d %b %Y') As date, COUNT(PackageID) As total_issues FROM Packages GROUP BY date DESC LIMIT 7";
+    $sql = "SELECT DATE(IssueCreationTime) As date, COUNT(PackageID) As total_issues FROM Packages GROUP BY date DESC LIMIT 7";
 
     // prepare the sql statement
     $stmt = $connection->prepare($sql);
@@ -37,14 +39,13 @@
     $stmt->store_result();
 
     $stmt->bind_result($date, $number);
-
     $table = array(); // create an empty array to hold the column values
     $rows = array(); // create an empty array to hold the row values
     $table['cols'] = array // define the column names
     (
       // Labels for the chart, these represent the column titles
-      array('id' => '', 'label' => 'Days with issues', 'type' => 'string'),
-      array('id' => '', 'label' => 'Number of Issues', 'type' => 'number')
+      array('id' => '', 'label' => 'Date', 'type' => 'string'),
+      array('id' => '', 'label' => 'Issues', 'type' => 'number')
     );
 
     while ($stmt->fetch())

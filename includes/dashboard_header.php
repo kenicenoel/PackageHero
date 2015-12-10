@@ -32,7 +32,7 @@
 						<link rel="alternate" type="application/rss+xml" title="Package Hero RSS feed" href="../rss.php" />
 						'
 						<meta name="viewport" content="width=device-width, initial-scale=1">
-
+						
 
 					</head>
 
@@ -52,7 +52,7 @@
 
 									<div id="notificationContainer">
 											<div id="notificationTitle">Notifications</div>
-											<div id="notificationsBody" class="notifications"> Hello</div>
+											<div id="notificationsBody" class="notifications"></div>
 											<div id="notificationFooter"><a href="#">See All</a></div>
 									</div>
 								</li>
@@ -66,12 +66,12 @@
 
 								</li>
 							</ul>
-							<!-- The left navigation -->
 
+							<!-- The left navigation -->
 							<nav id ="navigation">
 
 								<header class="navCategory navIssues">Issues<i class="fa fa-caret-down"></i></header>
-								<span class="issues"><a class ="link" id="first-link" href ="?module=overview" title = "View an overview of the system"><i class="fa fa-binoculars fa-fw"></i> Overview</a></span>
+								<span class="issues"><a class ="link" id="first-link" href ="?module=overview" title = "View an overview of the system"><i class="fa fa-line-chart fa-fw"></i> Overview</a></span>
 								<?php
 									if($role == "Administrator" || $role == "Miami") // Show the new issue menu if the user is an admin or has a miami account
 									{

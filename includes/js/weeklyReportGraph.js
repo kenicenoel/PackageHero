@@ -1,5 +1,5 @@
 // Load the Visualization API and the piechart package.
-    google.load('visualization', '1', {'packages':['corechart']});
+    google.load('visualization', '1', {'packages':['bar']});
 
     // Set a callback to run when the Google Visualization API is loaded.
     google.setOnLoadCallback(drawChart);
@@ -15,23 +15,18 @@
 
         var options =
         {
-          title:'Number of recent issues for the last 7 days',
-          // width:850,
-          // height:300,
-          pointSize:4,
-          legend: { position: "none" },
-          hAxis:
-          {
-            title: "Last 7 days",
-            fontSize:10
+          title: 'Number of issues over the last 7 days',
+          width:800,
+          height:500,
+          hAxis: {
+            title: 'Date issue was created',
+            format: 'MMM d, y'
+
 
           },
-          vAxis:
-          {
-            title: "Number of issues",
-
-
-            // logscale:"true"
+          vAxis: {
+            title: 'Number of issues',
+            format: 'none'
           }
         };
 
@@ -40,6 +35,6 @@
       var data = new google.visualization.DataTable(jsonData);
 
       // Instantiate and draw our chart, passing in some options.
-      var chart = new google.visualization.LineChart(document.getElementById('weekly-report'));
+      var chart = new google.charts.Bar(document.getElementById('weekly-report'));
       chart.draw(data, options);
     }

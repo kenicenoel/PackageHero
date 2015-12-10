@@ -13,7 +13,7 @@
 
 
 		// Count the total number of package issues
-		function countTotalIssues()
+		function countTotal()
 		{
 			global $connection;
 
@@ -403,6 +403,8 @@
 
 		function overview()
 		{
+			// $userTotal = call_user_func('countTotal', 'users');
+			$packageTotal = call_user_func('countTotal');
 			$totalAvailable = call_user_func('countTotalAvailableIssues');
 			$hiddenTotal = call_user_func('countTotalHidden');
 			$usersTotal = call_user_func('countTotalUsers');
@@ -434,19 +436,34 @@
 
 
 					echo '
-						<div class="summary">
-							<header class ="modules summaryModule"> <i class="fa fa-calculator fa-fw"></i> Summary <i class="fa fa-caret-down"></i></header>
-							<p id="summary-graph">
+					<div class="summary">
+							<header class ="modules summaryModule"> <i class="fa fa-pie-chart fa-fw"></i> Summary <i class="fa fa-caret-down"></i></header>
 
-							</p>
+									<div class="card">
+										<p class="card-title">Total Issues</p>
+										<p class="summary">
+											<span id="total-issues" data-fgcolor="#FF6B6B" data-fontsize="30" data-dimension="200" data-text="'.$packageTotal.'" data-width="30" data-total="'.$packageTotal.'" data-part="'.$packageTotal.'"></span>
+										</p><script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+									</div>
+
+									<div class="card">
+										<p class="card-title">Hidden Issues</p>
+										<p class="summary">
+											<span id="hidden-issues" data-fgcolor="#A48AD4" data-fontsize="30" data-dimension="200" data-text="'.$hiddenTotal.'" data-width="30" data-total="'.$packageTotal.'" data-part="'.$hiddenTotal.'"></span>
+										</p>
+									</div>
+
+
+									<div class="card">
+										<p class="card-title">Available Issues</p>
+										<p class="summary">
+											<span id="available-issues" data-fgcolor="#73C682" data-fontsize="30" data-dimension="200" data-text="'.$totalAvailable.'" data-width="30" data-total="'.$packageTotal.'" data-part="'.$totalAvailable.'"></span>
+										</p>
+									</div>
 
 						</div>
-						<!-- The graphs trends -->
-						<div class="trends">
-							<header class ="modules trendsModule"> <i class="fa fa-line-chart fa-fw"></i> Trends <i class="fa fa-caret-down"></i></header>
-							<p id="weekly-report">
+						<div id="weekly-report">
 
-							</p>
 
 						</div>
 
@@ -459,8 +476,8 @@
 											<thead>
 												<tr>
 													<th>Tracking Number</th>
-													<th>Customer</th>
-													<th>Issue</th>
+													<th>Customer Name</th>
+													<th>Main Issue</th>
 													<th>Description</th>
 
 												</tr>
@@ -483,3 +500,13 @@
 
 
 ?>
+
+<script src="../includes/js/jquery.js"></script>
+<script src="../includes/js/jquery-ui.min.js"></script>
+<script src="../fancybox/source/jquery.fancybox.js"></script>
+<script src="../includes/js/main.js"></script>
+<script src="../includes/js/jquery.circliful.min.js"></script>
+
+<!--Load the AJAX API-->
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script src="../includes/js/weeklyReportGraph.js"></script>
