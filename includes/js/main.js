@@ -492,10 +492,6 @@ $(document).ready(function()
           $('#available-issues').circliful();
           $('#last-issue').circliful();
 
-
-
-                  
-
           // Hide the links when they are clicked
           $(".user").click(function()
           {
@@ -503,7 +499,7 @@ $(document).ready(function()
 
           });
 
-
+          
 
           $('.navIssues').click(function()
           {

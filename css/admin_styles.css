@@ -112,7 +112,6 @@ ul#top > li > ul.submenu > li > a
 	color: #444241;
 	text-decoration: none;
 	text-transform: lowercase;
-	margin: 10px 0;
 }
 
 ul#top > li
@@ -124,24 +123,13 @@ ul#top > li
 ul#top > li > ul.submenu > li:hover
 {
 	color: #fff;
+	/*border-bottom: 2px solid rgb(156, 162, 155);*/
 }
 
 ul#top > li > ul.right-align
 {
 	float: right;
 }
-
-
-i.icons8-calendar
-{
-	font-size: 20px;
-}
-
-i.icons8-comments
-{
-	font-size: 24px;
-}
-
 
 #notification_li
 {
@@ -807,7 +795,7 @@ div#table-results
 
 
 
-div.recent-items, div.summary,  div.news-feed, div#weekly-report
+div.recent-items, div.summary,  div.news-feed
 {
 	background-color: #ffffff;
 	padding-bottom: 20px;
@@ -866,13 +854,6 @@ div.news-feed > header.modules
 	margin-left: 20px;
 	padding-bottom: 15px;
 	cursor: pointer;
-}
-
-div#weekly-report
-{
-	border-right: 5px solid rgb(232, 218, 35);
-	padding: 20px 20px;
-	margin-top: 20px;
 }
 
 div.recent-items

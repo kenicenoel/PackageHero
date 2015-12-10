@@ -1,0 +1,442 @@
+body
+{
+	margin: 0px;
+	width: 100%;
+	height: auto;
+	min-height: 100% !important;
+	color: #000;
+	
+
+}
+
+
+img
+{
+	user-drag: none;
+	-moz-user-select: none;
+	-webkit-user-drag: none;
+
+}
+
+a
+{
+	text-decoration: none;
+	color:#31a0cd;
+	text-transform: uppercase;
+	
+}
+
+
+a.link
+{
+	color:#fff;
+	padding: 0px 3px 0px 20px;
+	font-size:12pt;
+	margin-top:5px;
+	text-decoration: none;
+	font-family: 'Source Sans Pro', sans-serif;
+	text-transform:none;
+
+}
+
+a.link:hover
+{
+	font-weight:bold;
+	color: #fff;
+
+}
+
+
+
+
+/*
+#content
+{
+	margin-left: 0px;
+	margin-top: 0px;
+	background: url('../images/oasis_banner2.svg');
+	background-size: cover;
+	height: 250px;
+}*/
+
+#content2
+{
+	height: auto;
+	overflow:hidden;
+	margin: 50px auto;
+
+
+}
+
+#content2 header
+{
+	font-size: 2em;
+	font-family: 'Source Sans Pro', sans-serif;
+	color: #31a0cd;
+	margin-left: 20px;
+	text-align: center;
+	padding-bottom: 15px;
+	text-transform: uppercase;
+	
+	
+}
+
+
+
+/* The float left style will float all labels and align the input
+		boxes horizontally */
+label
+{
+	font-size:13pt;
+	padding-right: 2px;
+	float: left;
+	width:120px;
+	font-family: 'Source Sans Pro', sans-serif;
+
+}
+
+/* For the form that shows the listing filters, we don't want the input boxes
+ 		aligned horizontally or the labels will all float to the left of them*/
+#filter label
+{
+	float:none;
+}
+
+select
+{
+	font-size:16px;
+	border-top: 1px solid #e2e3e4;
+	border-bottom: 1px solid #e2e3e4;
+	border-left: 1px solid #e2e3e4;
+	border-right: 1px solid #e2e3e4;
+	font-family: 'Source Sans Pro', sans-serif;
+	text-align: center;
+	color: #31a0cd;
+	background-color:#fff;
+	padding: 0px 10px 3px 2px;
+	border: 0;
+	box-shadow: none;
+	outline: none;
+	height: 40px;
+	width: 200px;
+
+
+}
+
+
+form
+{
+
+	margin: 50px 200px;
+
+
+}
+
+#content2 header.subheading, #listing-images header.subheading 
+{
+	font-size: 18px;
+	margin:0;
+	text-align: left;
+	font-family: 'Source Sans Pro', sans-serif;
+	padding-bottom: 5px; 
+	font-weight: bold; 
+	color: #3f4141; 
+	text-transform: uppercase; 
+ 
+}
+
+.group
+{
+	margin:0 25px 0px 0px;
+}
+
+input[type=text], input[type=password], input[type=email]
+{
+	font-size: 15px;
+	font-family: 'Source Sans Pro', sans-serif;
+	text-align: center;
+	color: #31a0cd;
+	padding-left: 2px;
+	padding-bottom: 3px;
+	margin:5px 15px;
+	
+	border-top: none;
+	border-bottom: 1px solid #c7c7c7;
+	border-left: none;
+	border-right: none;
+	box-shadow: none;
+	outline: none;
+	height: 40px;
+	width: 220px;
+}
+
+
+
+input[type=submit], button
+{
+	height: 40px;
+	font-size: 20px;
+	width:100px;
+	margin: 20px 170px;
+	color: #000;
+	border: 1px solid #000;
+/*	border:none;*/
+	background-color: #fff;
+	font-family: 'Source Sans Pro', sans-serif;
+	text-transform: uppercase;
+
+}
+
+
+input[type=submit]:hover, button:hover
+{
+
+	color: #31a0cd;
+	font-weight: bold;
+	font-family: 'Source Sans Pro', sans-serif;
+
+}
+
+
+
+
+
+
+table
+{
+	
+	font-size: 15px;
+	width: 90%;
+	color: #000;
+/*	margin-left: 100px;*/
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+
+a[data-view="hide"]
+{
+	display:none;
+}
+
+
+
+thead
+{
+/*	background-color:rgba(139, 15, 158, 0.69);*/
+	color:#000;
+	font-size: 20px;
+	font-family: 'Source Sans Pro', sans-serif;
+/*	padding: 0px 10px;*/
+	text-align:left;
+
+}
+
+
+div#toggle-view
+{
+/*	float: right;*/
+	display: block;
+	padding-bottom: 20px;
+	margin-left: 80%;
+	
+}
+
+div#toggle-view p
+{
+	display: inline;
+	padding:5px;
+	margin: 2px;
+}
+
+div#toggle-view p.view:hover
+{
+	background-color: #CECECE;
+	cursor: pointer;
+}
+
+div#table-results
+{
+	height:auto;
+	width:auto;
+	margin-left:210px;
+	display: none;
+
+}
+
+div#result-cards
+{
+	margin-left:150px;
+	display: block;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+
+div.card, form.card
+{
+	
+	display:inline-block;
+	margin:0px 9px;
+	padding: 0px 20px;
+	font-family: 'Source Sans Pro', sans-serif;
+	width:250px;
+/*	height: 400px;*/
+	border-width: 1px 1px 3px 1px;
+	border-color:   #c7c7c7;
+	border-style: solid ;
+	border-radius: 4px;
+  	vertical-align: top;
+	position: relative;
+	  
+
+	
+}
+
+form.card
+{
+	width: 500px;
+	margin: 50px 25%;
+}
+
+div.card:hover, form.card:hover
+
+{
+	box-shadow: 0px 0px 0px 1px #c7c7c7;
+	
+	
+}
+
+div.card header.subheading, form.card header.subheading
+{
+	font-size: 18px;
+	margin:0;
+	text-align: left;
+	font-family: 'Source Sans Pro', sans-serif;
+	padding: 8px 0px 0px 0px; 
+	font-weight: bold; 
+	color: #3f4141; 
+	text-transform: uppercase; 
+}
+
+div.card img
+{
+	width: 200px;
+	height: 150px;
+	
+}
+
+div.card a.full-listing
+{
+	color:#5f81ea;
+	float: right;
+	display: block;
+}
+
+div.card a.full-listing:hover
+{
+	color:#5f81ea;
+	text-decoration: underline;
+	float: right;
+	display: block;
+}
+
+
+#result-container, #image-container
+{
+	margin:0 0 0 100px;
+	padding-bottom: 30px;
+}
+
+#result-container p
+{
+	font-size:20px;
+}
+
+#image-container p
+{
+	
+	display: inline-block;
+	padding:0px 0px 20px 0px;
+}
+
+#image-container p img
+{
+	min-height: 100px;
+	max-height: 100px;
+	margin-right: 20px;
+	min-width: 150px;
+	max-width: 150px;
+}
+
+td
+{
+	padding: 10px 0px;
+	font-size: 18px;
+	text-align: left;
+	border-bottom: 2px dotted #31a0cd	;
+	
+
+}
+
+
+td:nth-of-type(3)
+{
+
+  	text-align: left;
+}
+
+
+
+tr:hover
+{
+	font-weight: 600;
+
+}
+
+
+tbody img
+{
+	height:100px;
+	width:100px;
+}
+
+
+#pagination-holder
+{
+	margin-left: 210px;
+	padding-top: 25px;
+	
+}
+
+a.paginate
+{
+	text-transform: uppercase;
+
+	border:2px solid;
+	background-color:#5f81ea;
+	font-family: 'Source Sans Pro', sans-serif;
+	color: #fff;
+	text-decoration:none;
+	margin-left:0px;
+	padding:4px;
+	font-size: 15pt;
+
+}
+
+a.paginate:hover
+{
+	background-color:#fff;
+	color: #5f81ea ;
+}
+
+footer
+{
+	/*position:static;*/
+	/*background-color: #31a0cd;*/
+	padding:0px 0px;
+	height: 40px;
+	width:100%;
+	bottom: 0px;
+	color: #000;
+
+	text-align:center;
+}

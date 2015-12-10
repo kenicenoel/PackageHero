@@ -14,7 +14,6 @@
 					<link rel = "stylesheet" href = "../css/admin_styles.css" type ="text/css">
 					<link rel = "stylesheet" href = "../css/messaging.css" type ="text/css">
 					<link type="text/css" rel="stylesheet" href="../css/overlaypopup.css" />
-					<link type="text/css" rel="stylesheet" href="../css/styles.css" />
 					<link href='https://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css'>
 					<link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
 					<link rel="shortcut icon" href="../images/favicon.ico"/>
@@ -40,7 +39,7 @@
 								</ul>
 							</li>
 
-
+							<li class="notification_li"><i class="fa fa-bullhorn"></i>
 								<div id="notificationContainer">
 										<div id="notificationTitle">Notifications</div>
 										<div id="notificationsBody" class="notifications"></div>
@@ -49,12 +48,8 @@
 							</li>
 							<li class="pageTitle"><?php echo $title; ?></li>
 							<li>
-								<ul class="right-align">
-									<li class="notification_li"><i class="icons8-comments"></i></li>
-									<li><input type ='text' id="headerSearch" placeholder="find a package" name="query" /></li>
-									<li><button id="headerSearchButton" type="submit"><i class="fa fa-search"></i></button></li>
-								</ul>
-
+								<input type ='text' id="headerSearch" placeholder="find a package" name="query" />
+								<!-- <button id="headerSearchButton" type="submit"><i class="fa fa-search"></i></button> -->
 							</li>
 						</ul>
 
@@ -68,7 +63,7 @@
 									echo '<span class="issues"><a class ="link" href="#" id="newissue" title = "Create a new issue"><i class="fa fa-bug fa-fw"></i> New Issue</a></span>';
 								}
 							?>
-							<span class="issues"><a class ="link" id="viewIssues" href="../includes/allpackages.php"  title = "View a list of all Packages with issues"><i class="fa fa-eye fa-fw"></i> View issues <span class="numberOfIssues"><?php echo countTotalAvailableIssues(); ?></span></a></span>
+							<span class="issues"><a class ="link" id="viewIssues" href="../includes/allpackages.php"  title = "View a list of all Packages with issues"><i class="fa fa-eye fa-fw"></i> View issues <span><?php echo countTotalAvailableIssues(); ?></span></a></span>
 
 
 							<header class="navCategory navPackages">Packages<i class="fa fa-caret-down"></i></header>
