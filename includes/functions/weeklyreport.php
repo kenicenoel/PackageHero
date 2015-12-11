@@ -4,10 +4,17 @@
 
 
     // Connect to the local mySQL server
-    $host = "localhost";
-    $user = "admin";
-    $pass = "admin";
-    $database = "websource_package_data";
+    // $host = "localhost";
+    // $user = "admin";
+    // $pass = "admin";
+    // $database = "websource_package_data";
+
+    // The production MySql server
+    $host = "websource-caribbean.com";
+    $user = "packagehero";
+    $pass = "PackageH3r0";
+    $database = "packagehero_db";
+
 
 
     // Create connection
@@ -19,13 +26,13 @@
         die("Whoops! Could not connect to the Package Hero database. Here's the error -> " . $connection->connect_error);
     }
 
-  
 
-    // global $connection;
-    $country = $_SESSION['country'];
+
+    global $connection;
+
 
     // Build the query
-    $sql = "SELECT DATE_FORMAT(IssueCreationTime,'%d %b %Y') As date, COUNT(PackageID) As total_issues FROM Packages GROUP BY date DESC LIMIT 7";
+    $sql = "SELECT DATE_FORMAT(IssueCreationTime,'%d %b %Y') As date, COUNT(PackageID) As total_issues FROM packages GROUP BY date DESC LIMIT 7";
 
     // prepare the sql statement
     $stmt = $connection->prepare($sql);
@@ -49,7 +56,7 @@
 
     while ($stmt->fetch())
     {
-      // echo $date.' ('.$number.') ';
+
 
       $temp = array();
 

@@ -26,7 +26,7 @@ ul#top
 	padding: 10px 25px;
 	width: 100%;
 	height: 50px;
-	background-color: #354052;
+	background-color: #03A9F4;
 	/*background-color: #4CAF50;*/
 	font-family: 'Roboto', sans-serif;
 	font-size: 1.2em;
@@ -95,7 +95,7 @@ ul#top > li > ul.submenu
 	position: absolute;
 	margin: 15px 40px;
 	padding:10px 10px;
-	border-top: 3px solid rgb(82, 209, 44);
+	border-top: 3px solid #FFC107;
 	z-index: 2;
 }
 
@@ -160,7 +160,7 @@ i.icons8-comments
 	margin-left: 1050px;
 	width: 400px;
 	z-index: 1000;
-	display: none; // Enable this after jquery implementation
+	display: none; // enable this after jquery implementation
 }
 
 // Popup Arrow
@@ -269,7 +269,7 @@ nav
 	width: 220px;
 	height:100%;
 	border:none;
-	background-color:#1C94C4;
+	background-color:#212121;
 	/*z-index: 1;*/
 	overflow: auto;
 
@@ -279,7 +279,7 @@ nav > header.navCategory
 {
 	color: #F6F6F6;
 	text-transform: uppercase;
-	font-size: 18px;
+	font-size: 15px;
 	font-family: 'Roboto', sans-serif;
 	margin: 40px 5px 20px 15px;
 	padding-left: 5px;
@@ -294,7 +294,7 @@ nav > header.navIssues
 nav > header.navCategory:hover
 {
 	cursor: pointer;
-	background-color: rgba(33, 32, 33, 0.10);
+	background-color: rgba(158, 158, 158, 0.25);
 }
 
 nav > header.navCategory > i.fa-caret-down
@@ -343,8 +343,8 @@ nav > span > a.link:hover
 {
 	text-decoration: none;
 	font-weight: 600;
-	background-color: #FFEB3B;
-	color: #272727;
+	background-color: #03A9F4;
+	color: #212121;
 }
 
 
@@ -371,7 +371,7 @@ header.titleheading
 header.modules
 {
 
-	font-size:18pt;
+	font-size:20px;
 	font-family: 'Roboto', sans-serif;
 	color:#1C94C4;
 	display:block;
@@ -637,8 +637,8 @@ input[type=submit], button
 	margin: 0 50%;
 	color: #fff;
 	border:none;
-	background-color: #0EB4CA;
-	font-family: 'Source Sans Pro', sans-serif;
+	background-color: #8BC34A;
+	font-family: 'Roboto', sans-serif;
 	text-transform: uppercase;
 
 }
@@ -646,14 +646,14 @@ input[type=submit], button
 button#saveNote
 {
 	height: 40px;
-	background-color: #05ABE0;
+	background-color: #8BC34A;
 	width: 40px;
 	margin: 5px 0px;
 }
 
 button#saveNote:hover
 {
-	background-color: #127899;
+	background-color:#a0d95d;
 
 }
 
@@ -671,7 +671,7 @@ button#hide
 
 button#resolve
 {
-	background-color: #45B7AF;
+	background-color: #8BC34A;
 }
 
 
@@ -679,7 +679,7 @@ input[type=submit]:hover, button:hover
 {
 
 	color: #fff;
-	background-color: #1EC8D8;
+	background-color: #a0d95d;
 	font-weight: bold;
 	font-family: 'Source Sans Pro', sans-serif;
 
@@ -687,7 +687,8 @@ input[type=submit]:hover, button:hover
 
 #lookupButton
 {
-	margin:0px 5px;
+	margin:0 auto;
+	display: block;
 }
 
 
@@ -847,8 +848,8 @@ div.summary > div.card > p.card-title
 
 div.trends
 {
-	border-right: 5px solid rgb(181, 199, 32);
-	width: 50%;
+	border-right: 5px solid #FFEB3B;
+	width: 52%;
 	display: inline-block;
 	clear: both;
 }
@@ -866,7 +867,7 @@ div.news-feed > p.newsitem
 {
 		font-family: 'Roboto', sans-serif;
 		font-size: 15px;
-		color: #000;
+		color: #313B40;
 		margin-left:25px;
 		padding-bottom: 15px;
 }

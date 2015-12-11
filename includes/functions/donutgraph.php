@@ -11,6 +11,13 @@
         $pass = "admin";
         $database = "websource_package_data";
 
+        // The production MySql server
+        // $host = "websource-caribbean.com";
+        // $user = "packagehero";
+        // $pass = "PackageH3r0";
+        // $database = "packagehero_db";
+
+
 
         // Create connection
         $connection = new mysqli($host, $user, $pass, $database);
