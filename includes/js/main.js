@@ -368,26 +368,44 @@ $(document).ready(function()
         $('.hide').click(function()
         {
 
-            // var news = "marked issue"+tnumber+" as RESOLVED.";
-              $.ajax
-              ({
+          $( "#dialog-confirm" ).dialog(
+            {
+              resizable: false,
+              height:300,
+              modal: true,
+              buttons:
+              {
+                "Yes": function()
+                {
+                  $( this ).dialog( "close" );
+                  $.ajax
+                  ({
 
-                  url: 'hide-issue.php',
-                  type: 'POST',
-                  // data: "news="+news,
-                  success: function(response)
-                  {
-
-                      if(response == 'Done')
+                      url: 'hide-issue.php',
+                      type: 'POST',
+                      // data: "news="+news,
+                      success: function(response)
                       {
-                        window.open('allpackages.php', '_self');
+
+                          if(response == 'Done')
+                          {
+                            window.open('allpackages.php', '_self');
+
+                          }
 
                       }
 
-                  }
+                    });
+                  return false;
+                },
+                Cancel: function() {
+                  $( this ).dialog( "close" );
+                }
+              }
+            });
 
-                });
-              return false;
+            // var news = "marked issue"+tnumber+" as RESOLVED.";
+
         });
 
 
@@ -563,14 +581,12 @@ $(document).ready(function()
 
             $('#list').click(function()
             {
-              console.log("You clicked list");
               $('#result-cards').css('display', 'none');
               $('#table-results').css('display', 'block');
             });
 
             $('#grid').click(function()
             {
-              console.log("You clicked grid");
               $('#result-cards').css('display', 'block');
               $('#table-results').css('display', 'none');
             });

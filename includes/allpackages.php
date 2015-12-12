@@ -146,7 +146,7 @@
 
 						<div class="card-footer">
 					    <p class="trackingnumber"><span class="fa fa-truck"> </span> '.$tnumber.'</p>
-					    <p class="url"><a id="view-full" class="full-details" href="fulldetails.php?trackingnumber='.urlencode($tnumber).'" title="View full package details"><span class="fa fa-eye fa-fw"></span>View</a></p>
+					    <button class="url"><a id="view-full" class="full-details" href="fulldetails.php?trackingnumber='.urlencode($tnumber).'" title="View full package details">View</a></button>
 						</div>
 
 			  </div>
@@ -194,7 +194,7 @@
 											<?php echo $grid ?>
 
 										</div>
-										
+
 
 									<!--	Show the results as a list -->
 										<div id="table-results">

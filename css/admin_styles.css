@@ -104,6 +104,7 @@ ul#top > li > ul.submenu > li
 	/*display: inline;*/
 	padding: 10px 0px;
 	position: relative;
+	line-height: 1.8;
 
 }
 
@@ -121,9 +122,9 @@ ul#top > li
 	/*margin: 10px 0px;*/
 }
 
-ul#top > li > ul.submenu > li:hover
+ul#top > li > ul.submenu > li > a:hover
 {
-	color: #fff;
+	color: #5992dd;
 }
 
 ul#top > li > ul.right-align
@@ -681,7 +682,7 @@ input[type=submit]:hover, button:hover
 	color: #fff;
 	background-color: #a0d95d;
 	font-weight: bold;
-	font-family: 'Source Sans Pro', sans-serif;
+
 
 }
 
@@ -690,9 +691,6 @@ input[type=submit]:hover, button:hover
 	margin:0 auto;
 	display: block;
 }
-
-
-
 
 form
 {
@@ -1171,13 +1169,14 @@ div#search-card
 div.card
 {
 	display:inline-block;
-	height: 320px;
-	background-color:#ffffff ;
+	height: 340px;
+	background-color:#ffffff;
+	font-family: 'Roboto', sans-serif;
 	margin: 20px 10px;
 	width: 270px;
 
-
 }
+
 
 div.card > div.card-image
 {
@@ -1191,8 +1190,9 @@ div.card > div.card-image > p > img
 {
 	display: block;
 	height: 100px;
-	width: 125px;
+	width: 100px;
 	margin: 0 auto;
+	border-radius: 50%;
 }
 
 
@@ -1204,35 +1204,32 @@ div.card > div.card-details
 
 }
 
-div.card > div.card-details > p
-{
-	font-family: 'Source Sans Pro', sans-serif;
-}
 
 div.card > div.card-details > p.customer
 {
-	color: #05ABE0;
-	font-family: 'Roboto', sans-serif;
+	color: #F44336;
+
 	text-transform: none;
-	font-size: 1.3em;
-	padding-bottom: 5px;
+	font-size: 1.2em;
+	font-weight: 300;
+	padding: 5px 0 5px 0;
 	text-align: center;
 }
 
 div.card > div.card-details > p.issue
 {
 	font-size: 1em;
-	font-family: 'Roboto', sans-serif;
-	/*text-transform: uppercase;*/
+	text-align: center;
+	/*max-width: 90%;*/
 	padding-bottom: 5px;
 	color: #000;
-	font-weight: 500;
+	font-weight: 400;
 }
 
 div.card > div.card-details > p.description
 {
 	font-size: 1em;
-	font-family: 'Roboto', sans-serif;
+	text-align: center;
 	color: #333645;
 	text-transform: none;
 }
@@ -1245,6 +1242,7 @@ div.card > div.card-footer
 
 div.card > div.card-footer > p
 {
+	text-align: center;
 	display: inline-block;
 	margin: 5px 5px auto auto;
 
@@ -1252,7 +1250,7 @@ div.card > div.card-footer > p
 
 div.card > div.card-footer > p.trackingnumber
 {
-	font-family: 'Roboto', sans-serif;
+
 	font-size: 12px;
 	color: #272727;
 	display: block;
@@ -1260,24 +1258,43 @@ div.card > div.card-footer > p.trackingnumber
 }
 
 
-div.card > div.card-footer > p.url
+button.url
 {
-	text-align: center;
+	background-color: #FAC458;
+	width: 270px;
+	height: 30px;
+	margin: 0 auto;
+	font-size: 15px;
+	margin: 15px 0;
 }
 
-
-div.card > div.card-footer > p.url > a, td > a
+button.url:hover
 {
-	font-family: 'Roboto', sans-serif;
-	font-weight: 500;
-	color: #05ABE0;
-	text-transform: uppercase;
+	font-weight: normal;
+
 	text-decoration: none;
 }
 
-div.card > div.card-footer > p.url > a:hover, td > a:hover
+
+button.url > a
+{
+
+	/*font-weight: 500;*/
+	color: #fff;
+	text-transform: lowercase;
+	text-decoration: none;
+}
+
+button.url > a:hover, td > a:hover
 {
 	text-decoration: underline;
+}
+
+td > a
+{
+	color: #0e73bf;
+	text-decoration: none;
+	font-family: 'Roboto', sans-serif;
 }
 
 

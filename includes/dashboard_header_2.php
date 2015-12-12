@@ -15,7 +15,8 @@
 					<link type="text/css" rel="stylesheet" href="../css/overlaypopup.css" />
 					<link type="text/css" rel="stylesheet" href="../css/styles.css" />
 					<link href='https://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css'>
-					<link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
+					<link type="text/css" rel="stylesheet" href="../css/jquery-ui.min.css" />
+					<link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
 					<link rel="shortcut icon" href="../images/favicon.ico"/>
 					<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,600,700" rel="stylesheet" type="text/css">
 					<link rel="stylesheet" href="../fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
@@ -47,7 +48,7 @@
 								</div>
 							</li>
 							<li class="pageTitle"><?php echo $title; ?></li>
-							
+
 						</ul>
 
 						<!-- The left navigation -->

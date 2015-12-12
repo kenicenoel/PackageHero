@@ -72,7 +72,7 @@ if(isset($_POST['query']) || isset($_GET['query']) )
 
   						<div class="card-footer">
   					    <p class="trackingnumber"><span class="fa fa-truck"> </span> '.$trackingnumber.'</header>
-  					    <p class="url"><a id="view-full" class="full-details" href="../includes/fulldetails.php?trackingnumber='.urlencode($trackingnumber).'&res='.urlencode($resolved).'" title="View full package details"><span class="fa fa-eye fa-fw"></span>View</a></p>
+  					    <button class="url"><a id="view-full" class="full-details" href="../includes/fulldetails.php?trackingnumber='.urlencode($trackingnumber).'&res='.urlencode($resolved).'" title="View full package details">View</a></button>
   						</div>
 
   			  </div>

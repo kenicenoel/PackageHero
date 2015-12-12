@@ -147,6 +147,11 @@
 											 </tbody>
 										 </table>
 
+										 <!-- THE DIV THAT HOLDS THE DATA FOR THE POPUP WARNING -->
+										 <div id="dialog-confirm" title="Just checking..." style="display:none;">
+  									 		<p><i class="fa fa-exclamation-triangle"></i> Are you sure you want to hide this issue? It will also be hidden from other users in your country as well.</p>
+										</div>
+
 										</div>
 
 									</div> <!-- End data div -->
@@ -160,5 +165,6 @@
 		<script type="text/javascript" src="../fancybox/source/helpers/jquery.fancybox-buttons.js"></script>
 		<script type="text/javascript" src="../fancybox/source/helpers/jquery.fancybox-media.js"></script>
 		<script type="text/javascript" src="../fancybox/source/helpers/jquery.fancybox-thumbs.js"></script>
+		<script src="../includes/js/jquery-ui.min.js"></script>
 		<script type= "text/javascript" src="../includes/js/main.js"></script>
 	</html>
