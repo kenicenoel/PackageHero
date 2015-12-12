@@ -22,11 +22,11 @@
           pieSliceText:'value',
           fontSize:15,
           legend: { position: "left" },
-          colors:['#e93131','#04e035']
+          colors:['#04e035', '#e93131']
 
         };
 
-        
+
 
       // Create our data table out of JSON data loaded from server.
       var data = new google.visualization.DataTable(jsonData);

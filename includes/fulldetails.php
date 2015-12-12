@@ -89,14 +89,14 @@
 														{
 															echo '<p> You can mark the issue as resolved or hide irrelevant issues from your dashboard. Hiding an issue will also hide it from other users in your country.</p>';
 															echo '<button class="task-actions" id="resolve"><span class="fa fa-check fa-fw"></span>Resolve</button>';
-															echo '<button class="task-actions" id="hide"><span class="fa fa-eye-slash fa-fw"></span>Hide</button>';
+															echo '<button class="task-actions hide"><span class="fa fa-eye-slash fa-fw"></span>Hide</button>';
 														}
 
 														if (!isset($_GET['res']))
 														{
 															echo '<p> You can mark the issue as resolved or hide irrelevant issues from your dashboard. Hiding an issue will also hide it from other users in your country.</p>';
 															echo '<button class="task-actions" id="resolve"><span class="fa fa-check fa-fw"></span>Resolve</button>';
-															echo '<button class="task-actions" id="hide"><span class="fa fa-eye-slash fa-fw"></span>Hide</button>';
+															echo '<button class="task-actions hide"><span class="fa fa-eye-slash fa-fw"></span>Hide</button>';
 														}
 
 														else if(isset($_GET['res']) && $_GET['res'] == 'Yes')

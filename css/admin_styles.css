@@ -664,7 +664,7 @@ button.task-actions
 	margin: 25px 5px;
 }
 
-button#hide
+button.hide
 {
 	background-color: #EA555B;
 }
@@ -802,7 +802,92 @@ div#table-results
 	display: block;
 	margin: 15px;
 	padding: 20px;
-	background-color: #ffffff;
+	background:none;
+
+}
+
+#table-results div
+{
+	padding: 10px 0;
+	font-family: 'Roboto', sans-serif;
+	height: 82px;
+	width: 90%;
+
+}
+
+#table-results > div > p, #table-results > p
+{
+	display: table-cell;
+	padding: 20px 0 0 10px;
+	text-align: left;
+	min-width: 220px;
+	height: 60px;
+	background-color: #fff;
+	/*border-right: 1px dotted #2ca7c2;*/
+	/*margin: 10px 0 0 0;*/
+
+}
+
+#table-results > p
+{
+	font-weight: bold;
+	background: none;
+	/*padding: 0;*/
+	border: none;
+	text-transform: uppercase;
+	color: #424C58;
+}
+
+.quickButtonsHolder
+{
+	max-width: 150px;
+}
+
+#table-results button
+{
+
+	width: 60px;
+	height: 40px;
+	font-size: 14px;
+	padding: 0;
+	margin: 0;
+	text-transform: lowercase;
+}
+
+#table-results .date
+{
+	max-width: 110px;
+	color: #fff;
+	background-color: #1067e8;
+}
+
+button.quickView
+{
+	visibility: hidden;
+	background-color: #00BCD4;
+}
+
+button.quickView:hover
+{
+
+	background-color: #00BCD4;
+}
+
+button.quickHide
+{
+	visibility: hidden;
+	background-color: #E91E63;
+}
+
+#table-results button.quickHide:hover
+{
+	/*background-color: #2a2f2c;*/
+}
+
+#table-results button > a
+{
+	text-decoration: none;
+	color: #fff;
 
 }
 
@@ -965,7 +1050,7 @@ div#result-cards
 
 
 
-#pagination-holder
+.pagination-holder
 {
 	margin-left: 210px;
 	padding-top: 25px;
@@ -973,17 +1058,12 @@ div#result-cards
 
 }
 
-div#pagination-holder > p
+.pagination-holder > p
 {
 	font-size: 1.3em;
 
 }
 
-div#pagination-holder > p > span
-{
-	font-weight: 600;
-	color: #FF6B6B;
-}
 
 a.paginate
 {

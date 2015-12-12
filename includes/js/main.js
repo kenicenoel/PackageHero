@@ -6,6 +6,8 @@ $(document).ready(function()
     $(".fancybox").fancybox();
 
 
+
+
         // Ajax add new issue
 
         $('body').on('click', '#addIssue', function(e)
@@ -363,7 +365,7 @@ $(document).ready(function()
         });
 
         // Run this code when the "HIDE" button is clicked
-        $('#hide').click(function()
+        $('.hide').click(function()
         {
 
             // var news = "marked issue"+tnumber+" as RESOLVED.";
@@ -571,6 +573,18 @@ $(document).ready(function()
               console.log("You clicked grid");
               $('#result-cards').css('display', 'block');
               $('#table-results').css('display', 'none');
+            });
+
+            $('.listView').mouseover(function()
+            {
+                $(".quickView", this).css('visibility', 'visible');
+                $(".quickHide", this).css('visibility', 'visible');
+            });
+
+            $('.listView').mouseout(function()
+            {
+                $(".quickView", this).css('visibility', 'hidden');
+                $(".quickHide", this).css('visibility', 'hidden');
             });
 
 
