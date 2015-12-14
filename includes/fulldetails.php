@@ -101,14 +101,14 @@
 
 														else if(isset($_GET['res']) && $_GET['res'] == 'Yes')
 														{
-															echo '<p> This issue was marked resolved. You can still view the issue but can no longer hide or resolve it.</p>';
+															echo '<p> This issue has been resolved. You can still view it and make notes but can no longer hide or resolve it.</p>';
 														}
 														 ?>
 
 												<p id="errorMessage"></p>
 											<div id="actions">
 												<header class="subheading">Enter an update for this issue</header>
-												<input id="note" type="text" placeholder="e.g. Received invoice from Customer" name="note">
+												<input id="note" type="text" placeholder="e.g. Received invoice from Customer" name="note" required />
 												<button id="saveNote"><span class="fa fa-arrow-right fa-fw"></span></button>
 											</div> <!-- End actions div -->
 
@@ -148,8 +148,8 @@
 										 </table>
 
 										 <!-- THE DIV THAT HOLDS THE DATA FOR THE POPUP WARNING -->
-										 <div id="dialog-confirm" title="Just checking..." style="display:none;">
-  									 		<p><i class="fa fa-exclamation-triangle"></i> Are you sure you want to hide this issue? It will also be hidden from other users in your country as well.</p>
+										 <div id="dialog-confirm" title="Hide issue" style="display:none;">
+  									 		<p><?php echo $_SESSION['username']; ?>, are you sure you want to hide this issue?<br> This also hides it from other users in <?php echo $country; ?> as well.</p>
 										</div>
 
 										</div>

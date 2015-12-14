@@ -1,5 +1,6 @@
 <?php
 include_once "config.php";
+require 'classes/php-mailer/PHPMailerAutoload.php';
 
           if(isset($_FILES['images']) && isset($_POST['trackingnumber']))
           {
@@ -26,7 +27,7 @@ include_once "config.php";
             $images = $_FILES['images'];
             $i=1;
             $last = $stmt->insert_id;
-
+            $errors="";
 
             foreach($images['name'] as $position => $data)
             {
@@ -131,7 +132,55 @@ include_once "config.php";
                         //execute the prepared statement
                         $stmt->execute();
                         $i++;
+
+
+                        /* ////////////////////////////////////////////////
+                            Use PHP Mailer to send an email to the customer
+                        //////////////////////////////////////////////////// */
+
+                        $mail = new PHPMailer;
+
+                        //$mail->SMTPDebug = 3;                               // Enable verbose debug output
+
+                        $mail->isSMTP();                                      // Set mailer to use SMTP
+                        $mail->Host = 'smtp-mail.outlook.com';                // Specify main and backup SMTP servers
+                        $mail->SMTPAuth = true;                               // Enable SMTP authentication
+                        $mail->Username = 'kenicenoel@outlook.com';           // SMTP username
+                        $mail->Password = 'k3nic3n03l';                       // SMTP password
+                        $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+                        $mail->Port = 587;                                    // TCP port to connect to
+
+                        $mail->setFrom('donotreply@shipwebsource.com', 'Web Source Support Center');
+                        $mail->addAddress('guischard@shipwebsource.com', 'Charles');     // Add a recipient
+                        $mail->addAddress('kenicenoel@outlook.com', 'Kenice Noel');               // Name is optional
+                        $mail->addReplyTo('info@shipwebsource.com', 'Web Source');
+
+
+
+                        // $mail->addCC('cc@example.com');
+                        // $mail->addBCC('bcc@example.com');
+
+                        // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+                        // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+                        $mail->isHTML(true);                                  // Set email format to HTML
+
+                        $mail->Subject = "There's an issue with your package(s)";
+                        $mail->Body    = 'Dear <b>'.$customername.',</b><br> We require your attention for one or packages with tracking number '.$trackingnumber.'<br>Item: '.$itemtype.'<br>Problem: '.$mainissue.'<br>Please click <a href="#">here</a> to view photos and to respond.';
+                        // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+                        if(!$mail->send())
+                        {
+                            $errors.='Sorry. Message could not be sent.';
+                            $errors.='<br>Mailer Error: ' . $mail->ErrorInfo;
+                        }
+                         else
+                        {
+                            $errors.='Message has been sent: ';
+                        }
+
+
                     }
+
 
                     else
                     {
@@ -159,8 +208,8 @@ include_once "config.php";
 
 
             }
-            
-            echo 'Done';
+            $errors.='done';
+            echo $errors;
           }
 
           end:

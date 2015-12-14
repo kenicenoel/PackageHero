@@ -27,7 +27,7 @@ if(isset($_POST['query']) || isset($_GET['query']) )
         {
           $after = $_POST['afterDate'];
         }
-        $sql = "SELECT TrackingNumber, AccountNumber, CustomerName, MainIssue, Resolved, Description, Photo1, ItemType, ShippingCarrier FROM packages WHERE (packages.IssueCreationTime BETWEEN ? AND ?)  OR packages.TrackingNumber Like ? OR packages.CustomerName Like ? OR packages.ItemType LIKE ? OR packages.ShippingCarrier LIKE ?";
+        $sql = "SELECT TrackingNumber, AccountNumber, CustomerName, MainIssue, Resolved, Description, Photo1, ItemType, ShippingCarrier FROM packages WHERE (packages.IssueCreationTime BETWEEN ? AND ?)  OR packages.TrackingNumber Like ? OR packages.CustomerName Like ? OR packages.ItemType LIKE ? OR packages.ShippingCarrier LIKE ? OR packages.AccountNumber LIKE ?";
 
         // echo $before;
         // echo $after;
@@ -37,7 +37,7 @@ if(isset($_POST['query']) || isset($_GET['query']) )
 		  $stmt = $connection->prepare($sql);
 
 		  // bind variables to the paramenters ? present in sql
-		  $stmt->bind_param('ssssss', $before, $after, $query ,$query, $query, $query);
+		  $stmt->bind_param('sssssss', $before, $after, $query ,$query, $query, $query, $query);
 
 		  // execute the prepared statement
 		  $stmt->execute();

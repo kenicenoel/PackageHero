@@ -26,7 +26,7 @@ $(document).ready(function()
                 e.preventDefault();
                 var formData = new FormData($(this).parents('form')[0]);
 
-                $('#addIssue').val("Adding package...");
+                $('#addIssue').val("Saving...");
 
                 $.ajax({
                     url: '../includes/add_issue.php',
@@ -38,20 +38,21 @@ $(document).ready(function()
                     },
                     success: function (response)
                     {
-
-                      if(response == "Error")
+                      if(response == "done" || response == "Message has been sent: done")
                       {
-                        $('#errorMessage').append("<p style='font-size:1.1em; background-color:#f1c40f; color:#000000; padding-bottom:10px'><i class='fa fa-close'></i> There was an error.</p>")
-                      }
-
-                      else if(response == "Done")
-                      {
-                        $('#errorMessage').append("<p style='font-size:1.1em; background-color:#27ae60; color:#ffffff;'><i class='fa fa-check-circle'></i> Added Successfully! You may add another or move on.</p>");
+                        $('#errorMessage').append("<p style='font-size:1.1em; background-color:#27ae60; color:#ffffff;'><i class='fa fa-check-circle'></i> Saved. An email was also sent to the customer!<br>You may add another or move on.</p>");
                         $('#package')[0].reset();
 
                         $('#addIssue').val("Add");
 
                       }
+
+                      else
+                      {
+                        $('#errorMessage').append("<p style='font-size:1.1em; background-color:#f1c40f; color:#000000; padding-bottom:10px'><i class='fa fa-close'></i>"+response+".</p>")
+                      }
+
+
 
 
 
@@ -284,7 +285,15 @@ $(document).ready(function()
         // Add note
         $('#saveNote').click(function()
         {
+
             var note = $('#note').val();
+            if(note == "")
+            {
+              $('#note').effect('highlight');
+              // $('#saveNote').effect('puff');
+            }
+            else
+            {
               $.ajax
               ({
 
@@ -304,6 +313,8 @@ $(document).ready(function()
 
                   }
                 });
+            }
+
               return false;
         });
 
@@ -371,7 +382,7 @@ $(document).ready(function()
           $( "#dialog-confirm" ).dialog(
             {
               resizable: false,
-              height:300,
+              height:250,
               modal: true,
               buttons:
               {
@@ -398,7 +409,8 @@ $(document).ready(function()
                     });
                   return false;
                 },
-                Cancel: function() {
+                "No": function()
+                {
                   $( this ).dialog( "close" );
                 }
               }

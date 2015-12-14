@@ -19,6 +19,9 @@
               <option value="" disabled selected>Select an issue</option>
               <option value = "Broken">Received broken</option>
               <option value = "Missing customer details">Missing customer details</option>
+              <option value = "Held by customs USA">Held by customs USA</option>
+              <option value = "Restricted item">Possible restricted import item</option>
+              <option value = "Import License Needed">Import license needed</option>
               <option value = "Invoice required">Invoice required</option>
               <option value = "No account number found">No account number found</option>
               <option value = "Delivery address not known">Delivery address not known</option>

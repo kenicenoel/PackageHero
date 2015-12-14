@@ -11,25 +11,32 @@
 			<html>
 				<head>
 					<title>Package Hero&reg;</title>
+					<!-- The CSS styles  -->
 					<link rel = "stylesheet" href = "../css/admin_styles.css" type ="text/css">
 					<link type="text/css" rel="stylesheet" href="../css/overlaypopup.css" />
-					<link type="text/css" rel="stylesheet" href="../css/styles.css" />
-					<link href='https://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css'>
 					<link type="text/css" rel="stylesheet" href="../css/jquery-ui.min.css" />
-					<link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
+
+					<!-- The icon libraries  -->
+					<link type="text/css" rel="stylesheet" href="../css/styles.css" />
 					<link rel="shortcut icon" href="../images/favicon.ico"/>
+					<link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
+
+					<!-- The google fonts  -->
 					<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,600,700" rel="stylesheet" type="text/css">
+					<link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500' rel='stylesheet' type='text/css'>
+
+					<!-- The fancybox (lightbox) helpers  -->
 					<link rel="stylesheet" href="../fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
 					<link rel="stylesheet" href="../fancybox/source/helpers/jquery.fancybox-buttons.css?v=1.0.5" type="text/css" media="screen" />
 					<link rel="stylesheet" href="../fancybox/source/helpers/jquery.fancybox-thumbs.css?v=1.0.7" type="text/css" media="screen" />
 
-					<link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
 					<link rel="alternate" type="application/rss+xml" title="Package Hero RSS feed" href="../rss.php" />
 					<meta name="viewport" content="width=device-width, initial-scale=1">
 				</head>
 
 				<body>
 					<div id = "container">
+						
 						<!-- The main nav at the top of the screen  -->
 						<ul id="top">
 							<li class="menu"><i class="fa fa-bars fa-fw"></i></li>

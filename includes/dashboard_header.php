@@ -24,7 +24,8 @@
 
 						<!-- Load the Google Web fonts  -->
 						<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,600,700" rel="stylesheet" type="text/css">
-						<link href='https://fonts.googleapis.com/css?family=PT+Sans+Narrow' rel='stylesheet' type='text/css'>
+						<link href='https://fonts.googleapis.com/css?family=Alegreya+Sans:500' rel='stylesheet' type='text/css'>
+						<link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
 
 
 
@@ -56,7 +57,7 @@
 									</div>
 								</li>
 								<li class="pageTitle"><?php echo $title; ?></li>
-							
+
 							</ul>
 							<!-- The left navigation -->
 

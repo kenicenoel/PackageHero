@@ -58,7 +58,7 @@
 		$limit = 'LIMIT ' .($pagenum - 1) * $pageRows . ',' . $pageRows;
 
 		// Grab one row of data
-		$sql = "SELECT DATE_FORMAT(IssueCreationTime,'%d %b %Y') As date, TrackingNumber, CustomerName, MainIssue, Description, ShippingCarrier, ItemType, photo1 FROM packages WHERE Resolved = 'No' AND (PackageID NOT IN(SELECT PackageID from hiddenissues) OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = '$country')) ORDER BY PackageID DESC $limit";
+		$sql = "SELECT DATE_FORMAT(IssueCreationTime,'%W, %D %M, %Y') As date, DATE_FORMAT(IssueCreationTime,'%h:%i %p') As time, TrackingNumber, CustomerName, MainIssue, Description, ShippingCarrier, ItemType, photo1 FROM packages WHERE Resolved = 'No' AND (PackageID NOT IN(SELECT PackageID from hiddenissues) OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = '$country')) ORDER BY PackageID DESC $limit";
 
 
 		  // prepare the sql statement
@@ -71,7 +71,7 @@
 		  $stmt->store_result();
 
 		  /* Bind the results to variables */
-		  $stmt->bind_result($date, $tnumber, $customername, $mainissue, $description, $shippingcarrier, $itemtype, $photo1);
+		  $stmt->bind_result($date, $time, $tnumber, $customername, $mainissue, $description, $shippingcarrier, $itemtype, $photo1);
 			$i = 0;
 
 			$textline = "<p>There are $total packages with issues in the system and you are currently on page $pagenum of $lastPage.</p>";
@@ -123,6 +123,7 @@
 
 			$grid = "";
 			$list = "";
+			$last_date='0000-00-00';
 			while($stmt->fetch())
 			{
 			  $i++;
@@ -130,8 +131,17 @@
 				$desc_snippet = substr($description, 0, 25); // a 30 character substring of the description
 
 			  // Generate the grid view
-			  $grid.= '
-			  <div class="card">
+				$date_header = '';
+				if ($last_date != $date)
+				{
+					$date_header = '<p class="dateHeader">'.$date.'</p>';
+				}
+				else
+				{
+					$date_header = '';
+				}
+			  $grid.=
+			  	$date_header.'<div class="card">
 						<div class="card-image">
 							<p><img src="../includes/'.$photo1.'"alt="packageImage" /></p>
 						</div>
@@ -154,9 +164,17 @@
 			  ';
 
 			  // Generate the table view
-			  $list.= '
-			  <div class="listView">
-						<p class="date">'.$date.'</p>
+				$date_header = '';
+				if ($last_date != $date)
+				{
+					$date_header = '<p class="dateHeader">'.$date.'</p>';
+				}
+				else
+				{
+					$date_header = '';
+				}
+			  $list.= $date_header.'<div class="listView">
+						<p class="time">'.$time.'</p>
 				    <p>'.$tnumber.'</p>
 				    <p>'.$customername.'</p>
 						<p>'.$mainissue.'</p>
@@ -172,6 +190,7 @@
 			  </div>
 
 			  ';
+					$last_date = $date;
 			}
 
 		 // end if isset
