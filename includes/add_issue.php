@@ -1,6 +1,6 @@
 <?php
-include_once "config.php";
-require 'classes/php-mailer/PHPMailerAutoload.php';
+  include_once "config.php";
+  require 'classes/php-mailer/PHPMailerAutoload.php';
 
           if(isset($_FILES['images']) && isset($_POST['trackingnumber']))
           {
@@ -86,7 +86,7 @@ require 'classes/php-mailer/PHPMailerAutoload.php';
                 // Check file size to ensure it is not larger than 6MB
                 if ($images["size"][$position] > 6000000)
                 {
-                    echo "One or more images are larger than 50MB. Try again.";
+                    $errors.="One or more images are larger than 50MB. Try again.";
                     $uploadOk = 0;
 
                 }
@@ -100,7 +100,7 @@ require 'classes/php-mailer/PHPMailerAutoload.php';
                 // Check if $uploadOk is set to 0 by an error
                 if ($uploadOk == 0)
                 {
-                  $sql = "DELETE from packages WHERE PackageID=?";
+                  $sql = "DELETE from packages WHERE PackageID = ?";
 
                     //prepare the sql statement
                     $stmt = $connection->prepare($sql);
@@ -120,7 +120,7 @@ require 'classes/php-mailer/PHPMailerAutoload.php';
                 {
                     if (move_uploaded_file($images["tmp_name"][$position], $target_file))
                     {
-                      $sql = "UPDATE packages SET Photo{$i}= ? WHERE PackageID=?";
+                      $sql = "UPDATE packages SET Photo{$i}= ? WHERE PackageID = ?";
 
                         //prepare the sql statement
                         $stmt = $connection->prepare($sql);
@@ -136,7 +136,8 @@ require 'classes/php-mailer/PHPMailerAutoload.php';
 
                         /* ////////////////////////////////////////////////
                             Use PHP Mailer to send an email to the customer
-                        //////////////////////////////////////////////////// */
+                            ////////////////////////////////////////////////
+                        */
 
                         $mail = new PHPMailer;
 

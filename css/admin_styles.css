@@ -297,10 +297,15 @@ nav > header.navCategory:hover
 	background-color: rgba(158, 158, 158, 0.25);
 }
 
-nav > header.navCategory > i.fa-caret-down
+nav > header.navCategory > i.fa-toggle-on, nav > header.navCategory > i.fa-toggle-off
 {
 	float: right;
 	margin-right: 30px;
+}
+
+nav > header.navCategory > i.fa-toggle-on
+{
+	color: rgb(33, 199, 69);
 }
 
 
@@ -428,7 +433,7 @@ label
 	font-size:13pt;
 	display: block;
 	font-weight: 600;
-	color: #777777;
+	color: #212121;
 	text-align: left;
 	margin-left: 10%;
 	width:150px;
@@ -513,6 +518,13 @@ textarea
 	border-bottom: 1px solid #BBBBBB;
 
 }
+
+input[type=radio]
+{
+	margin: 10px 5px 5px 10%
+
+}
+
 
 div#data > p.nothing
 {

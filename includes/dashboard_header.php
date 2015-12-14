@@ -48,14 +48,6 @@
 										<li><a href ="../includes/logout.php" title = "Logout from Package Hero"><i class="fa fa-close fa-fw"></i>Sign out</a></li>
 									</ul>
 								</li>
-
-
-									<div id="notificationContainer">
-											<div id="notificationTitle">Notifications</div>
-											<div id="notificationsBody" class="notifications"> Hello</div>
-											<div id="notificationFooter"><a href="#">See All</a></div>
-									</div>
-								</li>
 								<li class="pageTitle"><?php echo $title; ?></li>
 
 							</ul>
@@ -63,7 +55,7 @@
 
 							<nav id ="navigation">
 
-								<header class="navCategory navIssues">Issues<i class="fa fa-caret-down"></i></header>
+								<header class="navCategory navIssues">Issues<i class="fa fa-toggle-on"></i></header>
 								<span class="issues"><a class ="link" id="first-link" href ="?module=overview" title = "View an overview of the system"><i class="fa fa-binoculars fa-fw"></i> Overview</a></span>
 								<?php
 									if($role == "Administrator" || $role == "Miami") // Show the new issue menu if the user is an admin or has a miami account
@@ -74,7 +66,7 @@
 								<span class="issues"><a class ="link" id="viewIssues" href="../includes/allpackages.php"  title = "View a list of all Packages with issues"><i class="fa fa-eye fa-fw"></i> View issues <span class="numberOfIssues"><?php echo countTotalAvailableIssues();; ?></span></a></span>
 
 
-								<header class="navCategory navPackages">Packages<i class="fa fa-caret-down"></i></header>
+								<header class="navCategory navPackages">Packages<i class="fa fa-toggle-on"></i></header>
 								<span class="packages"><a class ="link" href ="?module=search" id="searchNav" title = "Search for any package data"><i class="fa fa-search fa-fw"></i> Find a package</a></span>
 
 								<?php
@@ -85,7 +77,7 @@
 									}
 								?>
 
-								<header class="navCategory navUsers">User<i class="fa fa-caret-down"></i></header>
+								<header class="navCategory navUsers">User<i class="fa fa-toggle-on"></i></header>
 
 								<!-- Only admins can create new user accounts -->
 								<?php

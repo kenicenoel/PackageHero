@@ -3,7 +3,6 @@
 		require_once dirname(__FILE__) .'/config.php';
 		require_once ("../includes/sessions/sessionvariables.php");
 		require_once('functions/countavailableissues.php');
-		// require_once('functions/weeklyreport.php');
 		require_once('classes/PasswordGenerator.php');
 
 		/* The count functions create the summary for the dashboard summary category */

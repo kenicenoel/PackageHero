@@ -485,7 +485,7 @@ $(document).ready(function()
 
 
           // Hide the news section when loaded
-          $('p.newsitem').hide();
+          // $('p.newsitem').hide();
 
           // Hide the links when they are clicked
           $(".user").click(function()
@@ -497,16 +497,20 @@ $(document).ready(function()
           $('.navIssues').click(function()
           {
             $('.issues').toggle();
+            $(this).find('i').toggleClass('fa fa-toggle-off fa fa-toggle-on');
+
           });
 
           $('.navPackages').click(function()
           {
             $('.packages').toggle();
+            $(this).find('i').toggleClass('fa fa-toggle-off fa fa-toggle-on');
           });
 
           $('.navUsers').click(function()
           {
             $('.usr').toggle();
+            $(this).find('i').toggleClass('fa fa-toggle-off fa fa-toggle-on');
           });
 
           // Hide the navigation menu
@@ -568,27 +572,6 @@ $(document).ready(function()
           //   }
           // );
 
-
-          // The Notifications code
-          $(".notification_li").click(function()
-            {
-              $("#notificationContainer").fadeToggle(300);
-              $("#notification_count").fadeOut("slow");
-              return false;
-            });
-
-            // Document click hiding the popup
-            $(document).click(function()
-            {
-              $("#notificationContainer").hide();
-            });
-
-            // Popup on click
-            $("#notificationContainer").click(function()
-            {
-              return false;
-            });
-
             // This function allows one to switch from Grid layout to List Layout and vice versa
 
             $('#list').click(function()
@@ -615,5 +598,22 @@ $(document).ready(function()
                 $(".quickHide", this).css('visibility', 'hidden');
             });
 
+            $('input:radio[name=sendEmail]').click(function()
+
+            {
+
+              var radio = $('input:radio[name=sendEmail]:checked').val();
+              console.log(radio);
+              if(radio == "custom")
+              {
+                alert(radioButton);
+                $('#emailBody').attr('hidden', 'no');
+              }
+
+
+            }
+
+
+            );
 
 });

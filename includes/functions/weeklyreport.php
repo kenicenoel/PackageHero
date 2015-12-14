@@ -31,8 +31,8 @@
     global $connection;
 
 
-    // Build the query
-    $sql = "SELECT DATE_FORMAT(IssueCreationTime,'%d %b %Y') As date, COUNT(PackageID) As total_issues FROM packages GROUP BY date DESC LIMIT 7";
+    // Build the query  ... SELECT DATE_FORMAT(IssueCreationTime,'%d %b %Y') As date, COUNT(PackageID) As total_issues FROM packages GROUP BY date ORDER BY `IssueCreationTime` DESC LIMIT 0 , 7
+    $sql = "SELECT DATE_FORMAT(IssueCreationTime,'%d %b %Y') As date, COUNT(PackageID) As total_issues FROM packages GROUP BY date ORDER BY `IssueCreationTime` DESC LIMIT 0 , 7";
 
     // prepare the sql statement
     $stmt = $connection->prepare($sql);

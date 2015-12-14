@@ -113,12 +113,14 @@
 											</div> <!-- End actions div -->
 
 										<?php
+
 											echo '<header class="subheading"><span class="fa fa-file-text fa-fw"></span> Current details</header>';
 											echo '<p>Tracking number: '.$trackingnumber.' </p>';
 											echo '<p>Customer name: '.$customername.' </p>';
 											echo '<p>Main Issue: '.$issue.' </p>';
 											echo '<p>Description: '.$description.' </p>';
-										 ?>
+
+										?>
 
 										 <div id="image-container">
 											 <header class="subheading"><span class="fa fa-photo fa-fw"></span> Images</header>
