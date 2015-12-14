@@ -1,26 +1,41 @@
-# PackageHero
+#Welcome to Package Hero.
 
-Package Hero is a Package Management solution for managing packages with issues.
-It is specifically designed for Web Source Company Limited and its subsidaries and provides users with a way to manage issues such as broken
-packages, unknown shipping address, missing invoices or customer data etc.
+I guess you're wondering what Package Hero is all about after all, why else would you be here huh? To best explain what Package Hero is, imagine this scenario:
 
-*** Highlights ***
+You're a company providing users with an overseas address that they can send their packages to after shopping online from their favourite retailers like ebay or Amazon.com. When the package arrives at your warehouse to be prepared to be sent to their home address abroad, you realize there's some problems (Oops!). The package is broken, or maybe missing an invoice or missing the address or their unique address number so you don't even know who the package is for.... Yikes... The issues that can arise are endless!
+That's where Package Hero comes in.
 
-* Clean, modern designed.
-* User Management.
-* Issue Management.
-* Global Search for all packages and issues whether resolved, hidden or available. Multiple search possibilities.
-* Initial package scanning.
-* RSS feeds to stay updated on new issues created that can be read from your favourite apps, services (e.g Feedly) and readers.
-* The ability to action issues (hide issues, resolve issues) or enter updates (notes) for individual issues.
-* Dashboard which gives an overview of the entire system including visualized data with charts and always visible categorized navigation.
-* Three account levels with various modes of access to different functions.
-* Enter updates for various packages which then get tagged with a timestamp, note and user who created the update.
+What can package hero do for you?
 
-Package Hero is updated regularly to fix bugs and introduce new features.
-We are planning to roll out lots of new features such as chat, mobile UI and data exporting.
+Package Hero can make handling these issues easier by keeping track of every package with issues:
 
-Package Hero is perfect for use across different geographies say, the Package Receiving warehouse is in the US for example Miami and the
-local sub-office is in Trinidad or Grenada for instance.
+Create unlimited issues
+Upload up to 5 images of each package
+Pick the main issue with the package
+Enter a description of the problem
+Enter updates on each issue that your users can see which show up instantly
+Mark issues as resolved or if you have operations in different countries, hide issues that don't relate to you and that country
+Other features of Package Hero include
 
-Stay tuned for more updates. Feel free to reach me for more info @kenicenoel.
+Administrator / Standard user accounts
+Create users from the app
+A main dashboard that ties in all features together in a clean UI
+Statistics on the dashboard such as total issues, hidden issues and available users (some stats available only to logged in admins
+Search for any package with its tracking number whether it has been resolved or not
+AND MANY MORE
+
+Responsive & Modern
+
+Package Hero works well on your Laptops, Desktops and Smartphones (we are working on tablets) and is built for the modern web with HTML5, CSS, jQuery, MySql and PHP.
+
+Secure
+
+User passwords are not stored in plain text and is hashed (SHA512 + salt coming soon) which makes it harder for the bad guys to access your user's account information.
+
+Authors and Contributors
+
+The project was created and maintained by @kenicenoel in November 2015 originally for Web Source Company LTD but can easily scale for similar companies. Please feel free to contribute to the project. Fork the GitHub repo and fix bugs! This is a work in progress!
+
+Say Hi!
+
+Get in touch with me on twitter @kenicenoel
