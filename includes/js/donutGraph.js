@@ -3,6 +3,13 @@
 
     // Set a callback to run when the Google Visualization API is loaded.
     google.setOnLoadCallback(drawChart);
+
+    // This together with setting the width to 100% makes the chart responsive
+    $(window).resize(function()
+    {
+      drawChart();
+    });
+
     function drawChart()
     {
       // Create the weekly report graph
@@ -16,17 +23,20 @@
         var options =
         {
           // title:'Number of available and hidden issues',
-          // width:600,
+          width:"100%",
           // height:300,
-          pieHole:0.2,
+          // pieHole:0.4,
+          slices:
+          {
+            1: {offset: 0.1},
+
+          },
           pieSliceText:'value',
           fontSize:15,
           legend: { position: "left" },
-          colors:['#e93131','#04e035']
-
+          colors:['#04e035', '#e93131']
         };
 
-        
 
       // Create our data table out of JSON data loaded from server.
       var data = new google.visualization.DataTable(jsonData);

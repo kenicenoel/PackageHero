@@ -58,7 +58,7 @@
 		$limit = 'LIMIT ' .($pagenum - 1) * $pageRows . ',' . $pageRows;
 
 		// Grab one row of data
-		$sql = "SELECT TrackingNumber, CustomerName, MainIssue, Description, ShippingCarrier, ItemType, photo1 FROM packages WHERE Resolved = 'No' AND (PackageID NOT IN(SELECT PackageID from hiddenissues) OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = '$country')) ORDER BY PackageID DESC $limit";
+		$sql = "SELECT DATE_FORMAT(IssueCreationTime,'%W, %D %M, %Y') As date, DATE_FORMAT(IssueCreationTime,'%h:%i %p') As time, TrackingNumber, CustomerName, MainIssue, Description, ShippingCarrier, ItemType, photo1 FROM packages WHERE Resolved = 'No' AND (PackageID NOT IN(SELECT PackageID from hiddenissues) OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = '$country')) ORDER BY PackageID DESC $limit";
 
 
 		  // prepare the sql statement
@@ -71,10 +71,10 @@
 		  $stmt->store_result();
 
 		  /* Bind the results to variables */
-		  $stmt->bind_result($tnumber, $customername, $mainissue, $description, $shippingcarrier, $itemtype, $photo1);
+		  $stmt->bind_result($date, $time, $tnumber, $customername, $mainissue, $description, $shippingcarrier, $itemtype, $photo1);
 			$i = 0;
 
-			$textline = "<p>There are <span>$total</span> packages with issues in the system and you are currently on page <span>$pagenum</span> of $lastPage.</p>";
+			$textline = "<p>There are $total packages with issues in the system and you are currently on page $pagenum of $lastPage.</p>";
 
 			// Establish the paginationCtrls variable
 			$navigation = '';
@@ -123,6 +123,7 @@
 
 			$grid = "";
 			$list = "";
+			$last_date='0000-00-00';
 			while($stmt->fetch())
 			{
 			  $i++;
@@ -130,8 +131,17 @@
 				$desc_snippet = substr($description, 0, 25); // a 30 character substring of the description
 
 			  // Generate the grid view
-			  $grid.= '
-			  <div class="card">
+				$date_header = '';
+				if ($last_date != $date)
+				{
+					$date_header = '<p class="dateHeader">'.$date.'</p>';
+				}
+				else
+				{
+					$date_header = '';
+				}
+			  $grid.=
+			  	$date_header.'<div class="card">
 						<div class="card-image">
 							<p><img src="../includes/'.$photo1.'"alt="packageImage" /></p>
 						</div>
@@ -146,7 +156,7 @@
 
 						<div class="card-footer">
 					    <p class="trackingnumber"><span class="fa fa-truck"> </span> '.$tnumber.'</p>
-					    <p class="url"><a id="view-full" class="full-details" href="fulldetails.php?trackingnumber='.urlencode($tnumber).'" title="View full package details"><span class="fa fa-eye fa-fw"></span>View</a></p>
+					    <button class="url"><a id="view-full" class="full-details" href="fulldetails.php?trackingnumber='.urlencode($tnumber).'" title="View full package details">View</a></button>
 						</div>
 
 			  </div>
@@ -154,20 +164,33 @@
 			  ';
 
 			  // Generate the table view
-			  $list.= '
-			  <tr>
-				    <td>'.$tnumber.'</td>
-				    <td>'.$customername.'</td>
-						<td>'.$mainissue.'</td>
-						<td>'.$itemtype.'</p>
-						<td>'.$shippingcarrier.'</p>
-						<td>'.$desc_snippet.'...</td>
+				$date_header = '';
+				if ($last_date != $date)
+				{
+					$date_header = '<p class="dateHeader">'.$date.'</p>';
+				}
+				else
+				{
+					$date_header = '';
+				}
+			  $list.= $date_header.'<div class="listView">
+						<p class="time">'.$time.'</p>
+				    <p>'.$tnumber.'</p>
+				    <p>'.$customername.'</p>
+						<p>'.$mainissue.'</p>
+						<p>'.$itemtype.'</p>
+						<p>'.$shippingcarrier.'</p>
+						<p>'.$desc_snippet.'...</p>
 
 
-				    <td><a id="view-full" class="full-details"  href="fulldetails.php?trackingnumber='.$tnumber.'" title="View full package details"><span class="fa fa-eye fa-fw"></span>View</a></td>
-			  </tr>
+				    <p class="quickButtonsHolder">
+						<button class="quickView"><a id="view-full" class="full-details" href="fulldetails.php?trackingnumber='.$tnumber.'" title="View full package details">view</a></button>
+						<button class="quickHide hide">hide</button>
+						</p>
+			  </div>
 
 			  ';
+					$last_date = $date;
 			}
 
 		 // end if isset
@@ -181,36 +204,32 @@
 								<div id="data">
 									<div id = "toggle-view">
 										<p>VIEW AS:<p>
-										<p id="list" class="view"><span class="fa fa-table"> Table</span><p>
-										<p id="grid" class="view"><span class="fa fa-th"> Cards</span><p>
+										<p id="list" class="view"><span class="fa fa-list-alt"> List</span><p>
+										<p id="grid" class="view"><span class="fa fa-th-large"> Cards</span><p>
 									</div>
+
 									<!--Show the results as a grid (the default view -->
 										<div id="result-cards">
 											<?php echo $grid ?>
+
 										</div>
 
-									<!--	Show the results as a list (table)-->
+
+									<!--	Show the results as a list -->
 										<div id="table-results">
-													<table id="results">
-														<thead>
-															<tr>
-																<th>Tracking Number</th>
-																<th>Customer</th>
-																<th>Main Issue</th>
-																<th>Item</th>
-																<th>Shipper</th>
-																<th>Description</th>
+											<!-- <p>Date</p>
+											<p>Tracking Number</p>
+											<p>Customer</p>
+											<p>Issue</p>
+											<p>Item</p>
+											<p>Shipper</p>
+											<p>Description</p> -->
 
-															</tr>
-														</thead>
+												<?php echo $list ?>
 
-														<tbody>
-															<?php echo $list ?>
-														</tbody>
-													</table>
 										</div>
 									<!--Display the Pagination links and information-->
-										<div id="pagination-holder"> <?php echo $textline."<br><br>".$navigation ?> </div>
+									<div class="pagination-holder"> <?php echo $textline."<br><br>".$navigation ?> </div>
 
 								</div>
 							</div>

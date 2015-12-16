@@ -27,7 +27,7 @@ if(isset($_POST['query']) || isset($_GET['query']) )
         {
           $after = $_POST['afterDate'];
         }
-        $sql = "SELECT TrackingNumber, AccountNumber, CustomerName, MainIssue, Resolved, Description, Photo1, ItemType, ShippingCarrier FROM packages WHERE (packages.IssueCreationTime BETWEEN ? AND ?)  OR packages.TrackingNumber Like ? OR packages.CustomerName Like ? OR packages.ItemType LIKE ? OR packages.ShippingCarrier LIKE ?";
+        $sql = "SELECT TrackingNumber, AccountNumber, CustomerName, MainIssue, Resolved, Description, Photo1, ItemType, ShippingCarrier FROM packages WHERE (packages.IssueCreationTime BETWEEN ? AND ?)  OR packages.TrackingNumber Like ? OR packages.CustomerName Like ? OR packages.ItemType LIKE ? OR packages.ShippingCarrier LIKE ? OR packages.AccountNumber LIKE ?";
 
         // echo $before;
         // echo $after;
@@ -37,7 +37,7 @@ if(isset($_POST['query']) || isset($_GET['query']) )
 		  $stmt = $connection->prepare($sql);
 
 		  // bind variables to the paramenters ? present in sql
-		  $stmt->bind_param('ssssss', $before, $after, $query ,$query, $query, $query);
+		  $stmt->bind_param('sssssss', $before, $after, $query ,$query, $query, $query, $query);
 
 		  // execute the prepared statement
 		  $stmt->execute();
@@ -72,7 +72,7 @@ if(isset($_POST['query']) || isset($_GET['query']) )
 
   						<div class="card-footer">
   					    <p class="trackingnumber"><span class="fa fa-truck"> </span> '.$trackingnumber.'</header>
-  					    <p class="url"><a id="view-full" class="full-details" href="../includes/fulldetails.php?trackingnumber='.urlencode($trackingnumber).'&res='.urlencode($resolved).'" title="View full package details"><span class="fa fa-eye fa-fw"></span>View</a></p>
+  					    <button class="url"><a id="view-full" class="full-details" href="../includes/fulldetails.php?trackingnumber='.urlencode($trackingnumber).'&res='.urlencode($resolved).'" title="View full package details">View</a></button>
   						</div>
 
   			  </div>

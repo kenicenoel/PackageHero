@@ -3,11 +3,18 @@
 
     // Set a callback to run when the Google Visualization API is loaded.
     google.setOnLoadCallback(drawChart);
+
+    // This together with setting the width to 100% makes the chart responsive
+    $(window).resize(function()
+    {
+      drawChart();
+    });
+
     function drawChart()
     {
       // Create the weekly report graph
-      var jsonData = $.ajax(
-        {
+      var jsonData = $.ajax
+      ({
           url: "../includes/functions/weeklyreport.php",
           dataType:"json",
           async: false
@@ -16,7 +23,7 @@
         var options =
         {
           // title:'Number of recent issues for the last 7 days',
-          width:800,
+          width:900,
           // height:300,
           pointSize:4,
           legend: { position: "none" },

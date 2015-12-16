@@ -4,16 +4,16 @@
 
 
     // Connect to the local mySQL server
-    // $host = "localhost";
-    // $user = "admin";
-    // $pass = "admin";
-    // $database = "websource_package_data";
+    $host = "localhost";
+    $user = "admin";
+    $pass = "admin";
+    $database = "websource_package_data";
 
     // The production MySql server
-    $host = "websource-caribbean.com";
-    $user = "packagehero";
-    $pass = "PackageH3r0";
-    $database = "packagehero_db";
+    // $host = "websource-caribbean.com";
+    // $user = "packagehero";
+    // $pass = "PackageH3r0";
+    // $database = "packagehero_db";
 
 
 
@@ -31,8 +31,8 @@
     global $connection;
 
 
-    // Build the query
-    $sql = "SELECT DATE_FORMAT(IssueCreationTime,'%d %b %Y') As date, COUNT(PackageID) As total_issues FROM packages GROUP BY date DESC LIMIT 7";
+    // Build the query  ... SELECT DATE_FORMAT(IssueCreationTime,'%d %b %Y') As date, COUNT(PackageID) As total_issues FROM packages GROUP BY date ORDER BY `IssueCreationTime` DESC LIMIT 0 , 7
+    $sql = "SELECT DATE_FORMAT(IssueCreationTime,'%d %b %Y') As date, COUNT(PackageID) As total_issues FROM packages GROUP BY date ORDER BY `IssueCreationTime` DESC LIMIT 0 , 7";
 
     // prepare the sql statement
     $stmt = $connection->prepare($sql);
@@ -50,7 +50,7 @@
     $table['cols'] = array // define the column names
     (
       // Labels for the chart, these represent the column titles
-      array('id' => '', 'label' => 'Days with issues', 'type' => 'string'),
+      array('id' => '', 'label' => 'Last 7 days with issues', 'type' => 'string'),
       array('id' => '', 'label' => 'Number of Issues', 'type' => 'number')
     );
 

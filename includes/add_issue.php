@@ -1,5 +1,7 @@
 <?php
-include_once "config.php";
+  include_once "config.php";
+  require 'classes/php-mailer/PHPMailerAutoload.php';
+  require_once ('functions/sendMail.php');
 
           if(isset($_FILES['images']) && isset($_POST['trackingnumber']))
           {
@@ -20,13 +22,15 @@ include_once "config.php";
                 $itemtype = $_POST['itemtype'];
                 $shippingcarrier = $_POST['shippingcarrier'];
 
+                // if(isset($_POST['emailBody']) && $_POST['emailBody'] != ""){ $customEmail = $_POST['emailBody'] }
+
                 //execute the prepared statement
                 $stmt->execute();
 
             $images = $_FILES['images'];
             $i=1;
             $last = $stmt->insert_id;
-
+            $errors="";
 
             foreach($images['name'] as $position => $data)
             {
@@ -85,7 +89,7 @@ include_once "config.php";
                 // Check file size to ensure it is not larger than 6MB
                 if ($images["size"][$position] > 6000000)
                 {
-                    echo "One or more images are larger than 50MB. Try again.";
+                    $errors.="One or more images are larger than 50MB. Try again.";
                     $uploadOk = 0;
 
                 }
@@ -99,7 +103,7 @@ include_once "config.php";
                 // Check if $uploadOk is set to 0 by an error
                 if ($uploadOk == 0)
                 {
-                  $sql = "DELETE from packages WHERE PackageID=?";
+                  $sql = "DELETE from packages WHERE PackageID = ?";
 
                     //prepare the sql statement
                     $stmt = $connection->prepare($sql);
@@ -119,7 +123,7 @@ include_once "config.php";
                 {
                     if (move_uploaded_file($images["tmp_name"][$position], $target_file))
                     {
-                      $sql = "UPDATE packages SET Photo{$i}= ? WHERE PackageID=?";
+                      $sql = "UPDATE packages SET Photo{$i}= ? WHERE PackageID = ?";
 
                         //prepare the sql statement
                         $stmt = $connection->prepare($sql);
@@ -131,7 +135,120 @@ include_once "config.php";
                         //execute the prepared statement
                         $stmt->execute();
                         $i++;
+
+
+                        // Prepare the body variables
+                        if(isset($_POST['emailBody']) && $_POST['emailBody'] != "" && $_POST['emailBody'] != "no")
+                        {
+                          $body = $_POST['emailBody'];
+                        }
+
+                        else
+                        {
+                          $autoText =
+                          '
+                          <!DOCTYPE html>
+                          <html>
+                          <head>
+                              <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                              <title></title>
+                          </head>
+
+                        <body style="-webkit-font-smoothing: antialiased; -webkit-text-size-adjust: none; height: 100%; line-height: 1.6; width: 100% !important">
+
+                        <table class="body-wrap" style="border: 1px solid #d2d9d2; margin: 0 auto">
+
+                            <div class="content">
+
+                                      <tr style="width: 80%">
+                                        <td class="content-block">
+                                          <img src="http://packagehero.websource-caribbean.com/ImageProxy.png" alt="Web Source Logo" style="height: 73px; margin: 0 120px; vertical-align: middle; width: 223px">
+                                        </td>
+                                      </tr>
+                                      <tr style="width: 80%">
+                                        <td class="content-block">
+                                          <h1 style="background-color: #FF0000; color: #fff; font-size: 25px; font-weight: 500; line-height: 1.2; margin: 10px 0; padding: 5px 0; text-align: center" align="center">We require your assistance</h1>
+                                        </td>
+                                      </tr>
+                                      <tr class="customerName" style="width: 80%">
+                                        <td>
+                                          <h2 style="color: #03A9F4; font-size: 15px; font-weight: 400; line-height: 1.2; margin: 5px 20px; text-align: left" align="left">Dear '.$customername.',</h2>
+                                        </td>
+                                      </tr>
+                                      <tr class="openingGreeting" style="width: 80%">
+                                        <td style="padding: 15px 20px; text-align: left" align="left">
+                                          There is an issue with your package.
+                                        </td>
+                                      </tr>
+
+                                          <tr style="width: 80%">
+                                            <td class="space" style="padding: 8px 20px">
+                                              <span class="heading" style="font-weight: bolder">Description: </span>'.$itemtype.'
+                                            </td>
+                                          </tr>
+                                          <tr style="width: 80%">
+                                            <td class="space" style="padding: 8px 20px">
+                                              <span class="heading" style="font-weight: bolder">Shipped by: </span>'.$shippingcarrier.'
+                                            </td>
+                                          </tr>
+
+                                          <tr style="width: 80%">
+                                            <td class="space" style="padding: 8px 20px">
+                                              <span class="heading" style="font-weight: bolder">Tracking: </span>'.$trackingnumber.'
+                                            </td>
+                                          </tr>
+
+                                          <tr style="width: 80%">
+                                            <td class="space" style="padding: 8px 20px">
+                                              <span class="heading" style="font-weight: bolder">Issue: </span>'.$mainissue.'
+                                            </td>
+                                          </tr>
+
+                                          <tr style="width: 80%">
+                                            <td class="space" style="padding: 8px 20px">
+                                              <p>
+                                                Please click <a href="#" title="Resolve this issue">here</a> to view more details and to resolve this issue.
+                                              </p>
+                                            </td>
+                                          </tr>
+
+                                            <tr class="openingGreeting" style="width: 80%">
+                                              <td class="space" style="padding: 15px 20px; text-align: left" align="left">
+                                                We thank you for your continued support
+                                                <h2 class="closingStatement" style="color: #000; font-size: 15px; font-weight: bolder; line-height: 1.2; margin: 5px auto; text-align: left" align="left">Regards,</h2>
+                                                <h2 class="closingStatement" style="color: #000; font-size: 15px; font-weight: bolder; line-height: 1.2; margin: 5px auto; text-align: left" align="left">Web Source</h2>
+                                              </td>
+                                            </tr>
+
+                          </div>
+
+
+                        </table>
+
+                        </body>
+                        </html>
+
+
+
+
+                          ';
+                          $body = $autoText;
+
+                        }
+                        // If the
+                        if(isset($_POST['emailBody']) && $_POST['emailBody'] != "no")
+                        {
+                          $subject = "There's a problem with your package(s)";
+                          $from = "info@shipwebsource.com";
+                          $to = "kenicenoel@outlook.com";
+                          $replyTo = "customerservice@shipwebsource.com";
+                          $errors.= composeEmail($from, $to, $subject, $replyTo, $body);
+
+                        }
+
+
                     }
+
 
                     else
                     {
@@ -151,16 +268,13 @@ include_once "config.php";
 
                     }
 
-
-
-
                 }
 
 
 
             }
-            
-            echo 'Done';
+            $errors.='done';
+            echo $errors;
           }
 
           end:

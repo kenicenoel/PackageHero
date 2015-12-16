@@ -89,36 +89,38 @@
 														{
 															echo '<p> You can mark the issue as resolved or hide irrelevant issues from your dashboard. Hiding an issue will also hide it from other users in your country.</p>';
 															echo '<button class="task-actions" id="resolve"><span class="fa fa-check fa-fw"></span>Resolve</button>';
-															echo '<button class="task-actions" id="hide"><span class="fa fa-eye-slash fa-fw"></span>Hide</button>';
+															echo '<button class="task-actions hide"><span class="fa fa-eye-slash fa-fw"></span>Hide</button>';
 														}
 
 														if (!isset($_GET['res']))
 														{
 															echo '<p> You can mark the issue as resolved or hide irrelevant issues from your dashboard. Hiding an issue will also hide it from other users in your country.</p>';
 															echo '<button class="task-actions" id="resolve"><span class="fa fa-check fa-fw"></span>Resolve</button>';
-															echo '<button class="task-actions" id="hide"><span class="fa fa-eye-slash fa-fw"></span>Hide</button>';
+															echo '<button class="task-actions hide"><span class="fa fa-eye-slash fa-fw"></span>Hide</button>';
 														}
 
 														else if(isset($_GET['res']) && $_GET['res'] == 'Yes')
 														{
-															echo '<p> This issue was marked resolved. You can still view the issue but can no longer hide or resolve it.</p>';
+															echo '<p> This issue has been resolved. You can still view it and make notes but can no longer hide or resolve it.</p>';
 														}
 														 ?>
 
 												<p id="errorMessage"></p>
 											<div id="actions">
 												<header class="subheading">Enter an update for this issue</header>
-												<input id="note" type="text" placeholder="e.g. Received invoice from Customer" name="note">
+												<input id="note" type="text" placeholder="e.g. Received invoice from Customer" name="note" required />
 												<button id="saveNote"><span class="fa fa-arrow-right fa-fw"></span></button>
 											</div> <!-- End actions div -->
 
 										<?php
+
 											echo '<header class="subheading"><span class="fa fa-file-text fa-fw"></span> Current details</header>';
 											echo '<p>Tracking number: '.$trackingnumber.' </p>';
 											echo '<p>Customer name: '.$customername.' </p>';
 											echo '<p>Main Issue: '.$issue.' </p>';
 											echo '<p>Description: '.$description.' </p>';
-										 ?>
+
+										?>
 
 										 <div id="image-container">
 											 <header class="subheading"><span class="fa fa-photo fa-fw"></span> Images</header>
@@ -147,6 +149,11 @@
 											 </tbody>
 										 </table>
 
+										 <!-- THE DIV THAT HOLDS THE DATA FOR THE POPUP WARNING -->
+										 <div id="dialog-confirm" title="Hide issue" style="display:none;">
+  									 		<p><?php echo $_SESSION['username']; ?>, are you sure you want to hide this issue?<br> This also hides it from other users in <?php echo $country; ?> as well.</p>
+										</div>
+
 										</div>
 
 									</div> <!-- End data div -->
@@ -160,5 +167,6 @@
 		<script type="text/javascript" src="../fancybox/source/helpers/jquery.fancybox-buttons.js"></script>
 		<script type="text/javascript" src="../fancybox/source/helpers/jquery.fancybox-media.js"></script>
 		<script type="text/javascript" src="../fancybox/source/helpers/jquery.fancybox-thumbs.js"></script>
+		<script src="../includes/js/jquery-ui.min.js"></script>
 		<script type= "text/javascript" src="../includes/js/main.js"></script>
 	</html>

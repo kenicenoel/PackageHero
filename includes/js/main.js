@@ -6,6 +6,8 @@ $(document).ready(function()
     $(".fancybox").fancybox();
 
 
+
+
         // Ajax add new issue
 
         $('body').on('click', '#addIssue', function(e)
@@ -24,7 +26,7 @@ $(document).ready(function()
                 e.preventDefault();
                 var formData = new FormData($(this).parents('form')[0]);
 
-                $('#addIssue').val("Adding package...");
+                $('#addIssue').val("Saving...");
 
                 $.ajax({
                     url: '../includes/add_issue.php',
@@ -36,20 +38,21 @@ $(document).ready(function()
                     },
                     success: function (response)
                     {
-
-                      if(response == "Error")
+                      if(response == "done" || response == "Message has been sent: done")
                       {
-                        $('#errorMessage').append("<p style='font-size:1.1em; background-color:#f1c40f; color:#000000; padding-bottom:10px'><i class='fa fa-close'></i> There was an error.</p>")
-                      }
-
-                      else if(response == "Done")
-                      {
-                        $('#errorMessage').append("<p style='font-size:1.1em; background-color:#27ae60; color:#ffffff;'><i class='fa fa-check-circle'></i> Added Successfully! You may add another or move on.</p>");
+                        $('#errorMessage').append("<p style='font-size:1.1em; background-color:#27ae60; color:#ffffff;'><i class='fa fa-check-circle'></i> Saved. An email was also sent to the customer!<br>You may add another or move on.</p>");
                         $('#package')[0].reset();
 
                         $('#addIssue').val("Add");
 
                       }
+
+                      else
+                      {
+                        $('#errorMessage').append("<p style='font-size:1.1em; background-color:#f1c40f; color:#000000; padding-bottom:10px'><i class='fa fa-close'></i>"+response+".</p>")
+                      }
+
+
 
 
 
@@ -282,7 +285,15 @@ $(document).ready(function()
         // Add note
         $('#saveNote').click(function()
         {
+
             var note = $('#note').val();
+            if(note == "")
+            {
+              $('#note').effect('highlight');
+              // $('#saveNote').effect('puff');
+            }
+            else
+            {
               $.ajax
               ({
 
@@ -302,6 +313,8 @@ $(document).ready(function()
 
                   }
                 });
+            }
+
               return false;
         });
 
@@ -363,29 +376,48 @@ $(document).ready(function()
         });
 
         // Run this code when the "HIDE" button is clicked
-        $('#hide').click(function()
+        $('.hide').click(function()
         {
 
-            // var news = "marked issue"+tnumber+" as RESOLVED.";
-              $.ajax
-              ({
+          $( "#dialog-confirm" ).dialog(
+            {
+              resizable: false,
+              height:250,
+              modal: true,
+              buttons:
+              {
+                "Yes": function()
+                {
+                  $( this ).dialog( "close" );
+                  $.ajax
+                  ({
 
-                  url: 'hide-issue.php',
-                  type: 'POST',
-                  // data: "news="+news,
-                  success: function(response)
-                  {
-
-                      if(response == 'Done')
+                      url: 'hide-issue.php',
+                      type: 'POST',
+                      // data: "news="+news,
+                      success: function(response)
                       {
-                        window.open('allpackages.php', '_self');
+
+                          if(response == 'Done')
+                          {
+                            window.open('allpackages.php', '_self');
+
+                          }
 
                       }
 
-                  }
+                    });
+                  return false;
+                },
+                "No": function()
+                {
+                  $( this ).dialog( "close" );
+                }
+              }
+            });
 
-                });
-              return false;
+            // var news = "marked issue"+tnumber+" as RESOLVED.";
+
         });
 
 
@@ -453,7 +485,7 @@ $(document).ready(function()
 
 
           // Hide the news section when loaded
-          $('p.newsitem').hide();
+          // $('p.newsitem').hide();
 
           // Hide the links when they are clicked
           $(".user").click(function()
@@ -465,22 +497,27 @@ $(document).ready(function()
           $('.navIssues').click(function()
           {
             $('.issues').toggle();
+            $(this).find('i').toggleClass('fa fa-toggle-off fa fa-toggle-on');
+
           });
 
           $('.navPackages').click(function()
           {
             $('.packages').toggle();
+            $(this).find('i').toggleClass('fa fa-toggle-off fa fa-toggle-on');
           });
 
           $('.navUsers').click(function()
           {
             $('.usr').toggle();
+            $(this).find('i').toggleClass('fa fa-toggle-off fa fa-toggle-on');
           });
 
           // Hide the navigation menu
           $('.menu').click(function()
           {
               $('#navigation').toggle("puff");
+              $(this).toggleClass('menuHidden', 'menuVisible');
           });
 
           // Hide the dashboard sections //
@@ -536,42 +573,34 @@ $(document).ready(function()
           //   }
           // );
 
-
-          // The Notifications code
-          $(".notification_li").click(function()
-            {
-              $("#notificationContainer").fadeToggle(300);
-              $("#notification_count").fadeOut("slow");
-              return false;
-            });
-
-            // Document click hiding the popup
-            $(document).click(function()
-            {
-              $("#notificationContainer").hide();
-            });
-
-            // Popup on click
-            $("#notificationContainer").click(function()
-            {
-              return false;
-            });
-
             // This function allows one to switch from Grid layout to List Layout and vice versa
 
             $('#list').click(function()
             {
-              console.log("You clicked list");
               $('#result-cards').css('display', 'none');
               $('#table-results').css('display', 'block');
             });
 
             $('#grid').click(function()
             {
-              console.log("You clicked grid");
               $('#result-cards').css('display', 'block');
               $('#table-results').css('display', 'none');
             });
+
+            $('.listView').mouseover(function()
+            {
+                $(".quickView", this).css('visibility', 'visible');
+                $(".quickHide", this).css('visibility', 'visible');
+            });
+
+            $('.listView').mouseout(function()
+            {
+                $(".quickView", this).css('visibility', 'hidden');
+                $(".quickHide", this).css('visibility', 'hidden');
+            });
+
+            
+
 
 
 });
