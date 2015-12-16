@@ -517,6 +517,7 @@ $(document).ready(function()
           $('.menu').click(function()
           {
               $('#navigation').toggle("puff");
+              $(this).toggleClass('menuHidden', 'menuVisible');
           });
 
           // Hide the dashboard sections //
@@ -598,22 +599,8 @@ $(document).ready(function()
                 $(".quickHide", this).css('visibility', 'hidden');
             });
 
-            $('input:radio[name=sendEmail]').click(function()
-
-            {
-
-              var radio = $('input:radio[name=sendEmail]:checked').val();
-              console.log(radio);
-              if(radio == "custom")
-              {
-                alert(radioButton);
-                $('#emailBody').attr('hidden', 'no');
-              }
+            
 
 
-            }
-
-
-            );
 
 });

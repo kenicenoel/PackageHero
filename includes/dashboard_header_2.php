@@ -53,11 +53,11 @@
 						<!-- The left navigation -->
 						<nav id ="navigation">
 							<header class="navCategory navIssues">Issues<i class="fa fa-toggle-on"></i></header>
-							<span class="issues"><a class ="link" id="first-link" href ="../admin/dashboard.php?module=overview" title = "View an overview of the system"><i class="fa fa-binoculars fa-fw"></i> Overview</a></span>
+							<span class="issues"><a class ="link" id="first-link" href ="../admin/dashboard.php?module=overview" title = "View an overview of the system"><i class="fa fa-globe fa-fw"></i> Overview</a></span>
 							<?php
 								if($role == "Administrator" || $role == "Miami") // Show the new issue menu if the user is an admin or has a miami account
 								{
-									echo '<span class="issues"><a class ="link" href="#" id="newissue" title = "Create a new issue"><i class="fa fa-bug fa-fw"></i> New Issue</a></span>';
+									echo '<span class="issues"><a class ="link" href="#" id="newissue" title = "Create a new issue"><i class="fa fa-bug fa-fw"></i> New issue</a></span>';
 								}
 							?>
 							<span class="issues"><a class ="link" id="viewIssues" href="../includes/allpackages.php"  title = "View a list of all Packages with issues"><i class="fa fa-eye fa-fw"></i> View issues <span class="numberOfIssues"><?php echo countTotalAvailableIssues(); ?></span></a></span>
@@ -69,7 +69,7 @@
 							<?php
 								if($role == "Administrator" || $role == "Miami") // Admins and Miami accounts can see Initial Package Scanning menu
 								{
-									echo '<span class="packages"><a class ="link" href ="#" id="initialPackageScan" title = "Perform an initial package scan"><i class="fa fa-barcode fa-fw"></i> Scan a Package</a></span>';
+									echo '<span class="packages"><a class ="link" href ="#" id="initialPackageScan" title = "Perform an initial package scan"><i class="fa fa-qrcode fa-fw"></i> Scan a package</a></span>';
 									// echo '<span class="packages"><a class ="link" href="../includes/allpackagescans.php"  title = "A list of all scanned packages"><i class="fa fa-eye fa-fw"></i> View Package scans</a></span>';
 								}
 							?>
@@ -80,7 +80,7 @@
 							<?php
 								if($role == "Administrator")
 								{
-									echo '<span class="usr"><a class ="link" href ="#" id="adduser" title = "Create a new user"><i class="fa fa-plus fa-fw"></i> Create User</a></span>';
+									echo '<span class="usr"><a class ="link" href ="#" id="adduser" title = "Create a new user"><i class="fa fa-user-plus fa-fw"></i> Add new user</a></span>';
 								}
 							?>
 							<span class="usr"><a class ="link" href ="../includes/logout.php" title = "Logout from Package Hero"><i class="fa fa-close fa-fw"></i> Sign out</a></span>

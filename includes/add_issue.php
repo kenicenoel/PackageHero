@@ -1,6 +1,7 @@
 <?php
   include_once "config.php";
   require 'classes/php-mailer/PHPMailerAutoload.php';
+  require_once ('functions/sendMail.php');
 
           if(isset($_FILES['images']) && isset($_POST['trackingnumber']))
           {
@@ -20,6 +21,8 @@
                 $description = $_POST['description'];
                 $itemtype = $_POST['itemtype'];
                 $shippingcarrier = $_POST['shippingcarrier'];
+
+                // if(isset($_POST['emailBody']) && $_POST['emailBody'] != ""){ $customEmail = $_POST['emailBody'] }
 
                 //execute the prepared statement
                 $stmt->execute();
@@ -134,49 +137,113 @@
                         $i++;
 
 
-                        /* ////////////////////////////////////////////////
-                            Use PHP Mailer to send an email to the customer
-                            ////////////////////////////////////////////////
-                        */
-
-                        $mail = new PHPMailer;
-
-                        //$mail->SMTPDebug = 3;                               // Enable verbose debug output
-
-                        $mail->isSMTP();                                      // Set mailer to use SMTP
-                        $mail->Host = 'smtp-mail.outlook.com';                // Specify main and backup SMTP servers
-                        $mail->SMTPAuth = true;                               // Enable SMTP authentication
-                        $mail->Username = 'kenicenoel@outlook.com';           // SMTP username
-                        $mail->Password = 'k3nic3n03l';                       // SMTP password
-                        $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-                        $mail->Port = 587;                                    // TCP port to connect to
-
-                        $mail->setFrom('donotreply@shipwebsource.com', 'Web Source Support Center');
-                        $mail->addAddress('guischard@shipwebsource.com', 'Charles');     // Add a recipient
-                        $mail->addAddress('kenicenoel@outlook.com', 'Kenice Noel');               // Name is optional
-                        $mail->addReplyTo('info@shipwebsource.com', 'Web Source');
-
-
-
-                        // $mail->addCC('cc@example.com');
-                        // $mail->addBCC('bcc@example.com');
-
-                        // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-                        // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
-                        $mail->isHTML(true);                                  // Set email format to HTML
-
-                        $mail->Subject = "There's an issue with your package(s)";
-                        $mail->Body    = 'Dear <b>'.$customername.',</b><br> We require your attention for one or packages with tracking number '.$trackingnumber.'<br>Item: '.$itemtype.'<br>Problem: '.$mainissue.'<br>Please click <a href="#">here</a> to view photos and to respond.';
-                        // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-
-                        if(!$mail->send())
+                        // Prepare the body variables
+                        if(isset($_POST['emailBody']) && $_POST['emailBody'] != "" && $_POST['emailBody'] != "no")
                         {
-                            $errors.='Sorry. Message could not be sent.';
-                            $errors.='<br>Mailer Error: ' . $mail->ErrorInfo;
+                          $body = $_POST['emailBody'];
                         }
-                         else
+
+                        else
                         {
-                            $errors.='Message has been sent: ';
+                          $autoText =
+                          '
+                          <!DOCTYPE html>
+                          <html>
+                          <head>
+                              <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                              <title></title>
+                          </head>
+
+                        <body style="-webkit-font-smoothing: antialiased; -webkit-text-size-adjust: none; height: 100%; line-height: 1.6; width: 100% !important">
+
+                        <table class="body-wrap" style="border: 1px solid #d2d9d2; margin: 0 auto">
+
+                            <div class="content">
+
+                                      <tr style="width: 80%">
+                                        <td class="content-block">
+                                          <img src="http://packagehero.websource-caribbean.com/ImageProxy.png" alt="Web Source Logo" style="height: 73px; margin: 0 120px; vertical-align: middle; width: 223px">
+                                        </td>
+                                      </tr>
+                                      <tr style="width: 80%">
+                                        <td class="content-block">
+                                          <h1 style="background-color: #FF0000; color: #fff; font-size: 25px; font-weight: 500; line-height: 1.2; margin: 10px 0; padding: 5px 0; text-align: center" align="center">We require your assistance</h1>
+                                        </td>
+                                      </tr>
+                                      <tr class="customerName" style="width: 80%">
+                                        <td>
+                                          <h2 style="color: #03A9F4; font-size: 15px; font-weight: 400; line-height: 1.2; margin: 5px 20px; text-align: left" align="left">Dear '.$customername.',</h2>
+                                        </td>
+                                      </tr>
+                                      <tr class="openingGreeting" style="width: 80%">
+                                        <td style="padding: 15px 20px; text-align: left" align="left">
+                                          There is an issue with your package.
+                                        </td>
+                                      </tr>
+
+                                          <tr style="width: 80%">
+                                            <td class="space" style="padding: 8px 20px">
+                                              <span class="heading" style="font-weight: bolder">Description: </span>'.$itemtype.'
+                                            </td>
+                                          </tr>
+                                          <tr style="width: 80%">
+                                            <td class="space" style="padding: 8px 20px">
+                                              <span class="heading" style="font-weight: bolder">Shipped by: </span>'.$shippingcarrier.'
+                                            </td>
+                                          </tr>
+
+                                          <tr style="width: 80%">
+                                            <td class="space" style="padding: 8px 20px">
+                                              <span class="heading" style="font-weight: bolder">Tracking: </span>'.$trackingnumber.'
+                                            </td>
+                                          </tr>
+
+                                          <tr style="width: 80%">
+                                            <td class="space" style="padding: 8px 20px">
+                                              <span class="heading" style="font-weight: bolder">Issue: </span>'.$mainissue.'
+                                            </td>
+                                          </tr>
+
+                                          <tr style="width: 80%">
+                                            <td class="space" style="padding: 8px 20px">
+                                              <p>
+                                                Please click <a href="#" title="Resolve this issue">here</a> to view more details and to resolve this issue.
+                                              </p>
+                                            </td>
+                                          </tr>
+
+                                            <tr class="openingGreeting" style="width: 80%">
+                                              <td class="space" style="padding: 15px 20px; text-align: left" align="left">
+                                                We thank you for your continued support
+                                                <h2 class="closingStatement" style="color: #000; font-size: 15px; font-weight: bolder; line-height: 1.2; margin: 5px auto; text-align: left" align="left">Regards,</h2>
+                                                <h2 class="closingStatement" style="color: #000; font-size: 15px; font-weight: bolder; line-height: 1.2; margin: 5px auto; text-align: left" align="left">Web Source</h2>
+                                              </td>
+                                            </tr>
+
+                          </div>
+
+
+                        </table>
+
+                        </body>
+                        </html>
+
+
+
+
+                          ';
+                          $body = $autoText;
+
+                        }
+                        // If the
+                        if(isset($_POST['emailBody']) && $_POST['emailBody'] != "no")
+                        {
+                          $subject = "There's a problem with your package(s)";
+                          $from = "info@shipwebsource.com";
+                          $to = "kenicenoel@outlook.com";
+                          $replyTo = "customerservice@shipwebsource.com";
+                          $errors.= composeEmail($from, $to, $subject, $replyTo, $body);
+
                         }
 
 
@@ -200,9 +267,6 @@
                     goto end;
 
                     }
-
-
-
 
                 }
 

@@ -25,7 +25,12 @@
           // title:'Number of available and hidden issues',
           width:"100%",
           // height:300,
-          pieHole:0.2,
+          // pieHole:0.4,
+          slices:
+          {
+            1: {offset: 0.1},
+
+          },
           pieSliceText:'value',
           fontSize:15,
           legend: { position: "left" },

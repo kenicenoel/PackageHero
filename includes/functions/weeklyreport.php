@@ -50,7 +50,7 @@
     $table['cols'] = array // define the column names
     (
       // Labels for the chart, these represent the column titles
-      array('id' => '', 'label' => 'Days with issues', 'type' => 'string'),
+      array('id' => '', 'label' => 'Last 7 days with issues', 'type' => 'string'),
       array('id' => '', 'label' => 'Number of Issues', 'type' => 'number')
     );
 

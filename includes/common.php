@@ -422,7 +422,7 @@
 					{
 						echo
 						'
-						<div class="news-feed">
+						<div class="news-feed roundedBorder">
 							<header class ="modules newsModule"> <i class="fa fa-bullhorn fa-fw"></i> News <i class="fa fa-caret-down"></i></header>
 								'.$generateMostRecentNewsItems.'
 						</div>
@@ -433,7 +433,7 @@
 
 
 					echo '
-						<div class="summary">
+						<div class="summary roundedBorder">
 							<header class ="modules summaryModule"> <i class="fa fa-calculator fa-fw"></i> Summary <i class="fa fa-caret-down"></i></header>
 							<p id="summary-graph">
 
@@ -441,7 +441,7 @@
 
 						</div>
 						<!-- The graphs trends -->
-						<div class="trends">
+						<div class="trends roundedBorder">
 							<header class ="modules trendsModule"> <i class="fa fa-line-chart fa-fw"></i> Trends <i class="fa fa-caret-down"></i></header>
 							<p id="weekly-report">
 
@@ -452,7 +452,7 @@
 							<br><br>
 
 							<!-- This div shows the 5 most recent package issues that are not hidden and are unresolved -->
-							<div class="recent-items">
+							<div class="recent-items roundedBorder">
 								<header class ="modules recentModule"> <i class="fa fa-history fa-fw"></i> Recent <i class="fa fa-caret-down"></i></header>
 										<table id="results">
 											<thead>
