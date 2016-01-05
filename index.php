@@ -5,17 +5,17 @@
 
 				<div id ="bottom">
 							<form id="form" method ="post">
-								<img src="images/icons/id.svg" />
-								<header id="welcome">Hello!</header>
+								<img src="images/icons/userpc.png" />
+								<header id="welcome">Welcome!</header>
 									<?php
 										if(isset($_GET['page']))
 										{
-											echo '<p class="text">Almost there. Tell us who you are first.</p>';
+											echo '<p class="text">You need to login before we can show you this.</p>';
 										}
 
 										else
 										{
-											echo '<p class="text">Before we can let you in, we need to know who you are</p>';
+											echo "<p class='text'>What's your username and password again?</p>";
 										}
 									?>
 

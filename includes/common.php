@@ -454,13 +454,14 @@
 							<!-- This div shows the 5 most recent package issues that are not hidden and are unresolved -->
 							<div class="recent-items roundedBorder">
 								<header class ="modules recentModule"> <i class="fa fa-history fa-fw"></i> Recent <i class="fa fa-caret-down"></i></header>
-										<table id="results">
+										<table class="nospacing" id="results">
 											<thead>
 												<tr>
 													<th>Tracking Number</th>
 													<th>Customer</th>
 													<th>Issue</th>
 													<th>Description</th>
+													<th></th>
 
 												</tr>
 											</thead>

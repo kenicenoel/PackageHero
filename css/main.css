@@ -4,11 +4,12 @@ body
 	padding: 0;
 	width: 100%;
 	color: #000;
-	background-color: #05ABE0;
-	background-repeat: no-repeat;
+	background-color: #009688;
+	background-repeat: repeat;
+	background-image: url('../images/shapes.png');
 	/*background-position: top 2%;*/
-	background-size: cover;
-	font-family: 'Source Sans Pro', sans-serif;
+	/*background-size: cover;*/
+	font-family: 'Roboto', sans-serif;
 	height: 100%;
 }
 
@@ -50,8 +51,8 @@ div#bottom
 
 form > img
 {
-	height: 200px;
-	width: 200px;
+	/*height: 200px;*/
+	/*width: 200px;*/
 	display: block;
 	margin: 0 auto;
 }
@@ -191,7 +192,7 @@ input[type=text], input[type=password], input[type=email]
 label
 {
 	font-family: 'Roboto', sans-serif;
-	font-size: 1em;
+	font-size: 12px;
 	display: block;
 	color: #777777;
 	width:150px;

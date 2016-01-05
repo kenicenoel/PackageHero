@@ -15,6 +15,7 @@
 
 						<!-- Load the Icon files and graph stuff  -->
 						<link type="text/css" rel="stylesheet" href="../css/styles.css" />
+						<link type="text/css" rel="stylesheet" href="../css/mobile.css" />
 						<link type="text/css" rel="stylesheet" href="../css/jquery-ui.min.css" />
 						<link href="../css/jquery.circliful.css" rel="stylesheet" type="text/css" />
 						<link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
@@ -41,7 +42,7 @@
 
 							<!-- The main nav at the top of the screen  -->
 							<ul id="top" class="effect1">
-								<li class="menu"><i class="fa fa-bars fa-fw"></i></li>
+								<li class="menu"><i class="fa fa-bars fa-fw"></i>Show menu</li>
 								<li class="user"><a href="#" title="Update your profile"><?php echo $user; ?></a>
 									<ul class="submenu">
 										<li class="profile"><a href="#" title="Update your user profile"><i class="fa fa-pencil fa-fw"></i>update profile</a></li>
@@ -54,16 +55,16 @@
 							<!-- The left navigation -->
 
 							<nav id ="navigation">
-
+								<span class="issues"><a class ="link" id="first-link" href ="?module=overview" title = "View an overview of the system"><i class="fa fa-home fa-fw"></i> Dashboard</a></span>
 								<header class="navCategory navIssues">Issues<i class="fa fa-toggle-on"></i></header>
-								<span class="issues"><a class ="link" id="first-link" href ="?module=overview" title = "View an overview of the system"><i class="fa fa-globe fa-fw"></i> Overview</a></span>
+
 								<?php
 									if($role == "Administrator" || $role == "Miami") // Show the new issue menu if the user is an admin or has a miami account
 									{
-										echo '<span class="issues"><a class ="link" href="#" id="newissue" title = "Create a new issue"><i class="fa fa-bug fa-fw"></i> New Issue</a></span>';
+										echo '<span class="issues"><a class ="link" href="#" id="newissue" title = "Create a new issue"><i class="fa fa-bug fa-fw"></i> Create an issue</a></span>';
 									}
 								?>
-								<span class="issues"><a class ="link" id="viewIssues" href="../includes/allpackages.php"  title = "View a list of all Packages with issues"><i class="fa fa-eye fa-fw"></i> View issues <span class="numberOfIssues"><?php echo countTotalAvailableIssues(); ?></span></a></span>
+								<span class="issues"><a class ="link" id="viewIssues" href="../includes/allpackages.php"  title = "View a list of all Packages with issues"><i class="fa fa-eye fa-fw"></i> View all issues <span class="numberOfIssues"><?php echo countTotalAvailableIssues(); ?></span></a></span>
 
 
 								<header class="navCategory navPackages">Packages<i class="fa fa-toggle-on"></i></header>

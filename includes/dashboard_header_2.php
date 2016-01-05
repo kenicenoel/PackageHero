@@ -13,6 +13,7 @@
 					<title>Package Hero&reg;</title>
 					<!-- The CSS styles  -->
 					<link rel = "stylesheet" href = "../css/admin_styles.css" type ="text/css">
+					<link rel = "stylesheet" href = "../css/mobile.css" type ="text/css">
 					<link type="text/css" rel="stylesheet" href="../css/overlaypopup.css" />
 					<link type="text/css" rel="stylesheet" href="../css/jquery-ui.min.css" />
 
@@ -52,15 +53,16 @@
 
 						<!-- The left navigation -->
 						<nav id ="navigation">
+							<span class="issues"><a class ="link" id="first-link" href ="../admin/dashboard.php?module=overview" title = "View an overview of the system"><i class="fa fa-home fa-fw"></i> Dashboard</a></span>
 							<header class="navCategory navIssues">Issues<i class="fa fa-toggle-on"></i></header>
-							<span class="issues"><a class ="link" id="first-link" href ="../admin/dashboard.php?module=overview" title = "View an overview of the system"><i class="fa fa-globe fa-fw"></i> Overview</a></span>
+
 							<?php
 								if($role == "Administrator" || $role == "Miami") // Show the new issue menu if the user is an admin or has a miami account
 								{
-									echo '<span class="issues"><a class ="link" href="#" id="newissue" title = "Create a new issue"><i class="fa fa-bug fa-fw"></i> New issue</a></span>';
+									echo '<span class="issues"><a class ="link" href="#" id="newissue" title = "Create a new issue"><i class="fa fa-bug fa-fw"></i> Create an issue</a></span>';
 								}
 							?>
-							<span class="issues"><a class ="link" id="viewIssues" href="../includes/allpackages.php"  title = "View a list of all Packages with issues"><i class="fa fa-eye fa-fw"></i> View issues <span class="numberOfIssues"><?php echo countTotalAvailableIssues(); ?></span></a></span>
+							<span class="issues"><a class ="link" id="viewIssues" href="../includes/allpackages.php"  title = "View a list of all Packages with issues"><i class="fa fa-eye fa-fw"></i> View all issues <span class="numberOfIssues"><?php echo countTotalAvailableIssues(); ?></span></a></span>
 
 
 							<header class="navCategory navPackages">Packages<i class="fa fa-toggle-on"></i></header>
@@ -69,7 +71,7 @@
 							<?php
 								if($role == "Administrator" || $role == "Miami") // Admins and Miami accounts can see Initial Package Scanning menu
 								{
-									echo '<span class="packages"><a class ="link" href ="#" id="initialPackageScan" title = "Perform an initial package scan"><i class="fa fa-qrcode fa-fw"></i> Scan a package</a></span>';
+									echo '<span class="packages"><a class ="link" href ="#" id="initialPackageScan" title = "Perform an initial package scan"><i class="fa fa-qrcode fa-fw"></i> Initial package scan</a></span>';
 									// echo '<span class="packages"><a class ="link" href="../includes/allpackagescans.php"  title = "A list of all scanned packages"><i class="fa fa-eye fa-fw"></i> View Package scans</a></span>';
 								}
 							?>

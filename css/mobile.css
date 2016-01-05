@@ -1,0 +1,73 @@
+/* ----------- Non-Retina Screens ----------- */
+  @media screen
+  and (min-device-width: 1200px)
+  and (max-device-width: 1440px)
+  and (-webkit-min-device-pixel-ratio: 1)
+  {
+
+    table
+    {
+
+    	font-size: 15px;
+    	width: 90%;
+    	color: #000;
+    	font-weight: 300;
+    	padding-left: 10px;
+    	padding-bottom: 50px;
+    	margin:0 auto;
+    }
+
+
+    thead
+    {
+    	color:#3C3F42;
+    	font-size: 16px;
+      text-align:left;
+    	text-transform: uppercase;
+      padding: 10px 0;
+      margin: 10px 0;
+      font-weight: 500;
+
+    }
+
+    td
+    {
+    	padding: 10px 5px;
+    	font-size: 15px;
+    	text-align: left;
+    }
+
+    #table-results .time
+    {
+      max-width: 95px;
+      min-width: 95px;
+
+    }
+
+    #table-results > div > p
+    {
+      font-size: 12px;
+      min-width: 140px;
+      max-width: 140px;
+    }
+
+    .listView
+    {
+      width: 90% !important;
+
+    }
+
+
+
+  }
+
+
+
+
+    /* MOBILE STYLES */
+   @media screen and (max-width: 768px)
+   {
+
+
+
+   }

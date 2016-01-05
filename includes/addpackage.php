@@ -54,7 +54,7 @@
               <option value = "no">No</option>
             </select>
 
-            <label id="forEmailBody" style="display:none;" for ="emailBody">Email text</label>
+            <label id="forEmailBody" style="display:none;" for ="emailBody">Email body</label>
             <textarea style="display:none;" id="emailBody" name="emailBody" rows="7" cols="55" ></textarea>
 
           <label for="images">Images (MAX: 5)</label>
@@ -67,6 +67,8 @@
       	<script type= "text/javascript" src="../includes/js/jquery.js"></script>
 
         <script type="text/javascript">
+
+
           $('#sendEmail').change(function()
           {
             var sendEmail = $(this).val();
@@ -75,6 +77,7 @@
             {
               $('#emailBody').css('display', 'block');
               $('#forEmailBody').css('display', 'block');
+
             }
 
             else

@@ -4,25 +4,28 @@
     global $connection;
     if(isset($_POST['FirstName']) || isset($_POST['LastName']) || isset($_POST['EmailAddress']) || isset($_POST['PhoneNumber']) || isset($_POST['Password']))
       {
+
       	// Check each set key and index from the form and update appropriate field in table
       	foreach ($_POST as $key => $val)
       	{
-          if($key == 'Password')
-          {
-            $val = md5($val);
-          }
-      			if($val != null)
-      			{
-      					$sql = "UPDATE users SET {$key} = ?  WHERE userId = ?;";
+            if($key == 'Password')
+            {
+              $val = md5($val);
+            }
 
-      					//prepare the sql statement
-      					$stmt = $connection->prepare($sql);
-      					$stmt->bind_param('si', $val, $id);
-      					//execute the prepared statement
-      					$stmt->execute();
-      					$stmt->close();
-      					$connection->close();
-      			}
+        		if($val != null || $val != "")
+        		{
+        					$sql = "UPDATE users SET {$key} = ?  WHERE userId = ?;";
+
+        					// Prepare the sql statement
+        					$stmt = $connection->prepare($sql);
+        					$stmt->bind_param('si', $val, $id);
+
+        					// Execute the prepared statement
+        					$stmt->execute();
+        					$stmt->close();
+        					$connection->close();
+        			}
       		}
       			echo 'success';
 

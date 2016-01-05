@@ -23,7 +23,7 @@
         var options =
         {
           // title:'Number of recent issues for the last 7 days',
-          width:900,
+          width:"100%",
           // height:300,
           pointSize:4,
           legend: { position: "none" },

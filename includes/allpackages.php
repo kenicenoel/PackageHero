@@ -58,7 +58,7 @@
 		$limit = 'LIMIT ' .($pagenum - 1) * $pageRows . ',' . $pageRows;
 
 		// Grab one row of data
-		$sql = "SELECT DATE_FORMAT(IssueCreationTime,'%W, %D %M, %Y') As date, DATE_FORMAT(IssueCreationTime,'%h:%i %p') As time, TrackingNumber, CustomerName, MainIssue, Description, ShippingCarrier, ItemType, photo1 FROM packages WHERE Resolved = 'No' AND (PackageID NOT IN(SELECT PackageID from hiddenissues) OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = '$country')) ORDER BY PackageID DESC $limit";
+		$sql = "SELECT DATE_FORMAT(IssueCreationTime,'%W, %D %M, %Y') As date, DATE_FORMAT(IssueCreationTime,'%h:%i %p') As time, TrackingNumber, PackageID, CustomerName, MainIssue, Description, ShippingCarrier, ItemType, photo1 FROM packages WHERE Resolved = 'No' AND (PackageID NOT IN(SELECT PackageID from hiddenissues) OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = '$country')) ORDER BY PackageID DESC $limit";
 
 
 		  // prepare the sql statement
@@ -71,7 +71,7 @@
 		  $stmt->store_result();
 
 		  /* Bind the results to variables */
-		  $stmt->bind_result($date, $time, $tnumber, $customername, $mainissue, $description, $shippingcarrier, $itemtype, $photo1);
+		  $stmt->bind_result($date, $time, $tnumber, $pid, $customername, $mainissue, $description, $shippingcarrier, $itemtype, $photo1);
 			$i = 0;
 
 			$textline = "<p>There are $total packages with issues in the system and you are currently on page $pagenum of $lastPage.</p>";
@@ -185,7 +185,7 @@
 
 				    <p class="quickButtonsHolder">
 						<button class="quickView"><a id="view-full" class="full-details" href="fulldetails.php?trackingnumber='.$tnumber.'" title="View full package details">view</a></button>
-						<button class="quickHide hide">hide</button>
+						<button class="quickHide hide" data-tracking="'.$tnumber.'" data-pid="'.$pid.'">hide</button>
 						</p>
 			  </div>
 
@@ -244,6 +244,7 @@
 			<script type="text/javascript" src="../fancybox/source/helpers/jquery.fancybox-buttons.js"></script>
 			<script type="text/javascript" src="../fancybox/source/helpers/jquery.fancybox-media.js"></script>
 			<script type="text/javascript" src="../fancybox/source/helpers/jquery.fancybox-thumbs.js"></script>
+			<script src="../includes/js/jquery-ui.min.js"></script>
 			<script type= "text/javascript" src="../includes/js/main.js"></script>
 
 

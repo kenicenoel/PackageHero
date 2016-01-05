@@ -6,9 +6,25 @@
       global $connection;
 
       $username = $_SESSION['username'];
-      $pid = $_SESSION['pid'];
-      $tnumber = $_SESSION['trackingnumber'];
 
+      // print_r($_POST);
+
+      if(isset($_POST['tr']) && isset($_POST['pid']))
+      {
+         $pid = $_POST['pid'];
+         $tnumber = $_POST['tr'];
+
+        //echo '??????????????????????????????????';
+        // echo $_POST['t'];
+
+
+      }
+
+      else
+      {
+        $pid = $_SESSION['pid'];
+        $tnumber = $_SESSION['trackingnumber'];
+      }
 
 
       // Get the user country
@@ -28,7 +44,7 @@
       $stmt->execute();
 
       // Insert the newsfeed item into table
-      $news = $username." has hidden issue ".$tnumber." from all users in ".$country;
+      $news = $username." has hidden issue ".$tnumber;
       $sql = "INSERT INTO newsfeed (PackageID, News, Username) VALUES(?,?,?)";
       $stmt = $connection->prepare($sql);
       $stmt->bind_param('sss', $pid, $news, $username);
