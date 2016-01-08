@@ -9,16 +9,21 @@ body
 }
 
 
-
-
-
-
 img
 {
 	user-drag: none;
 	-moz-user-select: none;
 	-webkit-user-drag: none;
 }
+
+h4
+{
+	/*margin: 0 auto;*/
+	text-align: center;
+	padding: 20px 0;
+	color: #37474F;
+}
+
 
 
 ul#top
@@ -92,6 +97,7 @@ ul#top > li > ul.submenu
 	background-color: #fff;
 	display: none;
 	position: absolute;
+	font-size: 17px;
 	margin: 15px -50px;
 	padding:10px 10px;
 	border-top: 3px solid #FFC107;
@@ -164,11 +170,18 @@ ul#top > li.menu
 	font-size: 15px;
 }
 
+.countryImage
+{
+	position: absolute;
+	right: 10px;
+	top: 8px;
+}
+
 ul#top > li.user
 {
 	text-transform: capitalize;
 	position: absolute;
-	right:50px;
+	right:60px;
 	top: 5px;
 }
 
@@ -285,7 +298,6 @@ nav > span > a.link
 
 	color:#fff;
 	padding: 10px 0 15px 12px;
-	/*font-family: 'Josefin Sans', sans-serif;*/
 	font-size: 15px;
 	display: block;
 	text-decoration: none;
@@ -1374,6 +1386,59 @@ div.card a.listing
 	float: right;
 	display: block;
 }
+
+.helpHeader
+{
+	color: #03A9F4;
+	text-align: center;
+	padding: 20px 0;
+	font-size: 35px;
+}
+
+.helpHeader .helpSubText
+{
+	font-size: 18px;
+	margin: 5px 0;
+	color: #37474F;
+}
+
+video
+{
+	display: inline-block;
+	padding: 20px 10px 0 0;
+}
+
+video.tutorial
+{
+	margin: 0 20px;
+}
+
+.loader
+{
+	display: none;
+
+	position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 )
+                url('../images/icons/loader.svg')
+                50% 50%
+                no-repeat;
+}
+
+body.loading
+{
+    overflow: hidden;
+}
+
+body.loading .loader
+{
+    display: block;
+}
+
 
 
 footer

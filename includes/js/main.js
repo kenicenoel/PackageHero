@@ -36,8 +36,13 @@ $(document).ready(function()
                         var myXhr = $.ajaxSettings.xhr();
                         return myXhr;
                     },
+                    beforeSend: function ()
+                    {
+                      $('body').addClass('loading');
+                    },
                     success: function (response)
                     {
+                      $('body').removeClass('loading');
                       if(response == "done" || response == "Message has been sent: done")
                       {
                         $('#errorMessage').append("<p style='font-size:1.1em; background-color:#27ae60; color:#ffffff;'><i class='fa fa-check-circle'></i> Done. If you chose to, an email was also sent.<br>You may now add another or move on.</p>");
@@ -217,6 +222,7 @@ $(document).ready(function()
                         });
 
                       });
+
 
 
                       // When user clicks on the link that says "Initial PKG SCAN" in the navigation, run this task

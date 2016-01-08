@@ -40,11 +40,12 @@
 
 						<!-- The main nav at the top of the screen  -->
 						<ul id="top">
-							<li class="menu"><i class="fa fa-bars fa-fw"></i></li>
+							<li class="menu"><i class="fa fa-bars fa-fw"></i>Show menu</li>
+							<li><?php echo $userCountryImage; ?></li>
 							<li class="user"><a href="#" title="Update your profile"><?php echo $user; ?></a>
 								<ul class="submenu">
 									<li class="profile"><a href="#" title="Update your user profile"><i class="fa fa-pencil fa-fw"></i>update profile</a></li>
-									<li><a href ="../includes/logout.php" title = "Logout from Package Hero"><i class="fa fa-close fa-fw"></i>Sign out</a></li>
+									<li><a href ="../includes/logout.php" title = "Logout from Package Hero"><i class="fa fa-power-off fa-fw"></i>Sign out</a></li>
 								</ul>
 							</li>
 							<li class="pageTitle"><?php echo $title; ?></li>
@@ -53,7 +54,7 @@
 
 						<!-- The left navigation -->
 						<nav id ="navigation">
-							<span class="issues"><a class ="link" id="first-link" href ="../admin/dashboard.php?module=overview" title = "View an overview of the system"><i class="fa fa-home fa-fw"></i> Dashboard</a></span>
+							<span class="dashboard"><a class ="link" id="first-link" href ="../admin/dashboard.php?module=overview" title = "View an overview of the system"><i class="fa fa-home fa-fw"></i> Dashboard</a></span>
 							<header class="navCategory navIssues">Issues<i class="fa fa-toggle-on"></i></header>
 
 							<?php
@@ -82,8 +83,12 @@
 							<?php
 								if($role == "Administrator")
 								{
-									echo '<span class="usr"><a class ="link" href ="#" id="adduser" title = "Create a new user"><i class="fa fa-user-plus fa-fw"></i> Add new user</a></span>';
+									echo '<span class="usr"><a class ="link" href ="#" id="adduser" title = "Create a new user"><i class="fa fa-user-plus fa-fw"></i> Create a new user</a></span>';
 								}
 							?>
-							<span class="usr"><a class ="link" href ="../includes/logout.php" title = "Logout from Package Hero"><i class="fa fa-close fa-fw"></i> Sign out</a></span>
+							<span class="usr"><a class ="link" href ="../includes/helpcenter.php" title = "Need help on using Package Hero? get that here."><i class="fa fa-question fa-fw"></i> Get help</a></span>
+							<span class="usr"><a class ="link" href ="../includes/logout.php" title = "Logout from Package Hero"><i class="fa fa-power-off fa-fw"></i> Sign out</a></span>
+
+
+
 						</nav>

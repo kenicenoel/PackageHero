@@ -11,16 +11,20 @@ if(!isset($_SESSION['id']) && !isset($_SESSION['username']))
 require_once ("../includes/dashboard_header.php");
 
 ?>
-<div id ="content2">
+		<div id ="content2">
 
-					<div id="data">
-							<?php echo call_user_func($setmodule) ?>
-					</div>
+							<div id="data">
+									<?php echo call_user_func($setmodule) ?>
+							</div>
 
 			</div>
 
 
-	</div>
+
+</div>
+<div class="loader">
+	
+</div>
 </body>
 <script src="../includes/js/jquery.js"></script>
 <script src="../includes/js/jquery-ui.min.js"></script>

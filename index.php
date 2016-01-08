@@ -1,12 +1,11 @@
 <?php include_once("includes/header.php"); ?>
 
 			<div id = "container">
-				<header class="top"><img src="images/logo.svg" /></header>
 
 				<div id ="bottom">
 							<form id="form" method ="post">
-								<img src="images/icons/userpc.png" />
-								<header id="welcome">Welcome!</header>
+								<img src="images/logo.svg" />
+								<header id="welcome">Hello</header>
 									<?php
 										if(isset($_GET['page']))
 										{
@@ -15,7 +14,7 @@
 
 										else
 										{
-											echo "<p class='text'>What's your username and password again?</p>";
+											echo "<p class='text'>Please enter your username and password </p>";
 										}
 									?>
 

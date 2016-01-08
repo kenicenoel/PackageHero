@@ -41,6 +41,11 @@ if($_SERVER['REQUEST_URI'] =="/packagehero/includes/allpackages.php")
   $title = "View a list of all current issues";
 }
 
+if($_SERVER['REQUEST_URI'] =="/packagehero/includes/helpcenter.php")
+{
+  $title = "Package Hero Help Center";
+}
+
 
 
 

@@ -198,8 +198,7 @@
 
 ?>
 
-						<div id = "container">
-
+					
 						<div id ="content2">
 								<div id="data">
 									<div id = "toggle-view">

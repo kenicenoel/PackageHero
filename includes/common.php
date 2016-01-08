@@ -373,7 +373,7 @@
 					<label for="afterDate"> And</label><input type="date"  id="after" name="afterDate" />
 					<input id="lookupButton" type="submit" value="Find">
 
-					<header class="subheading searchOptions">Results key</header>
+					<header class="subheading searchOptions">Icon guide</header>
 					<p class="searchKey"><span><i class="fa fa-bug"></i></span> : Package Issue</p>
 					<p class="searchKey"><span><i class="fa fa-shopping-bag"></i></span> : Item description</p>
 					<p class="searchKey"><span><i class="fa fa-ship"></i></span> : Shipping carrier e.g UPS</p>

@@ -249,7 +249,7 @@
                         {
                           $subject = "There's a problem with your package(s)";
                           $from = "info@shipwebsource.com";
-                          $to = "brendon@shipwebsource.com";
+                          $to = "kenice1@gmail.com";
                           $replyTo = "customerservice@shipwebsource.com";
                           $errors.= composeEmail($from, $to, $subject, $replyTo, $fullEmailContent);
 
