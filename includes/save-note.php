@@ -19,19 +19,25 @@
       $news = $username." (".$agent.") created a new note for issue  ".$tnumber.". NOTE: '".$note."'";
 
       // Insert the note into the updates table
-      $sql = "INSERT INTO updates (PackageID, Note, Username, Agent) VALUES(?,?,?,?)";
+      $sql = "INSERT INTO updates (PackageID, Note, Username, Agent) VALUES(:PackageID, :Note, :Username, :Agent)";
       $stmt = $connection->prepare($sql);
-      $stmt->bind_param('ssss', $pid, $note, $username, $agent);
+      $stmt->bindParam(':PackageID', $pid, PDO::PARAM_INT);
+      $stmt->bindParam(':Note', $note, PDO::PARAM_STR);
+      $stmt->bindParam(':Username', $username, PDO::PARAM_STR);
+      $stmt->bindParam(':Agent', $agent, PDO::PARAM_STR);
       $stmt->execute();
-      $stmt->close();
+
 
 
       // Insert the news into the newsfeed table
-      $sql = "INSERT INTO newsfeed (PackageID, News, Username) VALUES(?,?,?)";
+      $sql = "INSERT INTO newsfeed (PackageID, News, Username) VALUES(:PackageID, :News, :Username)";
       $stmt = $connection->prepare($sql);
-      $stmt->bind_param('sss', $pid, $news, $username);
+      $stmt->bindParam(':PackageID', $pid, PDO::PARAM_INT);
+      $stmt->bindParam(':News', $news, PDO::PARAM_STR);
+      $stmt->bindParam(':Username', $username, PDO::PARAM_STR);
+
       $stmt->execute();
-      $stmt->close();
+
 
       echo "Done";
 

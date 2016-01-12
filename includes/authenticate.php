@@ -12,29 +12,49 @@
 
 
     // Check the username, password and select the information from the database
-    $sql = "SELECT userId, Country, Role, Agent FROM users WHERE Username = ? AND Password = ?";
+    $sql = "SELECT UserId, Country, Role, Agent FROM users WHERE Username = :username AND Password = :password";
     $stmt = $connection->prepare($sql);
-    $stmt->bind_param('ss', $u, $p);
+
+    # setting the fetch mode
+    $stmt->setFetchMode(PDO::FETCH_OBJ);
+
+    $stmt->bindParam(':username', $u, PDO::PARAM_STR);
+    $stmt->bindParam(':password', $p, PDO::PARAM_STR);
     $stmt->execute();
-    $stmt->bind_result($id, $country, $role, $agent);
-    if($stmt->fetch())
+
+    $total = $stmt->rowCount();
+
+    if($total == 1)
     {
-
-        echo 'success';
+      echo 'success';
+      while($row = $stmt->fetch())
+      {
         // create a new session
-        $_SESSION['id'] = $id;
+        $_SESSION['id'] = $row ->UserId;
         $_SESSION['username'] = $u;
-        $_SESSION['country'] = $country;
-        $_SESSION['role'] = $role;
-        $_SESSION['agent'] = $agent;
-        
+        $_SESSION['country'] = $row->Country;
+        $_SESSION['role'] = $row->Role;
+        $_SESSION['agent'] = $row->Agent;
+      }
 
+      // $error="";
+      // $error.= $_SESSION['id'];
+      // $error.=$_SESSION['username'];
+      // $error.=$_SESSION['country'];
+      // $error.=$_SESSION['role'];
+      // $error.=$_SESSION['agent'];
+
+      // echo $error;
     }
+
+
 
       else
       {
         echo 'failure';
       }
+
+      $connection = null;
 
 
 ?>

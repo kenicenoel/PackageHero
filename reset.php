@@ -17,24 +17,28 @@
       $email = $_POST['emailaddress'];
 
       // Check the username, password and select the information from the database
-      $sql = "SELECT userId FROM users WHERE Username = ? AND EmailAddress = ?";
+      $sql = "SELECT UserId FROM users WHERE Username = :Username AND EmailAddress = :EmailAddress";
       $stmt = $connection->prepare($sql);
-      $stmt->bind_param('ss', $user, $email);
+
+      $stmt->setFetchMode(PDO::FETCH_OBJ);
+      $stmt->bindParam(':Username', $user);
+      $stmt->bindParam(':EmailAddress', $email);
       $stmt->execute();
-      $stmt->bind_result($id);
-      $stmt->store_result();
-      if($stmt->fetch())
+
+      while($stmt->fetch())
       {
           $newPassword = generateSecurePassword(9);
           $password = md5($newPassword);
 
           // Insert the note into the updates table
-          $query = "UPDATE users SET Password = ? WHERE Username = ? AND EmailAddress = ?";
-          $stmt2 = $connection->prepare($query);
+          $sql2 = "UPDATE users SET Password = :Password WHERE Username = :Username AND EmailAddress = :EmailAddress";
+          $stmt = $connection->prepare($sql2);
 
-          $stmt2->bind_param('sss', $password, $user, $email);
-          $stmt2->execute();
-          $stmt2->close();
+          $stmt->bindParam(':Password', $password, PDO::PARAM_STR);
+          $stmt->bindParam(':Username', $user, PDO::PARAM_STR);
+          $stmt->bindParam(':EmailAddress', $email, PDO::PARAM_STR);
+          $stmt->execute();
+
 
           echo $newPassword;
 

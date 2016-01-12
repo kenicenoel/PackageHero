@@ -1,6 +1,8 @@
 // Load the Visualization API and the piechart package.
     google.load('visualization', '1', {'packages':['corechart']});
 
+    
+
     // Set a callback to run when the Google Visualization API is loaded.
     google.setOnLoadCallback(drawChart);
 
@@ -9,6 +11,8 @@
     {
       drawChart();
     });
+
+
 
     function drawChart()
     {
@@ -23,7 +27,7 @@
         var options =
         {
           // title:'Number of recent issues for the last 7 days',
-          width:900,
+          width:"100%",
           // height:300,
           pointSize:4,
           legend: { position: "none" },

@@ -27,52 +27,47 @@ if(isset($_POST['query']) || isset($_GET['query']) )
         {
           $after = $_POST['afterDate'];
         }
-        $sql = "SELECT TrackingNumber, AccountNumber, CustomerName, MainIssue, Resolved, Description, Photo1, ItemType, ShippingCarrier FROM packages WHERE (packages.IssueCreationTime BETWEEN ? AND ?)  OR packages.TrackingNumber Like ? OR packages.CustomerName Like ? OR packages.ItemType LIKE ? OR packages.ShippingCarrier LIKE ? OR packages.AccountNumber LIKE ?";
+        $sql = "SELECT TrackingNumber, AccountNumber, CustomerName, MainIssue, Resolved, Description, Photo1, ItemType, ShippingCarrier FROM packages WHERE (packages.IssueCreationTime BETWEEN :StartDate AND :EndDate)  OR packages.TrackingNumber Like :Query OR packages.CustomerName Like :Query OR packages.ItemType LIKE :Query OR packages.ShippingCarrier LIKE :Query OR packages.AccountNumber LIKE :Query";
 
-        // echo $before;
-        // echo $after;
-        // echo "Search Term=".$query;
+
 
 		  // prepare the sql statement
 		  $stmt = $connection->prepare($sql);
 
-		  // bind variables to the paramenters ? present in sql
-		  $stmt->bind_param('sssssss', $before, $after, $query ,$query, $query, $query, $query);
+      $stmt->setFetchMode(PDO::FETCH_OBJ);
+      $stmt->bindParam(':StartDate', $before, PDO::PARAM_STR);
+      $stmt->bindParam(':EndDate', $after, PDO::PARAM_STR);
+      $stmt->bindParam(':Query', $query, PDO::PARAM_STR);
+
 
 		  // execute the prepared statement
 		  $stmt->execute();
 
-		  /* store result */
-		  $stmt->store_result();
-
-		  /* Bind the results to variables */
-		  $stmt->bind_result($trackingnumber, $accountnumber, $customername, $issue, $resolved, $desc, $image1, $itemtype, $shippingcarrier);
 
 
-
-      while($stmt->fetch())
+      while($row = $stmt->fetch())
       {
 
-        $desc_snippet = substr($desc, 0, 25);
+        $desc_snippet = substr($row->Description, 0, 25);
           echo '
           <div id="search-card" class="card">
   						<div class="card-image">
-  							<p><img src="../includes/'.$image1.'"alt="packageImage" /></p>
+  							<p><img src="../includes/'.$row->Photo1.'"alt="packageImage" /></p>
   						</div>
 
   						<div class="card-details">
-  							<p class="customer">'.$customername.'</p>
-  							<p class="issue"><span class="fa fa-bug"></span> '.$issue.'</p>
-                <p class="issue"><span class="fa fa-shopping-bag"></span> '.$itemtype.'</p>
-                <p class="issue"><span class="fa fa-ship"></span> '.$shippingcarrier.'</p>
-  							<p class="issue"><span class="fa fa-check"> </span> Resolved: '.$resolved.'</p>
-                <p class="issue"><span class="fa fa-hashtag"> </span> Account #: '.$accountnumber.'</p>
+  							<p class="customer">'.$row->CustomerName.'</p>
+  							<p class="issue"><span class="fa fa-bug"></span> '.$row->MainIssue.'</p>
+                <p class="issue"><span class="fa fa-shopping-bag"></span> '.$row->ItemType.'</p>
+                <p class="issue"><span class="fa fa-ship"></span> '.$row->ShippingCarrier.'</p>
+  							<p class="issue"><span class="fa fa-check"> </span> Resolved: '.$row->Resolved.'</p>
+                <p class="issue"><span class="fa fa-hashtag"> </span> Account #: '.$row->AccountNumber.'</p>
                 <p class="description">'.$desc_snippet.'...</p>
   						</div>
 
   						<div class="card-footer">
-  					    <p class="trackingnumber"><span class="fa fa-truck"> </span> '.$trackingnumber.'</header>
-  					    <button class="url"><a id="view-full" class="full-details" href="../includes/fulldetails.php?trackingnumber='.urlencode($trackingnumber).'&res='.urlencode($resolved).'" title="View full package details">View</a></button>
+  					    <p class="trackingnumber"><span class="fa fa-truck"> </span> '.$row->TrackingNumber.'</header>
+  					    <button class="url"><a id="view-full" class="full-details" href="../includes/fulldetails.php?trackingnumber='.urlencode($row->TrackingNumber).'&res='.urlencode($row->Resolved).'" title="View full package details">View</a></button>
   						</div>
 
   			  </div>

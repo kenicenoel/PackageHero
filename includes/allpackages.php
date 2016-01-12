@@ -10,17 +10,17 @@
 
 
 		$country = $_SESSION['country'];
-
+		$resolved = 'No';
 
 		// Get the total rows from the database matching criteria
-		$sql = "SELECT * FROM packages WHERE Resolved ='No' AND (PackageID NOT IN(SELECT PackageID from hiddenissues)  OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = '$country'))";
+		$sql = "SELECT * FROM packages WHERE Resolved = :Resolved AND (PackageID NOT IN(SELECT PackageID from hiddenissues)  OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = :Country))";
 
 		$stmt = $connection->prepare($sql);
-
+		$stmt->setFetchMode(PDO::FETCH_OBJ);
+		$stmt->bindParam(':Resolved', $resolved, PDO::PARAM_STR);
+		$stmt->bindParam(':Country', $country, PDO::PARAM_STR);
 		$stmt->execute();
-		$stmt->store_result();
-
-		$total = $stmt->num_rows;
+		$total = $stmt->rowCount();
 
 		// The number of results per page
 		$pageRows=15;
@@ -49,6 +49,7 @@
 		{
 			$pagenum = 1;
 		}
+
 		else if($pagenum > $lastPage)
 		{
 			$pagenum = $lastPage;
@@ -58,23 +59,21 @@
 		$limit = 'LIMIT ' .($pagenum - 1) * $pageRows . ',' . $pageRows;
 
 		// Grab one row of data
-		$sql = "SELECT DATE_FORMAT(IssueCreationTime,'%W, %D %M, %Y') As date, DATE_FORMAT(IssueCreationTime,'%h:%i %p') As time, TrackingNumber, CustomerName, MainIssue, Description, ShippingCarrier, ItemType, photo1 FROM packages WHERE Resolved = 'No' AND (PackageID NOT IN(SELECT PackageID from hiddenissues) OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = '$country')) ORDER BY PackageID DESC $limit";
+		$sql2 = "SELECT DATE_FORMAT(IssueCreationTime,'%W, %D %M, %Y') As IssueCreationDate, DATE_FORMAT(IssueCreationTime,'%h:%i %p') As CreationTime, TrackingNumber, PackageID, CustomerName, MainIssue, Description, ShippingCarrier, ItemType, Photo1 FROM packages WHERE Resolved = :Resolved AND (PackageID NOT IN(SELECT PackageID from hiddenissues) OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = :Country)) ORDER BY PackageID DESC $limit";
+
 
 
 		  // prepare the sql statement
-		  $stmt = $connection->prepare($sql);
-
+		  $stmt2 = $connection->prepare($sql2);
+			$stmt2->bindParam(':Resolved', $resolved, PDO::PARAM_STR);
+			$stmt2->bindParam(':Country', $country, PDO::PARAM_STR);
+			$stmt2->setFetchMode(PDO::FETCH_OBJ);
 		  // execute the prepared statement
-		  $stmt->execute();
+		  $stmt2->execute();
 
-		  /* store result */
-		  $stmt->store_result();
-
-		  /* Bind the results to variables */
-		  $stmt->bind_result($date, $time, $tnumber, $customername, $mainissue, $description, $shippingcarrier, $itemtype, $photo1);
 			$i = 0;
 
-			$textline = "<p>There are $total packages with issues in the system and you are currently on page $pagenum of $lastPage.</p>";
+			$textline = "<p>There are $total total packages in Package Hero available to you and you are currently on page $pagenum of $lastPage.</p>";
 
 			// Establish the paginationCtrls variable
 			$navigation = '';
@@ -124,17 +123,18 @@
 			$grid = "";
 			$list = "";
 			$last_date='0000-00-00';
-			while($stmt->fetch())
+			while($row = $stmt2->fetch())
 			{
+
 			  $i++;
 
-				$desc_snippet = substr($description, 0, 25); // a 30 character substring of the description
+				$desc_snippet = substr($row->Description, 0, 25); // a 25 character substring of the description
 
 			  // Generate the grid view
 				$date_header = '';
-				if ($last_date != $date)
+				if ($last_date != $row->IssueCreationDate)
 				{
-					$date_header = '<p class="dateHeader">'.$date.'</p>';
+					$date_header = '<p class="dateHeader">'.$row->IssueCreationDate.'</p>';
 				}
 				else
 				{
@@ -143,54 +143,54 @@
 			  $grid.=
 			  	$date_header.'<div class="card">
 						<div class="card-image">
-							<p><img src="../includes/'.$photo1.'"alt="packageImage" /></p>
+							<p><img src="../includes/'.$row->Photo1.'"alt="packageImage" /></p>
 						</div>
 
 						<div class="card-details">
-							<p class="customer">'.$customername.'</p>
-							<p class="issue"><span class="fa fa-bug"> </span> '.$mainissue.'</p>
-							<p class="issue"><span class="fa fa-shopping-bag"></span> '.$itemtype.'</p>
-							<p class="issue"><span class="fa fa-ship"></span> '.$shippingcarrier.'</p>
+							<p class="customer">'.$row->CustomerName.'</p>
+							<p class="issue"><span class="fa fa-bug"> </span> '.$row->MainIssue.'</p>
+							<p class="issue"><span class="fa fa-shopping-bag"></span> '.$row->ItemType.'</p>
+							<p class="issue"><span class="fa fa-ship"></span> '.$row->ShippingCarrier.'</p>
 							<p class="description">'.$desc_snippet.'...</p>
 						</div>
 
 						<div class="card-footer">
-					    <p class="trackingnumber"><span class="fa fa-truck"> </span> '.$tnumber.'</p>
-					    <button class="url"><a id="view-full" class="full-details" href="fulldetails.php?trackingnumber='.urlencode($tnumber).'" title="View full package details">View</a></button>
+					    <p class="trackingnumber"><span class="fa fa-truck"> </span> '.$row->TrackingNumber.'</p>
+					    <button class="url"><a id="view-full" class="full-details" href="fulldetails.php?trackingnumber='.urlencode($row->TrackingNumber).'" title="View full package details">View</a></button>
 						</div>
 
 			  </div>
 
 			  ';
 
-			  // Generate the table view
+			  // Generate the list view
 				$date_header = '';
-				if ($last_date != $date)
+				if ($last_date != $row->IssueCreationDate)
 				{
-					$date_header = '<p class="dateHeader">'.$date.'</p>';
+					$date_header = '<p class="dateHeader">'.$row->IssueCreationDate.'</p>';
 				}
 				else
 				{
 					$date_header = '';
 				}
 			  $list.= $date_header.'<div class="listView">
-						<p class="time">'.$time.'</p>
-				    <p>'.$tnumber.'</p>
-				    <p>'.$customername.'</p>
-						<p>'.$mainissue.'</p>
-						<p>'.$itemtype.'</p>
-						<p>'.$shippingcarrier.'</p>
+						<p class="time">'.$row->CreationTime.'</p>
+				    <p>'.$row->TrackingNumber.'</p>
+				    <p>'.$row->CustomerName.'</p>
+						<p>'.$row->MainIssue.'</p>
+						<p>'.$row->ItemType.'</p>
+						<p>'.$row->ShippingCarrier.'</p>
 						<p>'.$desc_snippet.'...</p>
 
 
 				    <p class="quickButtonsHolder">
-						<button class="quickView"><a id="view-full" class="full-details" href="fulldetails.php?trackingnumber='.$tnumber.'" title="View full package details">view</a></button>
-						<button class="quickHide hide">hide</button>
+						<button class="quickView"><a id="view-full" class="full-details" href="fulldetails.php?trackingnumber='.$row->TrackingNumber.'" title="View full package details">view</a></button>
+						<button class="quickHide hide" data-tracking="'.$row->TrackingNumber.'" data-pid="'.$pid.'">hide</button>
 						</p>
 			  </div>
 
 			  ';
-					$last_date = $date;
+					$last_date = $row->IssueCreationDate;
 			}
 
 		 // end if isset
@@ -198,7 +198,6 @@
 
 ?>
 
-						<div id = "container">
 
 						<div id ="content2">
 								<div id="data">
@@ -244,6 +243,7 @@
 			<script type="text/javascript" src="../fancybox/source/helpers/jquery.fancybox-buttons.js"></script>
 			<script type="text/javascript" src="../fancybox/source/helpers/jquery.fancybox-media.js"></script>
 			<script type="text/javascript" src="../fancybox/source/helpers/jquery.fancybox-thumbs.js"></script>
+			<script src="../includes/js/jquery-ui.min.js"></script>
 			<script type= "text/javascript" src="../includes/js/main.js"></script>
 
 

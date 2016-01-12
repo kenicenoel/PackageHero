@@ -1,5 +1,5 @@
 <?php
-  function composeEmail($from, $to, $subject, $replyTo, $body)
+  function composeEmail($from, $to, $subject, $replyTo, $fullEmailContent)
   {
 
                             /* ////////////////////////////////////////////////
@@ -12,12 +12,12 @@
                             //$mail->SMTPDebug = 3;                               // Enable verbose debug output
 
                             $mail->isSMTP();                                      // Set mailer to use SMTP
-                            $mail->Host = 'mailtrap.io';                // Specify main and backup SMTP servers
+                            $mail->Host = '	smtp-mail.outlook.com';                // Specify main and backup SMTP servers
                             $mail->SMTPAuth = true;                               // Enable SMTP authentication
-                            $mail->Username = '532891ed9f27d8080';                   // SMTP username
-                            $mail->Password = 'c89eb3a578dffe';                        // SMTP password
+                            $mail->Username = 'kenicenoel@outlook.com';                   // SMTP username
+                            $mail->Password = 'k3ninjan03l';                        // SMTP password
                             $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-                            $mail->Port = 465;                                    // TCP port to connect to
+                            $mail->Port = 587;                                // TCP port to connect to
 
                             $mail->setFrom($from);
                             // $mail->addAddress('guischard@shipwebsource.com', 'Charles');     // Add a recipient
@@ -34,7 +34,7 @@
                             $mail->isHTML(true);                                  // Set email format to HTML
 
                             $mail->Subject = $subject;
-                            $mail->Body    =  $body;
+                            $mail->Body    =  $fullEmailContent;
                             // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
                             if(!$mail->send())

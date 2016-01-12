@@ -9,16 +9,21 @@ body
 }
 
 
-
-
-
-
 img
 {
 	user-drag: none;
 	-moz-user-select: none;
 	-webkit-user-drag: none;
 }
+
+h4
+{
+	/*margin: 0 auto;*/
+	text-align: center;
+	padding: 20px 0;
+	color: #37474F;
+}
+
 
 
 ul#top
@@ -92,7 +97,8 @@ ul#top > li > ul.submenu
 	background-color: #fff;
 	display: none;
 	position: absolute;
-	margin: 15px 40px;
+	font-size: 17px;
+	margin: 15px -50px;
 	padding:10px 10px;
 	border-top: 3px solid #FFC107;
 	z-index: 2;
@@ -151,6 +157,7 @@ ul#top > li.pageTitle
 	left: 40%;
 	/*height: 30px;*/
 	text-align: center;
+	font-size: 17px;
 
 }
 
@@ -160,17 +167,29 @@ ul#top > li.menu
 	margin-right: 5px;
 	height: 50px;
 	cursor: pointer;
+	font-size: 15px;
+}
+
+.countryImage
+{
+	position: absolute;
+	right: 10px;
+	top: 8px;
 }
 
 ul#top > li.user
 {
 	text-transform: capitalize;
+	position: absolute;
+	right:60px;
+	top: 5px;
 }
 
 ul#top > li.user > a
 {
 	color: #fff;
 	text-decoration: none;
+	font-size: 16px;
 }
 
 ul#top > li.user:hover
@@ -191,7 +210,7 @@ nav
 
 	font-size: 15pt;
 	display: block;
-	/*margin-top:50px;*/
+	margin-top:50px;
 	color:#ffffff;
 	position:fixed;
 	width: 220px;
@@ -206,7 +225,7 @@ nav
 .menuHidden
 {
 	background-color: rgba(19, 20, 20, 0.26);
-	border-radius: 50%;
+	border-radius: 5%;
 	padding: 2px 0;
 }
 
@@ -220,20 +239,27 @@ nav i
 	color: #00BCD4;
 }
 
+nav i.fa-home
+{
+	color: #fff;
+}
 
 nav > header.navCategory
 {
 	color: #fff;
 	text-transform: uppercase;
 	font-size: 15px;
-	margin: 40px 5px 20px 15px;
-	padding-left: 5px;
+	margin: 40px 0 20px 0;
+	text-align: center;
+	/*padding-left: 5px;*/
+	background-color: rgba(0,0,0,.25);
+	padding: 5px 0;
 
 }
 
 nav > header.navIssues
 {
-	margin-top: 70px;
+	margin-top: 0;
 }
 
 .bottomLine
@@ -250,13 +276,14 @@ nav > header.navIssues
 nav > header.navCategory:hover
 {
 	cursor: pointer;
-	background-color: rgba(0,0,0,.25);
+
 }
 
 nav > header.navCategory > i.fa-toggle-on, nav > header.navCategory > i.fa-toggle-off
 {
 	float: right;
 	margin-right: 30px;
+	color: #fff;
 }
 
 nav > header.navCategory > i.fa-toggle-on
@@ -265,16 +292,24 @@ nav > header.navCategory > i.fa-toggle-on
 }
 
 
+
 nav > span > a.link
 {
 
 	color:#fff;
-	padding: 15px 0px 30px 25px;
-	font-size: 14px;
+	padding: 10px 0 15px 12px;
+	font-size: 15px;
 	display: block;
 	text-decoration: none;
 	/*text-transform:uppercase;*/
 	visibility: visible;
+}
+
+a#first-link
+{
+	/*margin: 5px 0 0 0;*/
+	/*font-size: 17px;*/
+	background-color: #009688;
 }
 
 nav > span > a.link:active
@@ -291,13 +326,12 @@ a.link > i.fa-sign-out
 
 nav > span > a.link > span.numberOfIssues
 {
-	font-size: 15px;
-	padding:3px 7px 3px 7px;
-	background-color: #cc0000;
+	font-size: 14px;
+	padding:2px;
+	background-color: #F44336;
 	color: #fff;
-	width: 25px;
-	height: 25px;
-	border-radius: 50%;
+	margin: 0 0 0 50px;
+	border-radius: 5%;
 }
 
 nav > span > a.link:hover
@@ -678,12 +712,22 @@ table
 	font-size: 15px;
 	width: 90%;
 	color: #000;
-
 	font-weight: 300;
 	padding-left: 10px;
 	padding-bottom: 50px;
 	margin:0 auto;
 }
+
+table.nospacing
+{
+	border-spacing: 0;
+}
+
+table.nospacing th, td
+{
+	padding: 0;
+}
+
 
 table#update-history
 {
@@ -702,17 +746,16 @@ a[data-view="hide"]
 thead
 {
 	color:#3C3F42;
-	font-size: 20px;
-
+	font-size: 18px;
 	text-align:left;
-	text-transform: uppercase;
+	/*text-transform: uppercase;*/
 
 }
 
 td
 {
 	padding: 10px 5px;
-	font-size: 18px;
+	font-size: 16px;
 	text-align: left;
 }
 
@@ -1284,6 +1327,7 @@ td > a
 {
 	color: #0e73bf;
 	text-decoration: none;
+	text-transform: lowercase;
 
 }
 
@@ -1342,6 +1386,59 @@ div.card a.listing
 	float: right;
 	display: block;
 }
+
+.helpHeader
+{
+	color: #03A9F4;
+	text-align: center;
+	padding: 20px 0;
+	font-size: 35px;
+}
+
+.helpHeader .helpSubText
+{
+	font-size: 18px;
+	margin: 5px 0;
+	color: #37474F;
+}
+
+video
+{
+	display: inline-block;
+	padding: 20px 10px 0 0;
+}
+
+video.tutorial
+{
+	margin: 0 20px;
+}
+
+.loader
+{
+	display: none;
+
+	position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 )
+                url('../images/icons/loader.svg')
+                50% 50%
+                no-repeat;
+}
+
+body.loading
+{
+    overflow: hidden;
+}
+
+body.loading .loader
+{
+    display: block;
+}
+
 
 
 footer

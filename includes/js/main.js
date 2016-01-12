@@ -36,11 +36,16 @@ $(document).ready(function()
                         var myXhr = $.ajaxSettings.xhr();
                         return myXhr;
                     },
+                    beforeSend: function ()
+                    {
+                      $('body').addClass('loading');
+                    },
                     success: function (response)
                     {
+                      $('body').removeClass('loading');
                       if(response == "done" || response == "Message has been sent: done")
                       {
-                        $('#errorMessage').append("<p style='font-size:1.1em; background-color:#27ae60; color:#ffffff;'><i class='fa fa-check-circle'></i> Saved. An email was also sent to the customer!<br>You may add another or move on.</p>");
+                        $('#errorMessage').append("<p style='font-size:1.1em; background-color:#27ae60; color:#ffffff;'><i class='fa fa-check-circle'></i> Done. If you chose to, an email was also sent.<br>You may now add another or move on.</p>");
                         $('#package')[0].reset();
 
                         $('#addIssue').val("Add");
@@ -219,6 +224,7 @@ $(document).ready(function()
                       });
 
 
+
                       // When user clicks on the link that says "Initial PKG SCAN" in the navigation, run this task
                             $('#initialPackageScan').click(function()
                             {
@@ -375,6 +381,7 @@ $(document).ready(function()
 
         });
 
+
         // Run this code when the "HIDE" button is clicked
         $('.hide').click(function()
         {
@@ -419,6 +426,36 @@ $(document).ready(function()
             // var news = "marked issue"+tnumber+" as RESOLVED.";
 
         });
+
+        // Run this code when the "HIDE" button is clicked
+        $('.quickHide').click(function()
+        {
+          var tnum = $(this).attr('data-tracking');
+          var pid = $(this).attr('data-pid');
+          console.log('#'+tnum+" P:"+pid);
+
+                  $.ajax
+                  ({
+
+                      url: 'hide-issue.php',
+                      type: 'POST',
+                      data: 'tr='+tnum+'&pid='+pid,
+                      success: function(response)
+                      {
+
+                          console.log(response);
+                          if(response == 'Done')
+                          {
+                            window.open('allpackages.php', '_self');
+
+                          }
+
+                      }
+
+                    });
+
+            });
+
 
 
         // Run this code when the "profile" link is clicked
@@ -485,7 +522,7 @@ $(document).ready(function()
 
 
           // Hide the news section when loaded
-          // $('p.newsitem').hide();
+          $('p.newsitem').hide();
 
           // Hide the links when they are clicked
           $(".user").click(function()
@@ -599,7 +636,8 @@ $(document).ready(function()
                 $(".quickHide", this).css('visibility', 'hidden');
             });
 
-            
+
+
 
 
 

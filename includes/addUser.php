@@ -2,8 +2,8 @@
     include_once "config.php";
     if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['country']) && isset($_POST['role']))
     {
-      // print_r($_POST);
-      // Create new note and newsfeed item
+
+
       $user = $_POST['username'];
       $pass = md5($_POST['password']);
       $fname = $_POST['firstname'];
@@ -15,11 +15,19 @@
       $role = $_POST['role'];
 
       // Insert the note into the updates table
-      $sql = "INSERT INTO users (Username, Password, FirstName, LastName, EmailAddress, PhoneNumber, Country, Agent, Role) VALUES(?,?,?,?,?,?,?,?,?)";
+      $sql = "INSERT INTO users (Username, Password, FirstName, LastName, EmailAddress, PhoneNumber, Country, Agent, Role) VALUES(:Username, :Password, :FirstName, :LastName, :EmailAddress, :PhoneNumber, :Country, :Agent, :Role)";
       $stmt = $connection->prepare($sql);
-      $stmt->bind_param('sssssssss', $user, $pass, $fname, $lname, $email, $phone, $country, $agent, $role);
+      $stmt->bindParam(':Username', $user, PDO::PARAM_STR);
+      $stmt->bindParam(':Password', $pass, PDO::PARAM_STR);
+      $stmt->bindParam(':FirstName', $fname, PDO::PARAM_STR);
+      $stmt->bindParam(':LastName', $lname, PDO::PARAM_STR);
+      $stmt->bindParam(':EmailAddress', $email, PDO::PARAM_STR);
+      $stmt->bindParam(':PhoneNumber', $phone, PDO::PARAM_STR);
+      $stmt->bindParam(':Country', $country, PDO::PARAM_STR);
+      $stmt->bindParam(':Agent', $agent, PDO::PARAM_STR);
+      $stmt->bindParam(':Role', $role, PDO::PARAM_STR);
       $stmt->execute();
-      $stmt->close();
+
 
       echo "Done";
 

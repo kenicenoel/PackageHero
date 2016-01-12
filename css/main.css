@@ -3,12 +3,13 @@ body
 	margin: 0;
 	padding: 0;
 	width: 100%;
-	color: #000;
-	background-color: #05ABE0;
-	background-repeat: no-repeat;
-	/*background-position: top 2%;*/
-	background-size: cover;
-	font-family: 'Source Sans Pro', sans-serif;
+	color: #fff;
+	background-color: #03A9F4;
+	background-repeat: repeat;
+	background-image: url('../images/dotted.png');
+	background-position: 10% 25%;
+	/*background-size: cover;*/
+	font-family: 'Roboto', sans-serif;
 	height: 100%;
 }
 
@@ -50,8 +51,8 @@ div#bottom
 
 form > img
 {
-	height: 200px;
-	width: 200px;
+	/*height: 200px;*/
+	/*width: 200px;*/
 	display: block;
 	margin: 0 auto;
 }
@@ -63,8 +64,9 @@ form > header
 	max-width: 600px;
 	font-family: 'Roboto', sans-serif;
 	font-size: 2.3em;
+	text-align: center;
 	padding-bottom:12px;
-	color: #3993D0;
+	color: #00BCD4;
 }
 
 form > header.reset
@@ -89,8 +91,8 @@ form
 	background-color: #fff;
 	width: 400px;
 	padding: 10px 50px;
-	margin: 50px auto;
-	border-bottom: 4px solid #d29318;
+	margin: 150px auto;
+	/*border-bottom: 4px solid #d29318;*/
 
 }
 
@@ -139,11 +141,11 @@ input[type=submit], button
 	height: 40px;
 	font-size: 20px;
 	width:100px;
-	margin: 20px 26%;
+	margin: 20px 35%;
 	color: #fff;
 	border:none;
-	background-color: #0EB4CA;
-	font-family: 'Source Sans Pro', sans-serif;
+	background-color: #5BB94B;
+
 	text-transform: uppercase;
 
 }
@@ -159,9 +161,8 @@ input[type=submit]:hover, button:hover
 {
 
 	color: #fff;
-	background-color: #1EC8D8;
-	font-weight: bold;
-	font-family: 'Source Sans Pro', sans-serif;
+	background-color: #62c850;
+
 
 }
 
@@ -182,7 +183,7 @@ input[type=text], input[type=password], input[type=email]
 	box-shadow: none;
 	outline: none;
 	height: 30px;
-	width: 250px;
+	width: 350px;
 }
 
 
@@ -191,7 +192,7 @@ input[type=text], input[type=password], input[type=email]
 label
 {
 	font-family: 'Roboto', sans-serif;
-	font-size: 1em;
+	font-size: 12px;
 	display: block;
 	color: #777777;
 	width:150px;
@@ -205,7 +206,7 @@ label
 p.text
 {
 
-	color: #3993D0;
+	color: #00BCD4;
 	font-size: 1.2em;
 	font-family: 'Roboto', sans-serif;
 	text-align: left;
@@ -213,7 +214,7 @@ p.text
 
 p#msg
 {
-	color: #FF6B6B;
+	color: #FF0000;
 	font-family: 'Source Sans Pro', sans-serif;
 	margin-left: 5px;
 	font-size: 1em;
@@ -224,6 +225,7 @@ form > p#forgot-password
 {
 	cursor: pointer;
 	font-weight: 600;
+	color: #000;
 }
 
 form > p#forgot-password:hover
