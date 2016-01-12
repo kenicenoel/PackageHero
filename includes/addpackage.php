@@ -15,7 +15,7 @@
           <input type = "text" id = "customername" name="customername" /><br>
 
           <label for="type">Main Issue</label>
-            <select form = "package" name="MainIssue"> <br>
+            <select form = "package" name="mainissue"> <br>
               <option value="" disabled selected>Select an issue</option>
               <option value = "Broken">Received broken</option>
               <option value = "Missing customer details">Missing customer details</option>

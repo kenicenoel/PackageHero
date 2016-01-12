@@ -5,6 +5,12 @@
 
           if(isset($_FILES['images']) && isset($_POST['trackingnumber']))
           {
+            $trackingnumber = $_POST['trackingnumber'];
+            $customername = $_POST['customername'];
+            $mainissue = $_POST['mainissue'];
+            $description = $_POST['description'];
+            $itemtype = $_POST['itemtype'];
+            $shippingcarrier = $_POST['shippingcarrier'];
 
             $sql = "INSERT INTO packages(TrackingNumber, CustomerName, MainIssue, Description, ItemType, ShippingCarrier ) VALUES(:TrackingNumber,:CustomerName,:MainIssue,:Description,:ItemType,:ShippingCarrier)";
 
@@ -25,7 +31,7 @@
 
             $images = $_FILES['images'];
             $i=1;
-            $last = $stmt->lastInsertId();
+            $last = $connection->lastInsertId();
             $errors="";
 
             foreach($images['name'] as $position => $data)
@@ -99,13 +105,13 @@
                 // Check if $uploadOk is set to 0 by an error
                 if ($uploadOk == 0)
                 {
-                  $sql = "DELETE from packages WHERE PackageID = ?";
+                  $sql = "DELETE from packages WHERE PackageID = :PackageID";
 
                     //prepare the sql statement
                     $stmt = $connection->prepare($sql);
 
                     // bind variables to the paramenters ? present in sql
-                    $stmt->bind_param('i', $last);
+                    $stmt->bindParam(':PackageID', $last, PDO::PARAM_INT);
 
                     //execute the prepared statement
                     $stmt->execute();
@@ -119,13 +125,14 @@
                 {
                     if (move_uploaded_file($images["tmp_name"][$position], $target_file))
                     {
-                      $sql = "UPDATE packages SET Photo{$i}= ? WHERE PackageID = ?";
+                      $sql = "UPDATE packages SET Photo{$i}= :Photo WHERE PackageID = :PackageID";
 
                         //prepare the sql statement
                         $stmt = $connection->prepare($sql);
 
                         // bind variables to the paramenters ? present in sql
-                        $stmt->bind_param('si', ${'image'.$i}, $last);
+                        $stmt->bindParam(':Photo', ${'image'.$i}, PDO::PARAM_STR);
+                        $stmt->bindParam(':PackageID', $last, PDO::PARAM_INT);
                         ${'image'.$i} = $target_file;
 
                         //execute the prepared statement
@@ -257,13 +264,13 @@
 
                     else
                     {
-                      $sql = "DELETE from packages WHERE PackageID=?";
+                      $sql = "DELETE from packages WHERE PackageID=:PackageID";
 
                     //prepare the sql statement
                     $stmt = $connection->prepare($sql);
 
                     // bind variables to the paramenters ? present in sql
-                    $stmt->bind_param('i', $last);
+                    $stmt->bindParam(':PackageID', $last, PDO::PARAM_INT);
 
                     //execute the prepared statement
                     $stmt->execute();
@@ -287,8 +294,8 @@
 
 
 
-          $stmt->close();
-          $connection->close();
+
+          $connection = null;
 
 
 
