@@ -13,65 +13,83 @@
 		{
 
 			$trackingnumber = $_GET['trackingnumber'];
+			$_SESSION['trackingnumber'] = $trackingnumber;
 
 			// Get the details for the package
-			$sql = "SELECT packages.PackageID, packages.TrackingNumber, packages.CustomerName, packages.MainIssue, packages.Description, packages.Photo1 FROM packages WHERE TrackingNumber = ?";
+			$sql = "SELECT * FROM packages WHERE TrackingNumber = :TrackingNumber";
 		  $stmt = $connection->prepare($sql);
-			$stmt->bind_param('s', $trackingnumber);
+			$stmt->setFetchMode(PDO::FETCH_OBJ);
+			$stmt->bindParam(':TrackingNumber', $trackingnumber, PDO::PARAM_STR);
 			$stmt->execute();
-			$stmt->bind_result($pid, $trackingnumber, $customername, $issue, $description, $photo1);
-			$stmt->fetch();
-			$stmt->close();
-
-
-			// Get the images for the listing
+			$currentDetails="";
 			$imageCollection = array();
-
-			for($i = 1; $i <= 5; $i++)
+			while ($row = $stmt->fetch())
 			{
-				$sql = "SELECT Photo$i FROM packages WHERE TrackingNumber = ?";
-			  $stmt = $connection->prepare($sql);
-				$stmt->bind_param('s', $trackingnumber);
-				$stmt->execute();
-				$stmt->bind_result($image);
+				$_SESSION['pid'] = $row->PackageID;
 
-				if($image)
-				{
-					$imageCollection[] = $image;
-				}
+				$currentDetails.=
+				"
+				<p>Tracking number: ".$row->TrackingNumber.".</p>
+				<p>Customer name: ".$row->CustomerName.".</p>
+				<p>Main Issue: ".$row->MainIssue.".</p>
+				<p>Description: ".$row->Description.".</p>
+				";
 
+				// Get the images for the listing
 
-				/* store result */
-			  $stmt->fetch();
-				$stmt->close();
+					if($row->Photo1)
+					{
+						$image = $row->Photo1;
+						$imageCollection[] = $image;
+					}
+					if($row->Photo2)
+					{
+						$image = $row->Photo2;
+						$imageCollection[] = $image;
+					}
+
+					if($row->Photo3)
+					{
+						$image = $row->Photo3;
+						$imageCollection[] = $image;
+					}
+					if($row->Photo4)
+					{
+						$image = $row->Photo4;
+						$imageCollection[] = $image;
+					}
+					if($row->Photo5)
+					{
+						$image = $row->Photo5;
+						$imageCollection[] = $image;
+					}
+
 			}
 
 		} // end if isset
 
 
-		 $_SESSION['pid'] = $pid;
-		 $_SESSION['trackingnumber'] = $trackingnumber;
-
-
 		 // Get the details for the note
-		 $sql = "SELECT updates.Note, updates.TimeCreated, updates.Username, updates.Agent FROM updates WHERE updates.PackageID = $pid";
+		 $sql = "SELECT updates.Note, updates.TimeCreated, updates.Username, updates.Agent FROM updates WHERE updates.PackageID = :PackageID";
 		 $stmt = $connection->prepare($sql);
+		 $stmt->bindParam(':PackageID', $_SESSION['pid'], PDO::PARAM_INT);
+		 $stmt->setFetchMode(PDO::FETCH_OBJ);
+
 		 $stmt->execute();
-		 $stmt->bind_result($note, $timestamp, $user, $agent);
+
 		 $notes="";
-		 while($stmt->fetch())
+		 while($row = $stmt->fetch())
 		 {
 			 // Generate the list view
 			 $notes.= '
 			 <tr>
-					 <td>'.$timestamp.'</td>
-					 <td>'.$note.'</td>
-					 <td>'.$user.' ('.$agent.')</td>
+					 <td>'.$row->TimeCreated.'</td>
+					 <td>'.$row->Note.'</td>
+					 <td>'.$row->Username.' ('.$row->Agent.')</td>
 
 			</tr>';
 		 }
 
-		 $stmt->close();
 
 ?>
 
@@ -115,10 +133,7 @@
 										<?php
 
 											echo '<header class="subheading"><span class="fa fa-file-text fa-fw"></span> Current details</header>';
-											echo '<p>Tracking number: '.$trackingnumber.' </p>';
-											echo '<p>Customer name: '.$customername.' </p>';
-											echo '<p>Main Issue: '.$issue.' </p>';
-											echo '<p>Description: '.$description.' </p>';
+											echo $currentDetails;
 
 										?>
 

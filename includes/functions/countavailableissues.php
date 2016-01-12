@@ -1,6 +1,6 @@
 <?php
     require_once('../includes/config.php');
-    
+
   // Count the total number of package issues not hidden and resolved
   function countTotalAvailableIssues()
   {
@@ -9,19 +9,19 @@
 
 
     // Build the query
-      $sql = "SELECT * FROM packages WHERE Resolved = 'No' AND (PackageID NOT IN(SELECT PackageID from hiddenissues) OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = '$country'))";
+      $sql = "SELECT * FROM packages WHERE Resolved = 'No' AND (PackageID NOT IN(SELECT PackageID from hiddenissues) OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = :country))";
 
       //prepare the sql statement
       $stmt = $connection->prepare($sql);
 
+      $stmt->bindParam(':country', $country, PDO::PARAM_STR);
+
       //execute the prepared statement
       $stmt->execute();
 
-    /* store result */
-    $stmt->store_result();
 
 
-    $total = $stmt->num_rows;
+      $total = $stmt->rowCount();
 
 
     if($total == 0)
@@ -36,9 +36,7 @@
     }
 
 
-    /* Close statement */
-    $stmt->close();
-    $connection->close();
+    $connection = null;
 
 
 }

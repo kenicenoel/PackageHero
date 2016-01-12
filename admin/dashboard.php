@@ -23,7 +23,7 @@ require_once ("../includes/dashboard_header.php");
 
 </div>
 <div class="loader">
-	
+
 </div>
 </body>
 <script src="../includes/js/jquery.js"></script>

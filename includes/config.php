@@ -6,7 +6,7 @@ $host = "localhost";
 $user = "admin";
 $pass = "admin";
 $database = "websource_package_data";
-//
+
 
 
 // The production MySql server
@@ -17,14 +17,21 @@ $database = "websource_package_data";
 
 
 // Create connection
-$connection = new mysqli($host, $user, $pass, $database);
+// $connection = new mysqli($host, $user, $pass, $database);
+  try
+  {
+    $connection = new PDO("mysql:host=$host;dbname=$database;charset=utf8", $user, $pass);
 
-// Check connection
-if ($connection->connect_error)
-{
-    die("Whoops! Could not connect to the Package Hero database. Here's the error -> " . $connection->connect_error);
-}
+    #set the PDO engine to accept exceptions as the error output mode
+    $connection->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
+
+  }
+
+  catch(PDOException $error)
+    {
+      echo "Something went wrong. If you want to solve this issue, here\'s the error: ".$error->getMessage();
+    }
 
 
 ?>

@@ -20,15 +20,20 @@
 
 
         // Create connection
-        $connection = new mysqli($host, $user, $pass, $database);
-
-        // Check connection
-        if ($connection->connect_error)
+        try
         {
-            die("Whoops! Could not connect to the Package Hero database. Here's the error -> " . $connection->connect_error);
+          $connection = new PDO("mysql:host=$host;dbname=$database;charset=utf8", $user, $pass);
+
+          #set the PDO engine to accept exceptions as the error output mode
+          $connection->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+
+
         }
 
-
+        catch(PDOException $error)
+          {
+            echo "Something went wrong. If you want to solve this issue, here\'s the error: ".$error->getMessage();
+          }
 
     ///////////////////////////////////////////////////////////////////////////
 
@@ -37,22 +42,25 @@
     {
       global $connection;
       $country = $_SESSION['country'];
+      $resolved = 'No';
 
 
       // Build the query
-        $sql = "SELECT * FROM packages WHERE Resolved = 'No' AND (PackageID NOT IN(SELECT PackageID from hiddenissues) OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = '$country'))";
+        $sql = "SELECT * FROM packages WHERE Resolved = :resolved AND (PackageID NOT IN(SELECT PackageID from hiddenissues) OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = :country))";
 
         //prepare the sql statement
         $stmt = $connection->prepare($sql);
 
+        $stmt->setFetchMode(PDO::FETCH_OBJ);
+
+        $stmt->bindParam(':country', $country, PDO::PARAM_STR);
+        $stmt->bindParam(':resolved', $resolved, PDO::PARAM_STR);
+
         //execute the prepared statement
         $stmt->execute();
 
-      /* store result */
-      $stmt->store_result();
 
-
-      $total = $stmt->num_rows;
+      $total = $stmt->rowCount();
 
 
       if($total == 0)
@@ -67,9 +75,8 @@
       }
 
 
-      /* Close statement */
-      $stmt->close();
-      $connection->close();
+
+      $connection = null;
 
 
   }
@@ -80,20 +87,24 @@
 
       global $connection;
       $country = $_SESSION['country'];
+      $resolved = 'No';
 
       // Build the query
-      $sql = "SELECT * FROM packages WHERE Resolved = 'No' AND PackageID IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = '$country')";
+      $sql = "SELECT * FROM packages WHERE Resolved = :resolved AND PackageID IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = :country)";
 
       //prepare the sql statement
       $stmt = $connection->prepare($sql);
 
+      $stmt->setFetchMode(PDO::FETCH_OBJ);
+      $stmt->bindParam(':country', $country, PDO::PARAM_STR);
+      $stmt->bindParam(':resolved', $resolved, PDO::PARAM_STR);
+
       //execute the prepared statement
       $stmt->execute();
 
-      /* store result */
-      $stmt->store_result();
 
-      $total = $stmt->num_rows;
+
+      $total = $stmt->rowCount();
 
       if($total == 0)
       {
@@ -107,10 +118,8 @@
       }
 
 
-      /* Close statement */
-      $stmt->close();
 
-      $connection->close();
+
 
 
     }

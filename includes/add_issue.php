@@ -6,30 +6,26 @@
           if(isset($_FILES['images']) && isset($_POST['trackingnumber']))
           {
 
-            $sql = "INSERT INTO packages(TrackingNumber, CustomerName, MainIssue, Description, ItemType, ShippingCarrier ) VALUES(?,?,?,?,?,?)";
+            $sql = "INSERT INTO packages(TrackingNumber, CustomerName, MainIssue, Description, ItemType, ShippingCarrier ) VALUES(:TrackingNumber,:CustomerName,:MainIssue,:Description,:ItemType,:ShippingCarrier)";
 
                 //prepare the sql statement
                 $stmt = $connection->prepare($sql);
 
                 // bind variables to the paramenters ? present in sql
-                $stmt->bind_param('ssssss', $trackingnumber,$customername, $mainissue, $description, $itemtype, $shippingcarrier);
+                $stmt->bindParam('TrackingNumber', $trackingnumber, PDO::PARAM_STR);
+                $stmt->bindParam('CustomerName', $customername, PDO::PARAM_STR);
+                $stmt->bindParam('MainIssue', $mainissue, PDO::PARAM_STR);
+                $stmt->bindParam('Description', $description, PDO::PARAM_STR);
+                $stmt->bindParam('ItemType', $itemtype, PDO::PARAM_STR);
+                $stmt->bindParam('ShippingCarrier', $shippingcarrier, PDO::PARAM_STR);
 
-                //set the variables from form values
-                $trackingnumber= $_POST['trackingnumber'];
-                $customername = $_POST['customername'];
-                $mainissue = $_POST['MainIssue'];
-                $description = $_POST['description'];
-                $itemtype = $_POST['itemtype'];
-                $shippingcarrier = $_POST['shippingcarrier'];
 
-                // if(isset($_POST['emailBody']) && $_POST['emailBody'] != ""){ $customEmail = $_POST['emailBody'] }
-
-                //execute the prepared statement
-                $stmt->execute();
+              //execute the prepared statement
+              $stmt->execute();
 
             $images = $_FILES['images'];
             $i=1;
-            $last = $stmt->insert_id;
+            $last = $stmt->lastInsertId();
             $errors="";
 
             foreach($images['name'] as $position => $data)

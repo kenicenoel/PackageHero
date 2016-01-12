@@ -15,21 +15,22 @@
 		function countTotalIssues()
 		{
 			global $connection;
+			$resolved = 'No';
 
 
 			// Build the query
-      $sql = "SELECT * FROM packages WHERE Resolved = 'No'";
+      $sql = "SELECT * FROM packages WHERE Resolved = :resolved";
 
 	    //prepare the sql statement
 	    $stmt = $connection->prepare($sql);
 
+			$stmt->bindParam(':resolved', $resolved, PDO::PARAM_STR);
+
 	    //execute the prepared statement
 	    $stmt->execute();
 
-			/* store result */
-	    $stmt->store_result();
 
-			$total = $stmt->num_rows;
+			$total = $stmt->rowCount();
 
 			if($total == 0)
 			{
@@ -43,49 +44,11 @@
 			}
 
 
-			/* Close statement */
-			$stmt->close();
-			$connection->close();
+		$connection = null;
+
 
 		}
 
-		// Count the number of users in the system
-		function countTotalUsers()
-		{
-			global $connection;
-
-
-			// Build the query
-      $sql = "SELECT * FROM users";
-
-	    //prepare the sql statement
-	    $stmt = $connection->prepare($sql);
-
-	    //execute the prepared statement
-	    $stmt->execute();
-
-			/* store result */
-	    $stmt->store_result();
-
-			$total = $stmt->num_rows;
-
-			if($total == 0)
-			{
-				return 0;
-
-			}
-
-			else
-			{
-				return $total;
-			}
-
-
-			/* Close statement */
-			$stmt->close();
-			$connection->close();
-
-		}
 
 		// Count the total number of package issues hidden
 		function countTotalHidden()
@@ -93,20 +56,21 @@
 
 			global $connection;
 			$country = $_SESSION['country'];
+			$resolved = 'No';
 
 			// Build the query
-      $sql = "SELECT * FROM packages WHERE Resolved = 'No' AND PackageID IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = '$country')";
+      $sql = "SELECT * FROM packages WHERE Resolved = :resolved AND PackageID IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = :country)";
 
 	    //prepare the sql statement
 	    $stmt = $connection->prepare($sql);
+			$stmt->bindParam(':country', $country, PDO::PARAM_STR);
+			$stmt->bindParam(':resolved', $resolved, PDO::PARAM_STR);
 
 	    //execute the prepared statement
 	    $stmt->execute();
 
-			/* store result */
-	    $stmt->store_result();
 
-			$total = $stmt->num_rows;
+			$total = $stmt->rowCount();
 
 			if($total == 0)
 			{
@@ -120,10 +84,9 @@
 			}
 
 
-			/* Close statement */
-			$stmt->close();
+		$connection = null;
 
-			$connection->close();
+
 
 
 		}
@@ -141,62 +104,60 @@
       // prepare the sql statement
       $stmt = $connection->prepare($sql);
 
+			# setting the fetch mode
+			$stmt->setFetchMode(PDO::FETCH_OBJ);
+
       // execute the prepared statement
       $stmt->execute();
 
-			/* store result */
-	    $stmt->store_result();
 
-			/* Bind the results to variables */
-			$stmt->bind_result($fname, $lname);
 
 			/* Fetch the results and operate on them */
-			if($stmt->fetch())
+			while($row = $stmt->fetch())
 			{
-				$name = $fname. " " . $lname;
+				$name = $row->FirstName. " " . $row->LastName;
 				return $name;
 
 				/* Close statement */
-				$stmt ->close();
+				$connection = null;
 			}
 
 		}
 
-		// Get the  last new package that was added
+		// Get the last new package that was added
 		function getLastAddedPackage()
 		{
 			global $connection;
 
 			$country = $_SESSION['country'];
-			$sql = "SELECT TrackingNumber FROM packages WHERE (PackageID NOT IN(SELECT PackageID from hiddenissues)  OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = '$country')) ORDER BY PackageID DESC LIMIT 1";
+			$sql = "SELECT TrackingNumber FROM packages WHERE (PackageID NOT IN(SELECT PackageID from hiddenissues)  OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = :country)) ORDER BY PackageID DESC LIMIT 1";
 
 			// prepare the sql statement
 			$stmt = $connection->prepare($sql);
 
+			$stmt->bindParam(':country', $country, PDO::PARAM_STR);
+
+			// setting the fetch mode
+	    $stmt->setFetchMode(PDO::FETCH_OBJ);
 
 			// execute the prepared statement
 			$stmt->execute();
 
-			/* store result */
-	    $stmt->store_result();
-
-			/* Bind the results to variables */
-			$stmt->bind_result($trackingnumber);
 
 			/* Fetch the results and operate on them */
-			if($stmt->fetch())
+			while($row = $stmt->fetch())
 			{
 
-				return $trackingnumber;
+				return $row->TrackingNumber;
 
 				/* Close statement */
-				$stmt ->close();
+				$stmt = null;
 			}
 
 
 
 			// Close the statement
-			$stmt ->close();
+			$stmt = null;
 
 			return $trackingnumber;
 
@@ -209,36 +170,35 @@
 		{
 			global $connection;
 			$country = $_SESSION['country'];
+			$resolved = 'No';
 
-			$sql = "SELECT TrackingNumber, CustomerName, MainIssue, Description FROM packages WHERE Resolved = 'No' AND (PackageID NOT IN(SELECT PackageID from hiddenissues) OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = '$country')) ORDER BY PackageID DESC LIMIT 5";
+			$sql = "SELECT TrackingNumber, CustomerName, MainIssue, Description FROM packages WHERE Resolved = :resolved AND (PackageID NOT IN(SELECT PackageID from hiddenissues) OR PackageID NOT IN(SELECT PackageID FROM hiddenissues WHERE HideFromCountry = :country)) ORDER BY PackageID DESC LIMIT 5";
 
 
 			// prepare the sql statement
 			$stmt = $connection->prepare($sql);
+			$stmt->bindParam(':country', $country, PDO::PARAM_STR);
+			$stmt->bindParam(':resolved', $resolved, PDO::PARAM_STR);
+
+			$stmt->setFetchMode(PDO::FETCH_OBJ);
 
 
 			// execute the prepared statement
 			$stmt->execute();
 
-			/* store result */
-	    $stmt->store_result();
-
-			/* Bind the results to variables */
-			$stmt->bind_result($tnum, $cust, $mainissue, $desc);
-
 
 			$list="";
 			/* Fetch the results and operate on them */
-			while($stmt->fetch())
+			while($row = $stmt->fetch())
 			{
-				$desc_snippet = substr($desc, 0, 30); // a 30 character substring of the description
+				$desc_snippet = substr($row->Description, 0, 30); // a 30 character substring of the description
 				$list.='
 				<tr>
-				    <td>'.$tnum.'</td>
-				    <td>'.$cust.'</td>
-						<td>'.$mainissue.'</td>
+				    <td>'.$row->TrackingNumber.'</td>
+				    <td>'.$row->CustomerName.'</td>
+						<td>'.$row->MainIssue.'</td>
 						<td>'.$desc_snippet.'...</td>
-						<td><a href="../includes/fulldetails.php?trackingnumber='.urlencode($tnum).'" title="View full package details"><span class="fa fa-eye fa-fw"></span>View</a></td>
+						<td><a href="../includes/fulldetails.php?trackingnumber='.urlencode($row->TrackingNumber).'" title="View full package details"><span class="fa fa-eye fa-fw"></span>View</a></td>
 
 
 			  </tr>
@@ -255,7 +215,7 @@
 			return $list;
 
 			// Close the statement
-			$stmt ->close();
+			$stmt = null;
 
 		}
 
@@ -273,24 +233,21 @@
 			// prepare the sql statement
 			$stmt = $connection->prepare($sql);
 
+			$stmt->setFetchMode(PDO::FETCH_OBJ);
+
 
 			// execute the prepared statement
 			$stmt->execute();
 
-			/* store result */
-	    $stmt->store_result();
-
-			/* Bind the results to variables */
-			$stmt->bind_result($time, $news, $user);
 
 
 			$list="";
 			/* Fetch the results and operate on them */
-			while($stmt->fetch())
+			while($row = $stmt->fetch())
 			{
 				$list.='
 
-				    <p class="newsitem">'.$time.': '.$news.'</p>
+				    <p class="newsitem">'.$row->TimeCreated.': '.$row->News.'</p>
 
 				';
 
@@ -304,7 +261,7 @@
 			return $list;
 
 			// Close the statement
-			$stmt ->close();
+			$connection = null;
 
 
 
@@ -404,7 +361,7 @@
 		{
 			$totalAvailable = call_user_func('countTotalAvailableIssues');
 			$hiddenTotal = call_user_func('countTotalHidden');
-			$usersTotal = call_user_func('countTotalUsers');
+			// $usersTotal = call_user_func('countTotalUsers');
 			$lastModifiedUser = call_user_func('getLastModifiedUser');
 			$lastAddedPackage = call_user_func('getLastAddedPackage');
 			$generateMostRecentIssues = call_user_func('mostRecentIssues');

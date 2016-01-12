@@ -9,11 +9,13 @@
 
 
       // Insert the note into the updates table
-      $sql = "INSERT INTO initialpackagescans(TrackingNumber, ShippingCarrier, ScannedBy) VALUES(?,?,?)";
+      $sql = "INSERT INTO initialpackagescans(TrackingNumber, ShippingCarrier, ScannedBy) VALUES(:TrackingNumber,:ShippingCarrier,:ScannedBy)";
       $stmt = $connection->prepare($sql);
-      $stmt->bind_param('sss', $tnum, $ship, $user);
-      $stmt->execute();
-      $stmt->close();
+
+      // Shortcut to bind Parameters... The Keys have to be the same name as the : placeholders in query
+      $data = array('TrackingNumber'=>$tnum, 'ShippingCarrier'=>$ship, 'ScannedBy'=>$user);
+      $stmt->execute($data);
+
 
       echo "Done";
 

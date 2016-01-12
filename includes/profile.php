@@ -6,25 +6,27 @@
       {
 
       	// Check each set key and index from the form and update appropriate field in table
-      	foreach ($_POST as $key => $val)
+      	foreach ($_POST as $ColumnName => $ColumnValue)
       	{
-            if($key == 'Password')
+            if($ColumnName == 'Password')
             {
-              $val = md5($val);
+              $ColumnValue = md5($ColumnValue);
             }
 
-        		if($val != null || $val != "")
+        		if($ColumnValue != null || $ColumnValue != "")
         		{
-        					$sql = "UPDATE users SET {$key} = ?  WHERE userId = ?;";
+        					$sql = "UPDATE users SET {$ColumnName} = :ColumnValue  WHERE UserId = :UserId;";
 
         					// Prepare the sql statement
         					$stmt = $connection->prepare($sql);
-        					$stmt->bind_param('si', $val, $id);
+                  $stmt->bindParam(':ColumnValue', $ColumnValue);
+                  $stmt->bindParam(':UserId', $id); // value included from the sessionvariables.php file
+
 
         					// Execute the prepared statement
         					$stmt->execute();
-        					$stmt->close();
-        					$connection->close();
+
+        					$connection = null;
         			}
       		}
       			echo 'success';

@@ -12,28 +12,35 @@
       $accnumber = $_POST['accountNumber'];
       $news = $username." (".$agent.") marked issue ".$tnumber." as resolved for customer ".$accnumber;
       $resolved = "Yes";
-
+      $timestamp = "CURRENT_TIMESTAMP";
 
 
       // Set the issue as resolved
-      $sql = "UPDATE packages SET Resolved = ?, ResolvedTimestamp = 'now()', ResolvedBy = ?, AccountNumber = ? WHERE PackageID = ?";
+      $sql = "UPDATE packages SET Resolved = :Resolved, ResolvedTimestamp = :CurrentTimestamp, ResolvedBy = :ResolvedBy, AccountNumber = :AccountNumber WHERE PackageID = :PackageID";
       $stmt = $connection->prepare($sql);
-      $stmt->bind_param('sssi', $resolved, $username, $accnumber, $pid);
+      $stmt->bindParam(':Resolved', $resolved, PDO::PARAM_STR);
+      $stmt->bindParam(':CurrentTimestamp', $timestamp, PDO::PARAM_STR);
+      $stmt->bindParam(':ResolvedBy', $username, PDO::PARAM_STR);
+      $stmt->bindParam(':AccountNumber', $accnumber, PDO::PARAM_STR);
+      $stmt->bindParam(':PackageID', $pid, PDO::PARAM_INT);
+    
 
         if($stmt->execute())
         {
 
           // Insert the newsfeed item into table
-          $query = "INSERT INTO newsfeed (PackageID, News, Username) VALUES(?,?,?)";
+          $query = "INSERT INTO newsfeed (PackageID, News, Username) VALUES(:PackageID, :News, :Username)";
           $stmt = $connection->prepare($query);
-          $stmt->bind_param('iss', $pid, $news, $username);
+          $stmt->bindParam(':PackageID', $pid, PDO::PARAM_INT);
+          $stmt->bindParam(':News', $news, PDO::PARAM_STR);
+          $stmt->bindParam(':Username', $username, PDO::PARAM_STR);
           $stmt->execute();
 
           echo "Done";
         }
 
 
-        $stmt->close();
+
     }
 
 
