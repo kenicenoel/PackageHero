@@ -16,9 +16,9 @@
 						<div id ="content2">
 								<div id="data">
 										<header class="helpHeader">
-											Need help? You've come to the right place
+											Need help? We've got you covered.
 											<p class="helpSubText">
-												Here, you will find videos and guides on using all the new features of Package Hero
+												Here, you will find videos and guides on using all the new features of Package Detective
 											</p>
 										</header>
 										<video class= "tutorial" width="700" height="500" controls muted poster="../images/posterimage_tutorial.png">

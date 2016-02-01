@@ -250,9 +250,9 @@
 
                         if(isset($_POST['emailBody']) && $_POST['sendEmail'] != "no")
                         {
-                          $subject = "There's a problem with your package(s)";
-                          $from = "info@shipwebsource.com";
-                          $to = "kenice1@gmail.com";
+                          $subject = "There's an issue with your package(s)";
+                          $from = "detective@shipwebsource.com";
+                          $to = "brendon@shipwebsource.com";
                           $replyTo = "customerservice@shipwebsource.com";
                           $errors.= composeEmail($from, $to, $subject, $replyTo, $fullEmailContent);
 

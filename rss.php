@@ -47,9 +47,9 @@
       }
 
     	echo '
-		<title>Package Hero Updates</title>
+		<title>Package Detective Updates</title>
 		<link>http://packagehero.websource-caribbean.com</link>
-		<description>Receive updates on Package Hero Issues</description>';
+		<description>Receive updates on the latest issues added to Package Detective</description>';
     echo $items;
 
 

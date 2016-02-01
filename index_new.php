@@ -2,10 +2,14 @@
 
 			<div id = "container">
 
+				<div class="top">
+					
+				</div>
+
 				<div id ="bottom">
 							<form id="form" method ="post">
 								<img src="images/ph.png" />
-								<header id="welcome">Welcome</header>
+								<header id="welcome">Hello</header>
 									<?php
 										if(isset($_GET['page']))
 										{

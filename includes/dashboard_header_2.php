@@ -10,7 +10,7 @@
 
 			<html>
 				<head>
-					<title>Package Hero&reg;</title>
+					<title>Package Detective&reg;</title>
 					<!-- The CSS styles  -->
 					<link rel = "stylesheet" href = "../css/admin_styles.css" type ="text/css">
 					<link rel = "stylesheet" href = "../css/mobile.css" type ="text/css">

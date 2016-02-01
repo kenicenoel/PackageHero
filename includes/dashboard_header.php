@@ -9,7 +9,7 @@
 
 				<html>
 					<head>
-						<title>Package Hero&reg;</title>
+						<title>Package Detective&reg;</title>
 						<link rel = "stylesheet" href = "../css/admin_styles.css" type ="text/css">
 						<link type="text/css" rel="stylesheet" href="../css/overlaypopup.css" />
 

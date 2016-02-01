@@ -18,7 +18,7 @@
 		<html>
 			<head>
 
-				<title>Package Hero by Web Source</title>
+				<title>Package Detective by Web Source</title>
 				<link rel = "stylesheet" href = "css/main.css" type ="text/css">
 					<link type="text/css" rel="stylesheet" href="css/jquery-ui.min.css" />
 				<link rel = "stylesheet" href = "font-awesome/css/font-awesome.min.css" type ="text/css">

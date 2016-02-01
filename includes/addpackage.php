@@ -3,39 +3,44 @@
           <br>
           <header class="subheading"><span class="fa fa-bug"> </span> Create a new issue </header>
           <p id="errorMessage"></p>
-          <p>Enter the details for this issue then choose whether an email will be sent to the customer automatically.</p>
-            <p>To create a custom email instead, simply choose "Yes, I will enter the text". You can also choose "No" to send no email.</p>
 
           <br><br>
         <section>
           <label for = "trackingnumber">Tracking Number</label>
-          <input type = "text" id = "trackingnumber" name="trackingnumber" required /><br>
+          <input type = "text" id = "trackingnumber" name="trackingnumber" required placeholder="e.g 942759457846848" autofocus /><br>
 
           <label for="customername">Customer Name</label>
-          <input type = "text" id = "customername" name="customername" /><br>
+          <input type = "text" id = "customername" name="customername" placeholder="e.g Lincoln Wendy" /><br>
+
+          <label for="accountnumber">Account Number</label>
+          <input type = "text" id = "accountnumber" name="accountnumber" placeholder="e.g WEB720 or BSL67324" /><br>
 
           <label for="type">Main Issue</label>
-            <select form = "package" name="mainissue"> <br>
-              <option value="" disabled selected>Select an issue</option>
-              <option value = "Broken">Received broken</option>
-              <option value = "Missing customer details">Missing customer details</option>
-              <option value = "Held by customs USA">Held by customs USA</option>
-              <option value = "Restricted item">Possible restricted import item</option>
+            <select form = "package" name="mainissue" required> <br>
+              <option value="" disabled selected>What's wrong?</option>
+              <option value = "Broken">Item received broken</option>
+              <option value = "Proof of pickup">Proof of pickup</option>
+              <option value = "Crating required">Crating required</option>
+              <option value = "Missing customer details">Missing customer details for the package</option>
+              <option value = "Hazardous material">Hazmat. What to do?</option>
+              <option value = "Held by customs USA">Item is being held by customs</option>
+              <option value = "Restricted item">Item is on the restricted list</option>
               <option value = "Import License Needed">Import license needed</option>
               <option value = "Invoice required">Invoice required</option>
-              <option value = "No account number found">No account number found</option>
-              <option value = "Delivery address not known">Delivery address not known</option>
+              <option value = "No account number found">Item has no account number</option>
+              <option value = "Verify accountholder ordered item">Verify if account holder ordered item </option>
+              <option value = "Other">Other</option>
             </select><br>
 
           <label for="description">Comments/ Details</label>
           <textarea rows="7" cols="55" form="package" id = "description" name="description"></textarea> <br>
 
-          <label for="itemtype">Item Description</label>
+          <label for="itemtype">Item Type</label>
           <input type = "text" id = "itemtype" name="itemtype" /><br>
 
-          <label for="shippingcarrier">Shipping Carrier</label>
+          <label for="shippingcarrier">Shipping Company</label>
             <select form="package" name="shippingcarrier" required> <br>
-              <option value="" disabled selected>Pick the shipping agent</option>
+              <option value="" disabled selected>Who delivered this item?</option>
               <option value = "USPS">USPS</option>
               <option value = "FedEX">FedEx</option>
               <option value = "UPS">UPS</option>
@@ -47,17 +52,17 @@
               <option value = "Warehouse drop-off">Warehouse drop-off</option>
             </select><br>
 
-            <label for="sendEmail">Send email?</label>
+            <label for="sendEmail">Email Customer?</label>
             <select id = "sendEmail" form="package" name = "sendEmail" required> <br>
               <option value = "auto"  selected>Yes (auto generated)</option>
-              <option value = "custom">Yes, I will enter the text</option>
+              <option value = "custom">Yes, but I will enter the text</option>
               <option value = "no">No</option>
             </select>
 
             <label id="forEmailBody" style="display:none;" for ="emailBody">Email body</label>
             <textarea style="display:none;" id="emailBody" name="emailBody" rows="7" cols="55" ></textarea>
 
-          <label for="images">Images (MAX: 5)</label>
+          <label for="images">Photos (up to 5)</label>
           <input type = "file" id = "images" name="images[]" accept=".jpg" multiple="" required> <br>
           <input id="addIssue" type = "submit" value="Add" />
         </section>
